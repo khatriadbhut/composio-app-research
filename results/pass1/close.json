@@ -1,0 +1,114 @@
+{
+ "id": 8,
+ "slug": "close",
+ "app": "Close",
+ "category": "CRM and Sales",
+ "hint": "close.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:08.776Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Close CRM MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/topics/authentication-oauth2/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/integrations/publish.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/integrations/create-an-oauth-app.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Sales CRM for SMBs with calling, email, SMS, sequences and pipeline management.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"api_key\",\"oauth2\"],\"auth_"
+  }
+ ],
+ "cost_usd": 0.1230179,
+ "duration_ms": 35290,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Sales CRM for SMBs with calling, email, SMS, sequences and pipeline management.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API keys use HTTP Basic Auth and suit scripts. OAuth 2.0 suits user-facing integrations: access tokens last 1h, refresh tokens come with offline_access, and each refresh rotates the token. The MCP server uses OAuth with DCR.",
+  "access": "approval_required",
+  "access_notes": "Private OAuth apps work only for members of the developer's own Close organization. Making the app public so other customers can authorize it requires submitting it for Close's review. API keys can be generated in any Close org. I did not confirm that a free trial is needed, since Close has no free plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Leads, contacts, opportunities, activities (email/SMS/call), sequences, bulk actions, reporting, custom fields, webhooks, event log, and more. I did not count the operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.close.com/mcp. It uses Streamable HTTP and OAuth 2.0 with DCR. Scopes are mcp.read, mcp.write_safe and mcp.write_destructive. This comes from a search summary of developer.close.com/mcp, which I did not fetch directly.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The API is broad and the OpenAPI spec is public. Building is self-serve. A public multi-user OAuth app needs Close's review. Close has no free tier, so credentials likely need a trial or paid org.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.close.com/",
+    "quote": "API keys for scripts or OAuth 2.0 for user-facing integrations."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.close.com/integrations/create-an-oauth-app.md",
+    "quote": "OAuth apps are Private by default, meaning only members of your own Close organization can authorize them."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.close.com/integrations/publish.md",
+    "quote": "submit for review"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.close.com/llms.txt",
+    "quote": "OpenAPI JSON: The OpenAPI 3.1 specification in JSON format."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.close.com/",
+    "quote": "Real-time event notifications and a 30-day event log."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.close.com/",
+    "quote": "Model Context Protocol for AI agents."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether a Close trial or paid org is needed to get an API key or create an OAuth app, and whether a sandbox or dev org exists. Neither was found in the docs. Also check the MCP page at developer.close.com/mcp directly."
+ }
+}

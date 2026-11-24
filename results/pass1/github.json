@@ -1,0 +1,105 @@
+{
+ "id": 61,
+ "slug": "github",
+ "app": "GitHub",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.github.com/rest",
+ "pass": 1,
+ "at": "2026-11-24T15:06:56.488Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/github/github-mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.github.com/en/webhooks/about-webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.github.com/en/rest/about-the-rest-api/about-the-rest-api"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Code hosting, collaboration and CI platform with repos, issues, PRs, Actions.\",\"subcategory\":\"Source code hosting / DevOps\",\"auth_methods\":[\"oa"
+  }
+ ],
+ "cost_usd": 0.055307800000000004,
+ "duration_ms": 20862,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Code hosting, collaboration and CI platform with repos, issues, PRs, Actions.",
+  "subcategory": "Source code hosting / DevOps",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "jwt_service_account",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Options: fine-grained/classic PATs, GitHub App (JWT -> installation tokens, or user access tokens via OAuth), OAuth apps, GITHUB_TOKEN in Actions, basic auth for some app endpoints. Password auth is unsupported. A multi-user toolkit would use a GitHub App user-to-server OAuth flow or an OAuth app. GitHub recommends GitHub Apps.",
+  "access": "self_serve_free",
+  "access_notes": "From my own knowledge, not a page I fetched: free accounts can register OAuth apps and GitHub Apps with no review, and any user can authorize them. Org owners may restrict third-party apps. Some features need paid org plans.",
+  "api_styles": [
+   "rest",
+   "graphql",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Hundreds of REST endpoints across repos, issues, PRs, actions, orgs, users, checks, packages and more. A GraphQL API also exists, but I did not fetch its docs.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://api.githubcopilot.com/mcp/ (hosted by GitHub); open source at github.com/github/github-mcp-server.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blocker. Free self-serve OAuth/GitHub Apps. Orgs may require admin approval of the app. A free test account serves as a sandbox.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+    "quote": "GitHub recommends that you use a fine-grained personal access token instead of a personal access token (classic)."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+    "quote": "Authentication with username and password is not supported."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/github/github-mcp-server",
+    "quote": "The remote GitHub MCP Server is hosted by GitHub"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.github.com/en/webhooks/about-webhooks",
+    "quote": "Webhooks provide a way for notifications to be delivered to an external web server whenever certain events occur on GitHub."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.github.com/en/rest/about-the-rest-api/about-the-rest-api",
+    "quote": "Each REST API endpoint is documented individually, and the endpoints are categorized by the resource that they primarily affect."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The OpenAPI spec (github/rest-api-description repo), the GraphQL API and the free app registration come from my own knowledge. I did not fetch pages for them. The sandbox verdict (\"no\") is also unchecked."
+ }
+}

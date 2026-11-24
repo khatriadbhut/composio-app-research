@@ -1,0 +1,97 @@
+{
+ "id": 12,
+ "slug": "intercom",
+ "app": "Intercom",
+ "category": "Support and Helpdesk",
+ "hint": "intercom.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:31.540Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.intercom.com/docs/guides/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.intercom.com/docs/webhooks"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Intercom developer hub OpenAPI descriptions github intercom/Intercom-OpenAPI; app review listing app store"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Customer messaging, support inbox and helpdesk platform with Fin AI agent.\",\"subcategory\":\"Helpdesk / customer messaging\",\"auth_methods\":[\"oaut"
+  }
+ ],
+ "cost_usd": 0.071747,
+ "duration_ms": 26764,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Customer messaging, support inbox and helpdesk platform with Fin AI agent.",
+  "subcategory": "Helpdesk / customer messaging",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Access Token (private apps, own workspace) and OAuth (public apps). Both are sent as Authorization: Bearer. Public apps are required to use OAuth.",
+  "access": "self_serve_free",
+  "access_notes": "Developer Hub signup creates an app and a development workspace. I didn't confirm the cost. I also didn't find a stated app review requirement for public OAuth apps. Listing in the Intercom App Store may involve review; I didn't verify this.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API covers contacts, companies, conversations, tickets, articles, data events, tags, notes, teams, admins, data connectors and more. I didn't count operations; it is likely well over 50. I included websocket in api_styles by mistake; the API is REST only, as far as I saw.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "US: https://mcp.intercom.com/mcp. EU: https://mcp.eu.intercom.com/mcp. AU workspaces aren't supported. It supports OAuth or a bearer token. Fin Operator tools need OAuth.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Possible caveats: the free development workspace may be trial-limited, and public OAuth distribution may need App Store review. Neither was confirmed.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+    "quote": "apps are required to use OAuth rather than asking users for Access Tokens"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "quote": "Intercom hosts a remote MCP server that follows the authenticated remote MCP specification."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.intercom.com/docs/webhooks",
+    "quote": "a way that you can access real-time notifications about events that happen in your Intercom workspace."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/intercom/intercom-openapi",
+    "quote": "OpenAPI descriptions for Intercom's REST API (search result summary; I did not open the repo page)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm that the Developer Hub development workspace is free and not time-limited. Confirm whether public OAuth apps need Intercom review before other workspaces can install them. I didn't find this in the docs I opened. I haven't confirmed the sandbox from a docs page that says so explicitly. The OpenAPI evidence comes from search results, not a page I opened."
+ }
+}

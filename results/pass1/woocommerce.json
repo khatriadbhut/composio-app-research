@@ -1,0 +1,108 @@
+{
+ "id": 42,
+ "slug": "woocommerce",
+ "app": "WooCommerce",
+ "category": "Ecommerce",
+ "hint": "woocommerce.com/document/woocommerce-rest-api",
+ "pass": 1,
+ "at": "2026-11-24T15:05:52.503Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://woocommerce.com/document/woocommerce-rest-api/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "WooCommerce MCP integration official developer docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.woocommerce.com/docs/features/mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Open-source WordPress ecommerce plugin with a REST API for store data.\",\"subcategory\":\"Ecommerce platform (self-hosted)\",\"auth_methods\":[\"basic"
+  }
+ ],
+ "cost_usd": 0.0816403,
+ "duration_ms": 35859,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Open-source WordPress ecommerce plugin with a REST API for store data.",
+  "subcategory": "Ecommerce platform (self-hosted)",
+  "auth_methods": [
+   "basic",
+   "oauth1",
+   "api_key",
+   "other"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Per-store consumer key/secret pair, used as HTTP Basic over HTTPS or OAuth 1.0a one-legged over HTTP. WordPress Application Passwords also work with the WP REST API, and the MCP adapter uses them. There is no central multi-tenant OAuth2. The woocommerce.com docs list only key and secret. A WooCommerce /wc-auth/v1/authorize endpoint exists for user-approved key generation, but I did not confirm it in the pages fetched. Each merchant's store has its own URL, so users must supply the site URL and keys.",
+  "access": "self_serve_free",
+  "access_notes": "WooCommerce is free and open source. Anyone can install it on their own WordPress site and generate keys under WooCommerce > Settings > Advanced > REST API. There is no app review or vendor-side gate. The store needs non-Plain permalinks and HTTPS for production.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "wc/v3 covers coupons, customers, orders, notes, refunds, products (variations, attributes, categories, tags, reviews), reports, tax, webhooks, settings, payment gateways, shipping zones, system status and data. Most resources have batch operations. Well over 50 operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "Developer preview, per developer.woocommerce.com/docs/features/mcp/. It runs through the WordPress MCP Adapter plugin, whose default server is at /wp-json/mcp/mcp-adapter-default-server. Local use is over WP-CLI STDIO. Remote use goes through the @automattic/mcp-wordpress-remote proxy with an Application Password. It is not a vendor-hosted URL. The WooCommerce-specific endpoint was removed in 11.3, and the REST-derived product and order abilities went with it. Community and third-party servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The API is open and free, but it is self-hosted, so each user must supply their store URL and generate keys themselves. There is no central OAuth2 app and no OpenAPI spec. Some hosts or stores break Authorization headers or lack HTTPS. A free local or test store can be spun up at any time, so the sandbox is self-provided.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://woocommerce.com/document/woocommerce-rest-api/",
+    "quote": "Go to WooCommerce > Settings > Advanced > REST API. Select Create an API key or Add Key."
+   },
+   {
+    "field": "auth",
+    "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+    "quote": "providing the REST API Consumer Key as the username and the REST API Consumer Secret as the password"
+   },
+   {
+    "field": "auth",
+    "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+    "quote": "OAuth 1.0a \"one-legged\" authentication"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.woocommerce.com/docs/features/mcp/",
+    "quote": "The WooCommerce-specific `/wp-json/woocommerce/mcp` endpoint was removed in WooCommerce 11.3."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.woocommerce.com/docs/features/mcp/",
+    "quote": "currently in developer preview"
+   },
+   {
+    "field": "api",
+    "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+    "quote": "The index at /wp-json/wc/v3 describes all available endpoints."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether the /wc-auth/v1/authorize flow (user-approved key generation) is still supported. It would make onboarding smoother. Also confirm that the webhook details in the REST docs match the current version. I only read the outline, not the body text. The openapi_spec value is based on none being found, not on a confirmed absence."
+ }
+}

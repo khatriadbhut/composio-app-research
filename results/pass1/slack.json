@@ -1,0 +1,102 @@
+{
+ "id": 21,
+ "slug": "slack",
+ "app": "Slack",
+ "category": "Communications and Messaging",
+ "hint": "slack.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:10.066Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.slack.dev/ai/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.slack.dev/authentication/installing-with-oauth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.slack.dev/distribution/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.slack.dev/dev-program/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Team chat and collaboration platform with channels, messaging, files, and workflows.\",\"subcategory\":\"Team messaging\",\"auth_methods\":[\"oauth2\",\""
+  }
+ ],
+ "cost_usd": 0.0636504,
+ "duration_ms": 30143,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Team chat and collaboration platform with channels, messaging, files, and workflows.",
+  "subcategory": "Team messaging",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth v2 (oauth.v2.access) gives bot (xoxb) and user (xoxp) tokens, optionally with token rotation. Tokens are sent as Bearer headers. Other options are tokens passed directly (the `token` form field), and a separate v2_user OAuth flow for the MCP server. Signing-secret verification applies to inbound events.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can create an app and use OAuth for free. Unlisted public distribution needs no Marketplace review, but workspaces may require admin approval. Non-Marketplace commercial apps created after 2025-05-29 get severe limits on conversations.history/replies (1 request/min, 15 objects per call). Marketplace listing needs review. The official MCP server only accepts Marketplace or internal apps.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Web API with hundreds of methods: chat, conversations, users, files, reactions, search, canvases, admin, and more. Events API and Socket Mode are also available.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.slack.com/mcp (Streamable HTTP, confidential OAuth with client ID and secret). Only Marketplace-published and internal apps can use it.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "tos_or_rate_limits",
+  "blocker_notes": "A Web API toolkit can be built now with a self-serve OAuth app. The main caveat is that non-Marketplace apps get low rate limits on history reads, so Marketplace review is advisable for production. The sandbox (Developer Program free sandbox workspaces) is from memory. I did not verify it because the docs page 404'd.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.slack.dev/authentication/installing-with-oauth",
+    "quote": "OAuth tokens do not expire."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/distribution/",
+    "quote": "intended for commercial distribution should be submitted and approved for listing in the Slack Marketplace"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+    "quote": "limited to 1 request per minute, unless they are approved for the Slack Marketplace"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.slack.dev/ai/mcp-server",
+    "quote": "Only apps published in the Slack Marketplace and internal apps can use MCP at this time."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether an official OpenAPI spec exists (I did not fetch the docs page). Slack publishes a community-style spec in the slackapi/slack-api-specs GitHub repo. Confirm the Developer Program sandbox terms, because that page 404'd. Confirm the current non-Marketplace rate limits for your use case."
+ }
+}

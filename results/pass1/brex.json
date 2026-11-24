@@ -1,0 +1,17 @@
+{
+ "id": 88,
+ "slug": "brex",
+ "app": "Brex",
+ "category": "Finance and Fintech",
+ "hint": "developer.brex.com",
+ "pass": 1,
+ "at": "2026-11-24T15:08:07.750Z",
+ "ok": false,
+ "trace": [],
+ "cost_usd": 0,
+ "duration_ms": 739,
+ "turns": 1,
+ "model": "sonnet",
+ "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
+ "record": null
+}

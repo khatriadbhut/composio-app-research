@@ -1,0 +1,109 @@
+{
+ "id": 36,
+ "slug": "klaviyo",
+ "app": "Klaviyo",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.klaviyo.com",
+ "pass": 1,
+ "at": "2026-11-24T15:05:17.150Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/authenticate_"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/webhooks_api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/set_up_oauth"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Klaviyo webhooks API developers.klaviyo.com custom webhooks plan"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Klaviyo MCP server remote mcp.klaviyo.com connect"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Marketing automation platform for email, SMS and customer data/CDP.\",\"subcategory\":\"Email/SMS marketing automation\",\"auth_methods\":[\"oauth2\",\"a"
+  }
+ ],
+ "cost_usd": 0.09470020000000001,
+ "duration_ms": 31116,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Marketing automation platform for email, SMS and customer data/CDP.",
+  "subcategory": "Email/SMS marketing automation",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Private API key (pk_..., Klaviyo-API-Key header) for server endpoints; OAuth 2.0 with scopes for multi-account apps (recommended for partners); public 6-char company ID for client-side /client endpoints. Webhook calls signed with HMAC-SHA256.",
+  "access": "self_serve_free",
+  "access_notes": "Private keys and OAuth app creation are available to Owner/Admin/Manager roles of an account (Klaviyo has a free tier). The docs say an OAuth app does not have to be listed to share its installation URL with customers; marketplace listing requires review. The Webhooks API requires Advanced KDP or app partner status. I did not confirm the free-tier limits.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers profiles, lists, segments, events, campaigns, flows, templates, catalogs, metrics, coupons, reviews, tags, webhooks and more. This is a count from my general knowledge, not from the docs I fetched: 200+ operations, with date-versioned releases.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote server at https://mcp.klaviyo.com/mcp, which uses OAuth sign-in, plus a local option. The remote server is limited to Owner/Admin/Manager roles.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The REST API, OAuth and a free account are all available. Marketplace listing needs review but is not required for use. The Webhooks API is gated to Advanced KDP or partners. Klaviyo also ships its own official MCP server.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "quote": "Klaviyo recommends OAuth for tech partners integrating with the platform; private keys start with pk_ and use the Klaviyo-API-Key header."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+    "quote": "Your app does not have to be listed to share and use your installation URL with customers."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+    "quote": "only owner, admin, and manager roles can create OAuth apps in Klaviyo."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+    "quote": "configure your MCP client for the remote-hosted server (recommended) or the local server."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.klaviyo.com/en/reference/webhooks_api_overview",
+    "quote": "only Advanced KDP customers and Klaviyo app partners can access and manage webhooks with our Webhooks API."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Klaviyo's free plan keeps full API access. Confirm the OpenAPI spec (I believe it is published at github.com/klaviyo/openapi, but I did not open it). Check whether there is a test mode: Klaviyo has no dedicated sandbox, and a free account is the usual way to test. Check what the OAuth app review requires for public distribution."
+ }
+}

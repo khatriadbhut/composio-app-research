@@ -1,0 +1,86 @@
+{
+ "id": 51,
+ "slug": "dataforseo",
+ "app": "DataForSEO",
+ "category": "Data, SEO and Scraping",
+ "hint": "docs.dataforseo.com",
+ "pass": 1,
+ "at": "2026-11-24T15:06:16.260Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.dataforseo.com/v3/auth/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "DataForSEO MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dataforseo.com/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Pay-as-you-go APIs for SEO data: SERP, keywords, backlinks, on-page, and business data.\",\"subcategory\":\"SEO data API\",\"auth_methods\":[\"basic\"],"
+  }
+ ],
+ "cost_usd": 0.0702884,
+ "duration_ms": 20174,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Pay-as-you-go APIs for SEO data: SERP, keywords, backlinks, on-page, and business data.",
+  "subcategory": "SEO data API",
+  "auth_methods": [
+   "basic"
+  ],
+  "auth_primary": "basic",
+  "auth_notes": "HTTP Basic with an API login and an auto-generated API password. Each account has one credential pair. There is no OAuth, so a multi-user toolkit would have each user paste in their own login and password.",
+  "access": "self_serve_trial",
+  "access_notes": "A free account gives API credentials, and the free Sandbox returns sample responses. New accounts get a $1 trial credit. Live data needs a prepaid balance with a $50 minimum top-up. There is no subscription, and funds don't expire.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers SERP, Keywords Data, Labs, Backlinks, On-Page, Domain Analytics, Content Analysis, Business Data, App Data, Merchant and AI Optimization. Each has many endpoints, and the total is well over 50.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote endpoint https://mcp.dataforseo.com/mcp. The npm package dataforseo-mcp-server and the Docker image dataforseo/mcp are also official. Repo: dataforseo/mcp-server-typescript.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Users need their own DataForSEO account, and live data needs a funded balance. Basic auth means per-user credential entry instead of an OAuth flow.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.dataforseo.com/v3/auth/",
+    "quote": "Authenticate using HTTP Basic Authentication ... API login and password on the API Access tab"
+   },
+   {
+    "field": "access",
+    "url": "https://dataforseo.com/pricing",
+    "quote": "The minimum account top-up is $50."
+   },
+   {
+    "field": "mcp",
+    "url": "https://dataforseo.com/model-context-protocol",
+    "quote": "Empower AI integration with"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Not checked: whether an OpenAPI spec is published. The webhooks answer comes from memory of the postback_url and pingback_url task options, not from a fetched page. The quotes for auth and access come from fetched-page summaries, so they are paraphrased and not verbatim. The MCP evidence quote is only a search-result title. The MCP details come from search results, and I didn't open the vendor MCP pages."
+ }
+}

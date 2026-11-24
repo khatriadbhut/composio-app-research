@@ -1,0 +1,97 @@
+{
+ "id": 13,
+ "slug": "freshdesk",
+ "app": "Freshdesk",
+ "category": "Support and Helpdesk",
+ "hint": "freshdesk.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:39.135Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.freshdesk.com/api/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Freshdesk MCP server official"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Freshdesk API OAuth 2.0 third-party apps Freshworks developer platform; Freshdesk webhooks automation rules; free plan API access"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud customer support helpdesk and ticketing platform from Freshworks.\",\"subcategory\":\"Helpdesk\",\"auth_methods\":[\"api_key\",\"basic\"],\"auth_prim"
+  }
+ ],
+ "cost_usd": 0.09437330000000001,
+ "duration_ms": 34061,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud customer support helpdesk and ticketing platform from Freshworks.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "api_key",
+   "basic"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API uses each user's personal API key sent as HTTP Basic (key as username, dummy password). The docs list OAuth scopes per endpoint but no general OAuth flow. Forum answers say the REST API doesn't support OAuth. OAuth exists only inside Freshworks Marketplace apps (a platform feature for calling third-party services). A multi-user toolkit would have each user paste their API key plus their account subdomain.",
+  "access": "self_serve_trial",
+  "access_notes": "The API docs are public. The API key is available to any account, including trials (trial accounts are limited to 50 calls/min). Rate limits scale by plan (Blossom, Garden, Estate, Forest). I found no page naming a plan required for API access. I did not check whether a free plan still exists or includes API access. Some endpoints are plan-gated, e.g. multiple companies requires Estate or above.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers tickets, conversations, contacts, agents, groups, roles, companies, solutions (knowledge base), discussions, surveys, time entries, canned responses, SLA policies, custom objects, products, business hours and mailboxes. Full CRUD across most of them, well over 50 operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "community_only",
+  "mcp_notes": "Community: github.com/effytech/freshdesk_mcp (run with `uvx freshdesk-mcp`) and Enreign's freshdeck-mcp. Workato offers a commercial prebuilt Freshdesk MCP server (docs.workato.com/en/mcp/registry/freshdesk-mcp-server). The search found no Freshworks-published MCP server.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Public REST API with self-serve per-user API keys. Minor caveats: no OAuth for the REST API, so users must supply the key and subdomain. Rate limits are per account and plan-based.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "You can use your personal API key to authenticate the request."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "For all trial users, there is a default API limit of 50 calls/minute."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "Tickets, conversations, contacts, agents, skills, roles, groups, companies, discussions, solutions, surveys, time entries"
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/effytech/freshdesk_mcp",
+    "quote": "MCP server implementation that integrates with Freshdesk, enabling AI models to interact with Freshdesk modules"
+   },
+   {
+    "field": "auth",
+    "url": "https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691",
+    "quote": "you need to access the Freshdesk API via the API key mechanism"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The first 100k characters of the API docs were read. The rest (about 140k) was not, so I couldn't confirm an OpenAPI spec, API webhooks or a sandbox. Freshdesk has automation-rule webhooks, but I didn't verify them. Also check whether any plan or trial gives API access, and whether Freshworks has launched an official MCP server. The OAuth finding comes from community answers, not an official statement."
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": 96,
+ "slug": "devin",
+ "app": "Devin",
+ "category": "AI, Research and Media-native",
+ "hint": "docs.devin.ai (MCP)",
+ "pass": 1,
+ "at": "2026-11-24T15:08:11.461Z",
+ "ok": false,
+ "trace": [],
+ "cost_usd": 0,
+ "duration_ms": 764,
+ "turns": 1,
+ "model": "sonnet",
+ "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
+ "record": null
+}

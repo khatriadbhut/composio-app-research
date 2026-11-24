@@ -1,0 +1,26 @@
+{
+ "seed": 20261124,
+ "per_category": 2,
+ "apps": [
+  "hubspot",
+  "dealcloud",
+  "zendesk",
+  "front",
+  "lark-larksuite",
+  "discord",
+  "threads-meta",
+  "linkedin-ads",
+  "fanbasis",
+  "salesforce-commerce-cloud",
+  "sherlock",
+  "dataforseo",
+  "snowflake",
+  "neo4j",
+  "harvest",
+  "smartsheet",
+  "ipayx",
+  "quickbooks",
+  "notebooklm",
+  "youtube-transcript"
+ ]
+}

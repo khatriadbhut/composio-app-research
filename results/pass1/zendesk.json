@@ -1,0 +1,123 @@
+{
+ "id": 11,
+ "slug": "zendesk",
+ "app": "Zendesk",
+ "category": "Support and Helpdesk",
+ "hint": "zendesk.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:45.864Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.zendesk.com/api-reference/ticketing/introduction/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zendesk official MCP server remote"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.zendesk.com/documentation/api-basics/getting-started/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zendesk MCP server developer.zendesk.com or support.zendesk.com Zendesk MCP server AI agents"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.zendesk.com/documentation/webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.zendesk.com/documentation/developer-tools/getting-started/getting-a-trial-or-sandbox-account/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zendesk developer documentation getting a trial or sandbox account; Zendesk OpenAPI spec oas.yaml"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Customer support helpdesk and CRM suite: tickets, help center, messaging, AI agents.\",\"subcategory\":\"Helpdesk / customer support\",\"auth_methods"
+  }
+ ],
+ "cost_usd": 0.1401808,
+ "duration_ms": 44103,
+ "turns": 11,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Customer support helpdesk and CRM suite: tickets, help center, messaging, AI agents.",
+  "subcategory": "Helpdesk / customer support",
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth access tokens (Bearer) are the standard method. Global OAuth tokens are required to distribute an app to multiple Zendesk customers. API tokens (email/token via Basic auth) are labeled deprecated and the docs recommend OAuth. End-user auth also exists. Auth is per Zendesk subdomain.",
+  "access": "approval_required",
+  "access_notes": "A free 14-day trial gives a dev instance, so building and testing is self-serve. A sponsored account is for developer partners only. Distributing to many customers needs a global OAuth client, which I believe needs Zendesk review or registration. The page I fetched did not say this, and the setup guide was not opened. Production use needs a paid Zendesk plan. The API is available on most plans, but rate limits and some features vary by plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Support/Ticketing API covers tickets, users, organizations, custom objects, and ticket workflows. Other APIs cover Help Center/Guide, Messaging, Sunshine and others. Well over 100 endpoints in total.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "Zendesk announced an official MCP Server, with early access planned for summer 2026. Per search results, only the MCP Client was in early access at the time of that announcement, and I did not confirm that the server is GA or has a hosted URL. Third-party servers exist: Workato, Redpanda, Merge, StackOne, fruggr/zendesk-mcp-server, and a Swifteq Marketplace app.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Per-subdomain OAuth is easy to build against on a free trial. Public multi-tenant distribution needs a global OAuth client, which may involve Zendesk approval. Sandboxes are Enterprise-only, though the 14-day trial works for dev. Each end user's Zendesk subdomain must be collected.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+    "quote": "Global OAuth access tokens: Required if you distribute an app, integration, or bot to multiple Zendesk customers."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+    "quote": "Authorization: Bearer {access_token}"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+    "quote": "You can use it with tickets, users, organizations, custom objects, and ticket workflows."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.zendesk.com/documentation/webhooks/",
+    "quote": "subscribe to activity in Zendesk Support, Guide, Gather, and Messaging"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+    "quote": "free, 14-day trial account"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.zendesk.com/au/blog/zendesk-insights/innovation/zendesk-ai-mcp-client/",
+    "quote": "early access for MCP Server is set for summer 2026"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "low",
+   "buildability": "medium"
+  },
+  "needs_human": "1) Check whether the global OAuth client requires Zendesk approval (the \"Set up a global OAuth client\" guide was not opened). 2) Check whether the official Zendesk MCP Server is now GA, and its URL. 3) Check whether the Support OpenAPI spec is official. I saw only mentions of a published schema and could not open the oas.yaml file. 4) The sandbox and trial evidence comes from search-result snippets, not fully opened pages. The quotes for access and mcp are paraphrased from search summaries, so confirm them on the cited pages."
+ }
+}

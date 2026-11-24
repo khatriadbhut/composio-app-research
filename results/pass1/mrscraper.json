@@ -1,0 +1,100 @@
+{
+ "id": 54,
+ "slug": "mrscraper",
+ "app": "MrScraper",
+ "category": "Data, SEO and Scraping",
+ "hint": "docs.mrscraper.com",
+ "pass": 1,
+ "at": "2026-11-24T15:06:35.023Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.mrscraper.com"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "MrScraper MCP server API key pricing free"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.mrscraper.com/docs/api/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.mrscraper.com/docs/getting-started/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.mrscraper.com/docs/getting-started/billing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI web scraping platform with scraper API, web search, and workflow automation.\",\"subcategory\":\"Web scraping API\",\"auth_methods\":[\"api_key\",\"oa"
+  }
+ ],
+ "cost_usd": 0.0768957,
+ "duration_ms": 30544,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "AI web scraping platform with scraper API, web search, and workflow automation.",
+  "subcategory": "Web scraping API",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST API uses an x-api-token header. OAuth 2.1 is documented only for the hosted MCP server (scopes scrape:read, account:read). A toolkit would most likely have each user supply an API token.",
+  "access": "self_serve_free",
+  "access_notes": "The Free plan has no credit card requirement and offers tokens (100 or 1,000 per month; the billing page contradicts itself). It doesn't say explicitly that API access is included. Pro is the paid tier (200,000 tokens).",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "About 5 scraper/search GET endpoints (web search, scrape HTML/markdown/JSON, screenshot). The Platform API v3 adds workflow rerun, cancel bulk scraping, result and analytics.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at https://mcp.mrscraper.com/mcp (OAuth 2.1, or API key as bearer token). Local npm package @mrscraper/mcp. It has 7 tools.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Self-serve API token and a free tier. The API is narrow, and an official MCP server already exists. Webhooks are an outbound integration that sends scraper results, not a documented event subscription API.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.mrscraper.com/docs/api/overview",
+    "quote": "All API endpoints require authentication using an API token passed in the `x-api-token` header."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+    "quote": "Use this exact URL, including the `/mcp` path."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.mrscraper.com/docs/getting-started/billing",
+    "quote": "The Free plan includes **100 tokens per month** with no credit card required."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.mrscraper.com/docs/integrations/webhook",
+    "quote": "Send scraper results directly to external services through webhooks."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether the Free plan includes API access and which token count is right (100 or 1,000). The base URL and OpenAPI spec weren't confirmed. The webhook page was only seen as a link description, not opened."
+ }
+}

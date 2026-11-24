@@ -1,0 +1,119 @@
+{
+ "id": 49,
+ "slug": "amazon-selling-partner",
+ "app": "Amazon Selling Partner",
+ "category": "Ecommerce",
+ "hint": "developer-docs.amazon.com/sp-api",
+ "pass": 1,
+ "at": "2026-11-24T15:06:26.706Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer-docs.amazon.com/sp-api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Amazon Selling Partner API MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer-docs.amazon/sp-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/amzn/selling-partner-api-samples"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"REST API for sellers/vendors' Amazon orders, listings, inventory, fulfillment, reports, and finances data.\",\"subcategory\":\"Marketplace seller A"
+  }
+ ],
+ "cost_usd": 0.0865164,
+ "duration_ms": 39775,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "REST API for sellers/vendors' Amazon orders, listings, inventory, fulfillment, reports, and finances data.",
+  "subcategory": "Marketplace seller API",
+  "auth_methods": [
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Login with Amazon (LWA) OAuth: public apps get a seller's refresh_token via the authorization workflow, then exchange it for a 1-hour access token sent in x-amz-access-token. Grantless operations use client_credentials. Restricted Data Tokens cover PII. Private apps self-authorize. Older docs required AWS IAM SigV4 signing, which I did not confirm as still needed.",
+  "access": "approval_required",
+  "access_notes": "You must register as an SP-API developer and have the profile approved. Private apps need a professional seller account, and individual accounts are not eligible. Public apps must be listed in the Selling Partner Appstore and are subject to Amazon's review. I did not find a fee on the pages I opened.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers orders, listings, catalog, FBA inventory, fulfillment inbound and outbound, reports, feeds, finances, notifications, tokens, vendor APIs and more. Third-party MCP listings cite about 300 operations across 40+ services.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "npm package @amazon-sp-api-release/sp-api-dev-mcp (amzn/selling-partner-api-samples). It is a local developer-assistant and workflow-builder MCP, not a hosted end-user server. Community servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Developer registration and role approval are required. A public multi-seller OAuth app needs Amazon's review and listing in the Appstore. Restricted roles such as PII access need extra approval. Private self-authorized use works for a single seller account.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developer-docs.amazon/sp-api",
+    "quote": "Learn how to get started and build applications with Amazon's REST-based SP-API."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api",
+    "quote": "An LWA access token expires one hour after it is issued."
+   },
+   {
+    "field": "access",
+    "url": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview",
+    "quote": "You must register as a Selling Partner API (SP-API) developer before you can register your Selling Partner API application."
+   },
+   {
+    "field": "access",
+    "url": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview",
+    "quote": "Public developers must list the app in the Amazon Selling Partner Appstore."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/amzn/selling-partner-api-samples",
+    "quote": "A local MCP server that bundles SP-API developer tools into a single npm package."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer-docs.amazon/sp-api",
+    "quote": "Notifications API"
+   },
+   {
+    "field": "api",
+    "url": "https://developer-docs.amazon/sp-api",
+    "quote": "selling-partner-api-models"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether AWS IAM/SigV4 signing is still required, since the auth page did not mention it. Confirm the review and approval steps and timelines for public apps and restricted roles. Confirm sandbox scope (static and dynamic sandbox); I only saw the dynamic sandbox guides listed."
+ }
+}

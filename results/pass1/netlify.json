@@ -1,0 +1,88 @@
+{
+ "id": 63,
+ "slug": "netlify",
+ "app": "Netlify",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.netlify.com/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:08.010Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Web hosting, serverless functions and deploy platform for web projects.\",\"subcategory\":\"Web hosting / deployment platform\",\"auth_methods\":[\"oau"
+  }
+ ],
+ "cost_usd": 0.052226999999999996,
+ "duration_ms": 19509,
+ "turns": 5,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Web hosting, serverless functions and deploy platform for web projects.",
+  "subcategory": "Web hosting / deployment platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "PATs for personal use; OAuth2 (register an app under OAuth applications; authorize at app.netlify.com/authorize) required for public integrations.",
+  "access": "self_serve_free",
+  "access_notes": "PATs and OAuth app registration are available in user settings with a free account. I did not confirm whether public OAuth apps need review. I did not check pricing.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers sites, deploys, builds, forms, hooks, DNS, env vars, accounts/teams, functions, and more. I did not count operations. Rate limit is 500 req/min; deploys 3/min and 100/day.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote: https://mcp.netlify.com/mcp. Local package: @netlify/mcp. Repo: github.com/netlify/netlify-mcp.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Public REST API with OAuth2 and an OpenAPI spec. Outgoing webhooks cover only a few events (submission_created, deploy_created, deploy_failed).",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "If you're making a public integration with Netlify for others to enjoy, you must use OAuth2."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "https://open-api.netlify.com"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "Netlify can trigger webhooks, send email notifications, or send Slack messages on certain events."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+    "quote": "Netlify offers an MCP server, which you can connect to through a connector, plugin, or your agent."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Check whether OAuth apps need review for public use, and what free-plan limits apply. The fetched pages did not say. No sandbox or test mode was found, though I did not search for one specifically."
+ }
+}

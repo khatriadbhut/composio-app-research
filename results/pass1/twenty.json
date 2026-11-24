@@ -1,0 +1,97 @@
+{
+ "id": 5,
+ "slug": "twenty",
+ "app": "Twenty",
+ "category": "CRM and Sales",
+ "hint": "twenty.com (open-source CRM)",
+ "pass": 1,
+ "at": "2026-11-24T15:03:04.108Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/developers/introduction"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Twenty CRM MCP server docs OAuth apps API webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/developers/extend/api.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://twenty.com/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Open-source CRM with customizable data model, REST/GraphQL APIs, webhooks and MCP server.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"api_key\",\"oauth"
+  }
+ ],
+ "cost_usd": 0.1166602,
+ "duration_ms": 30554,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Open-source CRM with customizable data model, REST/GraphQL APIs, webhooks and MCP server.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API key as Bearer token (Settings → Developers → API), scoped to a role. OAuth is for external apps acting on behalf of users. The MCP endpoint accepts OAuth 2.1 or an API key. I did not read the OAuth guide, so client registration details are unconfirmed.",
+  "access": "self_serve_trial",
+  "access_notes": "Cloud has no permanent free tier. It offers a 30-day no-card trial, then Pro at $9/user/month, which includes API, webhooks and MCP. Self-hosting the open-source core is free and includes the full API. Cloud API limits are 50 calls/min on Pro and 100 on Organization. OAuth app registration needs no review that I could find.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "REST and GraphQL are generated from the workspace schema, so they cover people, companies, opportunities, tasks, notes and custom objects with CRUD. Batches of up to 60 records per call. There is also a metadata API.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://{your-workspace-url}/mcp, streamable-http, OAuth 2.1 or API-key Bearer. It is per workspace, so self-hosted and cloud instances each have their own URL. Community servers also exist (e.g. jezweb/twenty-mcp).",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Minor caveats: the API base URL varies by workspace (cloud vs self-hosted), the OpenAPI spec is generated per workspace and not published statically, and cloud rate limits are low. A free self-hosted instance works for dev and testing.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://docs.twenty.com/developers/introduction",
+    "quote": "Read and write records over REST and GraphQL, get webhooks when records change, and connect apps with OAuth."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.twenty.com/developers/extend/api.md",
+    "quote": "Authorization: Bearer YOUR_API_KEY"
+   },
+   {
+    "field": "access",
+    "url": "https://twenty.com/pricing",
+    "quote": "Self-hosting the open source core is free."
+   },
+   {
+    "field": "mcp",
+    "url": "https://twenty.com/llms.txt",
+    "quote": "https://{your-workspace-url}/mcp (transport: streamable-http; auth: OAuth 2.1 or an API-key Bearer token)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check the OAuth guide to confirm how third-party OAuth clients are registered and whether any review applies. Check the webhook docs and whether a sandbox or test workspace exists beyond self-hosting. I inferred the OpenAPI spec exists from the per-workspace API playground in Settings → Developers → API, and did not see it stated. I didn't open the docs pages for webhooks, OAuth and OpenAPI."
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": 94,
+ "slug": "consensus",
+ "app": "Consensus",
+ "category": "AI, Research and Media-native",
+ "hint": "consensus.app (OAuth requested)",
+ "pass": 1,
+ "at": "2026-11-24T15:08:11.185Z",
+ "ok": false,
+ "trace": [],
+ "cost_usd": 0,
+ "duration_ms": 690,
+ "turns": 1,
+ "model": "sonnet",
+ "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
+ "record": null
+}

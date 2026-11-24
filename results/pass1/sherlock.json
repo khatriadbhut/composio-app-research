@@ -1,0 +1,87 @@
+{
+ "id": 58,
+ "slug": "sherlock",
+ "app": "Sherlock",
+ "category": "Data, SEO and Scraping",
+ "hint": "github.com/sherlock-project/sherlock",
+ "pass": 1,
+ "at": "2026-11-24T15:06:50.639Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/sherlock-project/sherlock"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "sherlock-project sherlock MCP server username search"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Open-source CLI that checks a username across 400+ social sites to find accounts.\",\"subcategory\":\"OSINT username enumeration CLI\",\"auth_methods"
+  }
+ ],
+ "cost_usd": 0.0618731,
+ "duration_ms": 23272,
+ "turns": 5,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Open-source CLI that checks a username across 400+ social sites to find accounts.",
+  "subcategory": "OSINT username enumeration CLI",
+  "auth_methods": [
+   "none"
+  ],
+  "auth_primary": "none",
+  "auth_notes": "No hosted API and no auth. It is a local MIT-licensed Python CLI installed with pipx, pip or Docker. Third-party hosted wrappers (e.g. on Apify) use their own tokens.",
+  "access": "no_public_api",
+  "access_notes": "No vendor-hosted service or credentials exist. You run the tool yourself for free (pipx install sherlock-project, or Docker). Hosting it for many users means running your own infrastructure.",
+  "api_styles": [
+   "cli_only"
+  ],
+  "api_breadth": "none",
+  "api_breadth_notes": "Only a CLI is documented: username lookups across 400+ sites, with CSV/XLSX export, site filters, proxy and timeout options. It has no REST API.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "community_only",
+  "mcp_notes": "No official MCP server was found. Community wrappers exist, e.g. Burnsedia/sherlock-mcp (FastMCP, search_username tool), H4RR1SON/sherlock-mcp, and Apify actors. This is based on a search, not on opening each repo.",
+  "sandbox": "no",
+  "buildability": "not_buildable",
+  "main_blocker": "local_only_tool",
+  "blocker_notes": "Sherlock is a local CLI with no hosted API or OAuth. A toolkit would need to shell out to the CLI on infrastructure you run. Alternatively it could wrap a third-party Apify actor, which is a different product with its own billing.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "Hunt down social media accounts by username across social networks."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "pipx install sherlock-project"
+   },
+   {
+    "field": "mcp",
+    "url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp",
+    "quote": "Sherlock MCP Server"
+   },
+   {
+    "field": "buildability",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "MIT © Sherlock Project"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The evidence quotes come from the GitHub page fetch summary and search result titles, not from page text I read directly. Confirm that there is no official hosted Sherlock service. The closest thing to an API is a third-party Apify actor, which is not the vendor's."
+ }
+}

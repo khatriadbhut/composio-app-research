@@ -1,0 +1,92 @@
+{
+ "id": 66,
+ "slug": "neo4j",
+ "app": "Neo4j",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "neo4j.com/docs/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:23.585Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://neo4j.com/docs/aura/api/overview/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://neo4j.com/docs/mcp/current/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://neo4j.com/docs/aura/api/authentication/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Neo4j Aura API manages cloud graph database instances; Neo4j MCP queries graph databases.\",\"subcategory\":\"Graph database management API\",\"auth_"
+  }
+ ],
+ "cost_usd": 0.052414199999999994,
+ "duration_ms": 26372,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Neo4j Aura API manages cloud graph database instances; Neo4j MCP queries graph databases.",
+  "subcategory": "Graph database management API",
+  "auth_methods": [
+   "oauth2",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Aura API uses client-credentials OAuth2: client ID/secret created per user in the Console, exchanged at /oauth/token (HTTP Basic) for a 1-hour bearer token. There is no user-consent flow, so each end user would supply their own credentials. Database access itself (Bolt/HTTP Query API) uses database username/password, which was not verified.",
+  "access": "self_serve_free",
+  "access_notes": "All Aura tiers can create API credentials, including AuraDB Free (25 requests/min limit). Some management features, such as creating non-free instances, likely need a paid plan, which was not verified.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Aura API v1 at api.neo4j.io covers instances (create, list, delete, pause, resume, resize, snapshots), plus tenants and some v2beta1 billing endpoints. Data access is separate, via Cypher over Bolt or the HTTP Query API. The endpoint count was not verified.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_local",
+  "mcp_notes": "Official Neo4j MCP server (neo4j.com/docs/mcp). It connects to a Neo4j instance and offers schema exploration and read/write Cypher. The install package and whether a remote hosted version exists were not verified.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The credentials are per-user client credentials, not OAuth with consent, and the data plane needs database-level credentials and a connection URI. The OpenAPI spec and webhooks are unconfirmed, and the Aura API appears to have no event push.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "Authorization: Bearer <access_token>"
+   },
+   {
+    "field": "access",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "quote": "AuraDB Free and trial Professional accounts without a billing method get 25 requests per minute"
+   },
+   {
+    "field": "api",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "quote": "perform actions on your Aura instances without the need to log in to the Console"
+   },
+   {
+    "field": "mcp",
+    "url": "https://neo4j.com/docs/mcp/current/",
+    "quote": "bridges any MCP-compatible client and your Neo4j instance"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether an OpenAPI spec is downloadable from the Aura API Specification page. Check whether any webhooks exist, and what the MCP server's install package and transport are. Check the HTTP Query API auth for the data plane. Free-tier access to all endpoints was not confirmed."
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": 17,
+ "slug": "plain",
+ "app": "Plain",
+ "category": "Support and Helpdesk",
+ "hint": "plain.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:59.899Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.plain.com/docs/api-reference/graphql/authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Plain support platform MCP server docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.plain.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.plain.com/docs/api-reference/graphql/introduction"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"API-first customer support platform for B2B teams with AI agents, Slack/email/in-app channels.\",\"subcategory\":\"Helpdesk\",\"auth_methods\":[\"api_k"
+  }
+ ],
+ "cost_usd": 0.06892090000000001,
+ "duration_ms": 28265,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "API-first customer support platform for B2B teams with AI agents, Slack/email/in-app channels.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API keys (Bearer plainApiKey_...) belong to machine users with fine-grained permissions. The docs also mention OAuth apps for calling the API as a workspace user, but I did not open that page. The MCP server uses OAuth. Multi-user toolkits would use OAuth if the OAuth app is generally available. Otherwise they would use per-workspace API keys.",
+  "access": "paid_plan_required",
+  "access_notes": "Pricing is Foundation $45/user/mo, Horizon $99/user/mo, and Frontier custom. All are billed annually. Only a 7-day free trial is offered, with no permanent free tier. The pricing page lists API, Webhooks and MCP under \"Developer platform\" but doesn't say which plan includes them. Trial API access is unverified.",
+  "api_styles": [
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "GraphQL API at core-api.uk.plain.com/graphql/v1. It covers customers, threads, events, labels, tiers and more. The schema is published. I did not count operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.plain.com/mcp, OAuth. A Plain changelog post says the docs list 43 tools.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Only a 7-day trial is available, so testing needs a trial or paid workspace. The status of OAuth app distribution is unverified. The API is GraphQL only, with no OpenAPI spec.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.plain.com/docs/api-reference/graphql/authentication",
+    "quote": "Authorization: Bearer plainApiKey_xxx"
+   },
+   {
+    "field": "api",
+    "url": "https://www.plain.com/docs/api-reference/graphql/introduction",
+    "quote": "https://core-api.uk.plain.com/graphql/v1"
+   },
+   {
+    "field": "access",
+    "url": "https://www.plain.com/pricing",
+    "quote": "7 day free trial"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.plain.com/docs/agents/mcp-server",
+    "quote": "https://mcp.plain.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check three things. First, which plan includes API and webhook access, and whether the trial includes it. Second, the OAuth app docs: whether third-party OAuth apps are available and whether they need review. Third, the webhooks docs, since I inferred webhooks from the pricing page listing and did not open the docs page. I also found no sandbox information."
+ }
+}

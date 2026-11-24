@@ -1,0 +1,98 @@
+{
+ "id": 55,
+ "slug": "apify",
+ "app": "Apify",
+ "category": "Data, SEO and Scraping",
+ "hint": "docs.apify.com",
+ "pass": 1,
+ "at": "2026-11-24T15:06:36.230Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.apify.com/api/v2"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.apify.com/platform/integrations/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://apify.com/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud platform for web scraping and automation via runnable Actors, with datasets and storage.\",\"subcategory\":\"Web scraping platform\",\"auth_met"
+  }
+ ],
+ "cost_usd": 0.051027,
+ "duration_ms": 19329,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud platform for web scraping and automation via runnable Actors, with datasets and storage.",
+  "subcategory": "Web scraping platform",
+  "auth_methods": [
+   "bearer_token",
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "REST API uses a personal API token (Authorization: Bearer, or ?token= param). OAuth is documented only for the hosted MCP server. The REST docs don't mention OAuth for third-party apps. Agents can also use x402 or Skyfire payments, or temporary spend-capped tokens.",
+  "access": "self_serve_free",
+  "access_notes": "Free plan: $0, no credit card, $5 monthly platform credit. Tokens are created in Console. The pricing page doesn't explicitly confirm API access on the free plan, but the plan includes most platform features and the docs show self-serve token creation.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v2 covers Actors, runs, builds, tasks, datasets, key-value stores, request queues, schedules, webhooks, logs, users and the store. No operation count is stated in the docs, but the surface is large.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at https://mcp.apify.com with OAuth or Bearer token. Local package: @apify/actors-mcp-server.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Per-user API tokens are simple to use. Multi-user OAuth for third-party REST apps is unconfirmed, so users would paste tokens. The hosted MCP OAuth flow may be an alternative.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "Send the token as Authorization: Bearer <token>"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "You can download the complete OpenAPI schema of Apify API in the YAML or JSON formats"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.apify.com/platform/integrations/mcp",
+    "quote": "https://mcp.apify.com"
+   },
+   {
+    "field": "access",
+    "url": "https://apify.com/pricing",
+    "quote": "$5 of platform usage per month"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "Webhooks, Webhook collections, Webhook dispatches"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Apify offers OAuth for third-party REST apps. Confirm API token access on the free plan, and whether a sandbox or test mode exists. I did not find these in the pages I read."
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "id": 18,
+ "slug": "help-scout",
+ "app": "Help Scout",
+ "category": "Support and Helpdesk",
+ "hint": "helpscout.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:02.794Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.helpscout.com/mailbox-api/overview/authentication/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.helpscout.com/webhooks/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Help Scout MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.helpscout.com/mailbox-api/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Shared-inbox customer support platform with email, chat, Docs knowledge base and reports.\",\"subcategory\":\"Helpdesk\",\"auth_methods\":[\"oauth2\"],\""
+  }
+ ],
+ "cost_usd": 0.0799025,
+ "duration_ms": 30615,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Shared-inbox customer support platform with email, chat, Docs knowledge base and reports.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Mailbox API 2.0 uses OAuth2 Authorization Code (for integrations used by other users) and Client Credentials (internal). Bearer tokens; access tokens last 2 days; refresh tokens for auth code. A separate Docs API uses API keys. Multi-user toolkit would use Authorization Code.",
+  "access": "paid_plan_required",
+  "access_notes": "Apps are created under Your Profile > My apps. Help Scout's MCP doc says API access comes with the Standard, Plus and Pro plans, so a paid account is needed. I did not confirm whether a trial gives API access, or whether public distribution needs app review. Help Scout runs an integrations Marketplace that probably involves a listing process.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Base https://api.helpscout.net/v2. Covers conversations (threads, attachments, tags, snooze, custom fields), customers, inboxes, organizations, properties, ratings, reports, users, teams, tags, webhooks and workflows. Roughly 50+ operations, estimated from the resource list rather than counted.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.helpscout.net/mcp, hosted by Help Scout, with OAuth sign-in per user. Works with Claude and ChatGPT custom connectors. A community server also exists (drewburchfield/help-scout-mcp-server).",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The API needs a paid Help Scout plan. Whether public OAuth apps need review, and whether a free trial or sandbox exists, is unconfirmed.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+    "quote": "The Authorization Code flow is typically used for integrations to be used by other Help Scout users."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+    "quote": "The Client Credentials flow is meant for internal integrations."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.helpscout.com/webhooks/",
+    "quote": "Webhooks enable Help Scout to call a script on your server when one or more events have happened."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+    "quote": "This integration is available on the Standard, Plus, and Pro plans — any plan that includes Help Scout API access."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.helpscout.com/mailbox-api/",
+    "quote": "https://api.helpscout.net/v2"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether a free trial or developer account gives API access. Confirm whether public OAuth apps need Help Scout review or a Marketplace listing. Check whether an OpenAPI spec or sandbox exists, and what the rate limits are. The developer docs pages I fetched did not cover these points."
+ }
+}

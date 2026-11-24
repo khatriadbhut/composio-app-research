@@ -1,0 +1,96 @@
+{
+ "id": 77,
+ "slug": "clickup",
+ "app": "ClickUp",
+ "category": "Productivity and Project Management",
+ "hint": "clickup.com/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:54.687Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.clickup.com/docs/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.clickup.com/docs/rate-limits"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.clickup.com/docs/webhooks"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "ClickUp MCP server official mcp.clickup.com"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Work management platform for tasks, docs, goals and team collaboration.\",\"subcategory\":\"Project management\",\"auth_methods\":[\"oauth2\",\"api_key\"]"
+  }
+ ],
+ "cost_usd": 0.0678937,
+ "duration_ms": 20131,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Work management platform for tasks, docs, goals and team collaboration.",
+  "subcategory": "Project management",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Personal API token (pk_..., sent raw in Authorization header, never expires) for individual use; OAuth 2.0 authorization code grant for multi-user apps (Bearer token, users pick Workspaces).",
+  "access": "self_serve_free",
+  "access_notes": "Personal tokens and OAuth apps are created in Settings > Apps. Docs describe no app review. Only Workspace owners or admins can create OAuth apps. All plans including Free Forever have API access (100 req/min).",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API v2, plus some v3 endpoints. Covers tasks, lists, folders, spaces, comments, time tracking, goals, custom fields, webhooks, docs, chat and more. Likely well over 100 operations; I didn't count them.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.clickup.com/mcp. Uses OAuth, and personal tokens are not accepted. Public beta, available on all plans.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blockers found. Rate limits are per token and depend on the plan: 100 req/min on Free, Unlimited and Business.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.clickup.com/docs/authentication",
+    "quote": "Only Workspace owners or admins can create OAuth apps."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.clickup.com/docs/rate-limits",
+    "quote": "The ClickUp API applies rate limits per token"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.clickup.com/docs/webhooks",
+    "quote": "Each webhook event is signed with a shared secret that is unique to the webhook."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server.md",
+    "quote": "Public Beta: ClickUp's MCP server is currently in public beta"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The OpenAPI spec was not confirmed (the webhooks page doesn't mention one). The MCP details come from search snippets, not a fetched page. There is no confirmed sandbox. The auth page doesn't mention app review, but I didn't check for hidden restrictions on public distribution."
+ }
+}

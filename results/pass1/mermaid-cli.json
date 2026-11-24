@@ -1,0 +1,17 @@
+{
+ "id": 98,
+ "slug": "mermaid-cli",
+ "app": "Mermaid CLI",
+ "category": "AI, Research and Media-native",
+ "hint": "github.com/mermaid-js/mermaid-cli",
+ "pass": 1,
+ "at": "2026-11-24T15:08:12.321Z",
+ "ok": false,
+ "trace": [],
+ "cost_usd": 0,
+ "duration_ms": 729,
+ "turns": 1,
+ "model": "sonnet",
+ "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
+ "record": null
+}

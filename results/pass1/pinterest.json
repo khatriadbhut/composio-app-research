@@ -1,0 +1,137 @@
+{
+ "id": 38,
+ "slug": "pinterest",
+ "app": "Pinterest",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.pinterest.com",
+ "pass": 1,
+ "at": "2026-11-24T15:05:55.330Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/getting-started/set-up-app/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pinterest MCP server official developers.pinterest.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/api/v5/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://community.pinterest.biz/t/introducing-the-pinterest-mcp-server/51358.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/getting-started/connect-app/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/getting-started/api-access/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/about-pinterest-mcp/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pinterest API access tiers Trial Standard upgrade access webhooks developers.pinterest.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/key-concepts/access-tiers/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pinterest API v5 webhooks OpenAPI spec github pinterest/api-description"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/llms.txt"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Visual discovery platform; API for pins, boards, ads, analytics, and conversions.\",\"subcategory\":\"Social media / Ads platform\",\"auth_methods\":["
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Visual discovery platform; API for pins, boards, ads, analytics, and conversions.\",\"subcategory\":\"Social media / Ads platform\",\"auth_methods\":["
+  }
+ ],
+ "cost_usd": 0.1573068,
+ "duration_ms": 64091,
+ "turns": 15,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Visual discovery platform; API for pins, boards, ads, analytics, and conversions.",
+  "subcategory": "Social media / Ads platform",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code flow with scopes and refresh tokens. Redirect URIs must exactly match registered ones. The app ID and secret are issued after Pinterest approves the app. I did not confirm whether other methods exist, such as client credentials or conversion-API tokens.",
+  "access": "approval_required",
+  "access_notes": "Free, but Pinterest reviews each app request before issuing credentials. Approved apps get Trial access: 1,000 requests/day, and Pins and Boards are visible only to their creator (sandbox-like). Standard access, needed to serve real users, requires an upgrade request. Community reports say this needs a video demo of the OAuth flow, with no published turnaround and some rejections. No paid plan was found.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v5 covers pins, boards, user account, media, search, ad accounts, campaigns, ad groups, ads, audiences, catalogs, conversion events, analytics and keywords. I did not count operations, but it is clearly over 50.",
+  "openapi_spec": "yes",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "developers.pinterest.com/about-pinterest-mcp/ lists https://api.pinterest.com/mcp (http transport, bearer token, OAuth 2.0). The page reads as a pre-launch announcement with a sign-up for updates, so general availability is unconfirmed. There are also many community and third-party MCP servers.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Pinterest must approve the app for Trial access. Production use by other users needs a Standard upgrade, which requires review. Trial is limited to 1,000 requests/day, with content visible only to its creator.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+    "quote": "If approved for API use, your app receives Trial access, which is best for exploring our API features."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+    "quote": "If you want to offer Pinterest capabilities to your users, we recommend upgrading to Standard access"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+    "quote": "Application requests are reviewed by Pinterest."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.pinterest.com/about-pinterest-mcp/",
+    "quote": "Be the first to know when it launches."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.pinterest.com/llms.txt",
+    "quote": "Raw OpenAPI specification for the Pinterest API v5"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+    "quote": "Our sandbox environment allows you to make test calls without impacting the Pinterest product environment."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Pinterest webhooks exist (nothing found in the docs index, only a \"Manage notifications\" reference). Check whether the official MCP server is live or still pre-launch. Check Standard-upgrade review requirements and turnaround, which come from community posts and the access-tiers page. The Pinterest docs were only partly fetchable."
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "id": 47,
+ "slug": "ecwid",
+ "app": "Ecwid",
+ "category": "Ecommerce",
+ "hint": "api-docs.ecwid.com",
+ "pass": 1,
+ "at": "2026-11-24T15:06:25.558Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://api-docs.ecwid.com/docs/get-started"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Ecwid MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ecwid.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ecwid.com/launch-apps/faq-about-public-applications.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ecwid.com/webhook-automations/webhook-automations-overview.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ecwid.com/develop-apps/app-settings.md"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Ecwid REST API OpenAPI spec docs.ecwid.com api-reference"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ecwid.com/api-reference/authentication.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Ecwid by Lightspeed: hosted ecommerce store platform and widget that adds stores to any website.\",\"subcategory\":\"Ecommerce platform\",\"auth_meth"
+  }
+ ],
+ "cost_usd": 0.1148258,
+ "duration_ms": 50259,
+ "turns": 12,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Ecwid by Lightspeed: hosted ecommerce store platform and widget that adds stores to any website.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Apps get per-store access tokens (secret_token for server use, public_token for storefront). Tokens don't expire and are scoped to one app in one store. A custom app (private, one store) gives a token without an OAuth flow. Public apps use OAuth2 to get a token per merchant. I did not open the OAuth flow page, so the endpoint details are unverified.",
+  "access": "approval_required",
+  "access_notes": "The API is available only to stores on paid plans. Developers can ask support for a free paid-plan upgrade on a test store, so building and testing is free. Listing a public App Market app needs an app submission (1-2 business day review, and updates also need approval) and a signed partner contract with revenue share.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API v3 at app.ecwid.com/api/v3/{storeId}. It covers products, categories, orders, customers, discount coupons, store profile, shipping and payment methods, and more. I did not count operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no Ecwid or Lightspeed MCP server. Third-party options exist: Zapier (zapier.com/mcp/ecwid), Truto, viaSocket and Vinkius.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "A developer can build and test alone using a test store with a free paid-plan upgrade, which needs a support email. Distributing to other merchants needs App Market approval and a partner contract. The API also works only on paid merchant plans. No official OpenAPI spec was found, only unofficial specs on apis.io.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.ecwid.com/develop-apps/app-settings.md",
+    "quote": "you can get access tokens for your store without going through oAuth flow"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+    "quote": "Only stores on paid plans can access the API."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ecwid.com/launch-apps/faq-about-public-applications.md",
+    "quote": "Typically, the review of an app submission request takes 1-2 business days."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ecwid.com/webhook-automations/webhook-automations-overview.md",
+    "quote": "automatic real-time notifications for apps about different events in the store"
+   },
+   {
+    "field": "mcp",
+    "url": "https://zapier.com/mcp/ecwid",
+    "quote": "Ecwid by Lightspeed MCP (Zapier-hosted endpoint, third-party)"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/Ecwid/ecwid-api-docs",
+    "quote": "REST API documentation written in Markdown syntax (not an OpenAPI file)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "I did not open the OAuth2 flow page, so the authorize and token endpoints are unconfirmed. I did not open the webhook events list. The OpenAPI \"no\" rests on search results only. Several evidence quotes are paraphrased from fetch summaries, not copied from the pages. Check the exact paid-plan wording and whether merchants need a specific plan to install public apps."
+ }
+}

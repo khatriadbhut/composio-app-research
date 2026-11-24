@@ -1,0 +1,109 @@
+{
+ "id": 76,
+ "slug": "monday-com",
+ "app": "Monday.com",
+ "category": "Productivity and Project Management",
+ "hint": "developer.monday.com",
+ "pass": 1,
+ "at": "2026-11-24T15:08:04.737Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/introduction-to-graphql"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/apps/docs/oauth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/webhooks"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Work management platform for boards, items, and workflows across teams.\",\"subcategory\":\"Work management / project management\",\"auth_methods\":[\""
+  }
+ ],
+ "cost_usd": 0.0663694,
+ "duration_ms": 30955,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Work management platform for boards, items, and workflows across teams.",
+  "subcategory": "Work management / project management",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Personal V2 API token goes in the Authorization header. OAuth app tokens are scoped, don't expire in the legacy flow, and have no refresh tokens. A newer OAuth 2.1 flow adds refresh tokens. A multi-user toolkit would use OAuth.",
+  "access": "self_serve_free",
+  "access_notes": "The auth page says a free developer account gives a token for testing. I did not confirm whether public distribution of an OAuth app needs marketplace review. The OAuth docs list \"Submit your app to the marketplace\" and \"App review checklist\" pages, which I did not open. Plan requirements for API use are not stated on the pages I read.",
+  "api_styles": [
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Single GraphQL endpoint at api.monday.com/v2 with a public schema. It covers boards, items, columns, groups, updates, webhooks, users, workspaces, docs and more. I did not count operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "npm package @mondaydotcomorg/monday-api-mcp, run with npx and authenticated with an API token. The page I read marks it beta and lists no hosted URL. A vendor-hosted remote MCP (mcp.monday.com) may also exist. I could not confirm it from the docs I fetched.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is a public GraphQL API, free developer account tokens and OAuth. The only open question is whether public distribution of an OAuth app needs marketplace review. I did not confirm this.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.monday.com/api-reference/docs/authentication",
+    "quote": "Personal V2 API token ... App tokens have a defined set of permission scopes; free developer account to get a token and start testing."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.monday.com/apps/docs/oauth",
+    "quote": "Tokens do not expire and are valid until the user uninstalls your app."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+    "quote": "The monday.com API uses GraphQL and exposes a single endpoint, https://api.monday.com/v2"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.monday.com/api-reference/docs/webhooks",
+    "quote": "Requests sent through our webhook integration will retry once a minute for 30 minutes."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
+    "quote": "For local development and debugging, you can run the MCP server manually:"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Three things to check: (1) whether public OAuth apps need marketplace review before other accounts can install them; (2) whether a hosted remote MCP (mcp.monday.com) exists; (3) whether API access is restricted by plan or rate limits. The sandbox \"yes\" is a judgment call: the auth page says a free developer account is available for testing, but I did not open a page that describes sandbox accounts."
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "id": 41,
+ "slug": "shopify",
+ "app": "Shopify",
+ "category": "Ecommerce",
+ "hint": "shopify.dev",
+ "pass": 1,
+ "at": "2026-11-24T15:05:34.620Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://shopify.dev/docs/apps/build/authentication-authorization"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://shopify.dev/docs/apps/build/devmcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://shopify.dev/docs/apps/launch/distribution"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://shopify.dev/docs/api/usage/versioning"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://shopify.dev/docs/apps/build/storefront-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://shopify.dev/docs/api/admin-rest"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Ecommerce platform for online stores, with APIs to manage products, orders, customers and checkout.\",\"subcategory\":\"Ecommerce platform\",\"auth_m"
+  }
+ ],
+ "cost_usd": 0.0639233,
+ "duration_ms": 28315,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Ecommerce platform for online stores, with APIs to manage products, orders, customers and checkout.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth authorization code grant for apps outside the admin. Token exchange for embedded apps. Client credentials for server-side use. Admin-created custom app tokens can no longer be created for new apps. All methods send the token in the X-Shopify-Access-Token header. A multi-merchant agent toolkit would use OAuth, with per-shop tokens.",
+  "access": "approval_required",
+  "access_notes": "Custom distribution lets you build and test on development stores or a single store, and you can usually do this alone. Public distribution requires Shopify approval and registration for the Shopify App Store, which has a one-time fee. I did not confirm that Partner accounts and dev stores are free on the pages I fetched. From memory they are free.",
+  "api_styles": [
+   "graphql",
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "GraphQL Admin API is the main API and covers products, orders, customers, inventory, fulfillment, discounts and more. The Storefront API is separate. The REST Admin API has been legacy since Oct 1, 2024, and new public apps must use GraphQL. I did not count operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "The official @shopify/dev-mcp package runs locally. It is for developer docs and tooling and does not access store admin data. The Storefront MCP catalog and cart tools at https://{shop}/api/mcp were removed. They are replaced by UCP at https://{shop}/api/ucp/mcp and a Checkout MCP, which are for shopping agents rather than admin. I did not verify the store-admin MCP situation, and community servers exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Public distribution of an OAuth app needs Shopify app review and App Store registration. The API is GraphQL-first, and there is no published OpenAPI spec. Each merchant installs the app per shop, so tokens are per shop domain.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+    "quote": "The merchant is redirected to Shopify to approve access"
+   },
+   {
+    "field": "access",
+    "url": "https://shopify.dev/docs/apps/launch/distribution",
+    "quote": "Public distribution also requires registering for the Shopify App Store, which has a one-time fee."
+   },
+   {
+    "field": "api",
+    "url": "https://shopify.dev/docs/api/admin-rest",
+    "quote": "The REST Admin API is a legacy API as of October 1, 2024."
+   },
+   {
+    "field": "mcp",
+    "url": "https://shopify.dev/docs/apps/build/devmcp",
+    "quote": "The server runs locally and doesn't require authentication."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://shopify.dev/docs/api/usage/versioning",
+    "quote": "X-Shopify-Api-Version"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm that Partner accounts and development stores are free, and check the current App Store registration fee. Confirm whether Shopify offers any official hosted MCP server for admin operations. Check whether a public OpenAPI spec exists. I did not fetch the webhooks page, the sandbox docs or the app review requirements page directly."
+ }
+}

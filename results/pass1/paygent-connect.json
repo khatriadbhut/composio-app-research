@@ -1,0 +1,17 @@
+{
+ "id": 84,
+ "slug": "paygent-connect",
+ "app": "Paygent Connect",
+ "category": "Finance and Fintech",
+ "hint": "paygent (NMI-powered)",
+ "pass": 1,
+ "at": "2026-11-24T15:08:01.559Z",
+ "ok": false,
+ "trace": [],
+ "cost_usd": 0,
+ "duration_ms": 740,
+ "turns": 1,
+ "model": "sonnet",
+ "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
+ "record": null
+}

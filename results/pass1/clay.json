@@ -1,0 +1,108 @@
+{
+ "id": 60,
+ "slug": "clay",
+ "app": "Clay",
+ "category": "Data, SEO and Scraping",
+ "hint": "clay.com",
+ "pass": 1,
+ "at": "2026-11-24T15:07:11.226Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Clay.com API documentation developers MCP webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://university.clay.com/docs/using-clay-as-an-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.clay.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.clay.com/cli/reference/webhooks.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mcpservers.org/remote-mcp-servers/clay"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://nango.dev/docs/api-integrations/clay-mcp.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"GTM data enrichment and prospecting platform with waterfall enrichment from 100+ data vendors.\",\"subcategory\":\"Data enrichment / GTM automation"
+  }
+ ],
+ "cost_usd": 0.08412460000000001,
+ "duration_ms": 39534,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "GTM data enrichment and prospecting platform with waterfall enrichment from 100+ data vendors.",
+  "subcategory": "Data enrichment / GTM automation",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Public API uses a Clay API key, created with `clay api-keys create` and shown once. The key is per user or workspace, so a multi-user toolkit would have each user paste their own. No OAuth for the public API was found. The separate Clay MCP uses OAuth 2.0 with dynamic client registration, per Nango's docs.",
+  "access": "self_serve_free",
+  "access_notes": "Clay University says the developer platform is available on all plans, including free, trial and Legacy. Search result limits vary by plan. Structured table queries (joins, ranges, paging past 100 rows) need API table sync, an Enterprise feature. API calls use the same credits as in-product work.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "Endpoint groups: Audiences (privacy deletion), Credits, Me, Routines (single and batch runs, results, batch uploads), Search (query mode), Tables (Enterprise), and Workflow runs (beta). I estimate under 20 operations. There is also a CLI. The API is new and focused on running searches and routines, not full CRUD.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Clay MCP is documented at clay.com/mcp. Sources cite https://api.clay.com/v3/mcp as the endpoint, but I didn't confirm that on Clay's own page. It is OAuth 2.0 with dynamic client registration. Clay University says the Public API doesn't use MCP, and MCP for Reps is a separate admin-configured product with its own Functions and credit budgets.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "narrow_api",
+  "blocker_notes": "The API is self-serve, but it is narrow and new. Table access is Enterprise-only. Auth is a per-user API key, with no OAuth for the public API. Webhooks notify on routine run completion. The older table and webhook-in features (HTTP API and inbound webhooks to tables) are a separate surface that isn't a documented public REST API. Calls consume credits.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://university.clay.com/docs/using-clay-as-an-api",
+    "quote": "The Public API uses its own API key, not your CLI sign-in. Create one with `clay api-keys create`."
+   },
+   {
+    "field": "access",
+    "url": "https://university.clay.com/docs/using-clay-as-an-api",
+    "quote": "The developer platform is available on all plans, including free, trial, and Legacy."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.clay.com/llms.txt",
+    "quote": "Authenticate requests with a Clay API key."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.clay.com/llms.txt",
+    "quote": "Webhooks notify you when a routine run finishes."
+   },
+   {
+    "field": "mcp",
+    "url": "https://nango.dev/docs/api-integrations/clay-mcp.md",
+    "quote": "uses OAuth 2.0 with dynamic client registration"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "low",
+   "buildability": "medium"
+  },
+  "needs_human": "Check these. (1) The exact official MCP URL and whether it is vendor-hosted; I couldn't open clay.com/mcp. (2) The OpenAPI spec location and operation count; I only saw it referenced as /openapi.json in a fetch summary. (3) Rate limits and whether a test mode exists. (4) Whether API keys are per user or per workspace, and whether table access is Enterprise-only. The fetch tool returned summaries, not raw page text, so the quotes come from those summaries."
+ }
+}

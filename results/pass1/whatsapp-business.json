@@ -1,0 +1,109 @@
+{
+ "id": 28,
+ "slug": "whatsapp-business",
+ "app": "WhatsApp Business",
+ "category": "Communications and Messaging",
+ "hint": "developers.facebook.com/docs/whatsapp",
+ "pass": 1,
+ "at": "2026-11-24T15:04:45.282Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "WhatsApp Business Cloud API official MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/blog/post/2026/09/15/whatsapp-business-messaging-mcp-ai-agent/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/business-messaging/whatsapp/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview/access-tokens"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Meta's WhatsApp Business Platform (Cloud API) for sending and receiving business messages, templates and calls.\",\"subcategory\":\"Business messag"
+  }
+ ],
+ "cost_usd": 0.0953291,
+ "duration_ms": 41812,
+ "turns": 10,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Meta's WhatsApp Business Platform (Cloud API) for sending and receiving business messages, templates and calls.",
+  "subcategory": "Business messaging platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Graph API calls use Bearer access tokens. There are three ways to get one. A temporary token from the API Setup page expires quickly. A permanent System User token is created in Business Settings with the whatsapp_business_messaging, whatsapp_business_management and business_management permissions. Embedded Signup, which uses Facebook Login for Business, lets each end-customer business connect its own WhatsApp Business Account (WABA) and get a token. A multi-user toolkit would use Embedded Signup/Facebook Login for Business OAuth, with a system user token for server-side calls. I did not read the access-tokens page itself, because the fetch returned only navigation text.",
+  "access": "approval_required",
+  "access_notes": "A developer can create a Meta app and use the API Setup flow with a temporary token, and this is free. I could not confirm the free test number or the pricing from the pages I fetched, because they returned only navigation text. Serving other businesses needs Meta App Review (advanced access to the whatsapp_business_* permissions), Business Verification, and Tech Provider onboarding for Embedded Signup. Messaging is billed per message by Meta on a pay-as-you-go basis, with a Pricing page in the docs. Tech Provider and Embedded Signup details are from the docs index, not from pages I read.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "This is the Graph API (REST-style) under graph.facebook.com. It covers sending messages (text, media, templates, interactive), media, phone numbers, message templates, business profile, calling, groups, flows, payments and WABA management. I did not count operations. GraphQL is Graph API generic and not the main surface, so the styles list is a guess.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Meta announced an official \"WhatsApp Business Tools MCP\" in a developer blog post dated 2026-09-15. The setup guide is reported at developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp, which I did not open. It is added to Claude, Codex or ChatGPT and signs in with Facebook Login for Business. It is for development and testing, not high-volume sending. I did not see the server URL. Several community servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Building and testing is self-serve. Letting arbitrary end-users connect their own WABAs needs Meta App Review, Business Verification and Tech Provider onboarding for Embedded Signup. Messaging is also paid per message, and template rules and the 24-hour customer service window constrain agent behavior.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+    "quote": "expires quickly and is not suitable for development purposes"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
+    "quote": "incoming messages, the status of outgoing messages, call events, and other important information"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.facebook.com/blog/post/2026/09/15/whatsapp-business-messaging-mcp-ai-agent/",
+    "quote": "WhatsApp Business Tools MCP"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/llms.txt",
+    "quote": "App Review (solution-providers/app-review.md)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The access-tokens and pricing pages returned only navigation text. Please confirm the following. (1) The exact App Review, Business Verification and Tech Provider requirements for Embedded Signup. (2) That a free test number exists (the get-started page did not say so). (3) Free-tier and per-message pricing. (4) Whether Meta's WhatsApp Business Tools MCP is hosted, and its URL. (5) Whether an OpenAPI spec exists. Sandbox \"yes\" is from general knowledge of the Cloud API test number, not from a fetched page."
+ }
+}

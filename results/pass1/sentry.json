@@ -1,0 +1,111 @@
+{
+ "id": 70,
+ "slug": "sentry",
+ "app": "Sentry",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.sentry.io/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:33.052Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.sentry.io/api/auth/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.sentry.io/product/sentry-mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.sentry.io/api/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.sentry.io/organization/integrations/integration-platform/webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mcp.sentry.dev/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.sentry.io/organization/integrations/integration-platform/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Application monitoring and error tracking platform with issues, performance, replays, and alerts.\",\"subcategory\":\"Error monitoring / observabil"
+  }
+ ],
+ "cost_usd": 0.06144380000000001,
+ "duration_ms": 24174,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Application monitoring and error tracking platform with issues, performance, replays, and alerts.",
+  "subcategory": "Error monitoring / observability",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "api_key",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth2 authorization code (PKCE recommended) plus device flow. Access tokens last 30 days and can be refreshed. Each token covers only the one organization the user selected. Bearer auth tokens come from internal integrations or personal tokens. DSN auth is limited. Legacy API keys (Basic auth) are disabled for new accounts.",
+  "access": "self_serve_free",
+  "access_notes": "Internal integrations and personal tokens are created under Settings > Developer Settings. Public OAuth integrations are created in the same place. The docs I fetched don't describe a review step or plan requirement for publishing, and I did not check pricing, so free-tier API access is unconfirmed.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "About two dozen resource areas: events and issues, releases, replays, monitors and alerts, dashboards, orgs, teams, users, integrations, Seer, profiling. The API is v0 and some endpoints are beta. Regional hosts us.sentry.io and de.sentry.io exist. I did not count operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote server at https://mcp.sentry.dev/mcp, which can be scoped to an org or project and uses OAuth. A local `sentry mcp` via the CLI and a legacy npm package @sentry/mcp-server also exist.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "A public OAuth integration may need publishing review, which the docs I fetched don't describe. The token is scoped to a single organization.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "API keys are a legacy means of authenticating"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.sentry.io/api/",
+    "quote": "beta endpoints are subject to change"
+   },
+   {
+    "field": "mcp",
+    "url": "https://mcp.sentry.dev/",
+    "quote": "All connections use OAuth."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.sentry.io/organization/integrations/integration-platform/webhooks/",
+    "quote": "Webhooks should respond within 1 second."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.sentry.io/organization/integrations/integration-platform/",
+    "quote": "can be published and are available for all Sentry users"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check three things. First, whether publishing a public OAuth integration needs Sentry review. Second, whether a free plan has full API access. Third, whether an OpenAPI spec is published (I believe one exists on GitHub, but I did not verify it). Also confirm whether a sandbox or test mode exists."
+ }
+}

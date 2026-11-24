@@ -1,0 +1,118 @@
+{
+ "id": 26,
+ "slug": "discord",
+ "app": "Discord",
+ "category": "Communications and Messaging",
+ "hint": "discord.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:39.985Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://discord.com/developers/docs/topics/oauth2"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Discord official MCP server developers"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://discord.com/developers/docs/events/webhook-events"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.discord.com/developers/topics/oauth2"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.discord.com/developers/events/webhook-events"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.discord.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/discord/discord-api-spec"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Chat platform for communities; API for bots, messaging, guilds, and OAuth2 user integrations.\",\"subcategory\":\"Community chat / messaging platfo"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Chat platform for communities; API for bots, messaging, guilds, and OAuth2 user integrations.\",\"subcategory\":\"Community chat / messaging platfo"
+  }
+ ],
+ "cost_usd": 0.1030037,
+ "duration_ms": 37797,
+ "turns": 11,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Chat platform for communities; API for bots, messaging, guilds, and OAuth2 user integrations.",
+  "subcategory": "Community chat / messaging platform",
+  "auth_methods": [
+   "bot_token",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Bot token for bot actions in guilds the bot was added to. OAuth2 (authorization code, with PKCE; implicit and client credentials also supported) for acting as a user, with limited scopes. A multi-user toolkit would use OAuth2 for identity and guild install, then act via the bot token. User-level message read/send is not offered through OAuth2, and self-botting with user tokens is against the ToS.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can create an app and bot for free in the Developer Portal. Some OAuth scopes, such as dm_channels.read and voice, need Discord approval. Bots in 100+ guilds need verification, and privileged intents such as Message Content need approval at that scale (I know this from prior knowledge; the page I fetched didn't cover it).",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST covers channels, messages, guilds, members, roles, threads, webhooks, interactions, application commands, users, and more. The Gateway websocket delivers real-time events.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "Many community servers exist, e.g. SaseQ/discord-mcp. A search result claimed a docs-search-only official server at docs.discord.com/mcp. My fetch of that URL returned HTTP 405 (it may be a POST-only endpoint), so I couldn't confirm it. It would not cover messaging anyway.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The API is open and free, but it is bot-centric. Acting as an end user is limited, because OAuth2 doesn't give user-level message read/send. Gated scopes, bot verification beyond 100 guilds, and privileged intents add review. Webhook events are limited and need a public endpoint. The Gateway is needed for real-time triggers.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.discord.com/developers/topics/oauth2",
+    "quote": "We support the authorization code grant, the implicit grant, client credentials"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.discord.com/developers/topics/oauth2",
+    "quote": "Some scopes require approval from Discord to use."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.discord.com/developers/events/webhook-events",
+    "quote": "Webhook events are one-way events sent to your app over HTTP to notify you when an event occurred."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/discord/discord-api-spec",
+    "quote": "OpenAPI specification for Discord APIs."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.discord.com/developers/topics/oauth2",
+    "quote": "Verified bots do not have a maximum number of guilds."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether Discord now hosts an official MCP server at docs.discord.com/mcp (docs search only?). Also confirm current verification and privileged-intent requirements, which I didn't see on a fetched page."
+ }
+}

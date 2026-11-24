@@ -1,0 +1,112 @@
+{
+ "id": 75,
+ "slug": "asana",
+ "app": "Asana",
+ "category": "Productivity and Project Management",
+ "hint": "developers.asana.com",
+ "pass": 1,
+ "at": "2026-11-24T15:07:57.815Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.asana.com/docs/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.asana.com/docs/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.asana.com/docs/webhooks-guide"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.asana.com/docs/using-asanas-mcp-server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Asana OpenAPI spec github asana-api-meta free account API access"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Work and project management platform for tasks, projects, and team collaboration.\",\"subcategory\":\"Project management\",\"auth_methods\":[\"oauth2\","
+  }
+ ],
+ "cost_usd": 0.0697012,
+ "duration_ms": 26993,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Work and project management platform for tasks, projects, and team collaboration.",
+  "subcategory": "Project management",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "jwt_service_account",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 for multi-user apps; PAT for scripts; service accounts (Enterprise only); OIDC for sign-in.",
+  "access": "self_serve_free",
+  "access_notes": "Asana says its API is free for anyone with an Asana account (seen in search results, not on a fetched page). A PAT or OAuth app can be created self-serve. The auth docs mention no app review. Service accounts need Enterprise. I did not check whether the app directory or distribution needs review.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API covering tasks, projects, sections, users, workspaces, teams, portfolios, goals, custom fields, webhooks, attachments and more. Likely well over 100 endpoints; I did not count them.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.asana.com/v2/mcp (Streamable HTTP, OAuth). Setup guide: developers.asana.com/docs/using-asanas-mcp-server",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blocker found. Free accounts have API access, and OAuth apps are self-serve. Some features, such as premium endpoints, depend on the plan.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.asana.com/docs/authentication",
+    "quote": "Service Accounts are an Enterprise tier feature and can only be created by Asana super admins."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.asana.com/docs/authentication",
+    "quote": "This is the best choice if multiple users need to sign in to your app."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.asana.com/docs/webhooks-guide",
+    "quote": "Webhooks allow an application to be notified of changes in Asana."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+    "quote": "Ensure your client supports OAuth authentication and Streamable HTTP transport."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.asana.com/docs/mcp-server",
+    "quote": "Asana offers a Model Context Protocol (MCP) server, accessible via app integration."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/asana/openapi",
+    "quote": "defs/asana_oas.yaml"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether a free Asana account can create OAuth apps and whether distributing to users outside the workspace needs app review. Check whether a sandbox or test mode exists (a free personal workspace probably serves). The \"API is free\" claim came from search results only. The OpenAPI repo path came from search results and was not fetched."
+ }
+}

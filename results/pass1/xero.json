@@ -1,0 +1,17 @@
+{
+ "id": 87,
+ "slug": "xero",
+ "app": "Xero",
+ "category": "Finance and Fintech",
+ "hint": "developer.xero.com",
+ "pass": 1,
+ "at": "2026-11-24T15:08:05.195Z",
+ "ok": false,
+ "trace": [],
+ "cost_usd": 0,
+ "duration_ms": 694,
+ "turns": 1,
+ "model": "sonnet",
+ "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
+ "record": null
+}

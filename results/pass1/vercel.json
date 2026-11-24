@@ -1,0 +1,133 @@
+{
+ "id": 62,
+ "slug": "vercel",
+ "app": "Vercel",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "vercel.com/docs/rest-api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:03.302Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://vercel.com/docs/rest-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://vercel.com/docs/mcp/vercel-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://vercel.com/docs/integrations/create-integration"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://vercel.com/docs/rest-api/authentication"
+  },
+  {
+   "tool": "Grep",
+   "arg": "{\"pattern\":\"openapi|Bearer|access token|\\\\| \\\\*\\\\*(GET|POST)\",\"path\":\"/Users/adbhut/.claude-account2/projects/-Users-adbhut-composio-app-research/da679748-a027-"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://vercel.com/docs/webhooks"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Frontend cloud platform for deploying, hosting and managing web projects, domains and serverless infrastructure.\",\"subcategory\":\"Hosting / depl"
+  }
+ ],
+ "cost_usd": 0.1879505,
+ "duration_ms": 26476,
+ "turns": 10,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Frontend cloud platform for deploying, hosting and managing web projects, domains and serverless infrastructure.",
+  "subcategory": "Hosting / deployment platform (PaaS)",
+  "auth_methods": [
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Methods: (1) Access tokens (Bearer, scoped to account, team or project) created by the user. (2) Vercel Integrations: the OAuth-style redirect `code` is exchanged at POST /v2/oauth/access_token. New integrations should use short-lived tokens (1h) via the client_credentials grant, because long-lived tokens are deprecated. (3) A \"Sign in with Vercel\" OAuth flow exists, but I did not fetch its docs. A multi-user toolkit would use an Integration install, with the teamId query param on requests, or user-pasted access tokens.",
+  "access": "self_serve_free",
+  "access_notes": "Access tokens can be created on any account, including the free Hobby plan. I did not verify this on a pricing page. Creating an integration is self-serve through the Integrations Console form, and connectable-account integrations can be installed by external users straight away with a \"Community\" badge. Listing on the public marketplace needs 500+ installs and a review. Native Marketplace integrations need Vercel's approval. Some endpoints and features need Pro or Enterprise: account webhooks and the billing scope. Vercel MCP clients need CIMD or a review.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST reference lists roughly 330 endpoints. They cover projects, deployments, domains/DNS/certs, env vars, teams, access groups, edge config, drains, webhooks, checks, integrations and billing. The count is an estimate from grepping the fetched page.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.vercel.com is a remote MCP server using OAuth and Streamable HTTP. It is available on all plans. Clients must use CIMD or be reviewed and approved by Vercel.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is a broad REST API with a self-serve integration or token path. Minor caveats: account webhooks and billing need Pro or Enterprise, and public marketplace listing needs review. No dedicated test mode was found, but a free Hobby account serves for testing.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://vercel.com/docs/rest-api",
+    "quote": "Interact programmatically with your Vercel account using the SDK or direct HTTP requests."
+   },
+   {
+    "field": "auth",
+    "url": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations",
+    "quote": "To use Vercel REST API, you need to authenticate with an access token that contains the necessary scope."
+   },
+   {
+    "field": "auth",
+    "url": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations",
+    "quote": "Long-lived access tokens are deprecated."
+   },
+   {
+    "field": "access",
+    "url": "https://vercel.com/docs/integrations/create-integration",
+    "quote": "it will be assigned the Community badge and be available for external users to download."
+   },
+   {
+    "field": "access",
+    "url": "https://vercel.com/docs/integrations/create-integration",
+    "quote": "The integration must have at least 500 active installations"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://vercel.com/docs/webhooks",
+    "quote": "Account Webhooks are available on Enterprise and Pro plans"
+   },
+   {
+    "field": "mcp",
+    "url": "https://vercel.com/docs/mcp/vercel-mcp",
+    "quote": "Vercel MCP is Vercel's official MCP server. It's a remote MCP with OAuth"
+   },
+   {
+    "field": "mcp",
+    "url": "https://vercel.com/docs/mcp/vercel-mcp",
+    "quote": "Vercel MCP is available on all plans"
+   },
+   {
+    "field": "api",
+    "url": "https://vercel.com/docs/rest-api",
+    "quote": "| **GET** | `/v1/access-groups/{idOrName}` | Reads an access group |"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether an OpenAPI spec is published (https://openapi.vercel.sh is believed to exist, but I did not open it). Check the access-token docs and the \"Sign in with Vercel\" OAuth docs, which I did not open. Confirm that free Hobby accounts can create tokens, since I did not open a pricing page."
+ }
+}

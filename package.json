@@ -1,0 +1,17 @@
+{
+  "name": "composio-app-research",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An agent pipeline that researches 100 apps for agent-toolkit buildability, then checks its own work.",
+  "scripts": {
+    "research": "node src/research.mjs",
+    "check": "node src/check-evidence.mjs",
+    "composio": "node src/composio-catalog.mjs",
+    "verify": "node src/verify.mjs",
+    "score": "node src/score.mjs",
+    "build": "node src/build-page.mjs",
+    "all": "npm run research && npm run check && npm run composio && npm run verify && npm run score && npm run build"
+  },
+  "engines": { "node": ">=22" }
+}

@@ -1,0 +1,107 @@
+{
+ "id": 45,
+ "slug": "magento-adobe-commerce",
+ "app": "Magento (Adobe Commerce)",
+ "category": "Ecommerce",
+ "hint": "developer.adobe.com/commerce",
+ "pass": 1,
+ "at": "2026-11-24T15:06:03.708Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.adobe.com/commerce/webapi/get-started/authentication/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.adobe.com/commerce/webapi/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Adobe Commerce MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.adobe.com/commerce/extensibility/webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Ecommerce platform (Magento Open Source / Adobe Commerce) with merchant-hosted REST and GraphQL APIs.\",\"subcategory\":\"Ecommerce platform\",\"auth"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Ecommerce platform (Magento Open Source / Adobe Commerce) with merchant-hosted REST and GraphQL APIs.\",\"subcategory\":\"Ecommerce platform\",\"auth"
+  }
+ ],
+ "cost_usd": 0.10454959999999999,
+ "duration_ms": 38969,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Ecommerce platform (Magento Open Source / Adobe Commerce) with merchant-hosted REST and GraphQL APIs.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "bearer_token",
+   "oauth1",
+   "other"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "PaaS/self-hosted: integration access token (admin-created), admin/customer tokens from token endpoints, OAuth 1.0a for third-party integrations, session-based for storefront/admin JS. SaaS (Adobe Commerce as a Cloud Service) uses Adobe IMS tokens (not verified in detail). Each store is a separate instance with its own base URL and credentials, so there is no central OAuth app. A multi-tenant toolkit would collect store URL plus an integration access token from each merchant.",
+  "access": "self_serve_free",
+  "access_notes": "Magento Open Source is free to install, so a developer can self-host and create an integration with credentials alone. Adobe Commerce (paid license, or SaaS on contract) is sales-led. Merchants issue credentials on their own instance, so no app review or central gate applies. Pricing was not verified on a page.",
+  "api_styles": [
+   "rest",
+   "graphql",
+   "soap"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST covers catalog, orders, customers, carts, inventory, invoices, shipments, CMS and more, with hundreds of endpoints. GraphQL covers storefront and some admin. SOAP also exists but the docs page I fetched did not mention it (known from prior knowledge).",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "Adobe lists a Commerce App Builder MCP server and Dropins AI tools, but these are developer-IDE aids, not store-operations tools. Third-party servers: CData, StackOne, Cequence, rafaelstz/adobe-commerce-dev-mcp, and Marketplace modules (miniOrange, Freento, Webdevs). No official remote MCP for store operations found.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The API is per-merchant and self-hosted, so each user must supply their store base URL and an integration token. There is no central OAuth app. Authentication differs between PaaS and SaaS (IMS). Webhooks are synchronous and configured on the store side, and the I/O Events path needs App Builder.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+    "quote": "Third-party applications use OAuth to access the web APIs"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.adobe.com/commerce/webapi/",
+    "quote": "The Web API documentation is divided into three guides: REST, GraphQL, and Getting Started."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.adobe.com/commerce/extensibility/webhooks/",
+    "quote": "Webhooks enable developers to configure synchronous logic to execute calls to external systems"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview",
+    "quote": "IDE integration for Commerce development tasks."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm the current SaaS (IMS) auth flow and Adobe Commerce pricing. The OpenAPI/Swagger claim (each instance serves /swagger and /rest/all/schema) and the sandbox claim (self-hosted Open Source install) come from prior knowledge, not a fetched page. Whether Adobe has shipped an official store-operations MCP is unconfirmed."
+ }
+}

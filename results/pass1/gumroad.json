@@ -1,0 +1,111 @@
+{
+ "id": 48,
+ "slug": "gumroad",
+ "app": "Gumroad",
+ "category": "Ecommerce",
+ "hint": "gumroad.com/api",
+ "pass": 1,
+ "at": "2026-11-24T15:06:28.379Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Gumroad MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://app.gumroad.com/api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Gumroad API docs OAuth access_token scopes resource subscriptions ping products sales licenses verify"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/claude"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mintlify.com/antiwork/gumroad/api/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/help/article/280-create-application-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://jentic.com/apis/gumroad.com/gumroad.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Platform for creators to sell digital products, memberships and courses directly to customers.\",\"subcategory\":\"Creator commerce / digital produ"
+  }
+ ],
+ "cost_usd": 0.11992119999999999,
+ "duration_ms": 45695,
+ "turns": 12,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Platform for creators to sell digital products, memberships and courses directly to customers.",
+  "subcategory": "Creator commerce / digital products",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Register an OAuth application in Gumroad settings. Standard OAuth2 gives scoped access tokens (view_profile, edit_products, view_sales, mark_sales_as_shipped, refund_sales). A personal access token can be generated from the app page. Tokens don't expire until revoked. License verify needs no token. Details come from secondary sources, because the official docs page didn't render.",
+  "access": "self_serve_free",
+  "access_notes": "Any Gumroad account can create an application and generate a token. I found no paid plan or app review requirement, but I could not read the official help article body to confirm.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Base URL api.gumroad.com/v2. Resources: products, offer codes, variants, licenses, sales, subscribers, resource subscriptions, user. Jentic describes roughly 26 operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official hosted MCP at https://gumroad.com/claude/v1/mcp, using OAuth. It is listed in Claude's connector directory, and gumroad.com/mcp has per-assistant URLs. Community servers also exist (npm gumroad-mcp).",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is narrower than the full product. Verify whether OAuth apps need approval for public distribution.",
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://gumroad.com/claude",
+    "quote": "https://gumroad.com/claude/v1/mcp"
+   },
+   {
+    "field": "auth",
+    "url": "https://gumroad.com/mcp",
+    "quote": "Every assistant connects to its own URL and asks for OAuth access to your Gumroad account."
+   },
+   {
+    "field": "api",
+    "url": "https://jentic.com/apis/gumroad.com/gumroad.md",
+    "quote": "Authorization: Bearer <token>"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The official API docs at gumroad.com/api did not render in fetch, so the endpoint list, webhook details, and OAuth scopes come from third-party mirrors. Please confirm whether OAuth apps need review for public use and whether any test mode exists."
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "id": 69,
+ "slug": "datadog",
+ "app": "Datadog",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.datadoghq.com/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:37.246Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.datadoghq.com/api/latest/authentication/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.datadoghq.com/bits_ai/mcp_server/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.datadoghq.com/integrations/webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.datadoghq.com/mcp_server/setup.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud observability platform: metrics, logs, traces, monitors, dashboards, incidents and security.\",\"subcategory\":\"Observability / monitoring\","
+  }
+ ],
+ "cost_usd": 0.0637521,
+ "duration_ms": 28574,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud observability platform: metrics, logs, traces, monitors, dashboards, incidents and security.",
+  "subcategory": "Observability / monitoring",
+  "auth_methods": [
+   "api_key",
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The classic REST API uses an API key plus an application key sent as headers (DD-API-KEY, DD-APPLICATION-KEY). Personal and Service Access Tokens also exist (confirmed on the MCP setup page, not the REST auth page). OAuth2 clients are created in a Datadog Partner Sandbox Account through the Developer Platform. A multi-user toolkit would use OAuth2 if the team has partner access. Otherwise it would have each user supply keys or tokens, and keys must be site-specific.",
+  "access": "self_serve_trial",
+  "access_notes": "Keys come from a Datadog org account. I did not fetch the pricing page, so the 14-day trial and the limits of any free tier are from background knowledge and unverified. OAuth client creation and publishing go through the Partner Sandbox and the Developer Platform, which likely means a partner program application. I did not confirm the approval requirement.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST API has hundreds of endpoints across metrics, logs, monitors, dashboards, incidents, SLOs, synthetics, users, security and more. I did not count them.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Per-site endpoints, for example https://mcp.datadoghq.com/v1/mcp. Auth is OAuth2, a PAT or service token, or API plus app keys. The docs say it is under significant development. It is not available on the FED (GovCloud) sites.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "Work is possible today with user-supplied API and app keys. Those keys are powerful and site-specific, with multiple regional domains. Proper multi-user OAuth needs a Partner Sandbox account and probably partner approval. Paid or trial org access is needed for testing.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.datadoghq.com/api/latest/authentication/",
+    "quote": "Requests that read data require full access and also require an `application key`."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.datadoghq.com/mcp_server/setup.md",
+    "quote": "OAuth 2.0 is the recommended authentication method, and your MCP client handles it during setup."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.datadoghq.com/integrations/webhooks/",
+    "quote": "It triggers a POST request to the URL you set with the following content in JSON format."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/",
+    "quote": "Within your Datadog Partner Sandbox Account, create and configure your OAuth client in the Developer Platform."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.datadoghq.com/bits_ai/mcp_server/",
+    "quote": "The Datadog MCP Server is under significant development."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check the pricing and trial terms: is there a free tier with API access? Also check the Datadog Partner Network requirements for publishing a public OAuth client. I did not fetch the OpenAPI spec location (the Datadog API client repo publishes one) or the REST API scopes page."
+ }
+}

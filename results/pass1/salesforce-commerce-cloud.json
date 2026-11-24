@@ -1,0 +1,104 @@
+{
+ "id": 44,
+ "slug": "salesforce-commerce-cloud",
+ "app": "Salesforce Commerce Cloud",
+ "category": "Ecommerce",
+ "hint": "developer.salesforce.com/docs/commerce",
+ "pass": 1,
+ "at": "2026-11-24T15:05:55.323Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Salesforce Commerce Cloud SCAPI authentication SLAS Account Manager API client MCP server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Salesforce Commerce Cloud developer MCP server B2C Commerce"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/scapi-get-started.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/mcp-dx-intro.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Salesforce B2C Commerce Cloud: composable ecommerce platform with Shopper and Admin APIs (SCAPI).\",\"subcategory\":\"Ecommerce platform\",\"auth_met"
+  }
+ ],
+ "cost_usd": 0.10378870000000001,
+ "duration_ms": 35131,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Salesforce B2C Commerce Cloud: composable ecommerce platform with Shopper and Admin APIs (SCAPI).",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Admin APIs: Account Manager API client with client_credentials (secret via client_secret_basic, or private_key_jwt); scopes sfcc.* plus the Salesforce Commerce API role, tenant-filtered. Shopper APIs: SLAS (OAuth 2.1) with guest or registered shopper tokens (authorization_code + PKCE for public clients, private client secret). Multi-user toolkit: SLAS for shopper flows, or per-merchant Account Manager client credentials for admin. Implicit flow is deprecated. Per-merchant tenant IDs and client setup are needed. I could not open the developer.salesforce.com pages (403), so details come from search summaries and the b2c-developer-tooling docs.",
+  "access": "paid_plan_required",
+  "access_notes": "Needs a B2C Commerce tenant, which is a licensed Salesforce product. Developers need a merchant or partner instance and an Account Manager login to create API clients. I found no free self-serve tier. Not directly verified on a pricing page, so this is partly inferred.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "SCAPI covers Shopper APIs (products, baskets, orders, customers, search, checkout) and Admin APIs (catalogs, products, inventory, promotions, orders, SLAS admin, and more), plus the older OCAPI. Operation count is likely well over 100 but I didn't count it.",
+  "openapi_spec": "yes",
+  "webhooks": "unknown",
+  "mcp": "official_local",
+  "mcp_notes": "npm package @salesforce/b2c-dx-mcp (B2C DX MCP Server, Developer Preview). It is aimed at developers and offers docs search, cartridge deployment, MRT and SCAPI Admin access. A separate Agentic MCP Shopper Tools server is pilot-only. Community: sfcc-dev-mcp.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "A licensed B2C Commerce tenant is required, and each merchant must create its own Account Manager or SLAS client and share tenant details. This makes generic OAuth-style multi-user connection awkward. Webhook support is unconfirmed.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "quote": "Add `Salesforce Commerce API` for SCAPI and CIP commands, and `Sandbox API User` for ODS and SLAS management. Both require a tenant filter."
+   },
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "quote": "Use `client_secret_basic` for client credentials. Use `private_key_jwt` for JWT."
+   },
+   {
+    "field": "mcp",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "quote": "Salesforce B2C Commerce MCP Server (Developer Preview)"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html",
+    "quote": "Authorization for SCAPI Admin APIs"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "developer.salesforce.com pages returned 403 to my fetch. Please confirm the following: (1) the trial or sandbox licensing path (on-demand sandboxes need a licensed realm), (2) whether SCAPI has webhooks or notifications, (3) the OpenAPI spec availability on Salesforce's API specs page, (4) the pilot status of the shopper MCP."
+ }
+}

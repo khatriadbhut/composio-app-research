@@ -1,0 +1,109 @@
+{
+ "id": 9,
+ "slug": "copper",
+ "app": "Copper",
+ "category": "CRM and Sales",
+ "hint": "copper.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:41.426Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.copper.com/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Copper CRM MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.copper.com/introduction/authentication.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.copper.com/oauth/overview.html"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Copper developer API OAuth partner integrations register application; API access plan Copper CRM pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.copper.com/introduction/oauth/index.html"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Copper is a CRM built for Google Workspace users, covering leads, contacts, companies and opportunities.\",\"subcategory\":\"CRM\",\"auth_methods\":[\""
+  }
+ ],
+ "cost_usd": 0.0967742,
+ "duration_ms": 40780,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Copper is a CRM built for Google Workspace users, covering leads, contacts, companies and opportunities.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API key: each user generates a token in System settings > API Keys. Requests send the token and the generating user's email in headers. OAuth2 is described as preferred for partner integrations, but you must register the app by contacting Copper to get a client_id and client_secret. Only the developer/v1/all scope exists.",
+  "access": "approval_required",
+  "access_notes": "An API key works right away for a user with a Copper account, which is a paid CRM, so testing needs a trial or paid seat. I did not confirm which plan includes API access (a third-party catalog lists Business at $99/mo). Multi-user OAuth needs manual registration by emailing partners@copper.com with the app name, purpose and callback URL. There is no self-serve OAuth app creation.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "REST/JSON at api.copper.com/developer_api/v1. It covers leads, people, companies, opportunities, tasks, projects, activities, custom fields, pipelines and webhook subscriptions. A third-party n8n template lists 32 operations. I did not count the operations myself.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no official Copper MCP server. Third-party ones exist: StackOne, Apideck, Activepieces, Zapier, Composio and Cotlet, plus community GitHub projects such as copper-mcp on Glama.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Per-user API keys are self-serve and work for a prototype, but the account is paid. A proper multi-user OAuth flow needs Copper to register the app by email. No sandbox or OpenAPI spec was found.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.copper.com/introduction/authentication.html",
+    "quote": "OAuth2.0 is \"the preferred approach for partner integrations.\" API keys suit individual users; generate via System settings > API Keys."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.copper.com/introduction/oauth/index.html",
+    "quote": "To register your application, contact us"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.copper.com/",
+    "quote": "Requests go to https://api.copper.com/developer_api/ ... RESTful interface with JSON responses; webhooks subscription management listed."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.copper.com/",
+    "quote": "Webhook subscription management (create, update, delete, list, view by ID) and a notification example."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.stackone.com/connectors/copper/mcp/",
+    "quote": "Third-party hosted Copper MCP server (StackOne) with 58 MCP tools. No official Copper MCP found."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm which Copper plan includes API access and whether a free trial or developer account exists. Confirm whether Copper approves OAuth registrations for new third parties. Check whether a sandbox exists. I could not verify the official pricing page or the webhook event details. I also could not open the OAuth overview or flow pages directly, so the OAuth detail rests on the OAuth index page and search snippets. The MCP finding comes from search results only."
+ }
+}

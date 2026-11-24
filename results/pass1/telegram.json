@@ -1,0 +1,110 @@
+{
+ "id": 27,
+ "slug": "telegram",
+ "app": "Telegram",
+ "category": "Communications and Messaging",
+ "hint": "core.telegram.org",
+ "pass": 1,
+ "at": "2026-11-24T15:04:38.205Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/bots/api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/api/obtaining_api_id"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Telegram official MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/api/auth"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Messaging platform with a Bot API and MTProto user-client API for building bots and clients.\",\"subcategory\":\"Messaging platform / bot API\",\"aut"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Messaging platform with a Bot API and MTProto user-client API for building bots and clients.\",\"subcategory\":\"Messaging platform / bot API\",\"aut"
+  }
+ ],
+ "cost_usd": 0.10016850000000001,
+ "duration_ms": 35233,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Messaging platform with a Bot API and MTProto user-client API for building bots and clients.",
+  "subcategory": "Messaging platform / bot API",
+  "auth_methods": [
+   "bot_token",
+   "other"
+  ],
+  "auth_primary": "bot_token",
+  "auth_notes": "Bot API: a per-bot token from BotFather, passed in the URL path. MTProto user API: api_id/api_hash from my.telegram.org plus phone-number login (code, then 2FA via SRP) to get a user session. There is no OAuth2 for acting on a user's account. A multi-user toolkit would use bot tokens, with users messaging the bot. Acting as a user needs the MTProto session flow, which carries ban risk.",
+  "access": "self_serve_free",
+  "access_notes": "Bot tokens are free and instant via BotFather. api_id/api_hash is free at my.telegram.org, limited to one api_id per phone number. There is no review step for bots. User-account automation via unofficial clients is monitored, and flooding or spam can get an account banned.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Bot API is an HTTP API with roughly 100+ methods: messages, media, chats, inline mode, payments, stickers and more. The MTProto API (TDLib) is far broader and covers full user-client functionality. I did not count the methods exactly.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no official Telegram MCP server. Community servers include chigwell/telegram-mcp, sparfenyuk/mcp-telegram, overpod/mcp-telegram and lexfrei/mcp-tg. Most use MTProto user accounts.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "Bots can only see chats where users have started or added them, so they can't read a user's existing chats. Acting as a user requires MTProto phone login, which has no OAuth and carries ban risk. Bot token auth fits a multi-user toolkit poorly, because each user would have to create or supply a bot.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/bots/api",
+    "quote": "Each bot is given a unique authentication token when it is created"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://core.telegram.org/bots/api",
+    "quote": "we will send an HTTPS POST request to the specified URL"
+   },
+   {
+    "field": "access",
+    "url": "https://core.telegram.org/api/obtaining_api_id",
+    "quote": "Log in at my.telegram.org ... API development tools"
+   },
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/api/auth",
+    "quote": "a text message containing an authorization code is sent to the user's phone using auth.sendCode"
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/sparfenyuk/mcp-telegram",
+    "quote": "mcp telegram"
+   },
+   {
+    "field": "api",
+    "url": "https://core.telegram.org/api/auth",
+    "quote": "Test numbers use the format 99966XYYYY"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The Bot API page was truncated at about 100k of 620k characters, so I did not read the full method list or the rate limits. The Bot API test environment is not confirmed. The MTProto test servers are confirmed at core.telegram.org/api/auth. The sandbox is \"yes\" on that basis. The community MCP search was a single search, so there may be other servers I missed. The user-account route's ToS risk needs a human decision."
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": 3,
+ "slug": "pipedrive",
+ "app": "Pipedrive",
+ "category": "CRM and Sales",
+ "hint": "pipedrive.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:01.166Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pipedrive MCP server official developers"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pipedrive.com/docs/api/v1"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://pipedrive.readme.io/docs/marketplace-registering-the-app"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Sales-focused CRM for managing deals, contacts, leads, activities and pipelines for small businesses.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"oau"
+  }
+ ],
+ "cost_usd": 0.11993129999999999,
+ "duration_ms": 27697,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Sales-focused CRM for managing deals, contacts, leads, activities and pipelines for small businesses.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code flow (required for Marketplace apps). Access tokens last 60 minutes, and refresh tokens expire after 60 days of non-use. Personal API tokens are also supported for single-account use. Calls go to the user's company domain or api_domain.",
+  "access": "approval_required",
+  "access_notes": "A free Developer Sandbox account gives access to Developer Hub and lets you build and test OAuth apps. Testing only works for users in your sandbox and can't be shared with external users. Publishing to the Marketplace needs app approval. I could not confirm sandbox pricing from the docs.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "RESTful JSON API with v1 and v2 endpoints. Covers deals, persons, organizations, leads, activities, products, notes, pipelines, webhooks and more. I did not count operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Pipedrive-hosted MCP server at https://mcp.pipedrive.ai/mcp, connected with OAuth. It is also listed in Claude's connector marketplace. Community servers exist too. This comes from search results and the Pipedrive newsroom; I did not fetch the docs pages.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "You can build and test with a sandbox account right away. Letting other customers connect through a public OAuth app needs Marketplace app approval.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization",
+    "quote": "Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace."
+   },
+   {
+    "field": "access",
+    "url": "https://pipedrive.readme.io/docs/marketplace-registering-the-app",
+    "quote": "To be published on the Marketplace, your app needs to pass our app approval process."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.pipedrive.com/docs/api/v1",
+    "quote": "OpenAPI 3 specification files are available for both v1 and v2"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants",
+    "quote": "Pipedrive launches native MCP server bringing CRM workflows directly into AI assistants"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm that the Developer Sandbox is free and what the app review involves. Webhooks support is based on the API docs navigation listing a Webhooks section, and I did not read that page. The MCP details come from search results, not the docs pages."
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "id": 74,
+ "slug": "jira",
+ "app": "Jira",
+ "category": "Productivity and Project Management",
+ "hint": "developer.atlassian.com",
+ "pass": 1,
+ "at": "2026-11-24T15:07:53.508Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.atlassian.com/platform/remote-mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.atlassian.com/cloud/jira/platform/webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Issue and project tracking software for teams, with a broad REST API.\",\"subcategory\":\"Issue tracking / project management\",\"auth_methods\":[\"oau"
+  }
+ ],
+ "cost_usd": 0.06836560000000001,
+ "duration_ms": 29256,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Issue and project tracking software for teams, with a broad REST API.",
+  "subcategory": "Issue tracking / project management",
+  "auth_methods": [
+   "oauth2",
+   "basic",
+   "api_key",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 (3LO) is the multi-user method. Basic auth with email and API token is for scripts. Forge and Connect apps use app-specific auth. Passwords are deprecated. Self-hosted Data Center is not covered here.",
+  "access": "self_serve_free",
+  "access_notes": "OAuth 3LO apps are created in the Developer console. They are private by default. Enabling sharing in Distribution lets other users install the app. Atlassian review is optional, and unreviewed apps show a warning. A free Jira Cloud site works for testing. I did not check pricing pages for plan limits.",
+  "api_styles": [
+   "rest",
+   "graphql",
+   "sdk_only"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Jira Cloud platform REST API v3 covers issues, projects, search/JQL, comments, worklogs, users, filters, workflows, fields and more, well over 400 operations. Jira Software (agile) and Jira Service Management have separate REST APIs. I did not count operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Atlassian Rovo MCP server at https://mcp.atlassian.com/v2/mcp. It uses OAuth 2.1, and API token auth is optional.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Minor caveats: Atlassian review is optional, but unreviewed apps show a warning. Webhooks registered through REST expire after 30 days and need refreshing. Some OAuth 3LO webhooks are limited, at 5 per user per tenant.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+    "quote": "has not yet been reviewed by Atlassian"
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+    "quote": "Authentication using passwords has been deprecated."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+    "quote": "Webhooks registered with the REST API expire after 30 days."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+    "quote": "powered by secure OAuth 2.1 authorization"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The OpenAPI spec, GraphQL (Atlassian Gateway) availability, and free-tier site limits were not verified on a fetched page. Breadth is estimated from knowledge, not counted. The sandbox rating rests on free Jira Cloud sites, which I did not confirm on a pricing page."
+ }
+}

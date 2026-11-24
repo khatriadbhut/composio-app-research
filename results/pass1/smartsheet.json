@@ -1,0 +1,96 @@
+{
+ "id": 79,
+ "slug": "smartsheet",
+ "app": "Smartsheet",
+ "category": "Productivity and Project Management",
+ "hint": "smartsheet.com/developers",
+ "pass": 1,
+ "at": "2026-11-24T15:08:06.396Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Smartsheet MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Smartsheet API developer sandbox account OAuth app registration webhooks OpenAPI spec"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Work management and collaboration platform with sheets, projects, automation and reports.\",\"subcategory\":\"Work management / project management\""
+  }
+ ],
+ "cost_usd": 0.0862097,
+ "duration_ms": 27631,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Work management and collaboration platform with sheets, projects, automation and reports.",
+  "subcategory": "Work management / project management",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "3-legged OAuth 2.0 for multi-user apps (requires registered app with client ID/secret, HTTPS redirect URLs, scopes like ADMIN_WEBHOOKS). Personal API access tokens (Bearer) generated in UI for single-user use.",
+  "access": "paid_plan_required",
+  "access_notes": "Docs state required plan for API access token: Business, Enterprise, or Advanced Work Management. Developer account (free registration) gives Developer Tools to register OAuth apps and a sandbox account. Whether public OAuth distribution needs review was not confirmed.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Sheets, rows, columns, cells, attachments, comments, workspaces, folders, reports, sights/dashboards, users, groups, webhooks, search, etc. Regional hosts (US/EU/AU).",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at mcp.smartsheet.com (US), mcp.smartsheet.eu, mcp.smartsheet.au; GA March 2026; OAuth 2.0 or token. Also local package @smartsheet/smar-mcp.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "API/token access requires a paid plan (Business/Enterprise/Advanced Work Management); developer account/sandbox is available for testing but plan limits should be verified.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
+    "quote": "Required plan: Business, Enterprise, or Advanced Work Management"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+    "quote": "the Smartsheet implementation of OAuth 2.0 is a 3-legged process, which requires human intervention."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+    "quote": "mcp.smartsheet.com"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.smartsheet.com/api/smartsheet/openapi/schemas/title",
+    "quote": "Smartsheet OpenAPI Reference"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm sandbox availability/terms and whether OAuth apps need Smartsheet review before public distribution; the MCP and sandbox details came from search summaries, not fetched pages."
+ }
+}

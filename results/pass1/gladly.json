@@ -1,0 +1,92 @@
+{
+ "id": 20,
+ "slug": "gladly",
+ "app": "Gladly",
+ "category": "Support and Helpdesk",
+ "hint": "gladly.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:01.477Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.gladly.com/rest/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Gladly MCP server developer docs"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Customer service platform that unifies customer conversations across channels around people, not tickets.\",\"subcategory\":\"Helpdesk / customer s"
+  }
+ ],
+ "cost_usd": 0.06323980000000001,
+ "duration_ms": 21668,
+ "turns": 5,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Customer service platform that unifies customer conversations across channels around people, not tickets.",
+  "subcategory": "Helpdesk / customer service platform",
+  "auth_methods": [
+   "basic"
+  ],
+  "auth_primary": "basic",
+  "auth_notes": "HTTP Basic auth using the agent email and an API token. Tokens are created per agent under More settings > API Tokens, and the user needs the API User permission. The page says a token can perform any API request without restriction. No OAuth is mentioned. The Public Answers API needs no token.",
+  "access": "paid_plan_required",
+  "access_notes": "Tokens come from inside a customer's Gladly organization, and an admin must grant the API User permission. Gladly is enterprise software with no public self-serve signup. I did not fetch a pricing page. A separate sandbox exists at {organization}.gladly.qa, but it is presumably also provisioned through Gladly.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Resource groups include Agents, Public Answers, Answer Management, Business Hours, Communications, Conversations, Customers, Export, Inboxes, Reports, Tasks, Teams, Topics and Webhooks, plus a Lookup API. I did not count operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "No official Gladly MCP server found. Third-party hosted options exist: StackOne (https://www.stackone.com/connectors/gladly/mcp/) and Truto.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The API is broad and well documented, but a developer cannot get credentials alone. Each end user's Gladly admin must issue a per-agent API token, and the token has full, unscoped access. There is no OAuth flow for multi-user apps. Users must paste their organization subdomain, agent email and token.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.gladly.com/rest/",
+    "quote": "can be used to perform any API request without restriction"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.gladly.com/rest/",
+    "quote": "More settings > API Tokens and clicks Create Token"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.gladly.com/rest/",
+    "quote": "Agents, Public Answers, Answer Management, Business Hours, Communications, Conversations, Customers, Export, Inboxes, Reports, Tasks, Teams, Topics"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.gladly.com/rest/",
+    "quote": "Webhooks: securing webhooks, ping events, retry policy, logs, payloads, and available events"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.stackone.com/connectors/gladly/mcp/",
+    "quote": "hosted Gladly MCP server with 65 prebuilt actions"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The WebFetch tool returned summaries, so the quotes above are paraphrased from that summary, not verified verbatim. Please check them against the live page. Also confirm whether Gladly has a pricing page or partner program and whether any OAuth option exists. The sandbox URL and the OpenAPI download link were not directly confirmed."
+ }
+}

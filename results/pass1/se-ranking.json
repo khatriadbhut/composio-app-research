@@ -1,0 +1,96 @@
+{
+ "id": 52,
+ "slug": "se-ranking",
+ "app": "SE Ranking",
+ "category": "Data, SEO and Scraping",
+ "hint": "seranking.com/api",
+ "pass": 1,
+ "at": "2026-11-24T15:06:25.570Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://seranking.com/api/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "SE Ranking MCP server official API docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://seranking.com/api/integrations/mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://seranking.com/api/data/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"SEO platform with API for keyword, backlink, SERP, rank tracking and audit data.\",\"subcategory\":\"SEO data / rank tracking\",\"auth_methods\":[\"api"
+  }
+ ],
+ "cost_usd": 0.0742988,
+ "duration_ms": 29455,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "SEO platform with API for keyword, backlink, SERP, rank tracking and audit data.",
+  "subcategory": "SEO data / rank tracking",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST API uses an account API key (Bearer/Token, header format not confirmed). OAuth 2.1 with dynamic client registration exists only on the MCP server. Keys have full account access; no scoped keys.",
+  "access": "paid_plan_required",
+  "access_notes": "API access is included in every plan (Core $129/mo, Growth $279/mo), and a free trial account (no credit card) can test it. API Add-On from $149/mo, and pay-as-you-go from a $50 minimum deposit. Each end user needs their own SE Ranking account and API credits.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Data API (keywords, backlinks, domain analysis, SERP, site audit, AI visibility) and Project API (rank tracking, keyword groups, competitors). Endpoint count not verified, but it likely exceeds 50.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "https://api.seranking.com/mcp (Streamable HTTP, OAuth 2.1 or X-Api-Key). Docs at seranking.com/api/integrations/mcp/. An open-source local server also exists (github.com/seranking/seo-data-api-mcp-server, per a third-party listing).",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Free trial lets a developer test. Production use needs a paid plan or API credits. Only API keys are available for the REST API, with no scoped keys or OAuth app flow for third parties.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://seranking.com/api/",
+    "quote": "API access is included in every SE Ranking plan."
+   },
+   {
+    "field": "mcp",
+    "url": "https://seranking.com/api/integrations/mcp/",
+    "quote": "uses OAuth 2.1 with dynamic client registration for authentication"
+   },
+   {
+    "field": "auth",
+    "url": "https://seranking.com/api/",
+    "quote": "retrieve your unique API key"
+   },
+   {
+    "field": "api",
+    "url": "https://seranking.com/api/",
+    "quote": "The Data API covers keyword research, backlink analysis, domain performance, SERP data, site audits"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The REST auth header format, the endpoint count, whether an OpenAPI spec is published, and whether webhooks exist were not confirmed. The pricing details came from a page summary, not the pricing page itself. The sandbox answer rests on the free trial account, not a dedicated test mode."
+ }
+}

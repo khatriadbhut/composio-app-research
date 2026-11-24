@@ -1,0 +1,90 @@
+{
+ "id": 10,
+ "slug": "dealcloud",
+ "app": "DealCloud",
+ "category": "CRM and Sales",
+ "hint": "api.docs.dealcloud.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:30.931Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://api.docs.dealcloud.com"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "DealCloud API authentication OAuth client credentials API key MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://api.docs.dealcloud.com/mcp/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://api.docs.dealcloud.com/docs/token"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Intapp DealCloud: CRM and deal management platform for financial services and private capital firms.\",\"subcategory\":\"CRM (financial services / "
+  }
+ ],
+ "cost_usd": 0.07611580000000001,
+ "duration_ms": 30301,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Intapp DealCloud: CRM and deal management platform for financial services and private capital firms.",
+  "subcategory": "CRM (financial services / deal management)",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The REST API uses the OAuth2 client credentials flow. An admin creates the client ID and secret per tenant site. The token endpoint is {baseUrl}/api/rest/v1/oauth/token. Scopes are data, user_management, publish, ri_import and backup. Tokens expire after 15 minutes. The MCP server uses per-user OAuth 2.0 with .well-known discovery, so no client ID or secret is needed. A multi-user toolkit would use the per-user OAuth through MCP, or per-customer client credentials against the REST API.",
+  "access": "contact_sales",
+  "access_notes": "DealCloud is an enterprise product with no public pricing or free tier that I found. The API is per-tenant: a customer's DealCloud admin must issue API keys (client ID and secret) on that customer's site. A developer cannot get credentials alone without a licensed tenant. I did not find a public developer sandbox signup, and I did not open a pricing or access page, so this rests on inference.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Documented areas are Schema, Data (cells, rows, history, files, delete, merge, template reports), User Management, Publications, Site Backups, Relationship Intelligence import, and Schema Contracts. SDKs exist for Python and C#. The data model is dynamic and varies by tenant.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The docs have an MCP section (api.docs.dealcloud.com/mcp/authentication and /mcp/connections) covering OAuth connections for AI clients. I did not see the server URL on the pages I fetched. It is probably tenant-specific.",
+  "sandbox": "unknown",
+  "buildability": "needs_partnership_or_sales",
+  "main_blocker": "enterprise_sales",
+  "blocker_notes": "The docs are public, but credentials are issued by a customer's DealCloud admin on a licensed tenant, so a developer cannot sign up alone. Each customer would need to generate client credentials, or use the vendor's per-user MCP OAuth. The official MCP server is a possible route, but whether a third-party platform can use it is unconfirmed.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://api.docs.dealcloud.com/docs/token",
+    "quote": "the OAuth2 Client Credentials flow to generate a bearer token"
+   },
+   {
+    "field": "auth",
+    "url": "https://api.docs.dealcloud.com/mcp/authentication",
+    "quote": "DealCloud MCP uses OAuth to authenticate, letting AI assistants connect on behalf of an individual user."
+   },
+   {
+    "field": "api",
+    "url": "https://api.docs.dealcloud.com",
+    "quote": "Dealcloud Developer Documentation"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "low",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Please check four things. (1) Whether a dev or sandbox tenant is available, and how API keys are issued, since I did not open the API Keys page. (2) The MCP server URL and whether a third-party client can connect to it. (3) Whether a webhook-style event mechanism exists beyond Publications (\"Real-Time Events from DealCloud\"). (4) Whether an OpenAPI spec is published."
+ }
+}

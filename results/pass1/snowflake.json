@@ -1,0 +1,111 @@
+{
+ "id": 67,
+ "slug": "snowflake",
+ "app": "Snowflake",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.snowflake.com",
+ "pass": 1,
+ "at": "2026-11-24T15:07:30.123Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://signup.snowflake.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/user-guide/admin-trial-account"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud data warehouse/platform for SQL analytics, data engineering, and AI workloads.\",\"subcategory\":\"Cloud data warehouse\",\"auth_methods\":[\"oau"
+  }
+ ],
+ "cost_usd": 0.0630043,
+ "duration_ms": 26144,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud data warehouse/platform for SQL analytics, data engineering, and AI workloads.",
+  "subcategory": "Cloud data warehouse",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "SQL API supports OAuth (Snowflake OAuth or External OAuth), key-pair JWT, and workload identity federation. OAuth is the choice for multi-user agents, using a security integration created in each customer's account. Programmatic access tokens also exist (not verified here).",
+  "access": "self_serve_trial",
+  "access_notes": "30-day free trial needs only an email. AI features stay disabled until a credit card is added. Continued use needs a paid, consumption-billed account. There is no permanent free tier. Each customer account hosts its own OAuth security integration, so there is no central app review.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The SQL API runs arbitrary SQL. The Snowflake REST APIs cover databases, schemas, tables, warehouses, users, roles, grants, stages, tasks, services, Cortex and more.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Snowflake-managed MCP server, endpoint https://<account_url>/api/v2/databases/{database}/schemas/{schema}/mcp-servers/{name}. It uses OAuth and is documented under Cortex Agents MCP.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Every account has its own hostname, so the toolkit must collect the account identifier per user. OAuth needs an admin to create a security integration. The trial lasts 30 days, then a paid account is needed. Webhooks are not offered. Event-like triggers would need polling, or Snowflake alerts and notification integrations.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+    "quote": "Set up OAuth for authentication."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+    "quote": "Set up key-pair authentication."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+    "quote": "The trial continues for 30 days (from the sign-up date)"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+    "quote": "no payment information or other qualifying information is required."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+    "quote": "These REST APIs are compliant with the OpenAPI specification."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+    "quote": "The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Webhook absence is unverified. Confirm whether the trial's AI-feature credit-card restriction affects the toolkit's testing. The docs page I fetched for MCP is Cortex Agents MCP and may have moved."
+ }
+}

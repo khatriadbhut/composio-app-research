@@ -1,0 +1,90 @@
+{
+ "id": 31,
+ "slug": "google-ads",
+ "app": "Google Ads",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.google.com/google-ads",
+ "pass": 1,
+ "at": "2026-11-24T15:04:49.935Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.google.com/google-ads/api/docs/get-started/dev-token"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.google.com/google-ads/api/docs/oauth/overview"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Google's advertising platform API for managing campaigns, reporting, and accounts programmatically.\",\"subcategory\":\"Ads platform\",\"auth_methods"
+  }
+ ],
+ "cost_usd": 0.054623500000000005,
+ "duration_ms": 26575,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Google's advertising platform API for managing campaigns, reporting, and accounts programmatically.",
+  "subcategory": "Ads platform",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 (multi-user for managing other people's accounts) with the adwords scope, plus a required developer token header (and login-customer-id for manager accounts). Service accounts are supported for accounts you already have access to.",
+  "access": "approval_required",
+  "access_notes": "Enabling the API gives Test access: 15,000 ops/day, test accounts only. Production use needs Explorer (automated review, 2,880 ops/day), Basic (automated, brand verification), or Standard (manual review). Free of charge, but needs a Google Cloud project and a Google Ads manager account. The OAuth consent screen with the sensitive adwords scope also needs Google app verification for public distribution; I did not confirm this on a page.",
+  "api_styles": [
+   "rest",
+   "grpc",
+   "sdk_only"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Many resources: campaigns, ad groups, ads, keywords, assets, budgets, conversions, audiences, reporting via GAQL search/searchStream, and mutate services. Well over 50 operations. Client libraries exist for several languages.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "official_local",
+  "mcp_notes": "Official google-ads-mcp from the googleads GitHub org (https://github.com/googleads/google-ads-mcp), run via pipx. Supports local stdio and streamable-http modes. Per the docs, local mode uses ADC and the remote mode uses an OAuth web client. I did not confirm a Google-hosted remote URL.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Production access needs a developer token and an access level (Explorer or Basic are automated, Standard is manual). Google OAuth verification is likely needed for the sensitive scope. There is no webhook support, so triggers would need polling. Developer-token and quota limits apply.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+    "quote": "OAuth 2.0 enables your Google Ads API client app to access a user's Google Ads account."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+    "quote": "Basic access applications are automated and will be reviewed within minutes"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "quote": "Local `stdio` mode authenticates with Application Default Credentials (ADC) from an OAuth 2.0 client secret JSON file or a service account in your Cloud project."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm that Google OAuth app verification is required for the adwords scope. Confirm whether a Google-hosted remote MCP URL exists. Webhooks (none), the REST/gRPC surface, the lack of an OpenAPI spec and sandbox details come from my background knowledge, not from pages I fetched."
+ }
+}

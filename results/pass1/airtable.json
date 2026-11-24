@@ -1,0 +1,109 @@
+{
+ "id": 72,
+ "slug": "airtable",
+ "app": "Airtable",
+ "category": "Productivity and Project Management",
+ "hint": "airtable.com/developers",
+ "pass": 1,
+ "at": "2026-11-24T15:07:41.814Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://airtable.com/developers/web/api/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://airtable.com/developers/web/guides/oauth-integrations"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Airtable MCP server official support.airtable.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://airtable.com/developers/web/api/rate-limits"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://airtable.com/developers/web/guides/personal-access-tokens"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://airtable.com/developers/web/api/webhooks-overview"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Airtable is a spreadsheet-database platform for building collaborative apps, workflows and tables.\",\"subcategory\":\"Database / no-code app platf"
+  }
+ ],
+ "cost_usd": 0.078446,
+ "duration_ms": 29848,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Airtable is a spreadsheet-database platform for building collaborative apps, workflows and tables.",
+  "subcategory": "Database / no-code app platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 (authorization code with PKCE; scoped; refresh tokens) for integrations used by other users. Personal access tokens (scoped to bases) are for your own integrations. Enterprise service accounts can also hold PATs. Legacy API keys are deprecated.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone with a free Airtable account can create PATs and register OAuth integrations at airtable.com/create/oauth. Sharing an OAuth integration with other users requires a privacy policy URL and a terms of service URL, and I saw no mention of app review. I did not confirm whether a review step exists beyond this. Rate limits are 5 req/s per base and 50 req/s per user. Airtable says limits may be tiered by plan. Some admin and enterprise endpoints need an Enterprise plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Records CRUD, bases and tables and fields metadata, comments, webhooks, attachments upload, and views. There are also Enterprise admin and SCIM endpoints. This is roughly 40-60 operations; I did not count them.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official hosted server at https://mcp.airtable.com/mcp, OAuth-authenticated. Docs are at airtable.com/developers/agents/mcp/getting-started and in the support article \"Using the Airtable MCP server\". Community servers also exist, such as domdomegg's.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Webhooks created with OAuth or PAT tokens expire after 7 days unless refreshed, and they send only a ping, so payloads must be fetched separately. I found no OpenAPI spec. A free account serves as the dev environment, and there is no dedicated sandbox.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://airtable.com/developers/web/api/introduction",
+    "quote": "closely follows REST semantics"
+   },
+   {
+    "field": "auth",
+    "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+    "quote": "Click the \"Create new token\" button"
+   },
+   {
+    "field": "access",
+    "url": "https://airtable.com/developers/web/guides/oauth-integrations",
+    "quote": "if you have not provided them, other users will not be able to authorize your integration"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://airtable.com/developers/web/api/webhooks-overview",
+    "quote": "Webhooks created with personal access tokens or OAuth tokens are disabled after 7 days."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server",
+    "quote": "https://mcp.airtable.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Airtable runs an app review before an OAuth integration can go public. The docs I read mention only the privacy policy and terms URLs. Also confirm the MCP server URL, which came from a search summary of the support page and not from a page I opened. Confirm that no OpenAPI spec is published."
+ }
+}

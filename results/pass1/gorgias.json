@@ -1,0 +1,126 @@
+{
+ "id": 19,
+ "slug": "gorgias",
+ "app": "Gorgias",
+ "category": "Support and Helpdesk",
+ "hint": "gorgias.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:26.059Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.gorgias.com/reference/authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Gorgias MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.gorgias.com/docs/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.gorgias.com/reference/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.gorgias.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://helpcenter.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.gorgias.com/docs/build-a-public-app"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Gorgias developers public app review OAuth2 scopes HTTP integration webhooks"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Ecommerce-focused customer support helpdesk with tickets, macros, rules and AI agent.\",\"subcategory\":\"Helpdesk (ecommerce)\",\"auth_methods\":[\"ap"
+  }
+ ],
+ "cost_usd": 0.11388660000000002,
+ "duration_ms": 49965,
+ "turns": 13,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Ecommerce-focused customer support helpdesk with tickets, macros, rules and AI agent.",
+  "subcategory": "Helpdesk (ecommerce)",
+  "auth_methods": [
+   "api_key",
+   "basic",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Private apps use account email plus API key (HTTP basic). Public apps must use OAuth2, with scopes. A multi-user toolkit would use OAuth2.",
+  "access": "approval_required",
+  "access_notes": "A private app with an API key works on any Gorgias account. I didn't find a free tier or trial terms. Public OAuth2 apps need app review before listing in the App Store. Submissions must include a test account. I couldn't confirm whether OAuth2 works for unreviewed apps in dev mode.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST endpoints grouped by resource: Tickets, Customers, Macros, Rules, Views, Tags, Teams, Users, Voice Calls, Widgets and more. I didn't count operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.gorgias.com/mcp. Open beta, OAuth through the browser, one Gorgias account per connection. Works with Claude, ChatGPT, Cursor and others. Some writes are gated during the beta.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Distributing to other users needs OAuth2 and Gorgias app review. Developer credentials need a Gorgias account, whose cost I didn't confirm. The official MCP server is in beta with some writes gated.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.gorgias.com/reference/authentication",
+    "quote": "Using OAuth2 is mandatory for public apps."
+   },
+   {
+    "field": "mcp",
+    "url": "https://helpcenter.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546",
+    "quote": "https://mcp.gorgias.com/mcp"
+   },
+   {
+    "field": "mcp",
+    "url": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta",
+    "quote": "Any plan works. AI Agent is not required."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.gorgias.com/reference/introduction",
+    "quote": "The Gorgias API is structured with REST in mind."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.gorgias.com/llms.txt",
+    "quote": "building a public app (including app review)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether a free trial or dev account gives API access. Check whether OAuth2 apps work before review. Check whether an OpenAPI spec is published. Check whether a sandbox exists. Webhooks are inferred from search snippets about HTTP integrations, and I couldn't open the dev-portal webhook page, which returned 404."
+ }
+}

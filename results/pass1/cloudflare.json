@@ -1,0 +1,90 @@
+{
+ "id": 64,
+ "slug": "cloudflare",
+ "app": "Cloudflare",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "developers.cloudflare.com/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:11.233Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.cloudflare.com/fundamentals/api/get-started/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.cloudflare.com/fundamentals/api/reference/limits/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Edge network, CDN, DNS, security, Workers serverless and developer platform.\",\"subcategory\":\"Cloud infrastructure / CDN and edge platform\",\"aut"
+  }
+ ],
+ "cost_usd": 0.0529414,
+ "duration_ms": 21634,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Edge network, CDN, DNS, security, Workers serverless and developer platform.",
+  "subcategory": "Cloud infrastructure / CDN and edge platform",
+  "auth_methods": [
+   "bearer_token",
+   "api_key",
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "API tokens (user or account-owned, scoped permissions) are the recommended method. The legacy Global API key (X-Auth-Email and X-Auth-Key) is also supported. Origin CA keys cover certificate endpoints. OAuth is documented only for Cloudflare's own MCP server. I found no general third-party OAuth app registration for the REST API. A multi-user toolkit would have each user paste a scoped API token.",
+  "access": "self_serve_free",
+  "access_notes": "A free Cloudflare account can create API tokens right away. Some products and endpoints need paid plans, and Enterprise customers can raise limits. I did not check the pricing page for plan gating.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The MCP docs say the API has over 2,500 endpoints. They cover zones, DNS, Workers, R2, D1, KV, Zero Trust, firewall rules and more. A GraphQL analytics API is also available. Rate limit is 1,200 requests per 5 minutes per user.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Main server is https://mcp.cloudflare.com/mcp. It exposes search(), execute() and docs() tools over the whole API. Product-specific servers include docs.mcp.cloudflare.com, browser.mcp.cloudflare.com and casb.mcp.cloudflare.com.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The main caveat is that users must create and paste scoped API tokens, since there is no public OAuth app flow. Cloudflare's own official MCP server already covers the whole API.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
+    "quote": "Global API key (legacy)... have several limitations that make them less secure than API tokens."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+    "quote": "https://mcp.cloudflare.com/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.cloudflare.com/fundamentals/api/reference/limits/",
+    "quote": "The global rate limit for the Cloudflare API is 1,200 requests per five minute period per user"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "I did not open these pages, so these points are unconfirmed: the OpenAPI spec (the cloudflare/api-schemas GitHub repo, from memory), the webhooks (Notifications webhooks and Workers/Queues event hooks; there is no general resource-event webhook API), and the absence of a sandbox. I also did not confirm that third-party OAuth app registration is unavailable."
+ }
+}

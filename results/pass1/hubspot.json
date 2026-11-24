@@ -1,0 +1,102 @@
+{
+ "id": 2,
+ "slug": "hubspot",
+ "app": "HubSpot",
+ "category": "CRM and Sales",
+ "hint": "hubspot.com",
+ "pass": 1,
+ "at": "2026-11-24T15:02:59.945Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/api/intro-to-auth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/api/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/getting-started/account-types"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"CRM platform for sales, marketing and service with a broad public API.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"oauth2\",\"bearer_token\",\"api_key\"],"
+  }
+ ],
+ "cost_usd": 0.1006293,
+ "duration_ms": 26374,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "CRM platform for sales, marketing and service with a broad public API.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 for multi-account apps. Static-auth (private) tokens and service keys are single-account Bearer tokens. A developer API key (hapikey) is used only for a few developer features. Client-credentials tokens are used only for the webhooks journal.",
+  "access": "self_serve_free",
+  "access_notes": "A free developer account and free developer test accounts (90-day enterprise trial) are enough to build and test. OAuth apps distributed to multiple accounts need OAuth with distribution set to marketplace. The auth page I fetched mentions no app review step, but HubSpot's marketplace listing process may include one. Private distribution is limited to 10 accounts.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "CRM objects (contacts, companies, deals, tickets, custom objects), associations, search, engagements, pipelines, properties, plus marketing, CMS, conversations and more. I did not count the operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "mcp.hubspot.com. It uses OAuth 2.0 with a user-level app and gives read and write access to CRM data.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Self-serve OAuth is available. Check whether the marketplace listing for public distribution needs app review.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.hubspot.com/docs/api/intro-to-auth",
+    "quote": "Service keys provide a way to query HubSpot's REST APIs directly"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.hubspot.com/docs/api/intro-to-auth",
+    "quote": "limit distribution of your app to a single authorized account"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.hubspot.com/mcp",
+    "quote": "enables you to give any MCP-compatible AI tool or agent secure read and write access to your HubSpot CRM data."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.hubspot.com/docs/api/webhooks",
+    "quote": "All API endpoints require OAuth 2.0 authentication."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.hubspot.com/docs/getting-started/account-types",
+    "quote": "Developer test accounts are free HubSpot accounts with access to a 90-day trial of many enterprise features."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether the app marketplace listing needs review before arbitrary customers can install a public OAuth app. Confirm the published OpenAPI spec (I believe it is in HubSpot's public API spec repo, but I did not open it). The webhooks page I fetched covered only the v4 journal API. It did not describe the classic v3 webhooks, which push to a target URL."
+ }
+}

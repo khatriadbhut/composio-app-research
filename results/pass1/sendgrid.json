@@ -1,0 +1,122 @@
+{
+ "id": 40,
+ "slug": "sendgrid",
+ "app": "SendGrid",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "sendgrid.com",
+ "pass": 1,
+ "at": "2026-11-24T15:05:41.839Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/docs/sendgrid/api-reference"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "SendGrid MCP server official Twilio"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://sendgrid.com/en-us/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/en-us/sendgrid/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/getting-started-event-webhook"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://sendgrid.com/pricing/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/en-us/sendgrid"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/en-us/products/email-api/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Twilio SendGrid: cloud email delivery API for transactional email and marketing campaigns.\",\"subcategory\":\"Email delivery / ESP\",\"auth_methods\""
+  }
+ ],
+ "cost_usd": 0.0944921,
+ "duration_ms": 43178,
+ "turns": 12,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Twilio SendGrid: cloud email delivery API for transactional email and marketing campaigns.",
+  "subcategory": "Email delivery / ESP",
+  "auth_methods": [
+   "api_key",
+   "bearer_token",
+   "basic"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Each user creates an API key in the SendGrid console and it is sent as a Bearer token. Basic auth with username 'apikey' also works for some services. The docs I fetched don't mention OAuth. A multi-user toolkit would have each user paste in their own key.",
+  "access": "self_serve_trial",
+  "access_notes": "The Email API pricing page shows a 60-day free trial limited to 100 emails/day, with no credit card. After that, paid plans start at Essentials $19.95/mo, then Pro $89.95/mo and Premier (custom). I did not confirm whether a permanent free tier still exists. I did not find a page that says API access needs a paid plan after the trial.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The v3 REST API covers mail send, marketing contacts, lists, campaigns/singlesends, templates, suppression management, stats, subusers, API keys and more. This is well over 100 operations. I took the breadth from the API reference summary and my own background knowledge, not from a full endpoint count.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found only community servers (neschadin/sendgrid-mcp, Garoth/sendgrid-mcp, @codespar/mcp-sendgrid). Twilio has a blog tutorial on building one. Twilio's own MCP server covers the Twilio Public API, not SendGrid. These details come from search results and one secondary summary of the blog post, so treat them as low-confidence.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Per-user API keys are self-serve, and there is no OAuth app review. Caveats: new accounts only get a 60-day trial, and the sending domain and sender identity must be verified. Sandbox mode exists for mail send, but the sandbox claim comes from my background knowledge. I did not fetch a page that confirms it.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+    "quote": "pass an Authorization header with a value of `Bearer <Your-API-Key-Here>`."
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+    "quote": "$0 for 60 days, with a limit of 100 emails per day. No credit card is required."
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "quote": "send transactional emails, create marketing campaigns, manage your contacts"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/getting-started-event-webhook",
+    "quote": "To have Twilio SendGrid post email event data to a URL you control, add and configure an Event Webhook."
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "quote": "OpenAPI specification (links to the twilio/sendgrid-oai repository)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "low",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether SendGrid still offers a permanent free plan or only the 60-day trial, and whether API access continues after the trial ends. Also check whether Twilio has since published an official SendGrid MCP server, and whether the v3 mail send endpoint's sandbox_mode is documented."
+ }
+}

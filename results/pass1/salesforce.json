@@ -1,0 +1,104 @@
+{
+ "id": 1,
+ "slug": "salesforce",
+ "app": "Salesforce",
+ "category": "CRM and Sales",
+ "hint": "salesforce.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:12.786Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Salesforce hosted MCP servers developer docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.salesforce.com/developer-centers/developer-edition"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Salesforce Developer Edition free org REST API access OAuth connected app external client app"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Salesforce CRM platform for sales, service and marketing, with extensive APIs and customizable objects.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"o"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Salesforce CRM platform for sales, service and marketing, with extensive APIs and customizable objects.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"o"
+  }
+ ],
+ "cost_usd": 0.1614697,
+ "duration_ms": 39281,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Salesforce CRM platform for sales, service and marketing, with extensive APIs and customizable objects.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 through an External Client App (connected apps are restricted for new creation as of Spring '26). Supported flows include web server/auth code with PKCE, JWT bearer, client credentials, device and username-password (testing only). Each customer org has its own instance and login URL. I could not open the flow list page directly, so the exact flow list comes from memory.",
+  "access": "self_serve_free",
+  "access_notes": "A free Developer Edition org gives full API access for building and testing. Production orgs need API-enabled editions (Enterprise and above, or an add-on). Distributing an external client app to other customer orgs uses packaging and installation, and AppExchange security review is only needed for listing. The hosted MCP servers are billed only for Flex Credits customers.",
+  "api_styles": [
+   "rest",
+   "graphql",
+   "soap",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST (sObjects CRUD, SOQL/SOSL query, composite), SOAP, Bulk API 2.0, Metadata, Tooling, Connect REST, UI API and GraphQL API. Also Pub/Sub API (gRPC) and Streaming. Hundreds of operations. Based on my knowledge, not verified from fetched pages.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Salesforce Hosted MCP Servers (developer.salesforce.com/docs/platform/hosted-mcp-servers). A blog post dated April 2026 says they are GA. Standard and custom servers, with OAuth through an External Client App. There is also the forcedotcom/mcp open-source local DX MCP server.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Developer Edition orgs and sandboxes are self-serve. Per-org OAuth setup is needed: customers must install or approve the external client app, and production orgs need an API-enabled edition. Event triggers come from Change Data Capture, Platform Events (Pub/Sub API) and outbound messages, not plain HTTP webhooks.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+    "quote": "to implement this authorization, use either an external client app or a connected app and an OAuth 2.0 authorization flow"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
+    "quote": "Developer Edition provides a free and easy solution to obtain a Salesforce org for testing and development."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
+    "quote": "Salesforce Hosted MCP Servers"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
+    "quote": "Salesforce Hosted MCP Servers are now generally available"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The developer.salesforce.com pages returned HTTP 403 to fetch, so I relied on search result snippets and summaries. The quotes are short titles and snippets. The OAuth flow list, the OpenAPI spec (I believe one is published for the REST API), the webhook details and the production edition requirements come from background knowledge and were not verified from the docs. The MCP billing note says it is for customers with Flex Credits. Please verify these directly."
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "id": 15,
+ "slug": "pylon",
+ "app": "Pylon",
+ "category": "Support and Helpdesk",
+ "hint": "usepylon.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:39.144Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pylon usepylon MCP server docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pylon API webhooks docs.usepylon.com OpenAPI"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"B2B customer support platform unifying Slack, Teams, email and chat support with issue tracking and AI agents.\",\"subcategory\":\"B2B Helpdesk\",\"a"
+  }
+ ],
+ "cost_usd": 0.09459719999999999,
+ "duration_ms": 29225,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "B2B customer support platform unifying Slack, Teams, email and chat support with issue tracking and AI agents.",
+  "subcategory": "B2B Helpdesk",
+  "auth_methods": [
+   "bearer_token"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The REST API takes an admin-created API token sent as a Bearer header. Tokens don't expire and have no scopes. Access follows the role of the token's identity or of the user it acts as. There are separate US and EU regions. OAuth 2.0 is documented only for the hosted MCP server, not the REST API. A multi-user toolkit would have each customer's admin paste a token, or would use the MCP OAuth flow.",
+  "access": "paid_plan_required",
+  "access_notes": "Only Admin users of a Pylon workspace can create API tokens (Settings > Integrations & dev > API). Pylon is a paid product, and I did not confirm whether a free tier or trial exists. There is no public developer signup, so a developer needs a Pylon workspace.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "The API reference lists groups such as Issues, Contacts, Messages, Tags and Users, plus accounts and others. I did not count operations. SDKs exist for TypeScript, Python and Go, and there is an experimental CLI.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted server is at https://mcp.usepylon.com (US) and https://mcp.eu.usepylon.com (EU). It accepts OAuth 2.0 or an API token. An admin enables it under Settings > AI Controls > MCP Server. Community servers also exist.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The REST API works, but there is no OAuth for third-party apps. Each customer's admin must create and hand over a token, and tokens are unscoped. A paid Pylon workspace is needed to test. The MCP OAuth flow is an alternative.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "quote": "Only Admins can create tokens."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "quote": "Authorization: Bearer <token>"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "quote": "Use OAuth with AI tools that offer an interactive connection flow."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+    "quote": "Only Admin users can create API tokens."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.usepylon.com/integrations/api-webhooks",
+    "quote": "Webhooks fire on specific events inside Pylon and post to an endpoint you control."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "low",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Pylon offers a free trial or dev workspace, and whether an OpenAPI spec is published. Also check webhook event docs and rate limits, which I could not confirm from public pages. The webhook evidence comes from a search snippet of the marketing page. I did not fetch that page directly."
+ }
+}

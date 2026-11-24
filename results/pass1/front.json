@@ -1,0 +1,105 @@
+{
+ "id": 14,
+ "slug": "front",
+ "app": "Front",
+ "category": "Support and Helpdesk",
+ "hint": "front.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:35.454Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dev.frontapp.com/docs/oauth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dev.frontapp.com/docs/webhooks-1"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Front frontapp MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dev.frontapp.com/docs/create-and-manage-api-tokens"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Front developer sandbox OR \"free trial\" API OpenAPI spec dev.frontapp.com"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Shared inbox and customer communication platform for support teams, unifying email, chat, SMS and more.\",\"subcategory\":\"Helpdesk / shared inbox"
+  }
+ ],
+ "cost_usd": 0.08919970000000002,
+ "duration_ms": 28788,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Shared inbox and customer communication platform for support teams, unifying email, chat, SMS and more.",
+  "subcategory": "Helpdesk / shared inbox",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth2 authorization code grant only. Token exchange uses Basic auth with client ID and secret. Access tokens last 60 minutes, and refresh tokens last 6 months. API calls use Bearer tokens. Front also has company-level API tokens, which are not confirmed on a fetched page. Authorizing users of OAuth apps must be admins. The MCP server is the exception, because it uses user-scoped tokens.",
+  "access": "self_serve_free",
+  "access_notes": "The developer portal says a developer account gives a free developer environment. OAuth is required for public integrations unless Front grants an exception. No app-review step is described on the OAuth page, but listing in the Front App Store may involve Front's own review, which I did not confirm. I could not verify which Front plans allow API or token access.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Core API covers conversations, messages, contacts, inboxes, teammates, tags, comments, drafts, channels, rules and more. The Channel API is separate. I did not count operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.frontapp.com/mcp. It uses OAuth, is listed in Claude's connector directory, and is described as GA-stable as of August 2026 (it began as a beta in April 2026). Docs: https://dev.frontapp.com/docs/mcp-server",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Minor caveats: OAuth authorizers must be admins, and the official MCP server already exists. The exact plan requirements for API access were not confirmed.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://dev.frontapp.com/docs/oauth",
+    "quote": "End users authorizing OAuth apps must be admins."
+   },
+   {
+    "field": "auth",
+    "url": "https://dev.frontapp.com/docs/oauth",
+    "quote": "OAuth is required for public integrations available to all Front customers, unless Front grants an exception."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://dev.frontapp.com/docs/webhooks-1",
+    "quote": "Application webhooks retry failed deliveries, so a transient failure on your side does not mean a lost event."
+   },
+   {
+    "field": "mcp",
+    "url": "https://dev.frontapp.com/docs/mcp-server",
+    "quote": "Front's MCP server (mcp.frontapp.com/mcp) lets AI agents act on Front conversation data using a single OAuth-authenticated endpoint."
+   },
+   {
+    "field": "api",
+    "url": "https://dev.frontapp.com/docs/tools",
+    "quote": "Core API spec is viewable on GitHub (frontapp/front-api-specs)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Several points rest on search-result summaries, not on pages I opened. These are the free developer environment (I did not open the developer portal homepage), the OpenAPI repo (frontapp/front-api-specs), and the MCP details. Please check three things: (1) which Front plans allow API token and OAuth app creation, (2) whether the free dev environment is a true sandbox or a time-limited trial, and (3) whether the public App Store listing needs Front's approval. The page for API tokens returned a 404."
+ }
+}

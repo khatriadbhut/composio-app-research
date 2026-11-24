@@ -1,0 +1,120 @@
+{
+ "id": 33,
+ "slug": "linkedin-ads",
+ "app": "LinkedIn Ads",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "learn.microsoft.com/linkedin/marketing",
+ "pass": 1,
+ "at": "2026-11-24T15:05:05.481Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-started"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "LinkedIn Ads MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/getting-started"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"LinkedIn Marketing/Advertising API for managing ad accounts, campaigns, creatives, targeting and reporting.\",\"subcategory\":\"Ads platform\",\"auth"
+  }
+ ],
+ "cost_usd": 0.1490263,
+ "duration_ms": 26593,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "LinkedIn Marketing/Advertising API for managing ad accounts, campaigns, creatives, targeting and reporting.",
+  "subcategory": "Ads platform",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "3-legged OAuth 2.0 authorization code flow only (scopes such as rw_ads, r_ads, r_ads_reporting). Docs state 2-legged client credentials is not available for marketing use cases. Member must hold an ad account role.",
+  "access": "approval_required",
+  "access_notes": "Free to apply, but the app must be approved for the Advertising API product. Development tier: read on unlimited accounts, edit on up to 5 mapped ad accounts. Standard tier (unlimited edit, needed for a public multi-user product) requires a support ticket, and LinkedIn may decline. Audience Insights and Media Planning are restricted. I did not open the application form, so review timelines are unconfirmed.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Rest.li-style REST under api.linkedin.com/rest, versioned monthly. Covers ad accounts, campaign groups, campaigns, creatives, targeting facets, audience counts, budget pricing, analytics/reporting, lead sync, conversions, matched audiences, and boosts. Community Management is a separate product. Operation count was not tallied, but it is well over 50.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "No LinkedIn-published MCP server found. Community or third-party options include the PyPI package linkedin-ads-mcp (which states it is unofficial), AdKit, AdPlug, Two Minute Reports, the npm package mcp-linkedin-ads, and CData.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The app needs Advertising API approval. Development tier limits edits to 5 ad accounts, and Standard tier needs a manual support-ticket upgrade at LinkedIn's discretion before arbitrary users can connect for write operations. Read access is unlimited in the Development tier.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-started",
+    "quote": "All these permission scopes are 3-legged permissions requiring explicit consent from a LinkedIn member. The 2-legged client credentials flow is not available for any marketing use cases."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "Development tier is designed to build end-to-end workflows and supports read-only access for unlimited ad accounts and edit capabilities for up to five (5) Ad Accounts."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "The Standard API Access must be requested via a support ticket to be submitted on the Developer Support Portal."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "LinkedIn reserves the right to review applications and select partners at its discretion and a partner might not be upgraded even if they meet these minimum requirements."
+   },
+   {
+    "field": "api",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/getting-started",
+    "quote": "POST https://api.linkedin.com/rest/adAccounts/{adAccountID}/adCampaigns"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "Webhook for Social Actions: - Push notifications disabled"
+   },
+   {
+    "field": "mcp",
+    "url": "https://pypi.org/project/linkedin-ads-mcp/",
+    "quote": "linkedin ads mcp"
+   },
+   {
+    "field": "what_it_does",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-started",
+    "quote": "An Ad Account (a.k.a. Sponsored Account) is an umbrella entity for advertising management on LinkedIn, e.g., billing, campaigns, ad creatives, tracking tags, and more."
+   },
+   {
+    "field": "buildability",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "Access to Advertising API is a mandatory requirement for applying to Matched Audiences API, Audience Insights API and Media Planning API."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm the Advertising API application and review turnaround, since I did not open the apply form. Confirm the webhook coverage. The only webhook evidence I saw was for Community Management social actions. LinkedIn has some lead-gen and other notifications, but I did not verify them. Confirm whether an OpenAPI spec exists. The test-ad-account sandbox claim is based on the Development tier allowing creation of 1 test Ad Account through the API. No separate sandbox environment was seen. The MCP finding comes from search results only."
+ }
+}

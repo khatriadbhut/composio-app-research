@@ -1,0 +1,111 @@
+{
+ "id": 68,
+ "slug": "mongodb-atlas",
+ "app": "MongoDB Atlas",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "mongodb.com/docs/atlas/api",
+ "pass": 1,
+ "at": "2026-11-24T15:07:38.801Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mongodb.com/docs/atlas/api/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mongodb.com/docs/mcp-server/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mongodb.com/docs/atlas/configure-api-access/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mongodb.com/docs/mcp-server/prerequisites/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Managed cloud MongoDB database service; Admin API manages projects, clusters, users and more.\",\"subcategory\":\"Managed database / cloud data pla"
+  }
+ ],
+ "cost_usd": 0.07431200000000002,
+ "duration_ms": 33473,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Managed cloud MongoDB database service; Admin API manages projects, clusters, users and more.",
+  "subcategory": "Managed database / cloud data platform",
+  "auth_methods": [
+   "jwt_service_account",
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Admin API accepts service account access tokens (OAuth 2.0 client credentials) or API keys (HTTP Digest). Both are org- or project-scoped credentials created by an org or project owner. There is no per-end-user OAuth consent flow for third-party apps in the docs I read. The Atlas \"App Connections\" delegated access is mentioned only for AI clients and the CLI. A toolkit would have each customer supply a service account client ID and secret, and their IP must be on the access list.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone with an Atlas account (free signup, free M0 tier) and Organization Owner rights over their own org can create service accounts or API keys. I did not find a plan gate for the Admin API. I did not open the pricing page, so this is inferred. Each customer must create credentials in their own org. Tools that touch dedicated clusters need paid clusters.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Atlas Administration API v2 covers projects, clusters, database users, network access lists, alerts, backups, orgs and more. The docs page links to a spec and a Postman workspace. I did not count operations, but it is known to be several hundred. Base URL is https://cloud.mongodb.com/api/atlas/<version>. It is versioned and uses Digest or Bearer auth. The Data API was deprecated, so only the Admin API is in scope here.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "The MongoDB MCP Server is documented at mongodb.com/docs/mcp-server/. It offers Local MCP and Atlas Managed MCP modes. It uses apiClientId and apiClientSecret for Atlas tools, and also connects to databases directly. I did not find the package name or a hosted URL on the pages I opened. The npm package is believed to be mongodb-mcp-server, but I did not verify that.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Buildable with service account credentials supplied by each customer. The only friction is that end users must create the service account themselves and add the caller's IP to the access list. There is no one-click OAuth connect. That access list is a real operational issue for a hosted multi-tenant toolkit. Webhooks exist only as alert notification targets, not a general event subscription API.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "Service account access tokens (OAuth 2.0)"
+   },
+   {
+    "field": "auth",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "API keys (HTTP Digest Authentication)"
+   },
+   {
+    "field": "api",
+    "url": "https://www.mongodb.com/docs/atlas/api/",
+    "quote": "Atlas Administration API resources add, edit, or delete administrative objects within Atlas, including projects, users, and clusters."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.mongodb.com/docs/mcp-server/",
+    "quote": "The MongoDB MCP Server lets you connect to MongoDB from your agentic AI tools, assistants, and platforms."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.mongodb.com/docs/mcp-server/prerequisites/",
+    "quote": "your Atlas cluster requires a service account with the appropriate permissions."
+   },
+   {
+    "field": "access",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "To create a service account or API keys for an organization, you must have `Organization Owner` access to that organization."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Please check four things. (1) Whether the API is available on the free M0 tier and has no plan gate. (2) The MCP server's npm package name and whether the Atlas Managed MCP is a hosted URL. (3) The OpenAPI spec download location. The spec page content did not load, so this is from my own knowledge. (4) The webhook claim. It rests on Atlas alert webhook notifications, which I did not open a page for. Sandbox is judged from the free M0 tier and was not confirmed in the docs."
+ }
+}

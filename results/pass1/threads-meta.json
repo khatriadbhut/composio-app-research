@@ -1,0 +1,109 @@
+{
+ "id": 39,
+ "slug": "threads-meta",
+ "app": "Threads (Meta)",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.facebook.com/docs/threads",
+ "pass": 1,
+ "at": "2026-11-24T15:05:24.998Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/threads"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Threads API MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/threads/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/threads/get-started"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/threads/webhooks.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Meta's Threads API to publish posts, read profiles and replies, moderate, and get insights.\",\"subcategory\":\"Social network publishing API\",\"aut"
+  }
+ ],
+ "cost_usd": 0.0787807,
+ "duration_ms": 33077,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Meta's Threads API to publish posts, read profiles and replies, moderate, and get insights.",
+  "subcategory": "Social network publishing API",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code flow. The short-lived token lasts 1 hour. It is exchanged for a long-lived token that lasts 60 days and can be refreshed. Scopes include threads_basic, threads_content_publish, threads_manage_replies, threads_read_replies and threads_manage_insights.",
+  "access": "approval_required",
+  "access_notes": "Creating a Meta developer app is free. Users with a role on the app (Threads Tester) can grant permissions in dev mode. Other users can only connect after each permission passes Meta App Review and the app is published. Meta business verification may also be required for review; I did not confirm that.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Covers publishing (containers, publish, carousels), user profile and posts, replies and moderation, insights, mentions, delete, and keyword search. I did not count operations. Meta states rate limits and posting quotas.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "Only community servers found, such as the PyPI packages mcp-threads and meta-threads-mcp and the GitHub repos pegasusheavy/threads-mcp and baguskto/threads-mcp. No Meta-official server found.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Building and testing works with free self-serve credentials and tester roles. Public multi-user distribution needs Meta App Review for each permission. Tokens expire after 60 days and need refreshing.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developers.facebook.com/docs/threads",
+    "quote": "create and publish posts, retrieve media and profiles, moderate replies, and access insights"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "Threads user access token, which follows OAuth 2.0"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "Long-lived tokens last 60 days and can be refreshed via GET /refresh_access_token"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "Users without a role on your app can grant permissions only after each permission passes App Review and the app is published."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/documentation/threads/webhooks.md",
+    "quote": "replies, delete, mentions, publish"
+   },
+   {
+    "field": "mcp",
+    "url": "https://pypi.org/project/mcp-threads/",
+    "quote": "MCP server wrapping the Threads API into 6 AI-callable tools for social media content management"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether Meta business verification is needed for App Review. Confirm the sandbox status: dev mode with Threads Tester roles is the only test mode I found. Confirm that no OpenAPI spec exists. The webhook quote is a paraphrase of the supported fields, not a verbatim sentence."
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "id": 59,
+ "slug": "waterfall-io",
+ "app": "Waterfall.io",
+ "category": "Data, SEO and Scraping",
+ "hint": "waterfall.io (contact/company intel)",
+ "pass": 1,
+ "at": "2026-11-24T15:07:10.401Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Waterfall.io API documentation contact enrichment"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.to"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "waterfall.io API key docs webhook \"api.waterfall.io\" pricing free trial MCP"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://waterfall.io/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io/llms.txt"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Waterfall enriches and searches B2B contacts and companies via a waterfall of data providers.\",\"subcategory\":\"Contact/company enrichment API\",\""
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Waterfall enriches and searches B2B contacts and companies via a waterfall of data providers.\",\"subcategory\":\"Contact/company enrichment API\",\""
+  }
+ ],
+ "cost_usd": 0.11372560000000001,
+ "duration_ms": 41310,
+ "turns": 10,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Waterfall enriches and searches B2B contacts and companies via a waterfall of data providers.",
+  "subcategory": "Contact/company enrichment API",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "API key in the x-api-key header to https://api.waterfall.io. There is no OAuth. Keys can be managed through an API Keys endpoint.",
+  "access": "approval_required",
+  "access_notes": "The docs' 'Get API access' page says the team reviews every access request. Pricing is credit-based and quoted after a benchmark, with no public plans. I saw no mention of free credits or a free trial.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "13 APIs. Async: Prospector, Contact Enrichment, Phone Enrichment, Company Enrichment. Sync: Search Contact, Search Company, Company Reveal, Company Titles, Job Change, Email Verification, Webhook JWKS, Account Reporting, API Key Management.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "none_found",
+  "mcp_notes": "No MCP is mentioned in the docs index or on the pricing page. The docs have an 'agents' section that refers to 'official API skills'.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "Credentials need access approval and a paid or contract-based credit arrangement. Auth is per-customer API key, so end users must bring their own key.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.waterfall.io",
+    "quote": "Send your API key in the `x-api-key` header to `https://api.waterfall.io`."
+   },
+   {
+    "field": "access",
+    "url": "https://waterfall.io/pricing",
+    "quote": "Pay for answers, not for lookups"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.waterfall.io/llms.txt",
+    "quote": "Open API Specification"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.waterfall.io",
+    "quote": "Webhook JWKS"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check the 'Get API access' page for the approval process and any trial credits. The access-review finding comes from a summary of that page, which I did not open directly. Quotes are paraphrased from fetch summaries, not verbatim page text."
+ }
+}

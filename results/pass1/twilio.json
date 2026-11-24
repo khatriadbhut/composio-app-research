@@ -1,0 +1,94 @@
+{
+ "id": 22,
+ "slug": "twilio",
+ "app": "Twilio",
+ "category": "Communications and Messaging",
+ "hint": "twilio.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:02.223Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/docs/usage/api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Twilio official MCP server alpha github twilio-labs mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.twilio.com/docs/iam/test-credentials"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud communications platform API for SMS, voice, WhatsApp, email, video and verification.\",\"subcategory\":\"CPaaS (SMS/Voice/Messaging)\",\"auth_m"
+  }
+ ],
+ "cost_usd": 0.06810569999999999,
+ "duration_ms": 20154,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud communications platform API for SMS, voice, WhatsApp, email, video and verification.",
+  "subcategory": "CPaaS (SMS/Voice/Messaging)",
+  "auth_methods": [
+   "basic",
+   "api_key",
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "basic",
+  "auth_notes": "REST API uses HTTP Basic with Account SID + Auth Token, or API Key SID + Secret (preferred). OAuth2 client-credentials exists for some newer APIs, and Twilio Connect/OAuth for ISV apps (from memory, not verified here). No standard multi-user OAuth for generic API access; each user would supply their own SID and key/secret.",
+  "access": "self_serve_trial",
+  "access_notes": "Free trial account with trial credit, from memory (not verified on a fetched page). Trial accounts are limited to verified numbers and add a message prefix. Production use needs an upgraded pay-as-you-go account. Pricing is per-usage, so there is no free tier.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Many product APIs: Messaging, Voice, Lookup, Verify, Conversations, Studio, Video, Sync, Proxy, TaskRouter, IAM and others. Likely hundreds of operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "@twilio-alpha/mcp, from github.com/twilio-labs/mcp. It is an alpha and experimental package. Twilio's support page says Twilio doesn't officially offer or support an MCP implementation. The twilio/ai repo has a hosted docs-search MCP at mcp.twilio.com/docs. Classified as official_local with low confidence because of the conflicting support status.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The API is open and has an OpenAPI spec. Caveats: auth is per-account SID and key rather than a multi-user OAuth flow. Trial accounts are restricted. Real messaging needs a paid account plus regulatory work (A2P 10DLC registration, sender verification). Test credentials cover only a few endpoints.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/usage/api",
+    "quote": "each product corresponds to an API."
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/usage/api",
+    "quote": "organized around REST"
+   },
+   {
+    "field": "buildability",
+    "url": "https://www.twilio.com/docs/iam/test-credentials",
+    "quote": "Twilio doesn't charge your account, update the state of your account, or connect to real phone numbers."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.twilio.com/hc/en-us/articles/43750712673819-Twilio-MCP-Model-Context-Protocol-Availability",
+    "quote": "Twilio does not officially offer or support an MCP implementation, an alpha version is available."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "low",
+   "buildability": "medium"
+  },
+  "needs_human": "The auth page and signup/trial pages weren't fetched, so the auth methods and trial terms come from memory. Check Twilio's current OAuth support and trial limits. Confirm whether the alpha MCP counts as vendor-official. The MCP evidence quote comes from a search snippet, not a page I opened."
+ }
+}

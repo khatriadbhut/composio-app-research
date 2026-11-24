@@ -1,0 +1,95 @@
+{
+ "id": 23,
+ "slug": "zoho-cliq",
+ "app": "Zoho Cliq",
+ "category": "Communications and Messaging",
+ "hint": "zoho.com/cliq",
+ "pass": 1,
+ "at": "2026-11-24T15:04:20.118Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/cliq/help/restapi/v2/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zoho Cliq MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/cliq/pricing.html"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Team chat and collaboration platform from Zoho with channels, bots, and extensions.\",\"subcategory\":\"Team chat / messaging\",\"auth_methods\":[\"oau"
+  }
+ ],
+ "cost_usd": 0.08363120000000002,
+ "duration_ms": 35430,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Team chat and collaboration platform from Zoho with channels, bots, and extensions.",
+  "subcategory": "Team chat / messaging",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 only. Register a client in the Zoho API console, get a grant code, exchange it for access and refresh tokens, and send \"Zoho-oauthtoken {token}\" as a header. Scopes look like ZohoCliq.Messages.READ. You must use the right data-center domain (.com, .eu, .in and so on). Access tokens last about 1 hour. Some APIs, such as maintenance and roles, are admin-only.",
+  "access": "self_serve_free",
+  "access_notes": "A free Cliq plan exists, and the Zoho API console is self-serve. I did not see any API plan gating or app-review gate in the docs. Distribution of a multi-data-center OAuth client may need extra setup, but I could not confirm that. Admin-only APIs need an org admin.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST v2 at cliq.zoho.com/api/v2. It covers Users, Departments, Roles, Chats, Channels, Threads, Teams, Messages, Scheduled Messages, Bots, Files, Calls, Events, Reminders, Cliq Database, and bulk-export maintenance APIs. Per-endpoint rate limits apply, and exceeding them returns HTTP 429.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "Zoho runs an official Cliq MCP server, set up through the Zoho MCP console, which gives you an MCP URL. Docs are at zoho.com/cliq/help/platform/zoho-cliq-mcp.html and zoho.com/cliq/help/platform/configure-zoho-cliq-mcp.html. Zoho also publishes guides for connecting it to Claude, Cursor, and VS Code.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is broad and OAuth2 is self-serve. Watch for the per-data-center domains, the per-endpoint rate limits, and the admin-only APIs.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+    "quote": "Zoho-oauthtoken {{access token}}"
+   },
+   {
+    "field": "api",
+    "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+    "quote": "All API requests must be made over HTTPS."
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/cliq/pricing.html",
+    "quote": "Free Chat plans for all Teams size"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+    "quote": "brings your chats into the world of AI using the Model Context Protocol (MCP)."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The REST docs page was truncated, so I only read the first part. Please confirm three things. First, whether the REST API has outbound webhooks, since Cliq bots and incoming-webhook handlers exist but I did not see them in the docs. Second, whether a sandbox exists. Third, whether any scope review or plan gating applies to public OAuth apps. I also could not confirm the MCP auth model or plan requirements."
+ }
+}

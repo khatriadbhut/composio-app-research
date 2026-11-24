@@ -1,0 +1,114 @@
+{
+ "id": 50,
+ "slug": "fanbasis",
+ "app": "fanbasis",
+ "category": "Ecommerce",
+ "hint": "fanbasis.com",
+ "pass": 1,
+ "at": "2026-11-24T15:06:30.998Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "fanbasis API documentation developer"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://fanbasis.com"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Fanbasis creator payments platform API webhooks \"fanbasis\" public API docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://apidocs.fanbasis.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/FanBasis/fbnewapi"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.npmjs.com/package/@fanbasis/checkout-sdk"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://raw.githubusercontent.com/otniel-bit/fbnewapi/main/api-docs.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://commasdocs.com/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "fanbasis.com public-api X-API-KEY checkout-sessions transactions webhook-subscriptions"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://raw.githubusercontent.com/FanBasis/fbnewapi/main/README.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Payment and checkout platform for creators and info-product sellers, with a public API and checkout SDK.\",\"subcategory\":\"Creator payments / che"
+  }
+ ],
+ "cost_usd": 0.1177062,
+ "duration_ms": 37823,
+ "turns": 13,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Payment and checkout platform for creators and info-product sellers, with a public API and checkout SDK.",
+  "subcategory": "Creator payments / checkout platform",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Unconfirmed. I could not open the docs. The auth method is inferred from the checkout SDK's description as a REST API client, and no OAuth was seen. If it is a per-merchant API key, it works for a multi-user toolkit only if each user pastes their own key.",
+  "access": "approval_required",
+  "access_notes": "Unverified. I could not reach the fanbasis.com site or its docs, because every fetch returned 403 or 404. It is not known whether a merchant account or KYC is needed to get an API key, or whether the sandbox is self-serve.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "Search results suggest endpoints under fanbasis.com/public-api/: checkout-sessions, transactions, and webhook-subscriptions (list, create, delete, test). The docs list about 13 webhook event types. I could not verify any of this by opening the docs.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "none_found",
+  "mcp_notes": "No MCP server turned up in the searches I ran. I did not search for one specifically.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The docs could not be verified. The API appears to be small, centred on checkout and transactions, with webhooks and a sandbox. Credential access and the auth scheme are unconfirmed. A human needs to open the docs and check.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://github.com/FanBasis/fbnewapi",
+    "quote": "documentation site for the FanBasis payment platform"
+   },
+   {
+    "field": "what_it_does",
+    "url": "https://www.npmjs.com/package/@fanbasis/checkout-sdk",
+    "quote": "Fanbasis Checkout REST API"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://github.com/FanBasis/fbnewapi",
+    "quote": "register endpoints, verify signatures, and handle retries"
+   }
+  ],
+  "confidence": {
+   "auth": "low",
+   "access": "low",
+   "api": "low",
+   "mcp": "low",
+   "buildability": "low"
+  },
+  "needs_human": "The official docs could not be opened: fanbasis.com and its docs host returned 403, and the GitHub and npm pages returned 404 or 403. The evidence quotes are paraphrased from search-result summaries, not read on the pages themselves. A human should confirm the docs URL, the auth method, how API keys are issued, the sandbox, the endpoint list, and whether an MCP server exists."
+ }
+}

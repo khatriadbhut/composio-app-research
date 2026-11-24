@@ -1,0 +1,103 @@
+{
+ "id": 56,
+ "slug": "firecrawl",
+ "app": "Firecrawl",
+ "category": "Data, SEO and Scraping",
+ "hint": "firecrawl.dev",
+ "pass": 1,
+ "at": "2026-11-24T15:06:47.900Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.firecrawl.dev/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/webhooks/overview"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Web scraping, search, crawling and browser-interaction API that returns clean Markdown or structured data for AI agents.\",\"subcategory\":\"Web sc"
+  }
+ ],
+ "cost_usd": 0.0560947,
+ "duration_ms": 21655,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Web scraping, search, crawling and browser-interaction API that returns clean Markdown or structured data for AI agents.",
+  "subcategory": "Web scraping API",
+  "auth_methods": [
+   "api_key",
+   "bearer_token",
+   "oauth2",
+   "none"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API takes an API key as a Bearer token in the Authorization header. Keys are created in the dashboard, and requests without a key work at lower limits. OAuth sign-in is documented only for the hosted MCP server (/v2/mcp-oauth), not for the REST API. A multi-user toolkit would have each user supply their own API key.",
+  "access": "self_serve_free",
+  "access_notes": "The free plan is $0, needs no credit card and gives 1,000 credits a month, with 10 requests per minute for scrape, map and search. Paid plans (Hobby $19, Standard $99, Growth $399, Scale $749, Enterprise custom) raise the limits. No app review is needed.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Documented capabilities are scrape, search, map, crawl, batch scrape, extract, agent, interact/browser sandbox and parse, plus status and cancel endpoints and account usage endpoints. The docs pages I opened list only the scrape, search and interact endpoints explicitly.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted remote servers: https://mcp.firecrawl.dev/v2/mcp (API key or keyless) and https://mcp.firecrawl.dev/v2/mcp-oauth (OAuth sign-in). The docs also link a guide to run the server locally.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Self-serve API keys on a free tier. Rate limits on the free plan are low (10 requests per minute), and each user needs their own key.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://docs.firecrawl.dev/introduction",
+    "quote": "Firecrawl is a context API for AI agents. It lets you search the web, scrape pages, and interact with live pages"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.firecrawl.dev/introduction",
+    "quote": "Bearer $FIRECRAWL_API_KEY"
+   },
+   {
+    "field": "access",
+    "url": "https://www.firecrawl.dev/pricing",
+    "quote": "1,000 free credits every month"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.firecrawl.dev/mcp-server",
+    "quote": "https://mcp.firecrawl.dev/v2/mcp-oauth"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.firecrawl.dev/webhooks/overview",
+    "quote": "Crawl: started, page, completed"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Confirm the OpenAPI spec URL. I believe one is published (Firecrawl's docs and GitHub repo carry one), but I did not open it. Also confirm the full endpoint count."
+ }
+}

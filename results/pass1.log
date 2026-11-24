@@ -1,0 +1,101 @@
+pass1: 100 apps, model sonnet, concurrency 8
+[1/100] ok   Podio                      28s  7 tool calls  self_serve_free / ready_now
+[2/100] ok   HubSpot                    28s  6 tool calls  self_serve_free / ready_now
+[3/100] ok   Pipedrive                  29s  6 tool calls  approval_required / ready_with_caveats
+[4/100] ok   Twenty                     32s  6 tool calls  self_serve_trial / ready_now
+[5/100] ok   Attio                      32s  7 tool calls  self_serve_free / ready_now
+[6/100] ok   Zoho CRM                   34s  9 tool calls  self_serve_free / ready_now
+[7/100] ok   Close                      36s  8 tool calls  approval_required / ready_with_caveats
+[8/100] ok   Salesforce                 40s  7 tool calls  self_serve_free / ready_now
+[9/100] ok   DealCloud                  31s  6 tool calls  contact_sales / needs_partnership_or_sales
+[10/100] ok   Intercom                   27s  6 tool calls  self_serve_free / ready_now
+[11/100] ok   Front                      29s  7 tool calls  self_serve_free / ready_now
+[12/100] ok   Freshdesk                  35s  5 tool calls  self_serve_trial / ready_now
+[13/100] ok   Pylon                      30s  7 tool calls  paid_plan_required / ready_with_caveats
+[14/100] ok   Copper                     42s  8 tool calls  approval_required / ready_with_caveats
+[15/100] ok   LiveAgent                  31s  7 tool calls  paid_plan_required / ready_with_caveats
+[16/100] ok   Zendesk                    45s  10 tool calls  approval_required / ready_with_caveats
+[17/100] ok   Plain                      29s  6 tool calls  paid_plan_required / ready_with_caveats
+[18/100] ok   Gladly                     22s  4 tool calls  paid_plan_required / ready_with_caveats
+[19/100] ok   Twilio                     21s  5 tool calls  self_serve_trial / ready_with_caveats
+[20/100] ok   Help Scout                 31s  7 tool calls  paid_plan_required / ready_with_caveats
+[21/100] ok   Slack                      31s  7 tool calls  self_serve_free / ready_now
+[22/100] ok   Zoho Cliq                  36s  6 tool calls  self_serve_free / ready_now
+[23/100] ok   Lark (Larksuite)           36s  8 tool calls  approval_required / ready_with_caveats
+[24/100] ok   Gorgias                    51s  12 tool calls  approval_required / ready_with_caveats
+[25/100] ok   Telegram                   36s  7 tool calls  self_serve_free / ready_with_caveats
+[26/100] ok   Discord                    39s  10 tool calls  self_serve_free / ready_with_caveats
+[27/100] ok   Aircall                    31s  6 tool calls  approval_required / ready_with_caveats
+[28/100] ok   WhatsApp Business          42s  9 tool calls  approval_required / ready_with_caveats
+[29/100] ok   Google Ads                 28s  5 tool calls  approval_required / ready_with_caveats
+[30/100] ok   Pumble                     51s  9 tool calls  self_serve_free / ready_with_caveats
+[31/100] ok   Vonage                     31s  7 tool calls  self_serve_trial / ready_with_caveats
+[32/100] ok   Meta Ads                   32s  6 tool calls  approval_required / ready_with_caveats
+[33/100] ok   LinkedIn Ads               27s  6 tool calls  approval_required / ready_with_caveats
+[34/100] ok   GoHighLevel                36s  8 tool calls  approval_required / ready_with_caveats
+[35/100] ok   Klaviyo                    32s  8 tool calls  self_serve_free / ready_now
+[36/100] ok   Mailchimp                  39s  9 tool calls  self_serve_free / ready_now
+[37/100] ok   systeme.io                 34s  7 tool calls  self_serve_free / ready_now
+[38/100] ok   Threads (Meta)             34s  7 tool calls  approval_required / ready_with_caveats
+[39/100] ok   Shopify                    29s  8 tool calls  approval_required / ready_with_caveats
+[40/100] ok   SendGrid                   44s  11 tool calls  self_serve_trial / ready_now
+[41/100] ok   Squarespace                21s  5 tool calls  approval_required / ready_with_caveats
+[42/100] ok   WooCommerce                37s  6 tool calls  self_serve_free / ready_with_caveats
+[43/100] ok   Salesforce Commerce Cloud  36s  8 tool calls  paid_plan_required / ready_with_caveats
+[44/100] ok   Pinterest                  65s  14 tool calls  approval_required / ready_with_caveats
+[45/100] ok   BigCommerce                44s  10 tool calls  self_serve_free / ready_now
+[46/100] ok   Magento (Adobe Commerce)   40s  8 tool calls  self_serve_free / ready_with_caveats
+[47/100] ok   DataForSEO                 21s  5 tool calls  self_serve_trial / ready_now
+[48/100] ok   Ecwid                      51s  11 tool calls  approval_required / ready_with_caveats
+[49/100] ok   SE Ranking                 30s  6 tool calls  paid_plan_required / ready_with_caveats
+[50/100] ok   Amazon Selling Partner     41s  8 tool calls  approval_required / ready_with_caveats
+[51/100] ok   Gumroad                    47s  11 tool calls  self_serve_free / ready_now
+[52/100] ok   fanbasis                   38s  12 tool calls  approval_required / ready_with_caveats
+[53/100] ok   MrScraper                  31s  7 tool calls  self_serve_free / ready_now
+[54/100] ok   Apify                      20s  5 tool calls  self_serve_free / ready_now
+[55/100] ok   Firecrawl                  22s  6 tool calls  self_serve_free / ready_now
+[56/100] ok   Ahrefs                     48s  10 tool calls  approval_required / ready_with_caveats
+[57/100] ok   Sherlock                   24s  4 tool calls  no_public_api / not_buildable
+[58/100] ok   GitHub                     21s  6 tool calls  self_serve_free / ready_now
+[59/100] ok   Vercel                     27s  9 tool calls  self_serve_free / ready_now
+[60/100] ok   Bright Data                39s  8 tool calls  self_serve_free / ready_now
+[61/100] ok   Netlify                    20s  4 tool calls  self_serve_free / ready_now
+[62/100] ok   Supabase                   18s  5 tool calls  self_serve_free / ready_now
+[63/100] ok   Waterfall.io               42s  9 tool calls  approval_required / ready_with_caveats
+[64/100] ok   Clay                       40s  8 tool calls  self_serve_free / ready_with_caveats
+[65/100] ok   Cloudflare                 22s  5 tool calls  self_serve_free / ready_now
+[66/100] ok   Neo4j                      27s  5 tool calls  self_serve_free / ready_with_caveats
+[67/100] ok   Snowflake                  27s  7 tool calls  self_serve_trial / ready_with_caveats
+[68/100] ok   Sentry                     25s  8 tool calls  self_serve_free / ready_now
+[69/100] ok   Linear                     23s  6 tool calls  self_serve_free / ready_now
+[70/100] ok   Datadog                    29s  7 tool calls  self_serve_trial / ready_with_caveats
+[71/100] ok   Notion                     28s  7 tool calls  self_serve_free / ready_now
+[72/100] ok   MongoDB Atlas              34s  7 tool calls  self_serve_free / ready_now
+[73/100] ok   Airtable                   31s  8 tool calls  self_serve_free / ready_now
+[74/100] ok   Jira                       30s  8 tool calls  self_serve_free / ready_now
+[75/100] ok   ClickUp                    21s  6 tool calls  self_serve_free / ready_now
+[76/100] ok   Asana                      28s  7 tool calls  self_serve_free / ready_now
+[77/100] FAIL Paygent Connect            4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[78/100] FAIL Coda                       24s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[79/100] FAIL Harvest                    23s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[80/100] ok   Stripe                     22s  6 tool calls  approval_required / ready_with_caveats
+[81/100] ok   Monday.com                 32s  8 tool calls  self_serve_free / ready_now
+[82/100] FAIL QuickBooks                 3s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[83/100] FAIL iPayX                      3s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[84/100] FAIL Xero                       4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[85/100] ok   Smartsheet                 28s  6 tool calls  paid_plan_required / ready_with_caveats
+[86/100] FAIL Binance                    12s  4 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[87/100] FAIL Plaid                      14s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[88/100] FAIL Brex                       4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[89/100] FAIL Ramp                       4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[90/100] FAIL PitchBook                  4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[91/100] FAIL NotebookLM                 4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[92/100] FAIL Fathom                     4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[93/100] FAIL Otter AI                   5s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[94/100] FAIL Consensus                  4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[95/100] FAIL Reducto                    4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[96/100] FAIL Devin                      4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[97/100] FAIL higgsfield                 4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[98/100] FAIL Mermaid CLI                4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[99/100] FAIL YouTube Transcript         4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)
+[100/100] FAIL Grain                      4s  0 tool calls  You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)

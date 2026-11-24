@@ -1,0 +1,117 @@
+{
+ "id": 24,
+ "slug": "lark-larksuite",
+ "app": "Lark (Larksuite)",
+ "category": "Communications and Messaging",
+ "hint": "open.larksuite.com",
+ "pass": 1,
+ "at": "2026-11-24T15:04:22.324Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/reference/authen-v1/authorize/get"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Lark Suite open platform MCP server larksuite lark-openapi-mcp"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "open.larksuite.com app publish review store custom app tenant_access_token event subscription webhook"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://open.larksuite.com/document/server-docs/getting-started/overview-of-app-scopes.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/larksuite/lark-openapi-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://open.larksuite.com/llms.txt"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Lark (Larksuite) is ByteDance's international workplace suite: chat, docs, calendar, email, approvals, and a developer open platform.\",\"subcate"
+  }
+ ],
+ "cost_usd": 0.1035684,
+ "duration_ms": 35477,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Lark (Larksuite) is ByteDance's international workplace suite: chat, docs, calendar, email, approvals, and a developer open platform.",
+  "subcategory": "Team messaging and collaboration suite",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Apps have an App ID and App Secret. These are exchanged for a tenant_access_token (app identity, scoped by the app's permissions) or an app_access_token (used for marketplace apps). OAuth 2.0 authorization code flow gives a user_access_token (user identity). A multi-user agent toolkit would use OAuth2 user_access_token with a refresh token. The tenant token suits bot actions. The docs call tenant_access_token and user_access_token the two main credentials; app_access_token and the exact OAuth endpoints were not verified on a fetched page.",
+  "access": "approval_required",
+  "access_notes": "Anyone can create a custom app for free, and developers can debug with their own user_access_token without publishing. Custom-app permissions need approval from the tenant admin. To let other tenants install an app, it must be a store app, which needs a Lark open-platform launch review and a tenant install review. I did not find a pricing page, so I can't confirm whether a free Lark tenant is limited.",
+  "api_styles": [
+   "rest",
+   "websocket",
+   "sdk_only"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers messaging (im), contacts, calendar, docs, drive, base, sheets, approval, mail, VC, HR and more. I estimate well over 500 endpoints; I did not count them. Official SDKs exist for Go, Node, Java and Python.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "npm package @larksuiteoapi/lark-mcp, from github.com/larksuite/lark-openapi-mcp. It runs over stdio or SSE, is in Beta, and supports --oauth user tokens and the --domain https://open.larksuite.com option. I found no vendor-hosted remote MCP URL.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The API is public and creating a custom app is self-serve. Distributing one OAuth app to many external tenants requires store-app publication, which has a platform review plus a tenant-admin install review. Permission scopes also need admin approval. Lark and Feishu run on separate domains (open.larksuite.com vs open.feishu.cn).",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://open.larksuite.com/document/server-docs/getting-started/overview-of-app-scopes.md",
+    "quote": "ISV 开发的商店应用：如需申请权限，需要通过Lark开放平台发布应用时和租户安装应用时的两道审核流程。"
+   },
+   {
+    "field": "access",
+    "url": "https://open.larksuite.com/document/server-docs/getting-started/overview-of-app-scopes.md",
+    "quote": "企业自建应用：应用开发者申请的权限需要通过 租户管理员 的审核。"
+   },
+   {
+    "field": "auth",
+    "url": "https://open.larksuite.com/llms.txt",
+    "quote": "user_access_token: 以用户身份调用 API 时需要使用的凭证，可读写的数据范围由用户权限决定。"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://open.larksuite.com/llms.txt",
+    "quote": "传统的 Webhook 模式，该方式需要你提供用于接收事件或回调消息的服务器公网地址。"
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/larksuite/lark-openapi-mcp",
+    "quote": "This tool is currently in Beta stage. Features and APIs may change"
+   },
+   {
+    "field": "auth",
+    "url": "https://github.com/larksuite/lark-openapi-mcp",
+    "quote": "Obtain the App ID and App Secret, which will be used for API authentication."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The fetched doc pages were thin or came back in Chinese through summarization. Please check these: (1) the exact OAuth endpoints and refresh token behavior for Lark international; (2) whether an OpenAPI spec is published; (3) whether a sandbox or test tenant exists (a free tenant can likely be created, but I didn't confirm it); (4) whether the Lark international and Feishu China platforms need separate apps."
+ }
+}

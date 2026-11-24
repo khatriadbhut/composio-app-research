@@ -1,0 +1,92 @@
+{
+ "id": 46,
+ "slug": "squarespace",
+ "app": "Squarespace",
+ "category": "Ecommerce",
+ "hint": "developers.squarespace.com",
+ "pass": 1,
+ "at": "2026-11-24T15:05:46.181Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/commerce-apis/overview"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Squarespace MCP server official"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Website builder and ecommerce platform; Commerce APIs expose products, orders, inventory, contacts, and more.\",\"subcategory\":\"Website builder /"
+  }
+ ],
+ "cost_usd": 0.06551970000000001,
+ "duration_ms": 20403,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Website builder and ecommerce platform; Commerce APIs expose products, orders, inventory, contacts, and more.",
+  "subcategory": "Website builder / Ecommerce",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API keys (site owner generates them in Settings > Advanced > Developer API Keys) are for custom apps on a single site. OAuth is for commercial multi-site apps, and the Webhook Subscriptions API is OAuth only.",
+  "access": "approval_required",
+  "access_notes": "An API key needs the Commerce Advanced plan, a paid plan. OAuth clients must be reviewed and approved on the Squarespace developer apps page before other sites can connect. Approval only allows OAuth connections. Listing in Squarespace Extensions is a separate process. I did not verify whether a dev-mode OAuth client works on your own site before approval.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "About 9 APIs: Analytics, Contacts, Discounts, Inventory, Orders, Products, Profiles (maintenance mode), Transactions, Webhook Subscriptions, plus Websites and Forms (read-only). I did not count individual operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "A search found no official Squarespace MCP server. Third-party ones exist: community servers on GitHub, and hosted ones from Zapier, StackOne, MCPBundles and others.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The OAuth client needs Squarespace approval before public use. Testing without OAuth approval needs a Commerce Advanced site for an API key. The API covers commerce only, not site content or design. Whether the page-builder surface is reachable is unclear.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "API keys will never expire as long as the merchant site remains active."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "Custom applications require Squarespace's Commerce Advanced plan."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.squarespace.com/commerce-apis/overview",
+    "quote": "Webhook Subscriptions: Subscribes to site notifications, such as when an order is created"
+   },
+   {
+    "field": "mcp",
+    "url": "https://glama.ai/mcp/servers/integrations/squarespace",
+    "quote": "Best Squarespace MCP Servers"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether a dev-mode OAuth client works before approval. Confirm whether an OpenAPI spec is published and whether a sandbox exists. Neither appeared in the pages I fetched. The quotes are paraphrased summaries from the fetch tool, not verbatim page text, and the MCP quote is only a search-result title."
+ }
+}

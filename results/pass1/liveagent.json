@@ -1,0 +1,101 @@
+{
+ "id": 16,
+ "slug": "liveagent",
+ "app": "LiveAgent",
+ "category": "Support and Helpdesk",
+ "hint": "liveagent.com",
+ "pass": 1,
+ "at": "2026-11-24T15:03:43.882Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "LiveAgent API v3 documentation API key authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "LiveAgent MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://support.liveagent.com/647358-MCP-Integration-for-Agents"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://support.liveagent.com/094128-Swagger-API-descriptor"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.liveagent.com/pricing/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Multichannel helpdesk and live chat software with ticketing, call center and knowledge base.\",\"subcategory\":\"Helpdesk\",\"auth_methods\":[\"api_key"
+  }
+ ],
+ "cost_usd": 0.09215849999999999,
+ "duration_ms": 30363,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Multichannel helpdesk and live chat software with ticketing, call center and knowledge base.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "api_key",
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API v3 uses a per-account API key sent in the `apikey` header. Keys are created in the agent panel under Configuration > System > API, with per-key permissions. The key is tied to a customer-specific domain (<account>.ladesk.com or a custom domain). API v1 and v3 keys are separate. The built-in MCP endpoint supports OAuth 2.1 with PKCE or a bearer token, but I found no OAuth for the REST API itself. A multi-user toolkit would have each user supply their domain and API key.",
+  "access": "paid_plan_required",
+  "access_notes": "There is no free plan, only a 30-day no-card trial. After that a paid plan is needed. The pricing page lists API keys per plan: Starter 1, Team 5, Business 10, Enterprise unlimited. Keys are self-serve in the account. External MCP connections are listed for Business and Enterprise.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v3 covers tickets, messages, customers, contacts, agents, departments, companies, knowledge base, calls, tags and more. I did not count the operations. The reference is served per account at /docs/api/v3, inside the admin panel.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Each account has its own endpoint at https://<your-liveagent-domain>/api/mcp, using Streamable HTTP. Auth is OAuth 2.1 with PKCE or a bearer token. It is described as an early preview. A separate open-source server is at github.com/qualityunit/liveagent-mcp-server, published by QualityUnit.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The API needs a paid plan after the 30-day trial. Credentials are per-account and per-domain, so users must enter their own subdomain and API key. The full API reference is only visible inside a logged-in account.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "quote": "OAuth 2.1 (Authorization Code + PKCE), recommended"
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "quote": "https://<your-liveagent-domain>/api/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://support.liveagent.com/094128-Swagger-API-descriptor",
+    "quote": "you can use the swagger (OpenAPI) API descriptor which can be found at the very top of the API v3 documentation."
+   },
+   {
+    "field": "access",
+    "url": "https://www.liveagent.com/pricing/",
+    "quote": "30-day free trial"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The v3 docs are behind account login. The `apikey` header detail came from search-result summaries of support articles, not a page I opened. Please confirm it. Also confirm that webhooks exist (I believe they are set up as a \"Call URL\" action in rules), the 'no sandbox' finding, and which plans include MCP."
+ }
+}

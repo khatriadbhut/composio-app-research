@@ -1,0 +1,114 @@
+{
+ "id": 34,
+ "slug": "gohighlevel",
+ "app": "GoHighLevel",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "highlevel.stoplight.io",
+ "pass": 1,
+ "at": "2026-11-24T15:05:15.939Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://marketplace.gohighlevel.com/docs/oauth/GettingStarted"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "GoHighLevel MCP server official services.leadconnectorhq.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://marketplace.gohighlevel.com/docs/other/mcp.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://marketplace.gohighlevel.com/docs/webhook/WebhookIntegrationGuide"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/GoHighLevel/highlevel-api-docs"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"All-in-one CRM, marketing automation, and agency platform with a broad public REST API.\",\"subcategory\":\"Marketing CRM / agency platform\",\"auth_"
+  }
+ ],
+ "cost_usd": 0.08702810000000001,
+ "duration_ms": 35340,
+ "turns": 9,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "All-in-one CRM, marketing automation, and agency platform with a broad public REST API.",
+  "subcategory": "Marketing CRM / agency platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Two supported methods: Private Integration Token (single sub-account, internal use) and OAuth 2.0 (public integrations, webhooks). A multi-user toolkit would use OAuth 2.0 via a Marketplace app. The old API v1 keys are not covered in the docs I fetched.",
+  "access": "approval_required",
+  "access_notes": "Developers create Marketplace apps in the Developer Marketplace. I did not confirm a free tier. Using the API needs a HighLevel account, which is generally paid, and I could not verify the plan. The Marketplace nav links to \"App Review Guidelines\", which suggests review is needed before public distribution. I did not open that page.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v2 covers contacts, opportunities, calendars, conversations, invoices, products, locations, users, social, workflows and more. I did not count operations; this is an estimate.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Vendor-hosted at https://services.leadconnectorhq.com/mcp/anthropic/v2. Other clients have their own paths, such as /mcp/openai/v2/ and /mcp/cursor/v2. It signs in with a HighLevel login, with no API key.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Public OAuth distribution likely goes through Marketplace app review, and the API needs a HighLevel account. Private Integration Tokens work for building and testing on one sub-account. Neither the app-review terms nor the sandbox or plan details were verified.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc",
+    "quote": "HighLevel currently supports two types of authorization:"
+   },
+   {
+    "field": "auth",
+    "url": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc",
+    "quote": "You're developing a full-scale integration intended for public use."
+   },
+   {
+    "field": "mcp",
+    "url": "https://marketplace.gohighlevel.com/docs/other/mcp.md",
+    "quote": "https://services.leadconnectorhq.com/mcp/anthropic/v2"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://marketplace.gohighlevel.com/docs/webhook/WebhookIntegrationGuide",
+    "quote": "We offer a comprehensive set of webhook events that cover all major activities in our platform."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/GoHighLevel/highlevel-api-docs",
+    "quote": "Markdown and OpenAPI-based documentation for easy readability and automation."
+   },
+   {
+    "field": "access",
+    "url": "https://marketplace.gohighlevel.com/docs/oauth/GettingStarted",
+    "quote": "create and distribute their custom applications and integrations."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "low",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check three things. First, the Marketplace App Review Guidelines, to see what public OAuth distribution requires. Second, whether a HighLevel developer or agency account is free or needs a paid plan, and whether a sandbox sub-account exists. Third, whether the OpenAPI JSON files are in the GitHub repo. The hint highlevel.stoplight.io is the legacy docs host. Current docs are at marketplace.gohighlevel.com."
+ }
+}

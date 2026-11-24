@@ -1,0 +1,92 @@
+{
+ "id": 65,
+ "slug": "supabase",
+ "app": "Supabase",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "supabase.com/docs",
+ "pass": 1,
+ "at": "2026-11-24T15:07:08.200Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/guides/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/guides/api/oauth-apps/build-a-supabase-integration"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/reference/api/introduction"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Open-source Postgres backend platform: database, auth, storage, edge functions, with a Management API.\",\"subcategory\":\"Backend-as-a-service / P"
+  }
+ ],
+ "cost_usd": 0.0495521,
+ "duration_ms": 16965,
+ "turns": 6,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Open-source Postgres backend platform: database, auth, storage, edge functions, with a Management API.",
+  "subcategory": "Backend-as-a-service / Postgres platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Management API accepts a personal access token or an OAuth2 token as a Bearer header. Multi-user toolkits would use OAuth2 apps (authorization code). Per-project data APIs (PostgREST) use project API keys/JWTs, which are a separate mechanism.",
+  "access": "self_serve_free",
+  "access_notes": "PATs and OAuth apps are created in the dashboard on a free account. I did not confirm whether OAuth apps need review before public distribution. I could not open the OAuth integration docs page (404 on the URL I tried). I did not check pricing.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Management API covers projects, organizations, database, branches, functions, secrets, auth config, analytics, and webhooks endpoints. The docs list a rate limit of 120 requests per minute. I did not count operations.",
+  "openapi_spec": "yes",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at https://mcp.supabase.com/mcp, with the repo at github.com/supabase/mcp. It uses OAuth by default (dynamic client registration), with a PAT option.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Self-serve free credentials and a published OpenAPI spec. Caveat: there is an official MCP server, so the toolkit overlaps with it. I did not verify the OAuth app review policy or the webhook details.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "All API requests require an access token to be included in the Authorization header."
+   },
+   {
+    "field": "api",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "OpenAPI spec at https://api.supabase.com/api/v1-json"
+   },
+   {
+    "field": "mcp",
+    "url": "https://supabase.com/docs/guides/mcp",
+    "quote": "The hosted Supabase MCP server is available at https://mcp.supabase.com/mcp."
+   },
+   {
+    "field": "mcp",
+    "url": "https://supabase.com/docs/guides/mcp",
+    "quote": "By default the hosted Supabase MCP server uses dynamic client registration to authenticate with your Supabase org."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm that OAuth apps can be used by other organizations without review. Confirm webhook availability. Webhooks appear only as sidebar entries in the Management API docs. The sandbox claim rests on the free tier and the local CLI. I didn't verify it on a page."
+ }
+}

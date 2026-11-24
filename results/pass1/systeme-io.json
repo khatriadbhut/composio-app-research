@@ -1,0 +1,99 @@
+{
+ "id": 37,
+ "slug": "systeme-io",
+ "app": "systeme.io",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "systeme.io (funnel builder)",
+ "pass": 1,
+ "at": "2026-11-24T15:05:24.055Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "systeme.io public API documentation X-API-Key webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.systeme.io/reference/api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://help.systeme.io/article/2323-how-to-use-systeme-io-public-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://help.systeme.io/article/2930-how-to-use-systeme-ios-webhook-service"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "systeme.io MCP server connect Claude URL API keys plan free"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"All-in-one funnel builder, email marketing, courses and e-commerce platform.\",\"subcategory\":\"Funnel builder / marketing platform\",\"auth_methods"
+  }
+ ],
+ "cost_usd": 0.09089040000000001,
+ "duration_ms": 33189,
+ "turns": 8,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "All-in-one funnel builder, email marketing, courses and e-commerce platform.",
+  "subcategory": "Funnel builder / marketing platform",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Each user creates a public API key in Settings > MCP & API keys (max 3 per account, optional expiry) and sends it in the X-API-Key header. No OAuth was found. A multi-user toolkit would have each end user paste their own key.",
+  "access": "self_serve_free",
+  "access_notes": "Keys are created in account settings. The help articles name no plan requirement, and the MCP page says MCP is included in all plans, including Free. I did not confirm API-key availability on the free plan from a pricing page.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "I saw examples for contacts and tags (POST /api/tags, GET /api/contacts). Other resources probably exist (e.g. orders, courses, products), but I could not view the endpoint list. The size is unconfirmed.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote server at https://mcp.systeme.io/mcp?mcpKey=YOURMCPKEY. The user creates the MCP key in Settings. Funnel and funnel step editing via MCP is not supported. A community local server also exists: snzeeee/mcp-server-systeemio.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Per-user API key only, with no OAuth. The OpenAPI spec and full endpoint list were not confirmed. Webhooks are configured by the user in the UI, and I did not confirm whether an API can register them.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.systeme.io/reference/api",
+    "quote": "Send your API key in the X-API-Key header of each request."
+   },
+   {
+    "field": "access",
+    "url": "https://help.systeme.io/article/2323-how-to-use-systeme-io-public-api",
+    "quote": "create up to 3 API keys per account"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://help.systeme.io/article/2930-how-to-use-systeme-ios-webhook-service",
+    "quote": "Triggered when a customer makes a purchase (supports both funnels and creator stores)."
+   },
+   {
+    "field": "mcp",
+    "url": "https://help.systeme.io/article/11230-how-to-connect-your-systemeio-account-with-claude-using-mcp-keys",
+    "quote": "https://mcp.systeme.io/mcp?mcpKey=YOURMCPKEY"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "low",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The WebFetch summary of the developer.systeme.io reference gave only a few example endpoints. Check the full endpoint list, whether an OpenAPI spec is published, and whether the free plan includes API keys. The MCP URL and the \"all plans\" claim come from search-result summaries, not from pages I opened. The Claude connector article (help.systeme.io/article/11230) was seen only in search results, so the evidence quote for it is the URL pattern from the summary."
+ }
+}

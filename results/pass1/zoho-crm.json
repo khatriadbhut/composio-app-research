@@ -1,0 +1,117 @@
+{
+ "id": 7,
+ "slug": "zoho-crm",
+ "app": "Zoho CRM",
+ "category": "CRM and Sales",
+ "hint": "zoho.com/crm",
+ "pass": 1,
+ "at": "2026-11-24T15:03:05.974Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zoho CRM MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/notifications/overview.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/register-client.html"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Zoho CRM is a cloud CRM for sales, contacts, deals and automation.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"oauth2\"],\"auth_primary\":\"oauth2\",\"auth"
+  }
+ ],
+ "cost_usd": 0.12869760000000002,
+ "duration_ms": 32462,
+ "turns": 10,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Zoho CRM is a cloud CRM for sales, contacts, deals and automation.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 only (access tokens last 1h, refresh tokens last until revoked). Register a client in the Zoho API Console. Server-based clients suit multi-user apps. Self Client suits single-user backends. Zoho runs separate data centers (accounts domains) per region.",
+  "access": "self_serve_free",
+  "access_notes": "Clients are registered in the Zoho API Console with no approval step shown in the docs. The Free edition gets 5,000 API credits per day. Trial editions follow their paid edition's limits. Higher editions raise the limits. I did not confirm whether Free edition supports every API.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "V8 API covers metadata, core record CRUD across modules, composite (up to 5 calls), bulk, notifications and COQL queries. Many modules and endpoints.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Zoho hosts four pre-built CRM MCP servers (one is read-only for analytics), documented at https://www.zoho.com/crm/developer/docs/mcp/overview.html. They use OAuth. The fetched page gave no server URL. Zoho also has a broader Zoho MCP console. Workato and CData offer third-party servers.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Multi-data-center handling (the accounts and API domain differs by region) is the main thing to build around. Zoho's CRM sandbox is a paid-edition feature, and I did not verify that from a fetched page.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+    "quote": "Clients don't need to support password authentication or store user credentials."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/register-client.html",
+    "quote": "Self Client"
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+    "quote": "Free | 5,000 | 5,000"
+   },
+   {
+    "field": "api",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+    "quote": "Perform CRUD operations on module records through RESTful endpoints."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/notifications/overview.html",
+    "quote": "allow you to get instant notifications whenever an action is performed on the records of a module"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+    "quote": "build, host, or maintain any infrastructure"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm three things. (1) Whether Zoho publishes an OpenAPI spec. (2) The sandbox's edition requirements. The sandbox answer comes from prior knowledge and no fetched page confirms it. (3) The exact remote MCP URL, and whether non-Zoho MCP clients can use it."
+ }
+}

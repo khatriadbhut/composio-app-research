@@ -1,0 +1,113 @@
+{
+ "id": 35,
+ "slug": "mailchimp",
+ "app": "Mailchimp",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "mailchimp.com/developer",
+ "pass": 1,
+ "at": "2026-11-24T15:05:19.444Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/api/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Mailchimp MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/guides/quick-start/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Mailchimp MCP server connect Claude ChatGPT help mailchimp.com"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Email marketing platform with audiences, campaigns, automations, ecommerce, plus Mandrill transactional email.\",\"subcategory\":\"Email marketing\""
+  }
+ ],
+ "cost_usd": 0.101137,
+ "duration_ms": 37546,
+ "turns": 10,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Email marketing platform with audiences, campaigns, automations, ecommerce, plus Mandrill transactional email.",
+  "subcategory": "Email marketing",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Marketing API: OAuth 2 authorization code flow for acting on behalf of other users; API key (basic auth or bearer) for own account. Transactional (Mandrill) uses a separate API key. Data center is in the API key suffix or fetched via the OAuth metadata endpoint.",
+  "access": "self_serve_free",
+  "access_notes": "Register an app on the Registered Apps page in a Mailchimp account and get client_id and client_secret. The docs describe no app review. I did not verify whether a free-tier account can register apps or what API limits apply. Mandrill needs a paid add-on. The consumer Claude/ChatGPT connectors are reportedly limited to Standard and Premium plans.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Marketing API v3.0 at api.mailchimp.com/3.0 covers lists/audiences, members, campaigns, automations, templates, reports, ecommerce, landing pages and more. Likely well over 100 operations. I did not count them.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official docs-only MCP at https://mailchimp.com/developer/_mcp/server. Transactional MCP at mandrillapp.com/mcp (Bearer API key). A hosted account MCP at https://ai-inc.mailchimp.com/claude/mcp/v2 (OAuth) appeared only on a third-party directory. Mailchimp markets Claude and ChatGPT connectors for Standard and Premium plans. Community servers exist, for example damientilman/mailchimp-mcp-server and mcp-mailchimp.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is broad and OAuth registration is self-serve. Remaining checks: free-tier API limits, and whether OAuth apps need review for public distribution. Mailchimp also runs an Integration Partner Program.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
+    "quote": "This is the only time you'll be able to see `client_secret`, so you'll need to copy it and store it securely."
+   },
+   {
+    "field": "api",
+    "url": "https://mailchimp.com/developer/marketing/api/",
+    "quote": "Get links to all other resources available in the API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/",
+    "quote": "Select the boxes next to each update type to choose the events that will trigger your webhook."
+   },
+   {
+    "field": "mcp",
+    "url": "https://mailchimp.com/developer/marketing/build/ai-tools/mcp-server",
+    "quote": "MCP server"
+   },
+   {
+    "field": "auth",
+    "url": "https://mailchimp.com/developer/marketing/guides/quick-start/",
+    "quote": "anystring:${apikey}"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check four things. (1) Whether a free Mailchimp account can register OAuth apps and what its API limits are. (2) Whether public OAuth distribution needs review. (3) Whether an OpenAPI spec is published. (4) Whether the ai-inc.mailchimp.com MCP is official and open to third-party clients. I fetched no page that confirmed any of these. The MCP quotes come from search-result summaries, not page text."
+ }
+}

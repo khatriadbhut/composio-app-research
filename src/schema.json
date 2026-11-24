@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "what_it_does", "subcategory", "auth_methods", "auth_primary", "auth_notes",
+    "access", "access_notes", "api_styles", "api_breadth", "api_breadth_notes",
+    "openapi_spec", "webhooks", "mcp", "mcp_notes", "sandbox",
+    "buildability", "main_blocker", "blocker_notes", "evidence", "confidence", "needs_human"
+  ],
+  "properties": {
+    "what_it_does": { "type": "string", "description": "One line, under 15 words." },
+    "subcategory": { "type": "string", "description": "Short label, e.g. 'CRM', 'Helpdesk', 'Ads platform', 'Web scraping API'." },
+    "auth_methods": {
+      "type": "array", "minItems": 1,
+      "items": { "enum": ["oauth2", "oauth1", "api_key", "bearer_token", "basic", "jwt_service_account", "aws_sigv4", "hmac_signature", "bot_token", "none", "other"] },
+      "description": "Every way a third-party developer can authenticate to the public API. bearer_token = personal access / static token. api_key = key passed as header or query param."
+    },
+    "auth_primary": { "enum": ["oauth2", "oauth1", "api_key", "bearer_token", "basic", "jwt_service_account", "aws_sigv4", "hmac_signature", "bot_token", "none", "other"], "description": "What an agent toolkit acting for many end users would use." },
+    "auth_notes": { "type": "string" },
+    "access": {
+      "enum": ["self_serve_free", "self_serve_trial", "paid_plan_required", "approval_required", "partner_gated", "contact_sales", "no_public_api"],
+      "description": "Can a developer get working credentials alone, today? self_serve_free = free account/tier gives API access. self_serve_trial = only via a time-limited trial. paid_plan_required = API needs a paid plan. approval_required = app review / developer-token / admin approval before real use. partner_gated = partnership program required. contact_sales = enterprise/sales only. no_public_api = none exists."
+    },
+    "access_notes": { "type": "string", "description": "Exactly what gates it (plan name, review step, scope approval) and for what (dev vs production/public distribution)." },
+    "api_styles": { "type": "array", "minItems": 1, "items": { "enum": ["rest", "graphql", "soap", "grpc", "websocket", "sdk_only", "cli_only", "library_only", "none"] } },
+    "api_breadth": { "enum": ["broad", "moderate", "narrow", "none"], "description": "broad = many resources, CRUD across the product (roughly 50+ operations). moderate = core objects covered (roughly 10-50). narrow = a handful of endpoints or one function." },
+    "api_breadth_notes": { "type": "string", "description": "Main resources covered, and an operation count if the docs make one countable." },
+    "openapi_spec": { "enum": ["yes", "no", "unknown"] },
+    "webhooks": { "enum": ["yes", "no", "unknown"], "description": "Does the API push events (webhooks / event subscriptions)? Needed for agent triggers." },
+    "mcp": { "enum": ["official_remote", "official_local", "community_only", "none_found"], "description": "official_remote = vendor-hosted MCP server URL. official_local = vendor-published MCP package you run. community_only = only third-party servers." },
+    "mcp_notes": { "type": "string", "description": "URL or package name of the MCP server, if any." },
+    "sandbox": { "enum": ["yes", "no", "unknown"], "description": "Free developer sandbox / test mode / dev account distinct from production." },
+    "buildability": {
+      "enum": ["ready_now", "ready_with_caveats", "needs_partnership_or_sales", "not_buildable"],
+      "description": "Could Composio ship an agent toolkit for this today? ready_now = public API + self-serve creds. ready_with_caveats = buildable but something slows it (app review for public OAuth, paid plan, narrow API). needs_partnership_or_sales = blocked on a business conversation. not_buildable = no usable API."
+    },
+    "main_blocker": {
+      "enum": ["none", "app_review", "paid_plan", "partnership", "enterprise_sales", "no_public_api", "local_only_tool", "narrow_api", "tos_or_rate_limits", "other"]
+    },
+    "blocker_notes": { "type": "string" },
+    "evidence": {
+      "type": "array", "minItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["field", "url", "quote"],
+        "properties": {
+          "field": { "enum": ["what_it_does", "auth", "access", "api", "mcp", "webhooks", "buildability"] },
+          "url": { "type": "string", "description": "A page you actually fetched or saw in results. Prefer the vendor's own docs." },
+          "quote": { "type": "string", "description": "Short verbatim text from that page that supports the claim (under 30 words)." }
+        }
+      }
+    },
+    "confidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["auth", "access", "api", "mcp", "buildability"],
+      "properties": {
+        "auth": { "enum": ["high", "medium", "low"] },
+        "access": { "enum": ["high", "medium", "low"] },
+        "api": { "enum": ["high", "medium", "low"] },
+        "mcp": { "enum": ["high", "medium", "low"] },
+        "buildability": { "enum": ["high", "medium", "low"] }
+      }
+    },
+    "needs_human": { "type": "string", "description": "Empty string if nothing. Otherwise what a human must check and why (login wall, ambiguous product identity, conflicting docs)." }
+  }
+}

@@ -1,0 +1,96 @@
+{
+ "id": 32,
+ "slug": "meta-ads",
+ "app": "Meta Ads",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.facebook.com/docs/marketing-apis",
+ "pass": 1,
+ "at": "2026-11-24T15:04:57.945Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/marketing-api/overview"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Meta Ads MCP server official mcp.facebook.com ads"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/marketing-api/overview/authorization"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Meta's Marketing API and hosted MCP server for creating, managing and reporting on Facebook/Instagram ads.\",\"subcategory\":\"Ads platform\",\"auth_"
+  }
+ ],
+ "cost_usd": 0.07216730000000002,
+ "duration_ms": 31112,
+ "turns": 7,
+ "model": "sonnet",
+ "error": null,
+ "record": {
+  "what_it_does": "Meta's Marketing API and hosted MCP server for creating, managing and reporting on Facebook/Instagram ads.",
+  "subcategory": "Ads platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Facebook Login OAuth gives user access tokens (ads_read/ads_management). System user tokens are available for business-owned automation. The MCP server takes OAuth or a Bearer user token.",
+  "access": "approval_required",
+  "access_notes": "Creating a Meta app is free and works at Standard/Limited access for your own ad accounts. Managing other people's ad accounts needs Advanced access to ads_read/ads_management through App Review, plus Business Verification. Marketing API Access Tier: Standard Access is now called Limited Access and Advanced Access is now Full Access.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Graph API Marketing API covers campaigns, ad sets, ads, creatives, insights/reporting, audiences, catalogs, pixels/conversions API and ad account management. It is well over 50 operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.facebook.com/ads is Meta-hosted. It has seven tool categories: reporting, ad and campaign management, catalogs, signals and datasets, help center search, A/B tests and lift studies, and activity logs. Community servers also exist, such as Pipeboard's meta-ads-mcp.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Serving other users' ad accounts needs App Review for Advanced access and Business Verification. The webhooks and sandbox ad accounts are from my background knowledge. I did not confirm them on the docs pages I fetched.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview",
+    "quote": "Use the Marketing API to automate advertising across Meta technologies."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+    "quote": "Advanced access must be approved through the App Review process on an individual permission and feature basis."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
+    "quote": "remote-hosted at https://mcp.facebook.com/ads"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+    "quote": "advanced access to the ads_read and/or ads_management permissions"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm the sandbox and webhooks claims, which I didn't verify on a docs page. Confirm the current App Review and Business Verification requirements. Check whether the MCP server needs Advanced access when you use your own Meta app, and what its OAuth flow requires."
+ }
+}
