@@ -1,0 +1,42 @@
+{
+  "slug": "sherlock",
+  "app": "Sherlock",
+  "labels": {
+    "auth_methods": ["none"],
+    "auth_primary": "none",
+    "access": "no_public_api",
+    "api_styles": ["cli_only"],
+    "api_breadth": "narrow",
+    "mcp": "community_only",
+    "buildability": "not_buildable",
+    "main_blocker": "local_only_tool"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://sherlockproject.xyz/usage", "quote": "Search for only one user: sherlock user123"},
+      {"url": "https://github.com/sherlock-project/sherlock", "quote": "Accounts found will be stored in an individual text file with the corresponding username"}
+    ],
+    "access": [
+      {"url": "https://github.com/sherlock-project/sherlock", "quote": "pipx install sherlock-project"},
+      {"url": "https://github.com/sherlock-project/api", "quote": "This REST API is built on top of Django REST Framework"}
+    ],
+    "api": [
+      {"url": "https://github.com/sherlock-project/sherlock", "quote": "Hunt down social media accounts by username across social networks"},
+      {"url": "https://github.com/sherlock-project/sherlock", "quote": "usage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx]"}
+    ],
+    "mcp": [
+      {"url": "https://github.com/Burnsedia/sherlock-mcp", "quote": "FastMCP integration for social media username searches across 400+ platforms using Model Context Protocol."},
+      {"url": "https://github.com/sherlock-project/sherlock/blob/master/.actor/README.md", "quote": "This Actor wraps the Sherlock Project to provide serverless username reconnaissance across social networks in the cloud."}
+    ],
+    "buildability": [
+      {"url": "https://github.com/sherlock-project/sherlock/blob/master/.actor/README.md", "quote": "without installing and running the tool locally"},
+      {"url": "https://sherlockproject.xyz/usage", "quote": "Accounts found will be stored in an individual text file with the corresponding username"}
+    ]
+  },
+  "uncertain": {
+    "buildability": "No vendor-hosted API exists, so I labelled not_buildable/local_only_tool. A toolkit could still self-host the CLI or call the Apify actor (netmilk/sherlock, whose .actor config lives in the official repo), which arguably makes it ready_with_caveats. This is a judgement call on rubric reading, not a factual gap.",
+    "mcp": "No MCP in the sherlock-project org (repo tree checked: no mcp files; org repos: sherlock, api, sherlockproject.xyz, build, .github). Apify auto-exposes the netmilk/sherlock actor via an MCP endpoint (apify.com/netmilk/sherlock/api/mcp, not opened). That actor was contributed by a third party (commit by GitHub user netmilk), so I treated it as community, not official.",
+    "api_breadth": "Effectively one operation (username lookup across ~400 sites). narrow vs none depends on whether a CLI counts as an API."
+  },
+  "notes": "Sherlock is an MIT-licensed Python CLI (PyPI sherlock-project, Docker sherlock/sherlock), not a service: no accounts, keys or hosted endpoint. The org has a stale 'api' repo (Django REST wrapper, last push 2021-07) that you have to self-host; it is not a public hosted API. Several unrelated projects are also called 'sherlock-mcp' (Fewsats domain-buying server, covertlabs infostealer intel, a .NET assembly analyzer), so name matching on MCP registries will give false positives. Burnsedia/sherlock-mcp is the real third-party wrapper for this tool. The pipx package is importable (package sherlock_project), but there are no documented library docs."
+}

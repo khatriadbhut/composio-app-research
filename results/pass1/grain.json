@@ -5,13 +5,92 @@
  "category": "AI, Research and Media-native",
  "hint": "grain.com (meeting notes)",
  "pass": 1,
- "at": "2026-11-24T15:08:13.660Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 706,
- "turns": 1,
+ "at": "2026-11-24T17:41:53.629Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Grain meeting recorder API developers docs OAuth MCP"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.grain.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.grain.com/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://support.grain.com/en/articles/15507288-grain-api"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI meeting recorder that transcribes, summarizes and shares meeting recordings and highlights.\",\"subcategory\":\"Meeting notes / AI note-taker\",\""
+  }
+ ],
+ "cost_usd": 0.07119219999999998,
+ "duration_ms": 25186,
+ "turns": 7,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "AI meeting recorder that transcribes, summarizes and shares meeting recordings and highlights.",
+  "subcategory": "Meeting notes / AI note-taker",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Three methods: Personal Access Token (acts as the user), Workspace Access Token (admin-issued), and OAuth2 authorization code with PKCE for integrations other Grain users authorize. Requests also need a Public-Api-Version header. The OAuth app registration process wasn't confirmed because developers.grain.com/authentication returned 403.",
+  "access": "self_serve_free",
+  "access_notes": "Grain's support page says a PAT is available on every plan, including Free. A WAT needs a workspace admin on Business or Enterprise. No plan requirement is stated for OAuth2. A third-party comparison (Scalekit) claims free plans get no API access, which conflicts with Grain's page. I did not confirm whether OAuth client registration needs approval.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "v2 REST API at api.grain.com/_/public-api/v2. It covers recordings, highlights, uploads, token-info and hooks. v1 was sunset in September 2026. I didn't count endpoints.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://api.grain.com/_/mcp (Streamable HTTP). It uses OAuth with dynamic client registration, and a PAT also works. Grain documents it at support.grain.com/en/articles/14811968-how-to-use-the-grain-mcp-server.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "Buildable now with a PAT or OAuth2. The caveats are unconfirmed OAuth client registration or review, and conflicting reports on free-plan API access. Composio may already have a Grain toolkit that uses API key auth.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.grain.com",
+    "quote": "Create a Personal Access Token (PAT) in your Grain settings under integrations"
+   },
+   {
+    "field": "access",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
+    "quote": "available on every plan, including Free"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
+    "quote": "Webhooks let Grain push event data to a URL you register in your integration."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.grain.com/en/articles/14811968-how-to-use-the-grain-mcp-server",
+    "quote": "https://api.grain.com/_/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether OAuth2 client registration is self-serve or needs approval, and whether an OpenAPI spec is published. developers.grain.com/authentication returned 403. Also confirm free-plan API access, since Grain's own page says PATs work on Free but a third-party source says otherwise. The MCP URL and the PAT-for-MCP claim come from search-result summaries, not a page I opened. I didn't open the Grain MCP support page itself, so its evidence quote is unverified."
+ }
 }

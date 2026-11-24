@@ -1,4 +1,89 @@
 {
+ "aircall": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.aircall.io/api-references",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.aircall.io/api-references",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.aircall.io/api-references",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.aircall.io/docs/mcp-faqs",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Check whether Aircall now has an official MCP server, since the FAQ is undated and a newer blog hints at MCP. Also check whether an OpenAPI spec or a sandbox exists, and what the Technology Partner approval process involves. I did not read the whole API reference page."
+  ]
+ },
+ "ahrefs": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.ahrefs.com/mcp/docs/introduction.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low",
+   "no evidence cited for api"
+  ],
+  "notes": [
+   "agent's open question: Check the Ahrefs Connect approval process and whether production activation needs Enterprise or Lite. The docs and help center conflict, and several docs pages returned 404. Also confirm whether an OpenAPI spec and webhooks exist. Neither was found. I did not open the Connect page that states the En"
+  ]
+ },
  "apify": {
   "evidence": [
    {
@@ -43,11 +128,178 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Apify offers OAuth for third-party REST apps. Confirm API token access on the free plan, and whether a sandbox or test mode exists. I did not find these in the pages I read.",
    "quote for auth not found on https://docs.apify.com/api/v2",
    "quote for access not found on https://apify.com/pricing",
    "quote for webhooks not found on https://docs.apify.com/api/v2"
+  ],
+  "notes": [
+   "agent's open question: Check whether Apify offers OAuth for third-party REST apps. Confirm API token access on the free plan, and whether a sandbox or test mode exists. I did not find these in the pages I read."
+  ]
+ },
+ "attio": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.attio.com/rest-api/guides/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.attio.com/rest-api/guides/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.attio.com/mcp/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.attio.com/rest-api/guides/webhooks",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.2
+   },
+   {
+    "field": "api",
+    "url": "https://docs.attio.com/llms.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://attio.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "quote for webhooks not found on https://docs.attio.com/rest-api/guides/webhooks"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether publishing an OAuth app to more than 25 workspaces needs Attio review (see the publication lifecycle and App Store pages). Confirm API access is free-tier eligible, since the pricing table was ambiguous. Confirm whether any sandbox or test workspace exists beyond a free workspace."
+  ]
+ },
+ "binance": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+    "http": 202,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "api",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+    "http": 202,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.binance.com/docs/login/introduction",
+    "http": 202,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/README",
+    "http": 202,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "api",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api",
+    "http": 202,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   }
+  ],
+  "flags": [
+   "no evidence cited for access",
+   "agent marked mcp confidence low",
+   "quote for auth not found on https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+   "quote for api not found on https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+   "quote for auth not found on https://developers.binance.com/docs/login/introduction",
+   "quote for mcp not found on https://developers.binance.com/docs/binance-spot-api-docs/README",
+   "quote for api not found on https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api"
+  ],
+  "notes": [
+   "agent's open question: Check whether Binance has an official MCP server or agent tooling, since the docs README mentions MCP. Check whether OAuth (\"Binance Login\") is open to any developer or limited to partners. The quote about partner-only access came from search-result text and I did not fetch the page, so confirm it. "
+  ]
+ },
+ "airtable": {
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://airtable.com/developers/web/api/introduction",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "auth",
+    "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://airtable.com/developers/web/guides/oauth-integrations",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.07
+   },
+   {
+    "field": "webhooks",
+    "url": "https://airtable.com/developers/web/api/webhooks-overview",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.25
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "quote for api not found on https://airtable.com/developers/web/api/introduction",
+   "quote for auth not found on https://airtable.com/developers/web/guides/personal-access-tokens",
+   "quote for access not found on https://airtable.com/developers/web/guides/oauth-integrations"
+  ],
+  "notes": [
+   "agent's open question: Check whether Airtable runs an app review before an OAuth integration can go public. The docs I read mention only the privacy policy and terms URLs. Also confirm the MCP server URL, which came from a search summary of the support page and not from a page I opened. Confirm that no OpenAPI spec is pub"
   ]
  },
  "amazon-selling-partner": {
@@ -109,161 +361,9 @@
     "score": 1
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether AWS IAM/SigV4 signing is still required, since the auth page did not mention it. Confirm the review and approval steps and timelines for public apps and restricted roles. Confirm sandb"
-  ]
- },
- "aircall": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developers.aircall.io/api-references",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://developers.aircall.io/api-references",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://developers.aircall.io/api-references",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developer.aircall.io/docs/mcp-faqs",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Aircall now has an official MCP server, since the FAQ is undated and a newer blog hints at MCP. Also check whether an OpenAPI spec or a sandbox exists, and what the Technology Partner ap"
-  ]
- },
- "binance": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "brex": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "ahrefs": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://docs.ahrefs.com/mcp/docs/introduction.md",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "agent marked access confidence low",
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check the Ahrefs Connect approval process and whether production activation needs Enterprise or Lite. The docs and help center conflict, and several docs pages returned 404. Also confirm whether an Op"
-  ]
- },
- "attio": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.attio.com/rest-api/guides/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://docs.attio.com/rest-api/guides/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://docs.attio.com/mcp/overview",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://docs.attio.com/rest-api/guides/webhooks",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.2
-   },
-   {
-    "field": "api",
-    "url": "https://docs.attio.com/llms.txt",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://attio.com/pricing",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether publishing an OAuth app to more than 25 workspaces needs Attio review (see the publication lifecycle and App Store pages). Confirm API access is free-tier eligible, since the pricing t",
-   "quote for webhooks not found on https://docs.attio.com/rest-api/guides/webhooks"
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm whether AWS IAM/SigV4 signing is still required, since the auth page did not mention it. Confirm the review and approval steps and timelines for public apps and restricted roles. Confirm sandbox scope (static and dynamic sandbox); I only saw the dynamic sandbox guides listed."
   ]
  },
  "asana": {
@@ -318,9 +418,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether a free Asana account can create OAuth apps and whether distributing to users outside the workspace needs app review. Check whether a sandbox or test mode exists (a free personal workspac"
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Check whether a free Asana account can create OAuth apps and whether distributing to users outside the workspace needs app review. Check whether a sandbox or test mode exists (a free personal workspace probably serves). The \"API is free\" claim came from search results only. The OpenAPI repo path cam"
   ]
  },
  "clay": {
@@ -367,9 +468,10 @@
    }
   ],
   "flags": [
-   "agent marked mcp confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check these. (1) The exact official MCP URL and whether it is vendor-hosted; I couldn't open clay.com/mcp. (2) The OpenAPI spec location and operation count; I only saw it referenced as /openapi.json "
+   "agent marked mcp confidence low"
+  ],
+  "notes": [
+   "agent's open question: Check these. (1) The exact official MCP URL and whether it is vendor-hosted; I couldn't open clay.com/mcp. (2) The OpenAPI spec location and operation count; I only saw it referenced as /openapi.json in a fetch summary. (3) Rate limits and whether a test mode exists. (4) Whether API keys are per use"
   ]
  },
  "clickup": {
@@ -407,154 +509,9 @@
     "score": 0.33
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The OpenAPI spec was not confirmed (the webhooks page doesn't mention one). The MCP details come from search snippets, not a fetched page. There is no confirmed sandbox. The auth page doesn't mention "
-  ]
- },
- "coda": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "consensus": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "airtable": {
-  "evidence": [
-   {
-    "field": "api",
-    "url": "https://airtable.com/developers/web/api/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "auth",
-    "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "access",
-    "url": "https://airtable.com/developers/web/guides/oauth-integrations",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.07
-   },
-   {
-    "field": "webhooks",
-    "url": "https://airtable.com/developers/web/api/webhooks-overview",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.25
-   },
-   {
-    "field": "mcp",
-    "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Airtable runs an app review before an OAuth integration can go public. The docs I read mention only the privacy policy and terms URLs. Also confirm the MCP server URL, which came from a ",
-   "quote for api not found on https://airtable.com/developers/web/api/introduction",
-   "quote for auth not found on https://airtable.com/developers/web/guides/personal-access-tokens",
-   "quote for access not found on https://airtable.com/developers/web/guides/oauth-integrations"
-  ]
- },
- "bright-data": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.brightdata.com/api-reference/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.31
-   },
-   {
-    "field": "access",
-    "url": "https://github.com/brightdata/brightdata-mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://github.com/brightdata/brightdata-mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://docs.brightdata.com/products/scrapers/scrapers-library/data-delivery",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://docs.brightdata.com/api-reference/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.17
-   }
-  ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Not confirmed: whether an OpenAPI spec is published, the exact paid plan and pricing terms beyond the free tier, and the webhook details. The webhook details come from search snippets, not a fully ope",
-   "quote for api not found on https://docs.brightdata.com/api-reference/introduction"
-  ]
- },
- "cloudflare": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.79
-   },
-   {
-    "field": "mcp",
-    "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://developers.cloudflare.com/fundamentals/api/reference/limits/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: I did not open these pages, so these points are unconfirmed: the OpenAPI spec (the cloudflare/api-schemas GitHub repo, from memory), the webhooks (Notifications webhooks and Workers/Queues event hooks"
+  "flags": [],
+  "notes": [
+   "agent's open question: The OpenAPI spec was not confirmed (the webhooks page doesn't mention one). The MCP details come from search snippets, not a fetched page. There is no confirmed sandbox. The auth page doesn't mention app review, but I didn't check for hidden restrictions on public distribution."
   ]
  },
  "bigcommerce": {
@@ -608,15 +565,193 @@
     "score": 1
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that sandbox stores are free and that unlisted OAuth apps can be installed without Marketplace review. The pricing page and the approval-requirements page weren't opened. The GitHub OpenAPI ev"
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm that sandbox stores are free and that unlisted OAuth apps can be installed without Marketplace review. The pricing page and the approval-requirements page weren't opened. The GitHub OpenAPI evidence comes only from a search-result summary, not a fetched page."
   ]
  },
- "devin": {
-  "evidence": [],
+ "cloudflare": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.79
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://developers.cloudflare.com/fundamentals/api/reference/limits/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
   "flags": [
-   "no record: agent run failed"
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: I did not open these pages, so these points are unconfirmed: the OpenAPI spec (the cloudflare/api-schemas GitHub repo, from memory), the webhooks (Notifications webhooks and Workers/Queues event hooks; there is no general resource-event webhook API), and the absence of a sandbox. I also did not conf"
+  ]
+ },
+ "coda": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   },
+   {
+    "field": "api",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.2
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.56
+   },
+   {
+    "field": "webhooks",
+    "url": "https://help.superhuman.com/hc/en-us/articles/46210335153037-Create-webhook-triggered-automations",
+    "http": 403,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   }
+  ],
+  "flags": [
+   "quote for api not found on https://docs.superhuman.com/developers/apis/v1"
+  ],
+  "notes": [
+   "agent's open question: The WebFetch tool returned only a summary of the docs, so the evidence quotes are paraphrased from those summaries, not verbatim page text. Please verify four points. (1) Is there a public OAuth2 flow for third-party REST API access, or only API tokens? (2) Does the API offer outbound webhooks or ev"
+  ]
+ },
+ "bright-data": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.brightdata.com/api-reference/introduction",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.31
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/brightdata/brightdata-mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/brightdata/brightdata-mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.brightdata.com/products/scrapers/scrapers-library/data-delivery",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://docs.brightdata.com/api-reference/introduction",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.17
+   }
+  ],
+  "flags": [
+   "quote for api not found on https://docs.brightdata.com/api-reference/introduction"
+  ],
+  "notes": [
+   "agent's open question: Not confirmed: whether an OpenAPI spec is published, the exact paid plan and pricing terms beyond the free tier, and the webhook details. The webhook details come from search snippets, not a fully opened page. The data-delivery page URL is a search result I did not open."
+  ]
+ },
+ "datadog": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.datadoghq.com/api/latest/authentication/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.datadoghq.com/mcp_server/setup.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.datadoghq.com/integrations/webhooks/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.93
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.datadoghq.com/bits_ai/mcp_server/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low"
+  ],
+  "notes": [
+   "agent's open question: Check the pricing and trial terms: is there a free tier with API access? Also check the Datadog Partner Network requirements for publishing a public OAuth client. I did not fetch the OpenAPI spec location (the Datadog API client repo publishes one) or the REST API scopes page."
   ]
  },
  "copper": {
@@ -663,11 +798,137 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm which Copper plan includes API access and whether a free trial or developer account exists. Confirm whether Copper approves OAuth registrations for new third parties. Check whether a sandbox e",
    "quote for api not found on https://developer.copper.com/",
    "quote for webhooks not found on https://developer.copper.com/",
    "quote for mcp not found on https://www.stackone.com/connectors/copper/mcp/"
+  ],
+  "notes": [
+   "agent's open question: Confirm which Copper plan includes API access and whether a free trial or developer account exists. Confirm whether Copper approves OAuth registrations for new third parties. Check whether a sandbox exists. I could not verify the official pricing page or the webhook event details. I also could not o"
+  ]
+ },
+ "consensus": {
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://consensus.app/home/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://consensus.app/home/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   },
+   {
+    "field": "mcp",
+    "url": "https://consensus.app/home/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://consensus.app/home/mcp/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: docs.consensus.app returned 403 to my fetch. Please check these in a browser: the exact API key header, whether any free tier or trial can use the API, which plan is the minimum, whether webhooks, an OpenAPI spec or a sandbox exist, and whether the REST API supports OAuth. The evidence quotes come f"
+  ]
+ },
+ "devin": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.17
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.devin.ai/work-with-devin/devin-mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.25
+   },
+   {
+    "field": "api",
+    "url": "https://docs.devin.ai/llms.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://devin.ai/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low",
+   "quote for auth not found on https://docs.devin.ai/api-reference/overview"
+  ],
+  "notes": [
+   "agent's open question: Confirm which plan includes API access, and whether the Free plan can create service users or API keys. Also confirm whether any webhooks or event callbacks exist for sessions. The fetch summaries did not show these, and the quotes above come from page summaries rather than full page text. The v3 en"
+  ]
+ },
+ "dataforseo": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.dataforseo.com/v3/auth/",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.31
+   },
+   {
+    "field": "access",
+    "url": "https://dataforseo.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://dataforseo.com/model-context-protocol",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for api"
+  ],
+  "notes": [
+   "agent's open question: Not checked: whether an OpenAPI spec is published. The webhooks answer comes from memory of the postback_url and pingback_url task options, not from a fetched page. The quotes for auth and access come from fetched-page summaries, so they are paraphrased and not verbatim. The MCP evidence quote is on"
   ]
  },
  "close": {
@@ -722,9 +983,111 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether a Close trial or paid org is needed to get an API key or create an OAuth app, and whether a sandbox or dev org exists. Neither was found in the docs. Also check the MCP page at develop",
    "quote for api not found on https://developer.close.com/llms.txt"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether a Close trial or paid org is needed to get an API key or create an OAuth app, and whether a sandbox or dev org exists. Neither was found in the docs. Also check the MCP page at developer.close.com/mcp directly."
+  ]
+ },
+ "brex": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.brex.com/docs/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.brex.com/guides/partner_authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.brex.com/docs/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.brex.com/docs/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.93
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.brex.com/openapi/webhooks_api",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://developer.brex.com/guides/partner_authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "quote for webhooks not found on https://developer.brex.com/openapi/webhooks_api"
+  ],
+  "notes": [
+   "agent's open question: Confirm the partner OAuth onboarding process and whether a free sandbox is available without being a Brex customer. Authentication doc says production only, while partner guide lists staging. Webhook event list and API operation count not verified. Some quotes are from search-result titles or fetch "
+  ]
+ },
+ "fanbasis": {
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://github.com/FanBasis/fbnewapi",
+    "http": 404,
+    "status": "dead",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "what_it_does",
+    "url": "https://www.npmjs.com/package/@fanbasis/checkout-sdk",
+    "http": 403,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "webhooks",
+    "url": "https://github.com/FanBasis/fbnewapi",
+    "http": 404,
+    "status": "dead",
+    "match": "unchecked",
+    "score": null
+   }
+  ],
+  "flags": [
+   "agent marked auth confidence low",
+   "no evidence cited for auth",
+   "agent marked access confidence low",
+   "no evidence cited for access",
+   "agent marked api confidence low",
+   "agent marked mcp confidence low",
+   "no evidence cited for mcp",
+   "agent marked buildability confidence low",
+   "dead link cited for api: https://github.com/FanBasis/fbnewapi",
+   "dead link cited for webhooks: https://github.com/FanBasis/fbnewapi"
+  ],
+  "notes": [
+   "agent's open question: The official docs could not be opened: fanbasis.com and its docs host returned 403, and the GitHub and npm pages returned 404 or 403. The evidence quotes are paraphrased from search-result summaries, not read on the pages themselves. A human should confirm the docs URL, the auth method, how API keys"
   ]
  },
  "discord": {
@@ -771,22 +1134,25 @@
    }
   ],
   "flags": [
-   "no evidence cited for mcp",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether Discord now hosts an official MCP server at docs.discord.com/mcp (docs search only?). Also confirm current verification and privileged-intent requirements, which I didn't see on a fetc"
+   "no evidence cited for mcp"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether Discord now hosts an official MCP server at docs.discord.com/mcp (docs search only?). Also confirm current verification and privileged-intent requirements, which I didn't see on a fetched page."
   ]
  },
  "fathom": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "datadog": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://docs.datadoghq.com/api/latest/authentication/",
+    "url": "https://developers.fathom.ai/quickstart.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.fathom.ai/oauth.md",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -794,98 +1160,7 @@
    },
    {
     "field": "mcp",
-    "url": "https://docs.datadoghq.com/mcp_server/setup.md",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://docs.datadoghq.com/integrations/webhooks/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.93
-   },
-   {
-    "field": "mcp",
-    "url": "https://docs.datadoghq.com/bits_ai/mcp_server/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "agent marked access confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check the pricing and trial terms: is there a free tier with API access? Also check the Datadog Partner Network requirements for publishing a public OAuth client. I did not fetch the OpenAPI spec loca"
-  ]
- },
- "fanbasis": {
-  "evidence": [
-   {
-    "field": "api",
-    "url": "https://github.com/FanBasis/fbnewapi",
-    "http": 404,
-    "status": "dead",
-    "match": "unchecked",
-    "score": null
-   },
-   {
-    "field": "what_it_does",
-    "url": "https://www.npmjs.com/package/@fanbasis/checkout-sdk",
-    "http": 403,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   },
-   {
-    "field": "webhooks",
-    "url": "https://github.com/FanBasis/fbnewapi",
-    "http": 404,
-    "status": "dead",
-    "match": "unchecked",
-    "score": null
-   }
-  ],
-  "flags": [
-   "agent marked auth confidence low",
-   "no evidence cited for auth",
-   "agent marked access confidence low",
-   "no evidence cited for access",
-   "agent marked api confidence low",
-   "agent marked mcp confidence low",
-   "no evidence cited for mcp",
-   "agent marked buildability confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: The official docs could not be opened: fanbasis.com and its docs host returned 403, and the GitHub and npm pages returned 404 or 403. The evidence quotes are paraphrased from search-result summaries, ",
-   "dead link cited for api: https://github.com/FanBasis/fbnewapi",
-   "dead link cited for webhooks: https://github.com/FanBasis/fbnewapi"
-  ]
- },
- "dealcloud": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://api.docs.dealcloud.com/docs/token",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://api.docs.dealcloud.com/mcp/authentication",
+    "url": "https://developers.fathom.ai/mcp-docs",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -893,52 +1168,28 @@
    },
    {
     "field": "api",
-    "url": "https://api.docs.dealcloud.com",
+    "url": "https://developers.fathom.ai/llms.txt",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
     "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.fathom.ai/llms.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    }
   ],
   "flags": [
    "agent marked access confidence low",
    "no evidence cited for access",
-   "no evidence cited for mcp",
-   "no evidence cited for buildability",
-   "agent asked for a human: Please check four things. (1) Whether a dev or sandbox tenant is available, and how API keys are issued, since I did not open the API Keys page. (2) The MCP server URL and whether a third-party client"
-  ]
- },
- "dataforseo": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.dataforseo.com/v3/auth/",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.31
-   },
-   {
-    "field": "access",
-    "url": "https://dataforseo.com/pricing",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://dataforseo.com/model-context-protocol",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
+   "quote for webhooks not found on https://developers.fathom.ai/llms.txt"
   ],
-  "flags": [
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: Not checked: whether an OpenAPI spec is published. The webhooks answer comes from memory of the postback_url and pingback_url task options, not from a fetched page. The quotes for auth and access come"
+  "notes": [
+   "agent's open question: Confirm which Fathom plan includes API access. Confirm whether OAuth apps can be used by non-owner users before marketplace review. Check for any sandbox or test mode. The OAuth scope list is unconfirmed. The docs I fetched are summarized by a fetch model, not read verbatim."
   ]
  },
  "firecrawl": {
@@ -984,58 +1235,9 @@
     "score": 0.5
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm the OpenAPI spec URL. I believe one is published (Firecrawl's docs and GitHub repo carry one), but I did not open it. Also confirm the full endpoint count."
-  ]
- },
- "gladly": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developer.gladly.com/rest/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://developer.gladly.com/rest/",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.17
-   },
-   {
-    "field": "api",
-    "url": "https://developer.gladly.com/rest/",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.29
-   },
-   {
-    "field": "webhooks",
-    "url": "https://developer.gladly.com/rest/",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.3
-   },
-   {
-    "field": "mcp",
-    "url": "https://www.stackone.com/connectors/gladly/mcp/",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.5
-   }
-  ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The WebFetch tool returned summaries, so the quotes above are paraphrased from that summary, not verified verbatim. Please check them against the live page. Also confirm whether Gladly has a pricing p",
-   "quote for access not found on https://developer.gladly.com/rest/"
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm the OpenAPI spec URL. I believe one is published (Firecrawl's docs and GitHub repo carry one), but I did not open it. Also confirm the full endpoint count."
   ]
  },
  "ecwid": {
@@ -1090,9 +1292,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: I did not open the OAuth2 flow page, so the authorize and token endpoints are unconfirmed. I did not open the webhook events list. The OpenAPI \"no\" rests on search results only. Several evidence quote",
    "quote for api not found on https://github.com/Ecwid/ecwid-api-docs"
+  ],
+  "notes": [
+   "agent's open question: I did not open the OAuth2 flow page, so the authorize and token endpoints are unconfirmed. I did not open the webhook events list. The OpenAPI \"no\" rests on search results only. Several evidence quotes are paraphrased from fetch summaries, not copied from the pages. Check the exact paid-plan wording"
   ]
  },
  "front": {
@@ -1141,15 +1344,147 @@
   "flags": [
    "agent marked access confidence low",
    "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Several points rest on search-result summaries, not on pages I opened. These are the free developer environment (I did not open the developer portal homepage), the OpenAPI repo (frontapp/front-api-spe",
    "quote for api not found on https://dev.frontapp.com/docs/tools"
+  ],
+  "notes": [
+   "agent's open question: Several points rest on search-result summaries, not on pages I opened. These are the free developer environment (I did not open the developer portal homepage), the OpenAPI repo (frontapp/front-api-specs), and the MCP details. Please check three things: (1) which Front plans allow API token and OAuth"
   ]
  },
- "grain": {
-  "evidence": [],
+ "freshdesk": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.freshdesk.com/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://developers.freshdesk.com/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://developers.freshdesk.com/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/effytech/freshdesk_mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.2
+   }
+  ],
   "flags": [
-   "no record: agent run failed"
+   "quote for api not found on https://developers.freshdesk.com/api/",
+   "quote for auth not found on https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691"
+  ],
+  "notes": [
+   "agent's open question: The first 100k characters of the API docs were read. The rest (about 140k) was not, so I couldn't confirm an OpenAPI spec, API webhooks or a sandbox. Freshdesk has automation-rule webhooks, but I didn't verify them. Also check whether any plan or trial gives API access, and whether Freshworks has la"
+  ]
+ },
+ "dealcloud": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://api.docs.dealcloud.com/docs/token",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://api.docs.dealcloud.com/mcp/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://api.docs.dealcloud.com",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low",
+   "no evidence cited for access",
+   "no evidence cited for mcp"
+  ],
+  "notes": [
+   "agent's open question: Please check four things. (1) Whether a dev or sandbox tenant is available, and how API keys are issued, since I did not open the API Keys page. (2) The MCP server URL and whether a third-party client can connect to it. (3) Whether a webhook-style event mechanism exists beyond Publications (\"Real-Ti"
+  ]
+ },
+ "gladly": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.gladly.com/rest/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://developer.gladly.com/rest/",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.17
+   },
+   {
+    "field": "api",
+    "url": "https://developer.gladly.com/rest/",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.29
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.gladly.com/rest/",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.3
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.stackone.com/connectors/gladly/mcp/",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   }
+  ],
+  "flags": [
+   "quote for access not found on https://developer.gladly.com/rest/"
+  ],
+  "notes": [
+   "agent's open question: The WebFetch tool returned summaries, so the quotes above are paraphrased from that summary, not verified verbatim. Please check them against the live page. Also confirm whether Gladly has a pricing page or partner program and whether any OAuth option exists. The sandbox URL and the OpenAPI download"
   ]
  },
  "github": {
@@ -1196,70 +1531,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: The OpenAPI spec (github/rest-api-description repo), the GraphQL API and the free app registration come from my own knowledge. I did not fetch pages for them. The sandbox verdict (\"no\") is also unchec"
-  ]
- },
- "harvest": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "freshdesk": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developers.freshdesk.com/api/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://developers.freshdesk.com/api/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://developers.freshdesk.com/api/",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "mcp",
-    "url": "https://github.com/effytech/freshdesk_mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.3
-   }
+   "no evidence cited for access"
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The first 100k characters of the API docs were read. The rest (about 140k) was not, so I couldn't confirm an OpenAPI spec, API webhooks or a sandbox. Freshdesk has automation-rule webhooks, but I didn",
-   "quote for api not found on https://developers.freshdesk.com/api/"
-  ]
- },
- "higgsfield": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
+  "notes": [
+   "agent's open question: The OpenAPI spec (github/rest-api-description repo), the GraphQL API and the free app registration come from my own knowledge. I did not fetch pages for them. The sandbox verdict (\"no\") is also unchecked."
   ]
  },
  "gohighlevel": {
@@ -1314,9 +1589,10 @@
    }
   ],
   "flags": [
-   "agent marked access confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check three things. First, the Marketplace App Review Guidelines, to see what public OAuth distribution requires. Second, whether a HighLevel developer or agency account is free or needs a paid plan, "
+   "agent marked access confidence low"
+  ],
+  "notes": [
+   "agent's open question: Check three things. First, the Marketplace App Review Guidelines, to see what public OAuth distribution requires. Second, whether a HighLevel developer or agency account is free or needs a paid plan, and whether a sandbox sub-account exists. Third, whether the OpenAPI JSON files are in the GitHub re"
   ]
  },
  "gorgias": {
@@ -1362,38 +1638,24 @@
     "score": 0.4
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether a free trial or dev account gives API access. Check whether OAuth2 apps work before review. Check whether an OpenAPI spec is published. Check whether a sandbox exists. Webhooks are infer"
+  "flags": [],
+  "notes": [
+   "agent's open question: Check whether a free trial or dev account gives API access. Check whether OAuth2 apps work before review. Check whether an OpenAPI spec is published. Check whether a sandbox exists. Webhooks are inferred from search snippets about HTTP integrations, and I couldn't open the dev-portal webhook page, w"
   ]
  },
- "ipayx": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "jira": {
+ "google-ads": {
   "evidence": [
    {
-    "field": "access",
-    "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
     "field": "auth",
-    "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+    "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
     "http": 200,
     "status": "ok",
-    "match": "verbatim",
-    "score": 1
+    "match": "not_found",
+    "score": 0.13
    },
    {
-    "field": "webhooks",
-    "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1401,16 +1663,63 @@
    },
    {
     "field": "mcp",
-    "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.09
+   }
+  ],
+  "flags": [
+   "no evidence cited for api",
+   "quote for auth not found on https://developers.google.com/google-ads/api/docs/oauth/overview",
+   "quote for mcp not found on https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
+  ],
+  "notes": [
+   "agent's open question: Confirm that Google OAuth app verification is required for the adwords scope. Confirm whether a Google-hosted remote MCP URL exists. Webhooks (none), the REST/gRPC surface, the lack of an OpenAPI spec and sandbox details come from my background knowledge, not from pages I fetched."
+  ]
+ },
+ "grain": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.grain.com",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.4
+   },
+   {
+    "field": "access",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
     "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.17
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.grain.com/en/articles/14811968-how-to-use-the-grain-mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The OpenAPI spec, GraphQL (Atlassian Gateway) availability, and free-tier site limits were not verified on a fetched page. Breadth is estimated from knowledge, not counted. The sandbox rating rests on"
+   "quote for webhooks not found on https://support.grain.com/en/articles/15507288-grain-api",
+   "quote for mcp not found on https://support.grain.com/en/articles/14811968-how-to-use-the-grain-mcp-server"
+  ],
+  "notes": [
+   "agent's open question: Check whether OAuth2 client registration is self-serve or needs approval, and whether an OpenAPI spec is published. developers.grain.com/authentication returned 403. Also confirm free-plan API access, since Grain's own page says PATs work on Free but a third-party source says otherwise. The MCP URL "
   ]
  },
  "hubspot": {
@@ -1457,65 +1766,17 @@
    }
   ],
   "flags": [
-   "official MCP claimed with no URL or package named",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether the app marketplace listing needs review before arbitrary customers can install a public OAuth app. Confirm the published OpenAPI spec (I believe it is in HubSpot's public API spec rep"
-  ]
- },
- "klaviyo": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "access",
-    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.91
-   },
-   {
-    "field": "webhooks",
-    "url": "https://developers.klaviyo.com/en/reference/webhooks_api_overview",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
+   "official MCP claimed with no URL or package named"
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Klaviyo's free plan keeps full API access. Confirm the OpenAPI spec (I believe it is published at github.com/klaviyo/openapi, but I did not open it). Check whether there is a test mode: ",
-   "quote for auth not found on https://developers.klaviyo.com/en/docs/authenticate_"
+  "notes": [
+   "agent's open question: Confirm whether the app marketplace listing needs review before arbitrary customers can install a public OAuth app. Confirm the published OpenAPI spec (I believe it is in HubSpot's public API spec repo, but I did not open it). The webhooks page I fetched covered only the v4 journal API. It did not d"
   ]
  },
- "gumroad": {
+ "harvest": {
   "evidence": [
    {
-    "field": "mcp",
-    "url": "https://gumroad.com/claude",
+    "field": "auth",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1523,7 +1784,7 @@
    },
    {
     "field": "auth",
-    "url": "https://gumroad.com/mcp",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1531,17 +1792,69 @@
    },
    {
     "field": "api",
-    "url": "https://jentic.com/apis/gumroad.com/gumroad.md",
+    "url": "https://help.getharvest.com/api-v2/",
     "http": 200,
     "status": "ok",
-    "match": "verbatim",
-    "score": 1
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+    "http": 403,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
    }
   ],
   "flags": [
    "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: The official API docs at gumroad.com/api did not render in fetch, so the endpoint list, webhook details, and OAuth scopes come from third-party mirrors. Please confirm whether OAuth apps need review f"
+   "quote for api not found on https://help.getharvest.com/api-v2/"
+  ],
+  "notes": [
+   "agent's open question: Check whether the Harvest API v2 offers webhooks. I didn't find any mention in the docs index. Check whether a sandbox or test account exists. Open the Harvest MCP help article, which returned 403 to me, to confirm the endpoint and its auth. Confirm the free plan's API limits."
+  ]
+ },
+ "intercom": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.91
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.intercom.com/docs/webhooks",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/intercom/intercom-openapi",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.33
+   }
+  ],
+  "flags": [
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Confirm that the Developer Hub development workspace is free and not time-limited. Confirm whether public OAuth apps need Intercom review before other workspaces can install them. I didn't find this in the docs I opened. I haven't confirmed the sandbox from a docs page that says so explicitly. The O"
   ]
  },
  "help-scout": {
@@ -1588,9 +1901,247 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether a free trial or developer account gives API access. Confirm whether public OAuth apps need Help Scout review or a Marketplace listing. Check whether an OpenAPI spec or sandbox exists, "
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether a free trial or developer account gives API access. Confirm whether public OAuth apps need Help Scout review or a Marketplace listing. Check whether an OpenAPI spec or sandbox exists, and what the rate limits are. The developer docs pages I fetched did not cover these points."
+  ]
+ },
+ "ipayx": {
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://www.ipayx.ai/",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "auth",
+    "url": "https://www.ipayx.ai/docs/api",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://www.ipayx.ai/",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "api",
+    "url": "https://www.ipayx.ai/docs/api",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.ipayx.ai/docs/api",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.ipayx.ai/docs/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://www.ipayx.ai/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low",
+   "quote for what_it_does not found on https://www.ipayx.ai/",
+   "quote for auth not found on https://www.ipayx.ai/docs/api",
+   "quote for access not found on https://www.ipayx.ai/",
+   "quote for api not found on https://www.ipayx.ai/docs/api",
+   "quote for webhooks not found on https://www.ipayx.ai/docs/api",
+   "quote for mcp not found on https://www.ipayx.ai/docs/mcp-server",
+   "quote for access not found on https://www.ipayx.ai/pricing"
+  ],
+  "notes": [
+   "agent's open question: The WebFetch summaries paraphrased the docs, and the quotes above come from those summaries, not the raw pages. The fetch of ipayx.ai/docs returned a 404. Check these items: (1) whether API keys work on the free tier or only on paid plans. (2) whether ipx_test_ sandbox keys really exist. (3) the exa"
+  ]
+ },
+ "higgsfield": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.77
+   },
+   {
+    "field": "access",
+    "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.67
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.higgsfield.ai",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://higgsfield.ai/cli",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://higgsfield.ai/enterprise-help-center/platform/integrations",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm whether the hosted MCP's sign-in is a standard OAuth flow that third parties can use. I did not fetch the MCP help page directly; those details come from search snippets. Also confirm whether an OpenAPI spec is published, whether a sandbox exists, and which of the two auth header forms (sing"
+  ]
+ },
+ "jira": {
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: The OpenAPI spec, GraphQL (Atlassian Gateway) availability, and free-tier site limits were not verified on a fetched page. Breadth is estimated from knowledge, not counted. The sandbox rating rests on free Jira Cloud sites, which I did not confirm on a pricing page."
+  ]
+ },
+ "gumroad": {
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://gumroad.com/claude",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://gumroad.com/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://jentic.com/apis/gumroad.com/gumroad.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: The official API docs at gumroad.com/api did not render in fetch, so the endpoint list, webhook details, and OAuth scopes come from third-party mirrors. Please confirm whether OAuth apps need review for public use and whether any test mode exists."
+  ]
+ },
+ "magento-adobe-commerce": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.71
+   },
+   {
+    "field": "api",
+    "url": "https://developer.adobe.com/commerce/webapi/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.adobe.com/commerce/extensibility/webhooks/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.75
+   }
+  ],
+  "flags": [
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Confirm the current SaaS (IMS) auth flow and Adobe Commerce pricing. The OpenAPI/Swagger claim (each instance serves /swagger and /rest/all/schema) and the sandbox claim (self-hosted Open Source install) come from prior knowledge, not a fetched page. Whether Adobe has shipped an official store-opera"
   ]
  },
  "lark-larksuite": {
@@ -1644,9 +2195,186 @@
     "score": 0.92
    }
   ],
+  "flags": [],
+  "notes": [
+   "agent's open question: The fetched doc pages were thin or came back in Chinese through summarization. Please check these: (1) the exact OAuth endpoints and refresh token behavior for Lark international; (2) whether an OpenAPI spec is published; (3) whether a sandbox or test tenant exists (a free tenant can likely be creat"
+  ]
+ },
+ "klaviyo": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.91
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.klaviyo.com/en/reference/webhooks_api_overview",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The fetched doc pages were thin or came back in Chinese through summarization. Please check these: (1) the exact OAuth endpoints and refresh token behavior for Lark international; (2) whether an OpenA"
+   "quote for auth not found on https://developers.klaviyo.com/en/docs/authenticate_"
+  ],
+  "notes": [
+   "agent's open question: Check whether Klaviyo's free plan keeps full API access. Confirm the OpenAPI spec (I believe it is published at github.com/klaviyo/openapi, but I did not open it). Check whether there is a test mode: Klaviyo has no dedicated sandbox, and a free account is the usual way to test. Check what the OAuth "
+  ]
+ },
+ "mermaid-cli": {
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.3
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.npmjs.com/package/mermaid-mcp-server",
+    "http": 403,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   }
+  ],
+  "flags": [
+   "no_public_api but api_breadth is narrow",
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: The mermaid-js org page was not checked for an official MCP server. The Stacklok \"Official\" listing was unverified. The MCP npm quote comes from a search-result title, because I did not open that page."
+  ]
+ },
+ "meta-ads": {
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   }
+  ],
+  "flags": [
+   "no evidence cited for api"
+  ],
+  "notes": [
+   "agent's open question: Confirm the sandbox and webhooks claims, which I didn't verify on a docs page. Confirm the current App Review and Business Verification requirements. Check whether the MCP server needs Advanced access when you use your own Meta app, and what its OAuth flow requires."
+  ]
+ },
+ "liveagent": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.75
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "api",
+    "url": "https://support.liveagent.com/094128-Swagger-API-descriptor",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.95
+   },
+   {
+    "field": "access",
+    "url": "https://www.liveagent.com/pricing/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "quote for mcp not found on https://support.liveagent.com/647358-MCP-Integration-for-Agents"
+  ],
+  "notes": [
+   "agent's open question: The v3 docs are behind account login. The `apikey` header detail came from search-result summaries of support articles, not a page I opened. Please confirm it. Also confirm that webhooks exist (I believe they are set up as a \"Call URL\" action in rules), the 'no sandbox' finding, and which plans incl"
   ]
  },
  "linear": {
@@ -1685,32 +2413,17 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Linear's free plan restricts API or OAuth app creation, and whether there are rate limits. I did not open the pricing page. The OAuth page was silent on app review, so I inferred there i"
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Check whether Linear's free plan restricts API or OAuth app creation, and whether there are rate limits. I did not open the pricing page. The OAuth page was silent on app review, so I inferred there is none."
   ]
  },
- "intercom": {
+ "mailchimp": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developers.intercom.com/docs/guides/mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.91
-   },
-   {
-    "field": "webhooks",
-    "url": "https://developers.intercom.com/docs/webhooks",
+    "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1718,81 +2431,65 @@
    },
    {
     "field": "api",
-    "url": "https://github.com/intercom/intercom-openapi",
+    "url": "https://mailchimp.com/developer/marketing/api/",
     "http": 200,
     "status": "ok",
-    "match": "partial",
-    "score": 0.33
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.93
+   },
+   {
+    "field": "mcp",
+    "url": "https://mailchimp.com/developer/marketing/build/ai-tools/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://mailchimp.com/developer/marketing/guides/quick-start/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that the Developer Hub development workspace is free and not time-limited. Confirm whether public OAuth apps need Intercom review before other workspaces can install them. I didn't find this i"
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Check four things. (1) Whether a free Mailchimp account can register OAuth apps and what its API limits are. (2) Whether public OAuth distribution needs review. (3) Whether an OpenAPI spec is published. (4) Whether the ai-inc.mailchimp.com MCP is official and open to third-party clients. I fetched n"
   ]
  },
- "mermaid-cli": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "google-ads": {
+ "neo4j": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
     "http": 200,
     "status": "ok",
     "match": "not_found",
-    "score": 0.13
+    "score": 0
    },
    {
     "field": "access",
-    "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
     "http": 200,
     "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.09
-   }
-  ],
-  "flags": [
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that Google OAuth app verification is required for the adwords scope. Confirm whether a Google-hosted remote MCP URL exists. Webhooks (none), the REST/gRPC surface, the lack of an OpenAPI spec",
-   "quote for auth not found on https://developers.google.com/google-ads/api/docs/oauth/overview",
-   "quote for mcp not found on https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
-  ]
- },
- "magento-adobe-commerce": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.71
+    "match": "partial",
+    "score": 0.46
    },
    {
     "field": "api",
-    "url": "https://developer.adobe.com/commerce/webapi/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://developer.adobe.com/commerce/extensibility/webhooks/",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1800,17 +2497,18 @@
    },
    {
     "field": "mcp",
-    "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview",
+    "url": "https://neo4j.com/docs/mcp/current/",
     "http": 200,
     "status": "ok",
-    "match": "close",
-    "score": 0.75
+    "match": "verbatim",
+    "score": 1
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm the current SaaS (IMS) auth flow and Adobe Commerce pricing. The OpenAPI/Swagger claim (each instance serves /swagger and /rest/all/schema) and the sandbox claim (self-hosted Open Source insta"
+   "quote for auth not found on https://neo4j.com/docs/aura/api/authentication/"
+  ],
+  "notes": [
+   "agent's open question: Check whether an OpenAPI spec is downloadable from the Aura API Specification page. Check whether any webhooks exist, and what the MCP server's install package and transport are. Check the HTTP Query API auth for the data plane. Free-tier access to all endpoints was not confirmed."
   ]
  },
  "linkedin-ads": {
@@ -1888,72 +2586,40 @@
     "score": 1
    }
   ],
-  "flags": [
-   "agent asked for a human: Confirm the Advertising API application and review turnaround, since I did not open the apply form. Confirm the webhook coverage. The only webhook evidence I saw was for Community Management social ac"
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm the Advertising API application and review turnaround, since I did not open the apply form. Confirm the webhook coverage. The only webhook evidence I saw was for Community Management social actions. LinkedIn has some lead-gen and other notifications, but I did not verify them. Confirm whethe"
   ]
  },
- "meta-ads": {
-  "evidence": [
-   {
-    "field": "what_it_does",
-    "url": "https://developers.facebook.com/docs/marketing-api/overview",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   },
-   {
-    "field": "access",
-    "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   },
-   {
-    "field": "mcp",
-    "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   },
-   {
-    "field": "auth",
-    "url": "https://developers.facebook.com/docs/marketing-api/overview/authorization",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   }
-  ],
-  "flags": [
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm the sandbox and webhooks claims, which I didn't verify on a docs page. Confirm the current App Review and Business Verification requirements. Check whether the MCP server needs Advanced access"
-  ]
- },
- "neo4j": {
+ "monday-com": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://neo4j.com/docs/aura/api/authentication/",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "access",
-    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "url": "https://developer.monday.com/api-reference/docs/authentication",
     "http": 200,
     "status": "ok",
     "match": "partial",
-    "score": 0.46
+    "score": 0.55
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.monday.com/apps/docs/oauth",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
    },
    {
     "field": "api",
-    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.11
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.monday.com/api-reference/docs/webhooks",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1961,7 +2627,7 @@
    },
    {
     "field": "mcp",
-    "url": "https://neo4j.com/docs/mcp/current/",
+    "url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -1969,9 +2635,11 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether an OpenAPI spec is downloadable from the Aura API Specification page. Check whether any webhooks exist, and what the MCP server's install package and transport are. Check the HTTP Query ",
-   "quote for auth not found on https://neo4j.com/docs/aura/api/authentication/"
+   "no evidence cited for access",
+   "quote for api not found on https://developer.monday.com/api-reference/docs/introduction-to-graphql"
+  ],
+  "notes": [
+   "agent's open question: Three things to check: (1) whether public OAuth apps need marketplace review before other accounts can install them; (2) whether a hosted remote MCP (mcp.monday.com) exists; (3) whether API access is restricted by plan or rate limits. The sandbox \"yes\" is a judgment call: the auth page says a free d"
   ]
  },
  "netlify": {
@@ -2010,68 +2678,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether OAuth apps need review for public use, and what free-plan limits apply. The fetched pages did not say. No sandbox or test mode was found, though I did not search for one specifically."
-  ]
- },
- "notebooklm": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "liveagent": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.75
-   },
-   {
-    "field": "mcp",
-    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "api",
-    "url": "https://support.liveagent.com/094128-Swagger-API-descriptor",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.95
-   },
-   {
-    "field": "access",
-    "url": "https://www.liveagent.com/pricing/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
+   "no evidence cited for access"
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The v3 docs are behind account login. The `apikey` header detail came from search-result summaries of support articles, not a page I opened. Please confirm it. Also confirm that webhooks exist (I beli",
-   "quote for mcp not found on https://support.liveagent.com/647358-MCP-Integration-for-Agents"
-  ]
- },
- "otter-ai": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "paygent-connect": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
+  "notes": [
+   "agent's open question: Check whether OAuth apps need review for public use, and what free-plan limits apply. The fetched pages did not say. No sandbox or test mode was found, though I did not search for one specifically."
   ]
  },
  "mongodb-atlas": {
@@ -2125,24 +2735,16 @@
     "score": 1
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Please check four things. (1) Whether the API is available on the free M0 tier and has no plan gate. (2) The MCP server's npm package name and whether the Atlas Managed MCP is a hosted URL. (3) The Op"
+  "flags": [],
+  "notes": [
+   "agent's open question: Please check four things. (1) Whether the API is available on the free M0 tier and has no plan gate. (2) The MCP server's npm package name and whether the Atlas Managed MCP is a hosted URL. (3) The OpenAPI spec download location. The spec page content did not load, so this is from my own knowledge. "
   ]
  },
- "monday-com": {
+ "notebooklm": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://developer.monday.com/api-reference/docs/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.55
-   },
-   {
-    "field": "auth",
-    "url": "https://developer.monday.com/apps/docs/oauth",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2150,23 +2752,15 @@
    },
    {
     "field": "api",
-    "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
     "http": 200,
     "status": "ok",
     "match": "not_found",
-    "score": 0.11
+    "score": 0
    },
    {
-    "field": "webhooks",
-    "url": "https://developer.monday.com/api-reference/docs/webhooks",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
+    "field": "access",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2174,71 +2768,95 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Three things to check: (1) whether public OAuth apps need marketplace review before other accounts can install them; (2) whether a hosted remote MCP (mcp.monday.com) exists; (3) whether API access is ",
-   "quote for api not found on https://developer.monday.com/api-reference/docs/introduction-to-graphql"
+   "no evidence cited for mcp",
+   "quote for api not found on https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks"
+  ],
+  "notes": [
+   "agent's open question: The evidence quotes come from a fetch tool that summarizes pages, so they may be paraphrased. I didn't open the sources page or the licensing and pricing pages. Please check whether service-account auth works, what the sources and audio endpoints cover, and the NotebookLM Enterprise price."
   ]
  },
- "pitchbook": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "plaid": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "mailchimp": {
+ "otter-ai": {
   "evidence": [
    {
-    "field": "auth",
-    "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
     "field": "api",
-    "url": "https://mailchimp.com/developer/marketing/api/",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
     "score": 1
    },
    {
-    "field": "webhooks",
-    "url": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/",
+    "field": "mcp",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
     "http": 200,
     "status": "ok",
     "match": "close",
-    "score": 0.93
-   },
-   {
-    "field": "mcp",
-    "url": "https://mailchimp.com/developer/marketing/build/ai-tools/mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
+    "score": 0.83
    },
    {
     "field": "auth",
-    "url": "https://mailchimp.com/developer/marketing/guides/quick-start/",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.88
+   }
+  ],
+  "flags": [
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: All facts come from a third-party blog (Scalekit). help.otter.ai returned 403 and otter.ai/api/docs rendered no content. Check Otter's official API docs for the Enterprise requirement, OpenAPI spec, webhook setup and any sandbox. Also check whether third-party MCP OAuth client registration is allowe"
+  ]
+ },
+ "mrscraper": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.mrscraper.com/docs/api/overview",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
     "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.mrscraper.com/docs/getting-started/billing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.mrscraper.com/docs/integrations/webhook",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check four things. (1) Whether a free Mailchimp account can register OAuth apps and what its API limits are. (2) Whether public OAuth distribution needs review. (3) Whether an OpenAPI spec is publishe"
+   "quote for webhooks not found on https://docs.mrscraper.com/docs/integrations/webhook"
+  ],
+  "notes": [
+   "agent's open question: Check whether the Free plan includes API access and which token count is right (100 or 1,000). The base URL and OpenAPI spec weren't confirmed. The webhook page was only seen as a link description, not opened."
   ]
  },
  "notion": {
@@ -2285,168 +2903,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that the API is free on the free Notion plan. Confirm whether an OpenAPI spec exists, since I did not find one. Confirm whether a sandbox exists. The fetch results are summaries, so the quotes"
-  ]
- },
- "mrscraper": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.mrscraper.com/docs/api/overview",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://docs.mrscraper.com/docs/getting-started/billing",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://docs.mrscraper.com/docs/integrations/webhook",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   }
+   "no evidence cited for access"
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether the Free plan includes API access and which token count is right (100 or 1,000). The base URL and OpenAPI spec weren't confirmed. The webhook page was only seen as a link description, no",
-   "quote for webhooks not found on https://docs.mrscraper.com/docs/integrations/webhook"
-  ]
- },
- "pylon": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.67
-   },
-   {
-    "field": "auth",
-    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "mcp",
-    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://docs.usepylon.com/pylon-docs/developer/api",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://www.usepylon.com/integrations/api-webhooks",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.92
-   }
-  ],
-  "flags": [
-   "agent marked access confidence low",
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Pylon offers a free trial or dev workspace, and whether an OpenAPI spec is published. Also check webhook event docs and rate limits, which I could not confirm from public pages. The webh",
-   "quote for auth not found on https://docs.usepylon.com/pylon-docs/developer/api/authentication"
-  ]
- },
- "quickbooks": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "ramp": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "reducto": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "podio": {
-  "evidence": [
-   {
-    "field": "api",
-    "url": "https://developers.podio.com/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://developers.podio.com/doc/oauth-authorization",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://developers.podio.com/doc/oauth-authorization",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether the Podio API key or OAuth app needs a paid plan or review before other users can connect. Also check whether an OpenAPI spec or sandbox exists. The old developer docs partly return 41"
+  "notes": [
+   "agent's open question: Confirm that the API is free on the free Notion plan. Confirm whether an OpenAPI spec exists, since I did not find one. Confirm whether a sandbox exists. The fetch results are summaries, so the quotes are paraphrase-adjacent and worth spot-checking."
   ]
  },
  "pipedrive": {
@@ -2484,166 +2944,79 @@
     "score": 1
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that the Developer Sandbox is free and what the app review involves. Webhooks support is based on the API docs navigation listing a Webhooks section, and I did not read that page. The MCP deta"
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm that the Developer Sandbox is free and what the app review involves. Webhooks support is based on the API docs navigation listing a Webhooks section, and I did not read that page. The MCP details come from search results, not the docs pages."
   ]
  },
- "plain": {
+ "paygent-connect": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://www.plain.com/docs/api-reference/graphql/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://www.plain.com/docs/api-reference/graphql/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://www.plain.com/pricing",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://www.plain.com/docs/agents/mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "agent marked access confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check three things. First, which plan includes API and webhook access, and whether the trial includes it. Second, the OAuth app docs: whether third-party OAuth apps are available and whether they need"
-  ]
- },
- "pumble": {
-  "evidence": [
-   {
-    "field": "access",
-    "url": "https://pumble.com/help/integrations/add-pumble-apps/api-keys/",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.5
-   },
-   {
-    "field": "auth",
-    "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm four points. (1) Whether Marketplace review is required before other workspaces can install an OAuth app. (2) The Swagger URL and whether it is a downloadable OpenAPI spec. I set openapi_spec "
-  ]
- },
- "sendgrid": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+    "url": "https://docs.nmi.com/reference/authentication",
     "http": 200,
     "status": "ok",
     "match": "close",
-    "score": 0.78
-   },
-   {
-    "field": "access",
-    "url": "https://www.twilio.com/en-us/products/email-api/pricing",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.2
-   },
-   {
-    "field": "api",
-    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
+    "score": 0.7
    },
    {
     "field": "webhooks",
-    "url": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/getting-started-event-webhook",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "url": "https://docs.nmi.com/reference",
     "http": 200,
     "status": "ok",
     "match": "not_found",
     "score": 0
-   }
-  ],
-  "flags": [
-   "agent marked mcp confidence low",
-   "no evidence cited for mcp",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether SendGrid still offers a permanent free plan or only the 60-day trial, and whether API access continues after the trial ends. Also check whether Twilio has since published an official Sen",
-   "quote for access not found on https://www.twilio.com/en-us/products/email-api/pricing",
-   "quote for api not found on https://www.twilio.com/docs/sendgrid/api-reference"
-  ]
- },
- "salesforce-commerce-cloud": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.24
-   },
-   {
-    "field": "auth",
-    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.55
    },
    {
     "field": "mcp",
-    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "url": "https://docs.nmi.com/reference",
     "http": 200,
     "status": "ok",
     "match": "not_found",
-    "score": 0.2
+    "score": 0.21
+   }
+  ],
+  "flags": [
+   "official MCP claimed with no URL or package named",
+   "agent marked access confidence low",
+   "no evidence cited for access",
+   "agent marked buildability confidence low",
+   "quote for webhooks not found on https://docs.nmi.com/reference",
+   "quote for mcp not found on https://docs.nmi.com/reference"
+  ],
+  "notes": [
+   "agent's open question: The product identity is unconfirmed. Searches found no \"Paygent Connect\" page, and nothing linking Paygent to NMI. Paygent could also mean the Japanese Paygent PSP, which has its own API. Someone should confirm which product is meant, and how a Paygent-branded NMI account is provisioned (sandbox sig"
+  ]
+ },
+ "pitchbook": {
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
    },
    {
     "field": "api",
-    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://claude.com/marketplace/connectors/pitchbook",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2651,12 +3024,10 @@
    }
   ],
   "flags": [
-   "agent marked access confidence low",
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: developer.salesforce.com pages returned 403 to my fetch. Please confirm the following: (1) the trial or sandbox licensing path (on-demand sandboxes need a licensed realm), (2) whether SCAPI has webhoo",
-   "quote for auth not found on https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
-   "quote for mcp not found on https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp"
+   "agent marked api confidence low"
+  ],
+  "notes": [
+   "agent's open question: PitchBook's own help pages (pitchbook.com/help/pitchbook-api and the Premium Connector page) returned 403 to me. The auth, access and sandbox findings therefore come from a third-party integrator (Frontegg) and search summaries. A human should check them on PitchBook's pages or with a PitchBook rep."
   ]
  },
  "pinterest": {
@@ -2710,32 +3081,16 @@
     "score": 1
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether Pinterest webhooks exist (nothing found in the docs index, only a \"Manage notifications\" reference). Check whether the official MCP server is live or still pre-launch. Check Standard-upg"
+  "flags": [],
+  "notes": [
+   "agent's open question: Check whether Pinterest webhooks exist (nothing found in the docs index, only a \"Manage notifications\" reference). Check whether the official MCP server is live or still pre-launch. Check Standard-upgrade review requirements and turnaround, which come from community posts and the access-tiers page. "
   ]
  },
- "se-ranking": {
+ "plaid": {
   "evidence": [
    {
-    "field": "access",
-    "url": "https://seranking.com/api/",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://seranking.com/api/integrations/mcp/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
     "field": "auth",
-    "url": "https://seranking.com/api/",
+    "url": "https://plaid.com/docs/api/",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2743,7 +3098,79 @@
    },
    {
     "field": "api",
-    "url": "https://seranking.com/api/",
+    "url": "https://plaid.com/docs/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   },
+   {
+    "field": "mcp",
+    "url": "https://plaid.com/docs/resources/mcp/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://plaid.com/docs/account/billing/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.8
+   },
+   {
+    "field": "access",
+    "url": "https://plaid.com/docs/account/billing/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "buildability",
+    "url": "https://plaid.com/docs/quickstart/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: I did not open the webhooks docs page. The webhooks=yes answer comes from my knowledge of Plaid, not from a page I fetched. I also could not confirm whether Production approval involves a real review or what its criteria are."
+  ]
+ },
+ "quickbooks": {
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2751,8 +3178,295 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The REST auth header format, the endpoint count, whether an OpenAPI spec is published, and whether webhooks exist were not confirmed. The pricing details came from a page summary, not the pricing page"
+   "no evidence cited for api"
+  ],
+  "notes": [
+   "agent's open question: developer.intuit.com docs render client-side, so I couldn't open them. Please confirm these on Intuit's pages: (1) current App Partner Program pricing, including free Builder-tier limits; (2) the production-key assessment process; (3) webhook support (from prior knowledge, not seen this session); (4"
+  ]
+ },
+ "pumble": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "auth",
+    "url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.89
+   },
+   {
+    "field": "access",
+    "url": "https://pumble.com/help/integrations/add-pumble-apps/api-keys-integration",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   },
+   {
+    "field": "api",
+    "url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://cake-com.github.io/pumble-node-sdk/manifest.html",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   }
+  ],
+  "flags": [
+   "agent marked mcp confidence low",
+   "no evidence cited for mcp",
+   "quote for auth not found on https://cake-com.github.io/pumble-node-sdk/authorization.html",
+   "quote for webhooks not found on https://cake-com.github.io/pumble-node-sdk/manifest.html"
+  ],
+  "notes": [
+   "agent's open question: Check: (1) whether apps can be installed in other workspaces without Marketplace review, and what the \"Publishing to CAKE.com Marketplace\" guide requires; (2) whether the Swagger/OpenAPI spec is public; (3) whether a sandbox exists; (4) whether any official or community MCP server exists. The SDK do"
+  ]
+ },
+ "plain": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.plain.com/docs/api-reference/graphql/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://www.plain.com/docs/api-reference/graphql/introduction",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://www.plain.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.plain.com/docs/agents/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low"
+  ],
+  "notes": [
+   "agent's open question: Check three things. First, which plan includes API and webhook access, and whether the trial includes it. Second, the OAuth app docs: whether third-party OAuth apps are available and whether they need review. Third, the webhooks docs, since I inferred webhooks from the pricing page listing and did n"
+  ]
+ },
+ "salesforce": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.6
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for api"
+  ],
+  "notes": [
+   "agent's open question: The developer.salesforce.com pages returned HTTP 403 to fetch, so I relied on search result snippets and summaries. The quotes are short titles and snippets. The OAuth flow list, the OpenAPI spec (I believe one is published for the REST API), the webhook details and the production edition requiremen"
+  ]
+ },
+ "podio": {
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://developers.podio.com/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.podio.com/doc/oauth-authorization",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.podio.com/doc/oauth-authorization",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether the Podio API key or OAuth app needs a paid plan or review before other users can connect. Also check whether an OpenAPI spec or sandbox exists. The old developer docs partly return 410."
+  ]
+ },
+ "sendgrid": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.78
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.2
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/getting-started-event-webhook",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   }
+  ],
+  "flags": [
+   "agent marked mcp confidence low",
+   "no evidence cited for mcp",
+   "quote for access not found on https://www.twilio.com/en-us/products/email-api/pricing",
+   "quote for api not found on https://www.twilio.com/docs/sendgrid/api-reference"
+  ],
+  "notes": [
+   "agent's open question: Check whether SendGrid still offers a permanent free plan or only the 60-day trial, and whether API access continues after the trial ends. Also check whether Twilio has since published an official SendGrid MCP server, and whether the v3 mail send endpoint's sandbox_mode is documented."
+  ]
+ },
+ "salesforce-commerce-cloud": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.24
+   },
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.55
+   },
+   {
+    "field": "mcp",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.2
+   },
+   {
+    "field": "api",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-admin-apis.html",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low",
+   "no evidence cited for access",
+   "quote for auth not found on https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+   "quote for mcp not found on https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp"
+  ],
+  "notes": [
+   "agent's open question: developer.salesforce.com pages returned 403 to my fetch. Please confirm the following: (1) the trial or sandbox licensing path (on-demand sandboxes need a licensed realm), (2) whether SCAPI has webhooks or notifications, (3) the OpenAPI spec availability on Salesforce's API specs page, (4) the pilot"
   ]
  },
  "sentry": {
@@ -2798,73 +3512,16 @@
     "score": 1
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check three things. First, whether publishing a public OAuth integration needs Sentry review. Second, whether a free plan has full API access. Third, whether an OpenAPI spec is published (I believe on"
+  "flags": [],
+  "notes": [
+   "agent's open question: Check three things. First, whether publishing a public OAuth integration needs Sentry review. Second, whether a free plan has full API access. Third, whether an OpenAPI spec is published (I believe one exists on GitHub, but I did not verify it). Also confirm whether a sandbox or test mode exists."
   ]
  },
- "salesforce": {
+ "reducto": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.6
-   },
-   {
-    "field": "mcp",
-    "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: The developer.salesforce.com pages returned HTTP 403 to fetch, so I relied on search result snippets and summaries. The quotes are short titles and snippets. The OAuth flow list, the OpenAPI spec (I b"
-  ]
- },
- "smartsheet": {
-  "evidence": [
-   {
-    "field": "access",
-    "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+    "url": "https://docs.reducto.ai/api-reference/overview",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2872,7 +3529,143 @@
    },
    {
     "field": "api",
-    "url": "https://developers.smartsheet.com/api/smartsheet/openapi/schemas/title",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://reducto.ai/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.2
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.reducto.ai/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.67
+   }
+  ],
+  "flags": [
+   "quote for api not found on https://docs.reducto.ai/api-reference/overview",
+   "quote for webhooks not found on https://docs.reducto.ai/api-reference/overview",
+   "quote for access not found on https://reducto.ai/pricing"
+  ],
+  "notes": [
+   "agent's open question: Check whether a sandbox or test mode exists. Confirm the Studio sign-up and API-key creation flow. Open docs.reducto.ai/mcp-server directly to verify the MCP details, which came from search summaries."
+  ]
+ },
+ "pylon": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.67
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.usepylon.com/integrations/api-webhooks",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.92
+   }
+  ],
+  "flags": [
+   "agent marked access confidence low",
+   "no evidence cited for access",
+   "quote for auth not found on https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+  ],
+  "notes": [
+   "agent's open question: Check whether Pylon offers a free trial or dev workspace, and whether an OpenAPI spec is published. Also check webhook event docs and rate limits, which I could not confirm from public pages. The webhook evidence comes from a search snippet of the marketing page. I did not fetch that page directly."
+  ]
+ },
+ "ramp": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.63
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ramp.com/llms-guides/sandbox.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ramp.com/llms.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://docs.ramp.com/developer-api/v1/introduction",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -2880,8 +3673,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm sandbox availability/terms and whether OAuth apps need Smartsheet review before public distribution; the MCP and sandbox details came from search summaries, not fetched pages."
+   "agent marked access confidence low"
+  ],
+  "notes": [
+   "agent's open question: Check four things. (1) The Get Sandbox Access page, for who qualifies. (2) Whether public Authorization Code apps need Ramp approval or partner status. (3) Whether the API needs a paid Ramp plan. (4) The webhook and OpenAPI details. I only saw them listed in the docs index and the shell page, and I "
   ]
  },
  "shopify": {
@@ -2927,9 +3722,92 @@
     "score": 1
    }
   ],
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm that Partner accounts and development stores are free, and check the current App Store registration fee. Confirm whether Shopify offers any official hosted MCP server for admin operations. Check whether a public OpenAPI spec exists. I did not fetch the webhooks page, the sandbox docs or the "
+  ]
+ },
+ "slack": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.slack.dev/authentication/installing-with-oauth",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/distribution/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.slack.dev/ai/mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 1
+   }
+  ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that Partner accounts and development stores are free, and check the current App Store registration fee. Confirm whether Shopify offers any official hosted MCP server for admin operations. Che"
+   "ready_now but main_blocker is tos_or_rate_limits",
+   "no evidence cited for api"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether an official OpenAPI spec exists (I did not fetch the docs page). Slack publishes a community-style spec in the slackapi/slack-api-specs GitHub repo. Confirm the Developer Program sandbox terms, because that page 404'd. Confirm the current non-Marketplace rate limits for your use case"
+  ]
+ },
+ "se-ranking": {
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://seranking.com/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://seranking.com/api/integrations/mcp/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://seranking.com/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://seranking.com/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: The REST auth header format, the endpoint count, whether an OpenAPI spec is published, and whether webhooks exist were not confirmed. The pricing details came from a page summary, not the pricing page itself. The sandbox answer rests on the free trial account, not a dedicated test mode."
   ]
  },
  "snowflake": {
@@ -2983,93 +3861,9 @@
     "score": 0.91
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Webhook absence is unverified. Confirm whether the trial's AI-feature credit-card restriction affects the toolkit's testing. The docs page I fetched for MCP is Cortex Agents MCP and may have moved."
-  ]
- },
- "slack": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.slack.dev/authentication/installing-with-oauth",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://docs.slack.dev/distribution/",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://docs.slack.dev/ai/mcp-server",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "ready_now but main_blocker is tos_or_rate_limits",
-   "no evidence cited for api",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether an official OpenAPI spec exists (I did not fetch the docs page). Slack publishes a community-style spec in the slackapi/slack-api-specs GitHub repo. Confirm the Developer Program sandb"
-  ]
- },
- "squarespace": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.17
-   },
-   {
-    "field": "api",
-    "url": "https://developers.squarespace.com/commerce-apis/overview",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.09
-   },
-   {
-    "field": "mcp",
-    "url": "https://glama.ai/mcp/servers/integrations/squarespace",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.5
-   }
-  ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether a dev-mode OAuth client works before approval. Confirm whether an OpenAPI spec is published and whether a sandbox exists. Neither appeared in the pages I fetched. The quotes are paraph",
-   "quote for access not found on https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
-   "quote for api not found on https://developers.squarespace.com/commerce-apis/overview"
+  "flags": [],
+  "notes": [
+   "agent's open question: Webhook absence is unverified. Confirm whether the trial's AI-feature credit-card restriction affects the toolkit's testing. The docs page I fetched for MCP is Cortex Agents MCP and may have moved."
   ]
  },
  "systeme-io": {
@@ -3108,66 +3902,136 @@
    }
   ],
   "flags": [
-   "agent marked api confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: The WebFetch summary of the developer.systeme.io reference gave only a few example endpoints. Check the full endpoint list, whether an OpenAPI spec is published, and whether the free plan includes API"
+   "agent marked api confidence low"
+  ],
+  "notes": [
+   "agent's open question: The WebFetch summary of the developer.systeme.io reference gave only a few example endpoints. Check the full endpoint list, whether an OpenAPI spec is published, and whether the free plan includes API keys. The MCP URL and the \"all plans\" claim come from search-result summaries, not from pages I ope"
   ]
  },
- "threads-meta": {
+ "squarespace": {
   "evidence": [
    {
-    "field": "what_it_does",
-    "url": "https://developers.facebook.com/docs/threads",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   },
-   {
     "field": "auth",
-    "url": "https://developers.facebook.com/docs/threads/get-started",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   },
-   {
-    "field": "auth",
-    "url": "https://developers.facebook.com/docs/threads/get-started",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
    },
    {
     "field": "access",
-    "url": "https://developers.facebook.com/docs/threads/get-started",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.17
    },
    {
-    "field": "webhooks",
-    "url": "https://developers.facebook.com/documentation/threads/webhooks.md",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "field": "api",
+    "url": "https://developers.squarespace.com/commerce-apis/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.09
    },
    {
     "field": "mcp",
-    "url": "https://pypi.org/project/mcp-threads/",
+    "url": "https://glama.ai/mcp/servers/integrations/squarespace",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   }
+  ],
+  "flags": [
+   "quote for access not found on https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+   "quote for api not found on https://developers.squarespace.com/commerce-apis/overview"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether a dev-mode OAuth client works before approval. Confirm whether an OpenAPI spec is published and whether a sandbox exists. Neither appeared in the pages I fetched. The quotes are paraphrased summaries from the fetch tool, not verbatim page text, and the MCP quote is only a search-resu"
+  ]
+ },
+ "supabase": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.92
+   },
+   {
+    "field": "api",
+    "url": "https://supabase.com/docs/reference/api/introduction",
     "http": 200,
     "status": "ok",
     "match": "not_found",
     "score": 0
+   },
+   {
+    "field": "mcp",
+    "url": "https://supabase.com/docs/guides/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.86
+   },
+   {
+    "field": "mcp",
+    "url": "https://supabase.com/docs/guides/mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether Meta business verification is needed for App Review. Confirm the sandbox status: dev mode with Threads Tester roles is the only test mode I found. Confirm that no OpenAPI spec exists. ",
-   "quote for mcp not found on https://pypi.org/project/mcp-threads/"
+   "no evidence cited for access",
+   "quote for api not found on https://supabase.com/docs/reference/api/introduction"
+  ],
+  "notes": [
+   "agent's open question: Confirm that OAuth apps can be used by other organizations without review. Confirm webhook availability. Webhooks appear only as sidebar entries in the Management API docs. The sandbox claim rests on the free tier and the local CLI. I didn't verify it on a page."
+  ]
+ },
+ "smartsheet": {
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://developers.smartsheet.com/api/smartsheet/openapi/schemas/title",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm sandbox availability/terms and whether OAuth apps need Smartsheet review before public distribution; the MCP and sandbox details came from search summaries, not fetched pages."
   ]
  },
  "twilio": {
@@ -3208,131 +4072,10 @@
   "flags": [
    "no evidence cited for auth",
    "no evidence cited for access",
-   "agent marked mcp confidence low",
-   "agent asked for a human: The auth page and signup/trial pages weren't fetched, so the auth methods and trial terms come from memory. Check Twilio's current OAuth support and trial limits. Confirm whether the alpha MCP counts "
-  ]
- },
- "twenty": {
-  "evidence": [
-   {
-    "field": "api",
-    "url": "https://docs.twenty.com/developers/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://docs.twenty.com/developers/extend/api.md",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://twenty.com/pricing",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://twenty.com/llms.txt",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
+   "agent marked mcp confidence low"
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check the OAuth guide to confirm how third-party OAuth clients are registered and whether any review applies. Check the webhook docs and whether a sandbox or test workspace exists beyond self-hosting."
-  ]
- },
- "supabase": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://supabase.com/docs/reference/api/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.92
-   },
-   {
-    "field": "api",
-    "url": "https://supabase.com/docs/reference/api/introduction",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0
-   },
-   {
-    "field": "mcp",
-    "url": "https://supabase.com/docs/guides/mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.86
-   },
-   {
-    "field": "mcp",
-    "url": "https://supabase.com/docs/guides/mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm that OAuth apps can be used by other organizations without review. Confirm webhook availability. Webhooks appear only as sidebar entries in the Management API docs. The sandbox claim rests on ",
-   "quote for api not found on https://supabase.com/docs/reference/api/introduction"
-  ]
- },
- "sherlock": {
-  "evidence": [
-   {
-    "field": "what_it_does",
-    "url": "https://github.com/sherlock-project/sherlock",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.88
-   },
-   {
-    "field": "api",
-    "url": "https://github.com/sherlock-project/sherlock",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "buildability",
-    "url": "https://github.com/sherlock-project/sherlock",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
-  ],
-  "flags": [
-   "no evidence cited for auth",
-   "no evidence cited for access",
-   "agent asked for a human: The evidence quotes come from the GitHub page fetch summary and search result titles, not from page text I read directly. Confirm that there is no official hosted Sherlock service. The closest thing t"
+  "notes": [
+   "agent's open question: The auth page and signup/trial pages weren't fetched, so the auth methods and trial terms come from memory. Check Twilio's current OAuth support and trial limits. Confirm whether the alpha MCP counts as vendor-official. The MCP evidence quote comes from a search snippet, not a page I opened."
   ]
  },
  "stripe": {
@@ -3418,8 +4161,280 @@
     "score": 1
    }
   ],
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm Stripe's OpenAPI spec is public (I believe the stripe/openapi GitHub repo, but did not fetch it). Confirm which OAuth route (Stripe Apps or Connect) fits a multi-user toolkit, and whether Connect OAuth needs platform approval. I didn't open the webhooks docs, but the webhook endpoints API ap"
+  ]
+ },
+ "threads-meta": {
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developers.facebook.com/docs/threads",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/documentation/threads/webhooks.md",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "mcp",
+    "url": "https://pypi.org/project/mcp-threads/",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   }
+  ],
   "flags": [
-   "agent asked for a human: Confirm Stripe's OpenAPI spec is public (I believe the stripe/openapi GitHub repo, but did not fetch it). Confirm which OAuth route (Stripe Apps or Connect) fits a multi-user toolkit, and whether Conn"
+   "quote for mcp not found on https://pypi.org/project/mcp-threads/"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether Meta business verification is needed for App Review. Confirm the sandbox status: dev mode with Threads Tester roles is the only test mode I found. Confirm that no OpenAPI spec exists. The webhook quote is a paraphrase of the supported fields, not a verbatim sentence."
+  ]
+ },
+ "sherlock": {
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.88
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "buildability",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for auth",
+   "no evidence cited for access"
+  ],
+  "notes": [
+   "agent's open question: The evidence quotes come from the GitHub page fetch summary and search result titles, not from page text I read directly. Confirm that there is no official hosted Sherlock service. The closest thing to an API is a third-party Apify actor, which is not the vendor's."
+  ]
+ },
+ "waterfall-io": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.waterfall.io",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.67
+   },
+   {
+    "field": "access",
+    "url": "https://waterfall.io/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://docs.waterfall.io/llms.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.waterfall.io",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [
+   "no evidence cited for mcp"
+  ],
+  "notes": [
+   "agent's open question: Check the 'Get API access' page for the approval process and any trial credits. The access-review finding comes from a summary of that page, which I did not open directly. Quotes are paraphrased from fetch summaries, not verbatim page text."
+  ]
+ },
+ "vonage": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://developer.vonage.com/en/api",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.vonage.com/en/mcp-server/overview",
+    "http": 200,
+    "status": "ok",
+    "match": "partial",
+    "score": 0.5
+   },
+   {
+    "field": "access",
+    "url": "https://api.support.vonage.com/hc/en-us/articles/204014853",
+    "http": 403,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: Confirm whether OpenAPI specs are published (the API reference is built from them, but I did not find a link). Confirm the current free-trial terms and credit amount on the pricing or sign-up pages. Check whether any API supports OAuth-style delegated access (I found none)."
+  ]
+ },
+ "twenty": {
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://docs.twenty.com/developers/introduction",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.twenty.com/developers/extend/api.md",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://twenty.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://twenty.com/llms.txt",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: Check the OAuth guide to confirm how third-party OAuth clients are registered and whether any review applies. Check the webhook docs and whether a sandbox or test workspace exists beyond self-hosting. I inferred the OpenAPI spec exists from the per-workspace API playground in Settings → Developers →"
+  ]
+ },
+ "whatsapp-business": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.facebook.com/blog/post/2026/09/15/whatsapp-business-messaging-mcp-ai-agent/",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/llms.txt",
+    "http": 400,
+    "status": "blocked",
+    "match": "unchecked",
+    "score": null
+   }
+  ],
+  "flags": [],
+  "notes": [
+   "agent's open question: The access-tokens and pricing pages returned only navigation text. Please confirm the following. (1) The exact App Review, Business Verification and Tech Provider requirements for Embedded Signup. (2) That a free test number exists (the get-started page did not say so). (3) Free-tier and per-message"
   ]
  },
  "vercel": {
@@ -3497,60 +4512,16 @@
     "score": 0.4
    }
   ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Check whether an OpenAPI spec is published (https://openapi.vercel.sh is believed to exist, but I did not open it). Check the access-token docs and the \"Sign in with Vercel\" OAuth docs, which I did no"
-  ]
- },
- "xero": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
+  "flags": [],
+  "notes": [
+   "agent's open question: Check whether an OpenAPI spec is published (https://openapi.vercel.sh is believed to exist, but I did not open it). Check the access-token docs and the \"Sign in with Vercel\" OAuth docs, which I did not open. Confirm that free Hobby accounts can create tokens, since I did not open a pricing page."
   ]
  },
  "youtube-transcript": {
-  "evidence": [],
-  "flags": [
-   "no record: agent run failed"
-  ]
- },
- "telegram": {
   "evidence": [
    {
     "field": "auth",
-    "url": "https://core.telegram.org/bots/api",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://core.telegram.org/bots/api",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "access",
-    "url": "https://core.telegram.org/api/obtaining_api_id",
-    "http": 200,
-    "status": "ok",
-    "match": "not_found",
-    "score": 0.17
-   },
-   {
-    "field": "auth",
-    "url": "https://core.telegram.org/api/auth",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://github.com/sparfenyuk/mcp-telegram",
+    "url": "https://transcriptapi.com/docs/api/",
     "http": 200,
     "status": "ok",
     "match": "verbatim",
@@ -3558,7 +4529,23 @@
    },
    {
     "field": "api",
-    "url": "https://core.telegram.org/api/auth",
+    "url": "https://transcriptapi.com/docs/api/",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.75
+   },
+   {
+    "field": "access",
+    "url": "https://transcriptapi.com",
+    "http": 200,
+    "status": "ok",
+    "match": "close",
+    "score": 0.63
+   },
+   {
+    "field": "mcp",
+    "url": "https://transcriptapi.com",
     "http": 200,
     "status": "ok",
     "match": "not_found",
@@ -3566,10 +4553,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The Bot API page was truncated at about 100k of 620k characters, so I did not read the full method list or the rate limits. The Bot API test environment is not confirmed. The MTProto test servers are ",
-   "quote for access not found on https://core.telegram.org/api/obtaining_api_id",
-   "quote for api not found on https://core.telegram.org/api/auth"
+   "quote for mcp not found on https://transcriptapi.com"
+  ],
+  "notes": [
+   "agent's open question: The OpenAPI spec was not confirmed. A Swagger UI exists at /swagger, so a JSON spec probably exists behind it. The MCP URL and the 100-free-credits claim come from the landing page as summarized by the fetch tool. I did not open the MCP docs page. The hint (transcriptapi.com) was followed."
   ]
  },
  "woocommerce": {
@@ -3625,138 +4612,66 @@
   ],
   "flags": [
    "no evidence cited for access",
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether the /wc-auth/v1/authorize flow (user-approved key generation) is still supported. It would make onboarding smoother. Also confirm that the webhook details in the REST docs match the cu",
    "quote for api not found on https://woocommerce.github.io/woocommerce-rest-api-docs/"
+  ],
+  "notes": [
+   "agent's open question: Confirm whether the /wc-auth/v1/authorize flow (user-approved key generation) is still supported. It would make onboarding smoother. Also confirm that the webhook details in the REST docs match the current version. I only read the outline, not the body text. The openapi_spec value is based on none b"
   ]
  },
- "whatsapp-business": {
+ "xero": {
   "evidence": [
    {
-    "field": "auth",
-    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    },
    {
-    "field": "webhooks",
-    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   },
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    },
    {
     "field": "mcp",
-    "url": "https://developers.facebook.com/blog/post/2026/09/15/whatsapp-business-messaging-mcp-ai-agent/",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "url": "https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    },
    {
-    "field": "access",
-    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/llms.txt",
-    "http": 400,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
+    "field": "buildability",
+    "url": "https://developer.xero.com/pricing",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The access-tokens and pricing pages returned only navigation text. Please confirm the following. (1) The exact App Review, Business Verification and Tech Provider requirements for Embedded Signup. (2)"
-  ]
- },
- "waterfall-io": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://docs.waterfall.io",
-    "http": 200,
-    "status": "ok",
-    "match": "close",
-    "score": 0.67
-   },
-   {
-    "field": "access",
-    "url": "https://waterfall.io/pricing",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://docs.waterfall.io/llms.txt",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "webhooks",
-    "url": "https://docs.waterfall.io",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   }
+   "no evidence cited for auth",
+   "no evidence cited for api",
+   "quote for access not found on https://developer.xero.com/pricing",
+   "quote for access not found on https://developer.xero.com/pricing",
+   "quote for access not found on https://developer.xero.com/pricing",
+   "quote for mcp not found on https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md",
+   "quote for buildability not found on https://developer.xero.com/pricing"
   ],
-  "flags": [
-   "no evidence cited for mcp",
-   "no evidence cited for buildability",
-   "agent asked for a human: Check the 'Get API access' page for the approval process and any trial credits. The access-review finding comes from a summary of that page, which I did not open directly. Quotes are paraphrased from "
-  ]
- },
- "vonage": {
-  "evidence": [
-   {
-    "field": "auth",
-    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "auth",
-    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "api",
-    "url": "https://developer.vonage.com/en/api",
-    "http": 200,
-    "status": "ok",
-    "match": "verbatim",
-    "score": 1
-   },
-   {
-    "field": "mcp",
-    "url": "https://developer.vonage.com/en/mcp-server/overview",
-    "http": 200,
-    "status": "ok",
-    "match": "partial",
-    "score": 0.5
-   },
-   {
-    "field": "access",
-    "url": "https://api.support.vonage.com/hc/en-us/articles/204014853",
-    "http": 403,
-    "status": "blocked",
-    "match": "unchecked",
-    "score": null
-   }
-  ],
-  "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm whether OpenAPI specs are published (the API reference is built from them, but I did not find a link). Confirm the current free-trial terms and credit amount on the pricing or sign-up pages. C"
+  "notes": [
+   "agent's open question: Several quotes are paraphrased tool summaries of the pricing page, not verbatim page text, and the OAuth, webhooks and OpenAPI pages returned no body. Someone should confirm these on developer.xero.com: the auth methods, webhooks, the OpenAPI spec (the XeroAPI/Xero-OpenAPI repo), the demo company sa"
   ]
  },
  "zoho-crm": {
@@ -3811,9 +4726,10 @@
    }
   ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: Confirm three things. (1) Whether Zoho publishes an OpenAPI spec. (2) The sandbox's edition requirements. The sandbox answer comes from prior knowledge and no fetched page confirms it. (3) The exact r",
    "quote for access not found on https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+  ],
+  "notes": [
+   "agent's open question: Confirm three things. (1) Whether Zoho publishes an OpenAPI spec. (2) The sandbox's edition requirements. The sandbox answer comes from prior knowledge and no fetched page confirms it. (3) The exact remote MCP URL, and whether non-Zoho MCP clients can use it."
   ]
  },
  "zoho-cliq": {
@@ -3851,9 +4767,68 @@
     "score": 1
    }
   ],
+  "flags": [],
+  "notes": [
+   "agent's open question: The REST docs page was truncated, so I only read the first part. Please confirm three things. First, whether the REST API has outbound webhooks, since Cliq bots and incoming-webhook handlers exist but I did not see them in the docs. Second, whether a sandbox exists. Third, whether any scope review o"
+  ]
+ },
+ "telegram": {
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/bots/api",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "webhooks",
+    "url": "https://core.telegram.org/bots/api",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "access",
+    "url": "https://core.telegram.org/api/obtaining_api_id",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0.17
+   },
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/api/auth",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/sparfenyuk/mcp-telegram",
+    "http": 200,
+    "status": "ok",
+    "match": "verbatim",
+    "score": 1
+   },
+   {
+    "field": "api",
+    "url": "https://core.telegram.org/api/auth",
+    "http": 200,
+    "status": "ok",
+    "match": "not_found",
+    "score": 0
+   }
+  ],
   "flags": [
-   "no evidence cited for buildability",
-   "agent asked for a human: The REST docs page was truncated, so I only read the first part. Please confirm three things. First, whether the REST API has outbound webhooks, since Cliq bots and incoming-webhook handlers exist but"
+   "quote for access not found on https://core.telegram.org/api/obtaining_api_id",
+   "quote for api not found on https://core.telegram.org/api/auth"
+  ],
+  "notes": [
+   "agent's open question: The Bot API page was truncated at about 100k of 620k characters, so I did not read the full method list or the rate limits. The Bot API test environment is not confirmed. The MTProto test servers are confirmed at core.telegram.org/api/auth. The sandbox is \"yes\" on that basis. The community MCP searc"
   ]
  },
  "zendesk": {
@@ -3909,9 +4884,10 @@
   ],
   "flags": [
    "agent marked mcp confidence low",
-   "no evidence cited for buildability",
-   "agent asked for a human: 1) Check whether the global OAuth client requires Zendesk approval (the \"Set up a global OAuth client\" guide was not opened). 2) Check whether the official Zendesk MCP Server is now GA, and its URL. 3",
    "quote for mcp not found on https://www.zendesk.com/au/blog/zendesk-insights/innovation/zendesk-ai-mcp-client/"
+  ],
+  "notes": [
+   "agent's open question: 1) Check whether the global OAuth client requires Zendesk approval (the \"Set up a global OAuth client\" guide was not opened). 2) Check whether the official Zendesk MCP Server is now GA, and its URL. 3) Check whether the Support OpenAPI spec is official. I saw only mentions of a published schema and "
   ]
  }
 }

@@ -1,0 +1,22 @@
+pass1: 21 apps, model sonnet, concurrency 6
+[1/21] ok   Plaid                      29s  6 tool calls  approval_required / ready_with_caveats
+[2/21] ok   Harvest                    30s  6 tool calls  self_serve_free / ready_now
+[3/21] ok   Binance                    32s  8 tool calls  self_serve_free / ready_now
+[4/21] ok   Paygent Connect            38s  7 tool calls  approval_required / ready_with_caveats
+[5/21] ok   Coda                       40s  7 tool calls  self_serve_free / ready_now
+[6/21] ok   iPayX                      51s  9 tool calls  paid_plan_required / ready_with_caveats
+[7/21] ok   PitchBook                  31s  8 tool calls  contact_sales / needs_partnership_or_sales
+[8/21] ok   Brex                       42s  9 tool calls  partner_gated / ready_with_caveats
+[9/21] ok   Xero                       48s  9 tool calls  self_serve_free / ready_with_caveats
+[10/21] ok   NotebookLM                 29s  5 tool calls  paid_plan_required / ready_with_caveats
+[11/21] ok   Ramp                       46s  11 tool calls  approval_required / ready_with_caveats
+[12/21] ok   Reducto                    21s  5 tool calls  self_serve_free / ready_now
+[13/21] ok   Otter AI                   32s  7 tool calls  paid_plan_required / ready_with_caveats
+[14/21] ok   Consensus                  31s  7 tool calls  paid_plan_required / ready_with_caveats
+[15/21] ok   Fathom                     35s  8 tool calls  approval_required / ready_with_caveats
+[16/21] ok   QuickBooks                 84s  10 tool calls  approval_required / ready_with_caveats
+[17/21] ok   Devin                      32s  6 tool calls  paid_plan_required / ready_with_caveats
+[18/21] ok   Mermaid CLI                20s  4 tool calls  no_public_api / not_buildable
+[19/21] ok   higgsfield                 33s  6 tool calls  self_serve_free / ready_now
+[20/21] ok   Grain                      26s  6 tool calls  self_serve_free / ready_with_caveats
+[21/21] ok   YouTube Transcript         27s  5 tool calls  self_serve_free / ready_now

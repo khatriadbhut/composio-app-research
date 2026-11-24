@@ -5,13 +5,92 @@
  "category": "Productivity and Project Management",
  "hint": "harvestapp.com (help.getharvest.com/api-v2)",
  "pass": 1,
- "at": "2026-11-24T15:08:01.644Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 635,
- "turns": 1,
+ "at": "2026-11-24T17:40:09.270Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://help.getharvest.com/api-v2/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Harvest time tracking MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Time tracking, invoicing, expenses and project management SaaS with a public REST API v2.\",\"subcategory\":\"Time tracking\",\"auth_methods\":[\"oauth"
+  }
+ ],
+ "cost_usd": 0.0818186,
+ "duration_ms": 29375,
+ "turns": 7,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Time tracking, invoicing, expenses and project management SaaS with a public REST API v2.",
+  "subcategory": "Time tracking",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth2 authorization code (and implicit) via Harvest ID; personal access tokens for own scripts. Requests also need a Harvest-Account-Id header.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone with a Harvest ID can create PATs and OAuth2 apps at id.getharvest.com/developers. The docs describe no app review. Using the API needs a Harvest account, which has a free tier, though I didn't check its limits.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers clients, contacts, invoices, estimates, expenses, tasks, time entries, projects, users, roles, reports, PTO, approvals, notifications, reimbursements, imports and Forecast. This is well over 50 operations.",
+  "openapi_spec": "no",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "Harvest's help center article \"Harvest MCP\" gives the endpoint https://api.harvestapp.com/mcp. I only saw this in search results, because the article returned 403 when fetched. Community servers also exist, such as ianaleck/harvest-mcp-server.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blocker found. The docs describe no OAuth app review, and the PAT and OAuth2 app creation pages are self-serve.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "Personal Access Tokens are the preferred method when you want to write your own scripts that consume our API."
+   },
+   {
+    "field": "auth",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "The V2 API requires an access token to authenticate requests."
+   },
+   {
+    "field": "api",
+    "url": "https://help.getharvest.com/api-v2/",
+    "quote": "Clients API, Invoices API, Estimates API, Expenses API, Timesheets API, Projects API, Reports API, Forecast API"
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+    "quote": "Harvest MCP"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether the Harvest API v2 offers webhooks. I didn't find any mention in the docs index. Check whether a sandbox or test account exists. Open the Harvest MCP help article, which returned 403 to me, to confirm the endpoint and its auth. Confirm the free plan's API limits."
+ }
 }

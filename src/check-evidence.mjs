@@ -61,9 +61,9 @@ function rules(r) {
   if (r.mcp.startsWith("official") && !/https?:\/\/|@|github|npm|pypi|\//i.test(r.mcp_notes)) f.push("official MCP claimed with no URL or package named");
   for (const k of ["auth", "access", "api", "mcp", "buildability"]) {
     if (r.confidence[k] === "low") f.push(`agent marked ${k} confidence low`);
-    if (!r.evidence.some((e) => e.field === k || (k === "api" && e.field === "webhooks"))) f.push(`no evidence cited for ${k}`);
+    // buildability is a judgment built on the other fields, so it needs no quote of its own
+    if (k !== "buildability" && !r.evidence.some((e) => e.field === k || (k === "api" && e.field === "webhooks"))) f.push(`no evidence cited for ${k}`);
   }
-  if (r.needs_human) f.push(`agent asked for a human: ${r.needs_human.slice(0, 200)}`);
   return f;
 }
 
@@ -90,7 +90,8 @@ await pool(files, 6, async (file) => {
     if (e.status === "dead") flags.push(`dead link cited for ${e.field}: ${e.url}`);
     if (e.match === "not_found") flags.push(`quote for ${e.field} not found on ${e.url}`);
   }
-  out[rec.slug] = { evidence: ev, flags };
+  // The agent's own open questions go to the verifier too, but are not counted as failures.
+  out[rec.slug] = { evidence: ev, flags, notes: rec.record.needs_human ? [`agent's open question: ${rec.record.needs_human.slice(0, 300)}`] : [] };
 });
 
 writeFileSync(opts.out, JSON.stringify(out, null, 1));
@@ -100,3 +101,4 @@ console.log(`${files.length} records, ${all.length} evidence links`);
 console.log("link status:", by("status"));
 console.log("quote match:", by("match"));
 console.log("records with flags:", Object.values(out).filter((o) => o.flags.length).length);
+console.log("flags:", Object.values(out).reduce((n, o) => n + o.flags.length, 0));

@@ -5,13 +5,84 @@
  "category": "AI, Research and Media-native",
  "hint": "github.com/mermaid-js/mermaid-cli",
  "pass": 1,
- "at": "2026-11-24T15:08:12.321Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 729,
- "turns": 1,
+ "at": "2026-11-24T17:41:41.076Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/mermaid-js/mermaid-cli"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "mermaid MCP server official mermaid-js"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Open-source CLI and Node library that renders Mermaid diagram text to SVG, PNG or PDF.\",\"subcategory\":\"Local CLI / diagram rendering library\",\""
+  }
+ ],
+ "cost_usd": 0.06337780000000001,
+ "duration_ms": 18974,
+ "turns": 5,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Open-source CLI and Node library that renders Mermaid diagram text to SVG, PNG or PDF.",
+  "subcategory": "Local CLI / diagram rendering library",
+  "auth_methods": [
+   "none"
+  ],
+  "auth_primary": "none",
+  "auth_notes": "No hosted service and no authentication. It runs locally (npm, Docker or Podman), so there are no credentials.",
+  "access": "no_public_api",
+  "access_notes": "The tool is MIT-licensed and free to install. It has no hosted public API, so there are no credentials to obtain.",
+  "api_styles": [
+   "cli_only",
+   "library_only"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "One function: render a Mermaid definition to SVG, PNG or PDF. This is the `mmdc` CLI plus a Node `run` function, which the README says is not covered by semver. It also handles Mermaid code blocks in Markdown files.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "community_only",
+  "mcp_notes": "I found no MCP server published by mermaid-js. Community servers exist: @peng-shawn/mermaid-mcp-server, mcp-mermaid (hustcc) and mermaid-render-mcp. Some of them wrap mermaid-cli. A Stacklok registry page labels one listing \"Official\", but I could not tell which organization owns it.",
+  "sandbox": "no",
+  "buildability": "not_buildable",
+  "main_blocker": "local_only_tool",
+  "blocker_notes": "This is a local CLI with no hosted API or user accounts. Composio would have to run the renderer itself, using headless Chromium via Puppeteer, as a hosted utility. It is not an end-user-authenticated integration.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "takes a Mermaid definition file and outputs an SVG, PNG, or PDF"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "the NodeJS API is not covered by semver"
+   },
+   {
+    "field": "auth",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "npm install -g @mermaid-js/mermaid-cli"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.npmjs.com/package/mermaid-mcp-server",
+    "quote": "mermaid mcp server"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The mermaid-js org page was not checked for an official MCP server. The Stacklok \"Official\" listing was unverified. The MCP npm quote comes from a search-result title, because I did not open that page."
+ }
 }

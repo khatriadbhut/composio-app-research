@@ -5,13 +5,99 @@
  "category": "Finance and Fintech",
  "hint": "pitchbook.com (research API)",
  "pass": 1,
- "at": "2026-11-24T15:08:08.768Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 695,
- "turns": 1,
+ "at": "2026-11-24T17:40:49.831Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "PitchBook Direct Data API documentation authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "PitchBook MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://pitchbook.com/help/pitchbook-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://pitchbook.com/help/getting-started-with-pitchbook-premium-connector"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://claude.com/marketplace/connectors/pitchbook"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Private-market company, deal, investor and fund data platform with a paid Direct Data API.\",\"subcategory\":\"Financial data / private markets res"
+  }
+ ],
+ "cost_usd": 0.09589109999999999,
+ "duration_ms": 30193,
+ "turns": 9,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Private-market company, deal, investor and fund data platform with a paid Direct Data API.",
+  "subcategory": "Financial data / private markets research",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Static API key sent as \"Authorization: PB-Token {key}\" (header format from third-party guides, not confirmed on PitchBook docs). There is no OAuth for the REST API. The key belongs to the customer organization, so it isn't a per-end-user flow. The Premium MCP connector uses a sign-in (likely OAuth), but that is not a general developer API.",
+  "access": "contact_sales",
+  "access_notes": "API keys come from a paid API add-on, provisioned through the PitchBook account manager or org administrator. There is no self-serve key and no free tier. It needs an existing PitchBook subscription plus a Direct Data contract. A sandbox key also has to be requested.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Base URL https://api.pitchbook.com. It covers companies, deals, investors, funds and similar entities. The docs sit behind the platform login, so the operation count could not be checked.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "https://premium.mcp.pitchbook.com/mcp, the \"PitchBook Premium\" connector. Claude's marketplace lists it as made by PitchBook, and PitchBook's help page calls it the Premium Connector. It requires sign-in and is for PitchBook clients. Strac, Apify, Merge and Vinkius also offer third-party wrappers.",
+  "sandbox": "yes",
+  "buildability": "needs_partnership_or_sales",
+  "main_blocker": "enterprise_sales",
+  "blocker_notes": "The API is a paid, contract-gated add-on with no self-serve credentials, and the docs are behind login. Composio cannot get keys alone. Each customer would need their own API contract, or the work would go through a PitchBook partnership. The official remote MCP is a possible alternative path for users who are PitchBook clients.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "quote": "PitchBook API keys are provisioned as part of a paid API add-on rather than generated self-serve."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "quote": "PitchBook authenticates API requests with a static API key"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "quote": "PitchBook also offers a test sandbox environment that uses the same base URL with a separate key."
+   },
+   {
+    "field": "mcp",
+    "url": "https://claude.com/marketplace/connectors/pitchbook",
+    "quote": "https://premium.mcp.pitchbook.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "low",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "PitchBook's own help pages (pitchbook.com/help/pitchbook-api and the Premium Connector page) returned 403 to me. The auth, access and sandbox findings therefore come from a third-party integrator (Frontegg) and search summaries. A human should check them on PitchBook's pages or with a PitchBook rep. Open points: the exact auth header, whether an OpenAPI spec or webhooks exist, API breadth, and the MCP connector's auth type and licensing terms."
+ }
 }

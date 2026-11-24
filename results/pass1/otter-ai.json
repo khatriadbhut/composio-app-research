@@ -5,13 +5,96 @@
  "category": "AI, Research and Media-native",
  "hint": "help.otter.ai (MCP server)",
  "pass": 1,
- "at": "2026-11-24T15:08:10.135Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 593,
- "turns": 1,
+ "at": "2026-11-24T17:41:21.451Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Otter.ai MCP server help.otter.ai API"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Otter.ai public API developer documentation OAuth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://help.otter.ai/hc/en-us/articles/Otter-MCP-Server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.scalekit.com/blog/otter-mcp-vs-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://otter.ai/api/docs/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI meeting assistant that records, transcribes and summarizes meetings.\",\"subcategory\":\"AI meeting notes / transcription\",\"auth_methods\":[\"api_"
+  }
+ ],
+ "cost_usd": 0.09169650000000001,
+ "duration_ms": 30993,
+ "turns": 8,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "AI meeting assistant that records, transcribes and summarizes meetings.",
+  "subcategory": "AI meeting notes / transcription",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The Public API uses a static Bearer key that a user generates in workspace Developer settings (max 2 per user). It has no OAuth. The official hosted MCP server uses OAuth 2.1 with browser consent. There is no public OAuth app or client-registration path for the REST API, so a multi-user toolkit would have to use the MCP OAuth flow. That flow is reachable only through MCP clients. Everything here comes from a secondary source (Scalekit).",
+  "access": "paid_plan_required",
+  "access_notes": "Per Scalekit, the REST Public API is \"available to Enterprise workspaces only\", so it needs an Enterprise plan and a sales conversation. The hosted MCP server works from a standard Otter account via OAuth. I could not open Otter's own docs to confirm either claim.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "Base URL api.otter.ai/v1. Covers channels and members, conversations (list, retrieve, ingest a file via POST), audio download links, and workspace details. Rate limit is 10 requests per second. The MCP server exposes only three read-only tools: search meetings, fetch a transcript, and get the current user.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.otter.ai/mcp (Streamable HTTP, OAuth, read-only tools). Described as provider-hosted by Otter. Source is the Scalekit blog and the mcpservers.org listing. The help.otter.ai page returned 403.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The REST API is limited to Enterprise workspaces and uses per-user static keys, which are awkward for multi-user OAuth-style distribution. The MCP server is open to standard accounts but exposes only 3 read-only tools. Whether Composio can register as an MCP OAuth client is unconfirmed.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "available to Enterprise workspaces only"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "Otter runs a provider-hosted MCP server at mcp.otter.ai/mcp."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "There is no public API key for the MCP server."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "Otter webhooks push conversation and action-item events in real time."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "All facts come from a third-party blog (Scalekit). help.otter.ai returned 403 and otter.ai/api/docs rendered no content. Check Otter's official API docs for the Enterprise requirement, OpenAPI spec, webhook setup and any sandbox. Also check whether third-party MCP OAuth client registration is allowed."
+ }
 }

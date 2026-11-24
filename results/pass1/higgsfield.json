@@ -5,13 +5,99 @@
  "category": "AI, Research and Media-native",
  "hint": "higgsfield.ai/cli (content suite)",
  "pass": 1,
- "at": "2026-11-24T15:08:12.194Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 845,
- "turns": 1,
+ "at": "2026-11-24T17:41:52.682Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Higgsfield API documentation CLI MCP"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://higgsfield.ai/cli"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.higgsfield.ai"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI image and video generation platform with CLI, MCP and a pay-as-you-go REST API.\",\"subcategory\":\"AI image/video generation\",\"auth_methods\":[\""
+  }
+ ],
+ "cost_usd": 0.07790739999999999,
+ "duration_ms": 31881,
+ "turns": 7,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "AI image and video generation platform with CLI, MCP and a pay-as-you-go REST API.",
+  "subcategory": "AI image/video generation",
+  "auth_methods": [
+   "api_key",
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API uses an `Authorization: Key KEY_ID:KEY_SECRET` header, with the key created in the console at open.higgsfield.ai. The CLI uses browser login (`higgsfield auth login`) and the hosted MCP uses a sign-in flow with no API key. The docs say the keys are server-side only. A developer-owned key is not per-end-user, so a multi-user toolkit would either use the hosted MCP's user sign-in (the flow type is unconfirmed) or have each user supply their own key.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can create an API key in the console. No plan or subscription is required, but usage runs on a prepaid USD balance (minimum $5 top-up) that is separate from consumer plans. There is no free-tier balance that I could confirm, so testing costs at least $5. CLI and MCP use the user's own plan credits.",
+  "api_styles": [
+   "rest",
+   "sdk_only"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "One key covers 50+ generation models, each with its own submit path. Request status, cancel and cost-estimate endpoints also exist. Generation-focused, with no wider resource CRUD. Python and TypeScript SDKs exist.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The official hosted MCP server is at mcp.higgsfield.ai/mcp, per the Higgsfield help center and search results. Sign-in is required and no API key is needed. The CLI is @higgsfield/cli (github higgsfield-ai/cli). There is also a third-party community MCP wrapper (geopopos/higgsfield_ai_mcp).",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no per-user OAuth for the REST API, and usage requires a prepaid balance. The official hosted MCP already exists, so a Composio toolkit would overlap with it.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+    "quote": "Generate your API key in the console at open.higgsfield.ai. The full key appears only once"
+   },
+   {
+    "field": "access",
+    "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+    "quote": "The minimum top-up is $5. No plan or subscription is required."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.higgsfield.ai",
+    "quote": "receive a webhook when processing finishes"
+   },
+   {
+    "field": "auth",
+    "url": "https://higgsfield.ai/cli",
+    "quote": "No API keys to manage or configure."
+   },
+   {
+    "field": "mcp",
+    "url": "https://higgsfield.ai/enterprise-help-center/platform/integrations",
+    "quote": "mcp.higgsfield.ai/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether the hosted MCP's sign-in is a standard OAuth flow that third parties can use. I did not fetch the MCP help page directly; those details come from search snippets. Also confirm whether an OpenAPI spec is published, whether a sandbox exists, and which of the two auth header forms (single key or ID:secret) is current."
+ }
 }

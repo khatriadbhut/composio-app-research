@@ -5,13 +5,82 @@
  "category": "AI, Research and Media-native",
  "hint": "cloud.google.com/gemini (Enterprise API)",
  "pass": 1,
- "at": "2026-11-24T15:08:08.832Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 706,
- "turns": 1,
+ "at": "2026-11-24T17:40:58.917Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "NotebookLM Enterprise API notebooks create REST cloud.google.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "NotebookLM Enterprise pricing license per user Gemini Enterprise; NotebookLM MCP server official"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Google's AI research notebook; Enterprise edition has a preview API for notebooks via Discovery Engine.\",\"subcategory\":\"AI research assistant /"
+  }
+ ],
+ "cost_usd": 0.10331570000000001,
+ "duration_ms": 28281,
+ "turns": 6,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Google's AI research notebook; Enterprise edition has a preview API for notebooks via Discovery Engine.",
+  "subcategory": "AI research assistant / notebooks",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Docs show a Google user access token (gcloud auth print-access-token). The user needs a Gemini Notebook Enterprise license and the roles/discoveryengine.notebookLmUser IAM role. This is Google OAuth2 user credentials on Google Cloud. It is not a service-account flow, and I didn't confirm one is supported.",
+  "access": "paid_plan_required",
+  "access_notes": "Calls require an authenticated user with an active Gemini Notebook Enterprise license. It is sold standalone or as part of Gemini Enterprise. I didn't confirm exact NotebookLM Enterprise pricing. The API is marked Preview (pre-GA). The consumer NotebookLM has no public API.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "Notebooks: create, get, listRecentlyViewed, batchDelete, share. Sources are on a separate page that I didn't open. The Notebooks page doesn't mention audio overviews. Endpoint is discoveryengine.googleapis.com v1alpha.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "community_only",
+  "mcp_notes": "Only third-party servers turned up, e.g. pleaseprompto/notebooklm-mcp and PyPI notebooklm-mcp-server. These are unofficial and mostly drive the consumer web app. I found no Google-official server.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Needs a paid Gemini Notebook Enterprise license per user, the API is v1alpha/Preview, and the notebook-management surface is small. Customers would have to be on Google Cloud with Gemini Enterprise. Consumer NotebookLM has no API.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "require an authenticated user account with an active Gemini Notebook Enterprise license"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "https://ENDPOINT_LOCATION-discoveryengine.googleapis.com/v1alpha/projects/PROJECT_NUMBER/locations/LOCATION/"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "Pre-GA features are available \"as is\" and might have limited support."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The evidence quotes come from a fetch tool that summarizes pages, so they may be paraphrased. I didn't open the sources page or the licensing and pricing pages. Please check whether service-account auth works, what the sources and audio endpoints cover, and the NotebookLM Enterprise price."
+ }
 }

@@ -5,7 +5,7 @@
  "category": "Communications and Messaging",
  "hint": "pumble.com",
  "pass": 1,
- "at": "2026-11-24T15:04:50.412Z",
+ "at": "2026-11-24T17:39:30.697Z",
  "ok": true,
  "trace": [
   {
@@ -14,23 +14,31 @@
   },
   {
    "tool": "WebSearch",
-   "arg": "Pumble developer API documentation API key OAuth apps"
+   "arg": "Pumble API developer docs API key OAuth app webhooks"
   },
   {
    "tool": "WebFetch",
-   "arg": "https://pumble.com/help/integrations/add-pumble-apps/api-keys/"
+   "arg": "https://pumble-docs.document360.io/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://cake-com.github.io/pumble-node-sdk/api-client.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://pumble.com/help/integrations/add-pumble-apps/api-keys-integration"
   },
   {
    "tool": "WebSearch",
-   "arg": "Pumble apps SDK developer docs OAuth2 webhooks event subscriptions MCP server"
+   "arg": "Pumble developer docs build app authorization OAuth2 event subscriptions manifest publish marketplace MCP"
   },
   {
    "tool": "WebFetch",
-   "arg": "https://github.com/pumble-hq/pumble-apps"
+   "arg": "https://cake-com.github.io/pumble-node-sdk/"
   },
   {
    "tool": "WebFetch",
-   "arg": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/"
+   "arg": "https://cake-com.github.io/pumble-node-sdk/manifest.html"
   },
   {
    "tool": "WebFetch",
@@ -38,69 +46,77 @@
   },
   {
    "tool": "StructuredOutput",
-   "arg": "{\"what_it_does\":\"Team chat and messaging app (Slack alternative) by CAKE.com, with free tier.\",\"subcategory\":\"Team chat / messaging\",\"auth_methods\":[\"api_key\",\""
+   "arg": "{\"what_it_does\":\"Team chat and messaging app (CAKE.com) with Slack-like channels, DMs and apps.\",\"subcategory\":\"Team chat / messaging\",\"auth_methods\":[\"oauth2\","
   },
   {
    "tool": "StructuredOutput",
-   "arg": "{\"what_it_does\":\"Team chat and messaging app (Slack alternative) by CAKE.com, with free tier.\",\"subcategory\":\"Team chat / messaging\",\"auth_methods\":[\"api_key\",\""
+   "arg": "{\"what_it_does\":\"Team chat and messaging app (CAKE.com) with channels, DMs and apps.\",\"subcategory\":\"Team chat / messaging\",\"auth_methods\":[\"oauth2\",\"api_key\"],"
   }
  ],
- "cost_usd": 0.1399606,
- "duration_ms": 49812,
- "turns": 10,
+ "cost_usd": 0.1800117,
+ "duration_ms": 55583,
+ "turns": 12,
  "model": "sonnet",
  "error": null,
  "record": {
-  "what_it_does": "Team chat and messaging app (Slack alternative) by CAKE.com, with free tier.",
+  "what_it_does": "Team chat and messaging app (CAKE.com) with channels, DMs and apps.",
   "subcategory": "Team chat / messaging",
   "auth_methods": [
-   "api_key",
    "oauth2",
-   "bot_token",
-   "bearer_token"
+   "api_key"
   ],
   "auth_primary": "oauth2",
-  "auth_notes": "Per-user API key via the API add-on (`Api-Key` header). Apps use OAuth2 (code exchange at api-ga.pumble.com/oauth2/access) and return a non-expiring user access token and bot token. Apps can be built with the pumble-sdk. The MCP server takes `token` and `x-app-token` headers.",
+  "auth_notes": "OAuth2 authorization-code flow (consent at app.pumble.com/access-request, token exchange at api-ga.pumble.com/oauth2/access). It returns a user accessToken and a botToken, and these do not need refreshing. Requests send x-app-token and token headers. There is also a per-user API key via the \"API keys\" add-on, limited to 1000 requests/min/user. That add-on is simpler but is not suited to multi-user use.",
   "access": "self_serve_free",
-  "access_notes": "The API add-on is \"Available on all plans\". Any Owner, Admin or Member can generate a key and create custom apps through Configure apps. I found no review step for building or testing apps. Publishing to the CAKE.com Marketplace has its own page that I did not open, so any review for public distribution is unconfirmed.",
+  "access_notes": "The API key add-on is stated as available on all plans. Apps are created with a manifest through pumble-cli or the API. I found no evidence that building apps needs a paid plan. Whether installing in other workspaces, or listing on the CAKE.com Marketplace, needs review is unconfirmed.",
   "api_styles": [
    "rest",
    "sdk_only"
   ],
   "api_breadth": "moderate",
-  "api_breadth_notes": "The key-based API covers sending, replying to, deleting and listing messages, reactions, channel creation, and listing channels and DMs. The SDK API client and MCP scopes cover channels, messages, files, reactions, calls, users and workspace. I did not count operations.",
+  "api_breadth_notes": "The SDK ApiClient has about 40 methods: messages (post, DM, reply, edit, delete, reactions, search, scheduled, drafts, ephemeral), channels, users, user groups, profile, status, workspace info, files, calls and app home view. The API key add-on exposes a smaller Swagger-documented set.",
   "openapi_spec": "yes",
   "webhooks": "yes",
-  "mcp": "official_remote",
-  "mcp_notes": "https://mcp.pumble.com/mcp (HTTP transport). The help center also describes a Claude connector installed from Configure apps.",
+  "mcp": "none_found",
+  "mcp_notes": "No MCP server turned up in my searches. I did not search specifically for community MCP servers.",
   "sandbox": "unknown",
   "buildability": "ready_with_caveats",
   "main_blocker": "other",
-  "blocker_notes": "The official docs are spread across the help center, Swagger and a cake-com SDK site. I did not confirm whether public OAuth distribution needs marketplace review. No sandbox exists beyond creating a free workspace.",
+  "blocker_notes": "The OAuth flow, scopes and eventSubscriptions are documented, so a public OAuth app looks workable. The caveats are that the docs I found are only on the SDK site (cake-com.github.io). The marketplace publishing and review requirements are unverified. The Swagger spec I saw referenced covers only the API-key add-on, and I did not open it.",
   "evidence": [
-   {
-    "field": "access",
-    "url": "https://pumble.com/help/integrations/add-pumble-apps/api-keys/",
-    "quote": "Available on all plans."
-   },
    {
     "field": "auth",
     "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
-    "quote": "https://api-ga.pumble.com/oauth2/access"
+    "quote": "Token exchange: https://api-ga.pumble.com/oauth2/access"
    },
    {
-    "field": "mcp",
-    "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
-    "quote": "https://mcp.pumble.com/mcp"
+    "field": "auth",
+    "url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+    "quote": "Every Request to Pumble API must be sent with two headers."
+   },
+   {
+    "field": "access",
+    "url": "https://pumble.com/help/integrations/add-pumble-apps/api-keys-integration",
+    "quote": "Available on all plans."
+   },
+   {
+    "field": "api",
+    "url": "https://cake-com.github.io/pumble-node-sdk/api-client.html",
+    "quote": "Each ApiClient method has its own set of required scopes."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://cake-com.github.io/pumble-node-sdk/manifest.html",
+    "quote": "Event subscriptions definitions."
    }
   ],
   "confidence": {
-   "auth": "medium",
+   "auth": "high",
    "access": "medium",
    "api": "medium",
-   "mcp": "high",
+   "mcp": "low",
    "buildability": "medium"
   },
-  "needs_human": "Confirm four points. (1) Whether Marketplace review is required before other workspaces can install an OAuth app. (2) The Swagger URL and whether it is a downloadable OpenAPI spec. I set openapi_spec to yes from the help-center pointer to Swagger and did not open it. (3) Whether the SDK's event subscriptions deliver webhooks. I set webhooks to yes from search-result summaries of the SDK trigger docs, which I did not open, plus the incoming-only webhooks page. (4) The plans that include the MCP server and custom apps, because the MCP page does not say."
+  "needs_human": "Check: (1) whether apps can be installed in other workspaces without Marketplace review, and what the \"Publishing to CAKE.com Marketplace\" guide requires; (2) whether the Swagger/OpenAPI spec is public; (3) whether a sandbox exists; (4) whether any official or community MCP server exists. The SDK docs sit on cake-com.github.io, which looks CAKE.com-owned but is unconfirmed. The openapi_spec value applies only to the API-key add-on."
  }
 }

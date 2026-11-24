@@ -5,13 +5,96 @@
  "category": "AI, Research and Media-native",
  "hint": "consensus.app (OAuth requested)",
  "pass": 1,
- "at": "2026-11-24T15:08:11.185Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 690,
- "turns": 1,
+ "at": "2026-11-24T17:41:27.710Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Consensus consensus.app API documentation OAuth MCP"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/home/api/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.consensus.app"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "docs.consensus.app API key authentication Bearer /v1/search threads"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/home/mcp/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI academic search engine returning peer-reviewed papers, citations, and research-agent analyses.\",\"subcategory\":\"AI research / scholarly searc"
+  }
+ ],
+ "cost_usd": 0.09059150000000002,
+ "duration_ms": 30156,
+ "turns": 8,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "AI academic search engine returning peer-reviewed papers, citations, and research-agent analyses.",
+  "subcategory": "AI research / scholarly search",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST API uses an API key sent in the x-api-key header, taken from the second-hand fetch summary and not confirmed in docs. The hosted MCP server uses OAuth with browser sign-in, reported as DCR by third-party listings. There is no documented OAuth for the REST API. An API key belongs to one account, so a multi-user toolkit would need each user to paste their own key, or would use MCP OAuth.",
+  "access": "paid_plan_required",
+  "access_notes": "The API page says API access is included on every paid plan. The plan names and prices were not visible. I did not confirm whether a free tier or trial has API access. Keys are created on the Consensus API/MCP page.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "Two main endpoints: GET /v1/search (ranked papers with metadata and full-text chunks) and POST /v1/threads (async research agent with Pro and Deep modes and follow-ups). Filters cover study design, sample size, journal quartile, year, and Medical mode.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.consensus.app/mcp is a hosted remote server. The setup guide is at docs.consensus.app/consensus-mcp, and the Consensus-NLP/consensus-mcp GitHub repo is linked.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The API needs a paid plan and has a narrow surface. Authentication is per-user API key, and OAuth appears to exist only for the MCP server. The requested OAuth is not available for the REST API as far as I could tell. docs.consensus.app returned 403, so the details are unverified.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://consensus.app/home/api/",
+    "quote": "GET /v1/search"
+   },
+   {
+    "field": "access",
+    "url": "https://consensus.app/home/api/",
+    "quote": "API access is included on every paid plan"
+   },
+   {
+    "field": "mcp",
+    "url": "https://consensus.app/home/api/",
+    "quote": "https://mcp.consensus.app/mcp"
+   },
+   {
+    "field": "auth",
+    "url": "https://consensus.app/home/mcp/",
+    "quote": "x-api-key"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "docs.consensus.app returned 403 to my fetch. Please check these in a browser: the exact API key header, whether any free tier or trial can use the API, which plan is the minimum, whether webhooks, an OpenAPI spec or a sandbox exist, and whether the REST API supports OAuth. The evidence quotes come from fetch summaries rather than raw page text, so they may not be verbatim."
+ }
 }

@@ -5,13 +5,101 @@
  "category": "Productivity and Project Management",
  "hint": "coda.io/developers",
  "pass": 1,
- "at": "2026-11-24T15:08:01.579Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 610,
- "turns": 1,
+ "at": "2026-11-24T17:40:18.961Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://coda.io/developers/apis/v1"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Coda MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.superhuman.com/developers/apis/v1"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Coda API webhooks automations OAuth third-party apps developer docs Superhuman Go"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Superhuman Docs MCP server Coda docs.superhuman.com developers mcp"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Collaborative doc/table workspace (now Superhuman Docs) combining docs, databases and automations.\",\"subcategory\":\"Docs / collaborative workspa"
+  }
+ ],
+ "cost_usd": 0.12258140000000001,
+ "duration_ms": 39141,
+ "turns": 8,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Collaborative doc/table workspace (now Superhuman Docs) combining docs, databases and automations.",
+  "subcategory": "Docs / collaborative workspace",
+  "auth_methods": [
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The public REST API documents per-user API tokens sent as a Bearer header. I found no confirmed third-party OAuth2 flow for the REST API. OAuth is confirmed only for the hosted MCP server. Pack OAuth is a separate feature for building Packs. A multi-user toolkit would need each user to paste their own token, unless Composio can use the MCP's OAuth.",
+  "access": "self_serve_free",
+  "access_notes": "The docs say the API is free in both free and paid workspaces. Each user generates a token in account settings. Creating docs needs the Doc Maker or Admin role. The Admin API is enterprise-only. The full MCP experience needs a paid Doc Maker plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers docs, pages, tables, columns, rows, formulas, controls, permissions, publishing, analytics, automations (webhook trigger) and Packs. I did not count operations; it is likely 50+. Rate limits are 100 reads and 10 writes per 6 seconds.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted Superhuman Docs MCP at https://docs.superhuman.com/apis/mcp. It supports OAuth or a personal access token, and the vendor documents about 15 tools. It is in public beta and the older Coda MCP is being deprecated. Community servers also exist (coda-mcp-server, mcp-coda).",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Buildable with API tokens today. Webhooks are inbound only: a webhook can trigger an automation, but I found no outbound event subscriptions for the public API. The Admin API webhooks are enterprise-only. A token-based approach gives a weaker user experience than OAuth. The product was rebranded from Coda to Superhuman Docs and the docs moved from coda.io/developers to docs.superhuman.com.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "'Authorization': 'Bearer <your API token>'"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "The API is free in both free and paid workspaces."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "An OpenAPI 3.0 spec is available in YAML and JSON at coda.io/apis/v1/openapi.yaml"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "Superhuman Docs MCP server ... is optimized for LLM usage patterns"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://help.superhuman.com/hc/en-us/articles/46210335153037-Create-webhook-triggered-automations",
+    "quote": "triggerWebhookAutomation endpoint starts an automation in a specific doc (summary from search result, not page text)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The WebFetch tool returned only a summary of the docs, so the evidence quotes are paraphrased from those summaries, not verbatim page text. Please verify four points. (1) Is there a public OAuth2 flow for third-party REST API access, or only API tokens? (2) Does the API offer outbound webhooks or event subscriptions? (3) Do the MCP server details match the vendor's docs? (4) Does the MCP server's OAuth work for third-party clients without partner registration? I did not open the MCP help pages directly."
+ }
 }

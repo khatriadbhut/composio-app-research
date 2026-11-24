@@ -5,13 +5,93 @@
  "category": "AI, Research and Media-native",
  "hint": "reducto.ai (document parsing)",
  "pass": 1,
- "at": "2026-11-24T15:08:11.311Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 649,
- "turns": 1,
+ "at": "2026-11-24T17:41:20.109Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.reducto.ai/api-reference/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://reducto.ai/pricing"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Reducto docs MCP server webhooks API key"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Document parsing, extraction, splitting and classification API for turning PDFs and files into structured data.\",\"subcategory\":\"Document parsin"
+  }
+ ],
+ "cost_usd": 0.0673115,
+ "duration_ms": 20511,
+ "turns": 6,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Document parsing, extraction, splitting and classification API for turning PDFs and files into structured data.",
+  "subcategory": "Document parsing API",
+  "auth_methods": [
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Static API key sent as Authorization: Bearer. Keys are created in Studio by an org Owner. No OAuth was found, so a multi-user toolkit would have each user paste their own key.",
+  "access": "self_serve_free",
+  "access_notes": "The Standard plan is free to start with $150 in free usage, then pay-as-you-go. Sign-up goes through Studio. I did not open the sign-up page, so the exact key-creation steps are unconfirmed.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "About 20 operations. Parse, Extract, Split, Classify, Edit and Pipeline each have sync and async versions. Upload and delete upload. Jobs: get, list, cancel, delete. Configure webhook, and Version.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at mcp.reducto.ai/mcp (docs.reducto.ai/mcp-server). It takes a Bearer API key. I saw this only in search-result summaries, not on the page itself.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is public and self-serve with a free credit. The only caveat is that auth is a user-supplied API key rather than OAuth. The API is a document-processing function, not a CRUD product.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "quote": "Authorization: Bearer $REDUCTO_API_KEY"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "quote": "OpenAPI spec: Available at /openapi.json (Parse, Extract, Split, Classify, Edit, Pipeline, Upload, Jobs endpoints)"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "quote": "Asynchronous requests accept a webhook configuration in the async block: svix or direct"
+   },
+   {
+    "field": "access",
+    "url": "https://reducto.ai/pricing",
+    "quote": "Standard plan is free to start and includes $150 in free usage"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.reducto.ai/mcp-server",
+    "quote": "hosted server runs at mcp.reducto.ai/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether a sandbox or test mode exists. Confirm the Studio sign-up and API-key creation flow. Open docs.reducto.ai/mcp-server directly to verify the MCP details, which came from search summaries."
+ }
 }

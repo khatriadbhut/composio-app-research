@@ -5,13 +5,120 @@
  "category": "Finance and Fintech",
  "hint": "ipayx.ai/docs",
  "pass": 1,
- "at": "2026-11-24T15:08:05.055Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 637,
- "turns": 1,
+ "at": "2026-11-24T17:40:29.875Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://ipayx.ai/docs"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "iPayX ipayx.ai API MCP agent payments"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mcpservers.org/vi/servers/ipayx-technologies/mcp-fx-audit"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.ipayx.ai/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.ipayx.ai/docs/api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.ipayx.ai/docs/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.ipayx.ai/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"FX audit API scoring bank/card FX rates against live mid-market rates, with MCP server.\",\"subcategory\":\"FX audit / fintech\",\"auth_methods\":[\"ap"
+  }
+ ],
+ "cost_usd": 0.0946032,
+ "duration_ms": 50001,
+ "turns": 10,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "FX audit API scoring bank/card FX rates against live mid-market rates, with MCP server.",
+  "subcategory": "FX audit / fintech",
+  "auth_methods": [
+   "api_key",
+   "bearer_token"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Bearer API keys (ipx_live_ / ipx_test_) generated in the dashboard. No OAuth, so each end user would need to supply their own key.",
+  "access": "paid_plan_required",
+  "access_notes": "The free tier gives 3 lifetime audits. The homepage says API access needs the Credit Pack ($99 for 100 audits) or Unlimited ($299/mo). The MCP free tools are limited to 10 audits/day and 60 rate calls/min per key. The pricing page lists no separate API plans, so the exact gating is unclear.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "3 endpoints: POST /audit, GET /rates, POST /audit/document. The MCP server has 3 tools.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://hvujzsdwcoweirroubeh.supabase.co/functions/v1/mcp-server (SSE, Bearer auth). It is linked from ipayx.ai/docs/mcp-server.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "narrow_api",
+  "blocker_notes": "The API has only 3 endpoints, and the product is niche. Full API access appears to need a paid plan. Auth is a per-user API key. Sandbox ipx_test_ keys are mentioned only on the MCP docs page.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://www.ipayx.ai/",
+    "quote": "REST API + SDKs for FX audit automation."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.ipayx.ai/docs/api",
+    "quote": "Keys start with `ipx_live_`."
+   },
+   {
+    "field": "access",
+    "url": "https://www.ipayx.ai/",
+    "quote": "Upgrade to the 100-audit Credit Pack or Unlimited for API access, white-label embedding, and forensic PDF exports."
+   },
+   {
+    "field": "api",
+    "url": "https://www.ipayx.ai/docs/api",
+    "quote": "POST /audit: Run a forensic audit on a single transaction."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.ipayx.ai/docs/api",
+    "quote": "audit.completed"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.ipayx.ai/docs/mcp-server",
+    "quote": "https://hvujzsdwcoweirroubeh.supabase.co/functions/v1/mcp-server"
+   },
+   {
+    "field": "access",
+    "url": "https://www.ipayx.ai/pricing",
+    "quote": "Unlimited: $299 USD per month for unlimited audits"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "The WebFetch summaries paraphrased the docs, and the quotes above come from those summaries, not the raw pages. The fetch of ipayx.ai/docs returned a 404. Check these items: (1) whether API keys work on the free tier or only on paid plans. (2) whether ipx_test_ sandbox keys really exist. (3) the exact scope of the webhooks."
+ }
 }

@@ -5,13 +5,109 @@
  "category": "Finance and Fintech",
  "hint": "developer.xero.com",
  "pass": 1,
- "at": "2026-11-24T15:08:05.195Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 694,
- "turns": 1,
+ "at": "2026-11-24T17:40:56.837Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.xero.com/documentation/guides/oauth2/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.xero.com/documentation/guides/how-to-guides/xero-developer-platform-pricing"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Xero MCP server official github XeroAPI xero-mcp-server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Xero API pricing tiers Starter 5 connections developer platform app store 2026"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.xero.com/documentation/webhooks/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.xero.com/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud accounting software for small businesses: invoices, bank feeds, payroll, reporting.\",\"subcategory\":\"Accounting\",\"auth_methods\":[\"oauth2\","
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud accounting software for small businesses: invoices, bank feeds, payroll, reporting.\",\"subcategory\":\"Accounting\",\"auth_methods\":[\"oauth2\","
+  }
+ ],
+ "cost_usd": 0.1241774,
+ "duration_ms": 46925,
+ "turns": 10,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud accounting software for small businesses: invoices, bank feeds, payroll, reporting.",
+  "subcategory": "Accounting",
+  "auth_methods": [
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code (with PKCE option) is the multi-user method. Xero also has Custom Connections (client credentials) for a single org, which is paid and region-limited. I could not open the OAuth docs page, so this comes from my own knowledge and the MCP README summary.",
+  "access": "self_serve_free",
+  "access_notes": "The Starter tier is free with a max of 5 connections and no payment method needed. Core (A$35/mo, 50 connections) needs a card. App Certification and a security assessment are listed as prerequisites for the paid tiers. The page's mapping of certification to tiers was unclear. A third-party summary says Starter and Core need no approval, and that certification is mandatory from Plus. A free account can build and test immediately. Public distribution beyond 5 orgs needs a paid tier and likely certification at higher tiers.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Separate APIs for Accounting (invoices, contacts, payments, bank transactions, accounts, reports), Payroll (AU/NZ/UK), Assets, Projects, Files, Bank Feeds and Finance. Together these come to well over 50 operations. I did not count them from the docs.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "XeroAPI/xero-mcp-server on GitHub, MIT, npm package @xeroapi/xero-mcp-server, run via npx. It is local and supports a bearer token or custom connection client ID and secret. Directories mostly call it official, and one calls it community. I did not verify this on the repo itself.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The free Starter tier caps an app at 5 connected organisations. Real multi-user distribution needs a paid tier (Core from A$35/mo, and higher tiers as scale grows), plus certification and a security assessment for higher tiers. Egress is billed per GB, and reports say daily call caps are 1,000 per org on Starter and 5,000 on Core and above.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "quote": "Starter | 5 | Free | None | N/A"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "quote": "Core | 50 | $35 | 10 GB | $2.40"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "quote": "Payment method is not needed for Starter but is required from Core upward."
+   },
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md",
+    "quote": "npx -y @xeroapi/xero-mcp-server@latest"
+   },
+   {
+    "field": "buildability",
+    "url": "https://developer.xero.com/pricing",
+    "quote": "App Certification is a prerequisite for the paid tiers."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Several quotes are paraphrased tool summaries of the pricing page, not verbatim page text, and the OAuth, webhooks and OpenAPI pages returned no body. Someone should confirm these on developer.xero.com: the auth methods, webhooks, the OpenAPI spec (the XeroAPI/Xero-OpenAPI repo), the demo company sandbox, and which tiers require certification."
+ }
 }

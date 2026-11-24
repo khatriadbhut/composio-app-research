@@ -5,13 +5,97 @@
  "category": "AI, Research and Media-native",
  "hint": "docs.devin.ai (MCP)",
  "pass": 1,
- "at": "2026-11-24T15:08:11.461Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 764,
- "turns": 1,
+ "at": "2026-11-24T17:41:34.744Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.devin.ai/api-reference/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.devin.ai/work-with-devin/devin-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.devin.ai/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://devin.ai/pricing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Devin is an autonomous AI software engineer agent, controllable via API and MCP.\",\"subcategory\":\"AI coding agent\",\"auth_methods\":[\"bearer_token"
+  }
+ ],
+ "cost_usd": 0.06368979999999999,
+ "duration_ms": 31645,
+ "turns": 7,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Devin is an autonomous AI software engineer agent, controllable via API and MCP.",
+  "subcategory": "AI coding agent",
+  "auth_methods": [
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "v3 API uses service user credentials (cog_ prefix) as Bearer tokens, or personal access tokens. Service users can create sessions on behalf of other users with create_as_user_id (needs ImpersonateOrgSessions). Legacy apk_ personal keys are used with the deprecated v1/v2 APIs. No OAuth2 for third-party apps was found.",
+  "access": "paid_plan_required",
+  "access_notes": "The org API uses service users, which are created in a Teams or standard org. The Enterprise API (analytics, audit logs, user management, billing) is enterprise only. The pricing page doesn't say which plan includes API access: the Free plan is for the IDE and agent quota, and Teams is $80/mo. Running sessions consumes ACUs and usage, so it is effectively paid. I couldn't confirm whether the Free plan gets API keys.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "v3 organization and enterprise APIs cover sessions, users, analytics, audit logs, billing and infrastructure. The docs list \"API (315 pages)\". The official MCP exposes about 20 tools for sessions, playbooks, knowledge, schedules, integrations, automations, reviews and code scans.",
+  "openapi_spec": "yes",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.devin.ai/mcp (streamable HTTP; /sse is deprecated). It needs a Bearer Devin API key. Enterprise keys and PATs also need an X-Org-Id header. A separate no-auth DeepWiki MCP exists at https://mcp.deepwiki.com/.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "There is no OAuth for multi-user distribution. Each customer must create their own service user key (cog_) in their own org. Free credentials are unconfirmed, and the Enterprise API needs an enterprise plan. Webhook or event push for API triggers was not found in the docs index.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "quote": "service user credentials, which have a `cog_` prefix"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.devin.ai/work-with-devin/devin-mcp",
+    "quote": "https://mcp.devin.ai/mcp"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "quote": "The Enterprise API ... is available to enterprise customers only."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.devin.ai/llms.txt",
+    "quote": "OpenAPI Specs"
+   },
+   {
+    "field": "access",
+    "url": "https://devin.ai/pricing",
+    "quote": "Teams ($80/month)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm which plan includes API access, and whether the Free plan can create service users or API keys. Also confirm whether any webhooks or event callbacks exist for sessions. The fetch summaries did not show these, and the quotes above come from page summaries rather than full page text. The v3 endpoint count was not verified."
+ }
 }

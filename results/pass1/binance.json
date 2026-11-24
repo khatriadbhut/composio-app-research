@@ -5,8 +5,8 @@
  "category": "Finance and Fintech",
  "hint": "binance-docs.github.io",
  "pass": 1,
- "at": "2026-11-24T15:08:07.116Z",
- "ok": false,
+ "at": "2026-11-24T17:40:10.681Z",
+ "ok": true,
  "trace": [
   {
    "tool": "ToolSearch",
@@ -17,18 +17,95 @@
    "arg": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information"
   },
   {
+   "tool": "WebFetch",
+   "arg": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api"
+  },
+  {
    "tool": "WebSearch",
    "arg": "Binance official MCP server github binance-mcp"
   },
   {
    "tool": "WebFetch",
-   "arg": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api/general-api-information"
+   "arg": "https://developers.binance.com/docs/binance-spot-api-docs/README"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Binance OAuth 2.0 third-party apps developers.binance.com Binance Connect OAuth authorization"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "github.com/binance binance-spot-api-docs openapi specification"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Global crypto exchange with spot, futures, margin, wallet and trading APIs.\",\"subcategory\":\"Crypto exchange\",\"auth_methods\":[\"api_key\",\"hmac_si"
   }
  ],
- "cost_usd": 0.0114014,
- "duration_ms": 8314,
- "turns": 5,
+ "cost_usd": 0.1276412,
+ "duration_ms": 30739,
+ "turns": 9,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Global crypto exchange with spot, futures, margin, wallet and trading APIs.",
+  "subcategory": "Crypto exchange",
+  "auth_methods": [
+   "api_key",
+   "hmac_signature",
+   "oauth2"
+  ],
+  "auth_primary": "hmac_signature",
+  "auth_notes": "Users create their own API keys (HMAC, RSA or Ed25519) and pass X-MBX-APIKEY plus a signature on signed requests. Trading is off by default. Binance also documents OAuth 2.0 (\"Binance Login\") for third-party apps, but one page says it is only for close ecosystem partners. Per-user keys are the practical route for a multi-user toolkit. Keys are often IP-restricted.",
+  "access": "self_serve_free",
+  "access_notes": "Any verified Binance user can create API keys for free in API Management. Testnet keys come from a GitHub login. OAuth for distribution may need Binance business approval, and I could not confirm this.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Spot, margin, USD-M and COIN-M futures, options, wallet, sub-accounts, convert, staking, mining and more. Well over 50 endpoints. Rate limits are per IP, and HTTP 418 bans are possible.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "community_only",
+  "mcp_notes": "Search found only community servers, such as the PyPI binance-mcp-server and ethancod1ng/binance-mcp-server. The docs README mentions \"MCP\" in a line about AI agents, which suggests Binance may have official MCP or agent tooling. I did not confirm an official server.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Per-user API keys are self-serve. Caveats: users must handle secrets and IP whitelisting, per-IP rate limits are shared across users, and trading and withdrawal actions are high-risk. The OAuth route may be partner-gated.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+    "quote": "By default, an API key cannot trade. Trading must be enabled in API Management."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+    "quote": "The limits on the API are based on the IPs, not the API keys."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.binance.com/docs/login/introduction",
+    "quote": "Binance Login(Oauth2.0), is only provided to close ecosystem partners now."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/README",
+    "quote": "Integrate with AI agents using machine-readable docs, agent APIs, and MCP."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api",
+    "quote": "The base endpoint is https://testnet.binance.vision/api"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "low",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Binance has an official MCP server or agent tooling, since the docs README mentions MCP. Check whether OAuth (\"Binance Login\") is open to any developer or limited to partners. The quote about partner-only access came from search-result text and I did not fetch the page, so confirm it. Confirm that the swagger repo (github.com/binance/binance-api-swagger) is current. Confirm that webhooks do not exist, since the API appears to offer WebSocket streams only."
+ }
 }

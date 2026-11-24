@@ -5,13 +5,107 @@
  "category": "Finance and Fintech",
  "hint": "developer.intuit.com",
  "pass": 1,
- "at": "2026-11-24T15:08:05.015Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 638,
- "turns": 1,
+ "at": "2026-11-24T17:41:31.776Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Intuit QuickBooks Online MCP server official developer"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.intuit.com/app/developer/qbo/docs/develop/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Intuit developer app production keys app assessment questionnaire; QuickBooks API pricing Intuit App Partner Program Builder tier"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/intuit/QuickBooks-V3-API-Specs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.intuit.com/app/developer/qbo/docs/get-started/partner-faq"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.intuit.com/app/developer/qbo/docs/go-live/publish-app"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud accounting software for small businesses (invoices, bills, payments, bookkeeping, payroll).\",\"subcategory\":\"Accounting\",\"auth_methods\":[\""
+  }
+ ],
+ "cost_usd": 0.10522820000000001,
+ "duration_ms": 83274,
+ "turns": 11,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud accounting software for small businesses (invoices, bills, payments, bookkeeping, payroll).",
+  "subcategory": "Accounting",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code flow through the Intuit Developer Portal. Sandbox allows http://localhost redirect URIs. Production requires public HTTPS redirect URIs. Refresh tokens expire, so they need rotation handling. I couldn't open the Intuit OAuth docs page because it is JS-rendered, so the details come from the MCP README and search snippets.",
+  "access": "approval_required",
+  "access_notes": "A free developer account gives sandbox companies and development keys. Search results say production keys are gated behind the App Assessment Questionnaire, including for private apps. Intuit's App Partner Program also has tiered fees (program fee, API credits, variable API fees). The Builder-tier pricing and the exact free allowance are unconfirmed. Search results say the base API is free.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The QuickBooks Online Accounting API covers customers, vendors, invoices, bills, payments, accounts, items, journal entries, reports, attachments and more, with a SQL-like query endpoint. The official MCP server advertises 145 tools. There are also Payments, Payroll and GraphQL-based APIs. I did not confirm the exact operation count from Intuit's docs.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "github.com/intuit/quickbooks-online-mcp-server (MIT, stdio, local, about 145 tools). I found no vendor-hosted remote MCP in my search, though I didn't check for one specifically. Many community servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Development and sandbox work is self-serve. Connecting real customer companies needs production keys. That requires the app assessment questionnaire, possibly review for App Store listing, and possibly App Partner Program fees.",
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "A comprehensive Model Context Protocol (MCP) server for QuickBooks Online"
+   },
+   {
+    "field": "auth",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "This server uses OAuth 2.0 to authenticate to a QuickBooks Online company."
+   },
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "It runs as a stdio subprocess on the developer's or partner's machine"
+   },
+   {
+    "field": "access",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "requires a public HTTPS callback for the initial authorization."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "developer.intuit.com docs render client-side, so I couldn't open them. Please confirm these on Intuit's pages: (1) current App Partner Program pricing, including free Builder-tier limits; (2) the production-key assessment process; (3) webhook support (from prior knowledge, not seen this session); (4) whether an OpenAPI spec exists (I believe not officially); (5) whether Intuit offers a hosted remote MCP."
+ }
 }

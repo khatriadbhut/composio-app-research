@@ -19,7 +19,7 @@ schema.properties.changes = { type: "array", items: { type: "object", additional
   properties: { field: { type: "string" }, old: { type: "string" }, new: { type: "string" }, why: { type: "string" } } } };
 
 function flagsFor(slug) {
-  const f = [...(checks[slug]?.flags ?? [])];
+  const f = [...(checks[slug]?.flags ?? []), ...(checks[slug]?.notes ?? [])];
   const c = composio[slug];
   if (c?.in_composio && !c.agrees) f.push(`Composio's own ${c.toolkit} toolkit supports auth [${c.composio_auth.join(", ")}]; the record lacks ${c.missing_vs_composio.join(", ")}. Check whether the vendor offers it.`);
   if (c?.in_composio) f.push(`Composio already ships a ${c.toolkit} toolkit (${c.tools ?? "?"} tools, auth: ${c.composio_auth.join(", ")}), so a public API certainly exists.`);

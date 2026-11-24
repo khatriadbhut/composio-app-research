@@ -5,13 +5,106 @@
  "category": "AI, Research and Media-native",
  "hint": "fathom.video",
  "pass": 1,
- "at": "2026-11-24T15:08:09.901Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 689,
- "turns": 1,
+ "at": "2026-11-24T17:41:27.737Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Fathom AI meeting notes API developers.fathom.ai OAuth webhooks MCP"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/mcp-docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/oauth.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/quickstart.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI meeting recorder that transcribes and summarizes calls; API exposes meetings, transcripts, summaries, webhooks.\",\"subcategory\":\"AI meeting n"
+  }
+ ],
+ "cost_usd": 0.08329160000000001,
+ "duration_ms": 34769,
+ "turns": 9,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "AI meeting recorder that transcribes and summarizes calls; API exposes meetings, transcripts, summaries, webhooks.",
+  "subcategory": "AI meeting notetaker",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Per-user API key from User Settings > API Access (user-scoped). OAuth 2.0 for public apps that other Fathom users install; register via marketplace applications page. Scopes not confirmed (a third party mentions a single public_api scope).",
+  "access": "approval_required",
+  "access_notes": "API key is self-serve from user settings (plan requirement not stated in docs). OAuth apps are \"subject to review\" for public use/marketplace; whether dev-mode OAuth works for arbitrary users before review is unconfirmed.",
+  "api_styles": [
+   "rest",
+   "sdk_only"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "About 10 REST operations: list meetings, meeting types, get summary, get transcript, request download, download status, list teams, team members, users/permissions, create/delete webhook. TypeScript and Python SDKs.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://api.fathom.ai/mcp (docs at developers.fathom.ai/mcp-docs; guides for ChatGPT and Claude)",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Narrow, mostly read-only API. Public OAuth apps are subject to Fathom review. Plan needed for API access is not documented. No sandbox is mentioned.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.fathom.ai/quickstart.md",
+    "quote": "Head to the API Access section of your User Settings and generate an API key."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.fathom.ai/oauth.md",
+    "quote": "subject to review to ensure the best experience for all users"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.fathom.ai/mcp-docs",
+    "quote": "https://api.fathom.ai/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.fathom.ai/llms.txt",
+    "quote": "/api-reference/openapi.yaml"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.fathom.ai/llms.txt",
+    "quote": "Create a webhook: /api-reference/webhooks/create-a-webhook.md"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm which Fathom plan includes API access. Confirm whether OAuth apps can be used by non-owner users before marketplace review. Check for any sandbox or test mode. The OAuth scope list is unconfirmed. The docs I fetched are summarized by a fetch model, not read verbatim."
+ }
 }

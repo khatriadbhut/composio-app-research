@@ -5,13 +5,89 @@
  "category": "AI, Research and Media-native",
  "hint": "transcriptapi.com",
  "pass": 1,
- "at": "2026-11-24T15:08:12.513Z",
- "ok": false,
- "trace": [],
- "cost_usd": 0,
- "duration_ms": 653,
- "turns": 1,
+ "at": "2026-11-24T17:41:55.066Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://transcriptapi.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://transcriptapi.com/docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://transcriptapi.com/docs/api/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Hosted REST API and MCP server for YouTube transcripts, search, channel and playlist data.\",\"subcategory\":\"YouTube transcript/data API\",\"auth_m"
+  }
+ ],
+ "cost_usd": 0.06034559999999999,
+ "duration_ms": 26738,
+ "turns": 6,
  "model": "sonnet",
- "error": "You've hit your 5-hour limit · resets 1:20am (Asia/Calcutta)",
- "record": null
+ "error": null,
+ "record": {
+  "what_it_does": "Hosted REST API and MCP server for YouTube transcripts, search, channel and playlist data.",
+  "subcategory": "YouTube transcript/data API",
+  "auth_methods": [
+   "api_key",
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST uses a Bearer API key from the dashboard. The MCP server supports OAuth (Claude, ChatGPT). Each end user would need their own TranscriptAPI account and key, or the toolkit would use a single shared key.",
+  "access": "self_serve_free",
+  "access_notes": "Signup gives 100 free credits with no card. Paid plans are $5/month for 1,000 credits or $54/year. Top-ups are available. Rate limit is 200 requests/min on the monthly plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "13 read-only GET endpoints: transcript, video info/metadata, search, channel (resolve, info, search, videos, playlists, posts, sections, latest), and playlist videos.",
+  "openapi_spec": "unknown",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "https://transcriptapi.com/mcp (OAuth or API key)",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is small and read-only, and it is a paid-per-credit service. No OpenAPI file was found, but the docs link a Swagger UI at /swagger.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "Authorization: Bearer YOUR_API_KEY"
+   },
+   {
+    "field": "api",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "GET /youtube/channel/videos | Paginated channel feed | 1/page"
+   },
+   {
+    "field": "access",
+    "url": "https://transcriptapi.com",
+    "quote": "New accounts get 100 free credits with no card required"
+   },
+   {
+    "field": "mcp",
+    "url": "https://transcriptapi.com",
+    "quote": "MCP server: https://transcriptapi.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The OpenAPI spec was not confirmed. A Swagger UI exists at /swagger, so a JSON spec probably exists behind it. The MCP URL and the 100-free-credits claim come from the landing page as summarized by the fetch tool. I did not open the MCP docs page. The hint (transcriptapi.com) was followed."
+ }
 }
