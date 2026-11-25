@@ -84,9 +84,9 @@
     "out": "{{l1_links}} links \u00b7 {{l1_found}} quotes found \u00b7 {{l1_flagged}} records flagged"
    },
    {
-    "k": "Loop 2 \u00b7 Composio API",
+    "k": "Loop 2 \u00b7 Composio catalog",
     "title": "Catalog cross-check",
-    "body": "Compares the auth the agent found with Composio's own toolkit catalog, and marks which apps Composio already ships.",
+    "body": "Compares the auth the agent found with Composio's public toolkit catalog (no key needed), and marks which apps Composio already ships.",
     "out": "{{l2_line}}"
    },
    {
@@ -143,7 +143,7 @@
   ]
  },
  "proof": {
-  "cmd": "git clone https://github.com/khatriadbhut/composio-app-research\ncd composio-app-research\n\n# research one app (about a minute), then check its evidence\nnode src/research.mjs --only notion --force\nnode src/check-evidence.mjs\n\n# the full pipeline\necho 'COMPOSIO_API_KEY=...' > .env\nnpm run all",
+  "cmd": "git clone https://github.com/khatriadbhut/composio-app-research\ncd composio-app-research\n\n# research one app (about a minute), then check its evidence\nnode src/research.mjs --only notion --force\nnode src/check-evidence.mjs\n\n# the full pipeline (no API keys needed)\nnpm run all",
   "agentLinks": [
    "<a href=\"data/apps.json\">apps.json</a>: all 100 verified records with evidence URLs, quotes and verifier changes",
    "<a href=\"data/apps.csv\">apps.csv</a>: the same as a flat table",

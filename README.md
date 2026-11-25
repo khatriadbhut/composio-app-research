@@ -85,7 +85,6 @@ Writes `results/pass1/notion.json` in about a minute.
 **All 100, every loop**
 
 ```sh
-echo 'COMPOSIO_API_KEY=...' > .env
 npm run all
 ```
 
@@ -138,14 +137,14 @@ they read and the quotes must come from pages directly.
 
 ## Requirements
 
-**Node ≥ 22** (no dependencies), **Claude Code** logged in, and a
-**Composio API key** for stage 3. That is the whole list.
+**Node ≥ 22** (no dependencies) and **Claude Code** logged in. That is the
+whole list: no Anthropic or Composio API key is needed.
 
 | stage | needs |
 | --- | --- |
 | research, verifier | `claude` on your PATH, logged in |
 | evidence check, score, page | nothing beyond Node |
-| Composio catalog | `COMPOSIO_API_KEY` in `.env` |
+| Composio catalog | nothing: reads Composio's public toolkit list ([docs.composio.dev/toolkits.md](https://docs.composio.dev/toolkits.md)); uses the API instead if `COMPOSIO_API_KEY` is set |
 
 ## What it records
 

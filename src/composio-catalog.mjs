@@ -1,7 +1,8 @@
 // Loop 2: compare the agent's auth findings with Composio's own toolkit catalog.
 // Composio has already integrated many of these apps, so its catalog is an
 // independent source for auth schemes, and it answers "do we already have this?".
-//   COMPOSIO_API_KEY=... node src/composio-catalog.mjs [--in results/pass1] [--out results/composio-pass1.json]
+//   node src/composio-catalog.mjs   (reads the public docs catalog; set COMPOSIO_API_KEY to use the API instead)
+//   node src/composio-catalog.mjs [--in results/pass1] [--out results/composio-pass1.json]
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { parseArgs } from "./args.mjs";
 
