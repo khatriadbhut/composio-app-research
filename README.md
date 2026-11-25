@@ -9,7 +9,7 @@ developer can get credentials alone, the API surface, any MCP server, and a
 buildability verdict, every answer tied to a quote from the page it came from.
 Then three loops try to prove it wrong.
 
-[![Case study](https://img.shields.io/badge/case%20study-live-2f4fd1.svg)](https://adbhutkhatri.me/composio-app-research/)
+[![Case study](https://img.shields.io/badge/case%20study-live-2f4fd1.svg)](https://composio-app-research-391.netlify.app/)
 [![Apps](https://img.shields.io/badge/apps-100-brightgreen.svg)](docs/data/apps.csv)
 [![Accuracy](https://img.shields.io/badge/audited%20accuracy-78%25%E2%86%9288%25-brightgreen.svg)](#how-it-checks-itself)
 [![Node](https://img.shields.io/badge/node-%E2%89%A522-brightgreen.svg)](https://nodejs.org)
@@ -54,7 +54,7 @@ Then three loops try to prove it wrong.
 
 On the audited sample, the research agent alone was right on **78%** (124/160) of
 fields. After the loops, **88%** (140/160). The
-[case study](https://adbhutkhatri.me/composio-app-research/) shows every
+[case study](https://composio-app-research-391.netlify.app/) shows every
 audited cell, hit or miss.
 
 ---
@@ -97,7 +97,7 @@ catalog, verifier, score, then the page.
 </table>
 
 Then open `docs/index.html`, or the
-[live copy](https://adbhutkhatri.me/composio-app-research/).
+[live copy](https://composio-app-research-391.netlify.app/).
 
 <details>
 <summary><b>More on running it</b> — one stage at a time, other apps, cost</summary>
@@ -238,7 +238,7 @@ Every place a person stepped in is logged, with the page that decided it, in
   easy wins. The partner- and sales-gated ones are a business-development list.
 
 The full table, with the evidence for every cell, is in the
-[case study](https://adbhutkhatri.me/composio-app-research/#findings), and
+[case study](https://composio-app-research-391.netlify.app/#findings), and
 as [JSON](docs/data/apps.json) and [CSV](docs/data/apps.csv).
 
 ## Files
