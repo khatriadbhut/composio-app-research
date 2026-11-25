@@ -1,0 +1,207 @@
+{
+ "id": 7,
+ "slug": "zoho-crm",
+ "app": "Zoho CRM",
+ "category": "CRM and Sales",
+ "hint": "zoho.com/crm",
+ "pass": 2,
+ "at": "2026-11-24T17:44:54.686Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zoho CRM OpenAPI specification github crm-oas"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/sandbox.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/openapi-specification.html"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zoho CRM sandbox available editions Professional Enterprise help"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zoho CRM developer edition free sandbox developer account"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/dev-edition.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/notifications/overview.html"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/api/v8/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Zoho CRM MCP server URL setup Claude Desktop mcp.zoho"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.zoho.com/crm/developer/docs/mcp/setup/claude.html"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud CRM for managing leads, contacts, deals, sales pipelines and workflow automation.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"oauth2\"],\"auth_pr"
+  }
+ ],
+ "cost_usd": 0.3190836,
+ "duration_ms": 77120,
+ "turns": 16,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud CRM for managing leads, contacts, deals, sales pipelines and workflow automation.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The API uses OAuth 2.0 only. Access tokens are valid for 1 hour. Refresh tokens last until the end user revokes them. Clients are registered in the Zoho API Console: server-based clients suit multi-user apps, and Self Client suits single-user backends. Zoho runs separate data centers, and the accounts and API domains differ by region (.com, .eu, .in, .com.au and others), so token and API calls must go to the user's own domain. The remote MCP servers also use an OAuth browser flow.",
+  "access": "self_serve_free",
+  "access_notes": "The docs show no approval step for registering OAuth clients in the Zoho API Console. Every edition has a published API credit limit, including Free at 5,000 credits per 24 hours. Paid editions get 50,000 credits plus a per-user amount, capped at 100K for Standard, 3M for Professional, 5M for Enterprise and unlimited for Ultimate. Trial editions get the same limits as their paid editions. Zoho also offers a free Developer Edition with no expiry, for testing. Listing on the Zoho Marketplace is a separate step and is not required for API access.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The V8 REST API has six groups: Metadata, Core (record CRUD across all modules, plus related records, notes, attachments, tags and users), Composite, Bulk read/write, Notifications, and Query (COQL). There are well over 50 operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Zoho hosts four pre-built CRM MCP servers on zohomcp.in: Data Insights, Data Operations, Module Customization, and Workflow & Process Automation. One example is https://zoho-crm-data-operations-60065097786.zohomcp.in/mcp/<key>/message. Org-specific URLs are under Setup > Developer Hub > MCP for AI Agents. The servers use OAuth on first use and work with any MCP client; Zoho names Claude Desktop, Cursor, VS Code and Windsurf. Zoho also has a broader Zoho MCP console. CData, Pipedream and Workato offer third-party servers.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no real blocker. The main engineering concern is handling multiple data centers: the accounts and API domains vary by region, so the toolkit must find the user's domain from the token response. Free-edition orgs get only 5,000 credits per day. Org-level CRM sandboxes need Enterprise or Ultimate, but the free Developer Edition covers testing.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+    "quote": "Clients are not required to support password authentication or store user credentials."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+    "quote": "This token has an unlimited lifetime until it is revoked by the end-user."
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+    "quote": "The API credit limits for trial editions are the same as those of their corresponding paid editions."
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/crm/developer/docs/dev-edition.html",
+    "quote": "The Developer edition is totally free"
+   },
+   {
+    "field": "api",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+    "quote": "Perform CRUD operations on CRM module entities"
+   },
+   {
+    "field": "api",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/openapi-specification.html",
+    "quote": "the OAS files are hosted on GitHub"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/notifications/overview.html",
+    "quote": "Notification APIs allow you to get instant notifications whenever an action is performed on the records of a module."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+    "quote": "work with any AI tool that supports MCP, including Cursor, Claude Desktop, VS Code, and Windsurf"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.zoho.com/crm/developer/docs/mcp/setup/claude.html",
+    "quote": "copy and paste the required server URL in the Remote MCP Server URL field"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "Zoho's doc page 'Open API Specification 3.0.0 (OAS) for Zoho CRM APIs' says the OAS files are hosted on GitHub (github.com/zoho/crm-oas)."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "The fetched page gave no server URL.",
+    "new": "Four servers on zohomcp.in, with URLs from Setup > Developer Hub > MCP for AI Agents; works with any MCP client",
+    "why": "Zoho's Claude Desktop setup page lists the remote server URLs, and the overview page says the servers work with any MCP client. This answers open question (3)."
+   },
+   {
+    "field": "evidence (access)",
+    "old": "Free | 5,000 | 5,000",
+    "new": "Trial-edition sentence from api-limits, plus the Developer Edition quote",
+    "why": "The old quote was not verbatim on the page; the table reads 'Free Edition | 5000 credits'. Replaced with sentences found on the pages."
+   },
+   {
+    "field": "evidence (auth, api)",
+    "old": "Clients don't need to support...; Perform CRUD operations on module records through RESTful endpoints.",
+    "new": "Clients are not required to support...; Perform CRUD operations on CRM module entities",
+    "why": "The first-pass quotes were paraphrases, not verbatim text from the pages."
+   },
+   {
+    "field": "access_notes",
+    "old": "I did not confirm whether Free edition supports every API.",
+    "new": "Added the per-edition credit caps and the free Developer Edition with no expiry",
+    "why": "The api-limits page lists limits for every edition, and the dev-edition page confirms a free testing org."
+   },
+   {
+    "field": "blocker_notes / sandbox basis",
+    "old": "CRM sandbox is a paid-edition feature, unverified",
+    "new": "Org sandboxes need Enterprise or Ultimate; the free Developer Edition gives a test environment",
+    "why": "Zoho help says sandboxes are in Enterprise and Ultimate, and the Developer Edition is free with no expiry. sandbox=yes is now supported by a source. This answers open question (2)."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, mcp medium, buildability medium",
+    "new": "all high",
+    "why": "The open questions were resolved from primary Zoho sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm OpenAPI, sandbox editions, MCP URL",
+    "new": "",
+    "why": "All three were answered from Zoho docs."
+   }
+  ]
+ },
+ "flags_given": "- quote for access not found on https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html\n- agent's open question: Confirm three things. (1) Whether Zoho publishes an OpenAPI spec. (2) The sandbox's edition requirements. The sandbox answer comes from prior knowledge and no fetched page confirms it. (3) The exact remote MCP URL, and whether non-Zoho MCP clients can use it."
+}

@@ -1,0 +1,44 @@
+{
+  "slug": "harvest",
+  "app": "Harvest",
+  "labels": {
+    "auth_methods": ["oauth2", "bearer_token"],
+    "auth_primary": "oauth2",
+    "access": "self_serve_free",
+    "api_styles": ["rest"],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "ready_now",
+    "main_blocker": "none"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/", "quote": "The V2 API requires an access token to authenticate requests."},
+      {"url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/", "quote": "The API can be accessed by creating a Personal Access Token from the Developers section of Harvest ID."},
+      {"url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/", "quote": "If you are interested in building integrations that other users can use, you will need to register an OAuth2 Application, also known as an OAuth2 Client."},
+      {"url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/", "quote": "Personal Access Tokens replace the Basic Authentication method that was used in our v1 API, as this is more secure."}
+    ],
+    "access": [
+      {"url": "https://www.getharvest.com/pricing", "quote": "Free Built for individual freelancers starting from $0 forever"},
+      {"url": "https://www.getharvest.com/pricing", "quote": "Free includes: 1 seat 2 projects"},
+      {"url": "https://www.getharvest.com/pricing", "quote": "Get started on any plan with a free trial. No credit card required."}
+    ],
+    "api": [
+      {"url": "https://help.getharvest.com/api-v2/introduction/overview/general/", "quote": "The Harvest V2 API is a REST API that allows you to interact with your Harvest account programmatically."},
+      {"url": "https://help.getharvest.com/api-v2/introduction/overview/general/", "quote": "The rate limit for general API requests is 100 requests per 15 seconds"}
+    ],
+    "mcp": [
+      {"url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP", "quote": "Set the Remote MCP server URL to: https://api.harvestapp.com/mcp"},
+      {"url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP", "quote": "You connect the Harvest MCP from within your MCP client, then sign in to Harvest and authorise the connection when prompted."}
+    ],
+    "buildability": [
+      {"url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/", "quote": "Implementing a full OAuth2 Authentication flow which allows other people to use your Harvest integrations."},
+      {"url": "https://www.getharvest.com/pricing", "quote": "Free Built for individual freelancers starting from $0 forever"}
+    ]
+  },
+  "uncertain": {
+    "access": "The pricing page shows a $0-forever Free plan (1 seat, 2 projects) and 30-day no-card trials of paid plans, but never says whether the API is on each plan. The API docs mention no plan gating; PATs are created in Harvest ID's Developers section for any account. Signup appears to start as a trial that can then be switched to Free. So self_serve_free is inferred, not stated. Check in a browser that a Free-plan account's PAT works after the trial ends.",
+    "mcp": "support.getharvest.com sits behind a Cloudflare JS challenge (403 to WebFetch and curl). I read the article body through the public Zendesk Help Center API (support.getharvest.com/api/v2/help_center/en-us/articles/46293697226381.json; created 2026-06-01, updated 2026-11-12). I also confirmed that https://api.harvestapp.com/mcp answers 401 with OAuth protected-resource metadata pointing at id.getharvest.com. A human should open the article in a browser to confirm the quotes."
+  },
+  "notes": "OAuth2 apps (authorization code for server-side, plus implicit for client-side) are self-registered in Harvest ID's Developers section with no documented app review. The API can also be called with a PAT (Bearer header or access_token query param plus a Harvest-Account-Id header). A User-Agent header with app name and contact is required. The API is broad: about 50 resource pages (clients, contacts, invoices, estimates, expenses, tasks, time entries, projects, assignments, roles, users, rates, reports, PTO, approvals, notifications, reimbursements, imports, Gusto integration and Forecast endpoints), well over 50 operations. Rate limits are 100 requests per 15 seconds generally and 100 per 15 minutes for the Reports API. The official remote MCP (api.harvestapp.com/mcp, OAuth via id.getharvest.com) covers timers, time entries, reports, budgets, projects, clients, tasks, assignments, draft invoices, expenses and timesheet approval submission. Many community Harvest MCP servers also exist on GitHub (taiste, ianaleck, southleft, etc.). The harvesthq GitHub org has no MCP repo."
+}

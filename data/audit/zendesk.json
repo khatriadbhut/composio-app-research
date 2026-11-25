@@ -1,0 +1,93 @@
+{
+  "slug": "zendesk",
+  "app": "Zendesk",
+  "labels": {
+    "auth_methods": [
+      "oauth2",
+      "basic"
+    ],
+    "auth_primary": "oauth2",
+    "access": "approval_required",
+    "api_styles": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "app_review"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+        "quote": "Zendesk supports using OAuth access tokens to authenticate API requests."
+      },
+      {
+        "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+        "quote": "If you're an existing Zendesk customer and are currently using basic authentication or API tokens, you will have to migrate to OAuth access tokens"
+      },
+      {
+        "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+        "quote": "API tokens are auto-generated passwords in the Zendesk Admin Center."
+      }
+    ],
+    "access": [
+      {
+        "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+        "quote": "You can try out the Zendesk platform with a free, 14-day trial account."
+      },
+      {
+        "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+        "quote": "A sponsored test account is reserved for developers creating applications for the Zendesk Marketplace ."
+      },
+      {
+        "url": "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/",
+        "quote": "If you distribute a public app or an integration app to multiple Zendesk customers, you must use global OAuth tokens to authenticate requests."
+      },
+      {
+        "url": "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/",
+        "quote": "For security reasons, Zendesk doesn't allow developers to create their own global OAuth clients."
+      },
+      {
+        "url": "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/",
+        "quote": "If the request is approved, Zendesk converts your local OAuth client to a global OAuth client."
+      }
+    ],
+    "api": [
+      {
+        "url": "https://developer.zendesk.com/api-reference/",
+        "quote": "You'll find APIs for ticketing, help center, live chat, voice, sales CRM as well as some features that span capabilities, such as omnichannel routing and custom data."
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://support.zendesk.com/hc/en-us/articles/11400026079130",
+        "quote": "Zendesk Bridge and external AI agents are currently in an early access program (EAP)."
+      },
+      {
+        "url": "https://support.zendesk.com/hc/en-us/articles/11400026079130",
+        "quote": "Example: https://example.zendesk.com/mcp"
+      },
+      {
+        "url": "https://support.zendesk.com/hc/en-us/articles/11400026079130",
+        "quote": "During the EAP, Zendesk Bridge and external AI agents are available without charge."
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/",
+        "quote": "For security reasons, Zendesk doesn't allow developers to create their own global OAuth clients."
+      },
+      {
+        "url": "https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/",
+        "quote": "You can try out the Zendesk platform with a free, 14-day trial account."
+      }
+    ]
+  },
+  "uncertain": {
+    "access": "Two gates: (1) there is no free plan, a developer gets credentials only via a 14-day trial (or a sponsored account if a Marketplace partner), which alone would be self_serve_trial; (2) multi-customer OAuth requires Zendesk to approve a global OAuth client. I labelled the stricter, toolkit-relevant gate (approval_required).",
+    "mcp": "The vendor-hosted MCP server (Zendesk Bridge, https://{subdomain}.zendesk.com/mcp) exists but is an opt-in early access program enabled per account by an admin; labelled official_remote, but a grader treating EAP as not-yet-available could say community_only.",
+    "auth_methods": "'basic' covers API tokens ({email}/token:{api_token}) which the docs mark deprecated; still functional per docs but being phased out."
+  },
+  "notes": "API tokens/basic auth are now labelled deprecated on the Security and authentication page, so OAuth is the only forward path. Zendesk Developer Terms forbid customers sharing API credentials with third parties, so a multi-tenant toolkit must use a Zendesk-approved global OAuth client (identifier must start with 'zdg-', dev subdomain 'd3v-'). Bridge MCP article lists eligible plans: Suite Team/Growth/Professional/Enterprise/Enterprise Plus and Support Team/Professional/Enterprise."
+}

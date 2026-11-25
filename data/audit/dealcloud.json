@@ -1,0 +1,89 @@
+{
+  "slug": "dealcloud",
+  "app": "DealCloud",
+  "labels": {
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "auth_primary": "oauth2",
+    "access": "contact_sales",
+    "api_styles": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "needs_partnership_or_sales",
+    "main_blocker": "enterprise_sales"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://api.docs.dealcloud.com/docs/token",
+        "quote": "DealCloud uses the OAuth2 Client Credentials flow to generate a bearer token, which is then used in the HTTP Authentication header for API requests."
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/docs/apikeys",
+        "quote": "Then click Copy API Key to Clipboard to copy your API key for use in integrations or API requests."
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/mcp/authentication",
+        "quote": "DealCloud MCP uses OAuth to authenticate, letting AI assistants connect on behalf of an individual user."
+      }
+    ],
+    "access": [
+      {
+        "url": "https://api.docs.dealcloud.com/docs/apikeys",
+        "quote": "If you do not see the Admin section, contact your organization's admin or DealCloud Customer Success Manager (CSM) for assistance."
+      },
+      {
+        "url": "https://www.intapp.com/dealcloud/",
+        "quote": "Schedule a demo"
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+        "quote": "Licensing DealCloud with Celeste license."
+      }
+    ],
+    "api": [
+      {
+        "url": "https://api.docs.dealcloud.com/docs",
+        "quote": "This site provides a comprehensive overview of our REST APIs, their capabilities, and available endpoints."
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/docs",
+        "quote": "Each DealCloud site provides an interactive Swagger page for testing API calls."
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://api.docs.dealcloud.com/mcp",
+        "quote": "A compatible AI assistant connects to the DealCloud MCP Server and signs in as the user."
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+        "quote": "The default endpoint follows this format: https://[tenant].my.intapp.com/mcp/celeste/DealCloud"
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/mcp/connections",
+        "quote": "Custom / third-party AI clients — Contact your Account Manager"
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://www.intapp.com/dealcloud/",
+        "quote": "Schedule a demo"
+      },
+      {
+        "url": "https://api.docs.dealcloud.com/docs/apikeys",
+        "quote": "If you do not see the Admin section, contact your organization's admin or DealCloud Customer Success Manager (CSM) for assistance."
+      }
+    ]
+  },
+  "uncertain": {
+    "auth_methods": "REST auth is OAuth2 client_credentials where client_id + a per-user API key are exchanged for a 15-minute bearer token; there is no authorization-code flow for the REST API (the MCP server does use user OAuth). A grader may label primary as api_key.",
+    "api_breadth": "About 55-60 documented endpoints (data rows/cells, schema & metadata, user management, publications, backups, reports, relationship intelligence), many of them metadata. That is over the 50+ broad threshold, but the data API is generic (entry types), so 'moderate' is defensible.",
+    "access": "No public pricing, trial or developer sandbox found; access needs an existing DealCloud customer site or an Intapp partnership (Intapp has a 'Technology and integration partners' program). contact_sales vs partner_gated is a judgement call."
+  },
+  "notes": "MCP docs now describe write tools (submit_entry, validate_create_entry) behind an 'Enable Write Tools' toggle, contradicting third-party blog claims that the MCP is read-only. MCP tools mention a 'DealCloud GraphQL schema' (execute_query), but no public GraphQL API is documented for REST developers, so api_styles is rest only. Third-party AI clients for MCP require contacting the account manager."
+}

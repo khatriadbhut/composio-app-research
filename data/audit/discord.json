@@ -1,0 +1,44 @@
+{
+  "slug": "discord",
+  "app": "Discord",
+  "labels": {
+    "auth_methods": ["bot_token", "oauth2"],
+    "auth_primary": "bot_token",
+    "access": "self_serve_free",
+    "api_styles": ["rest", "websocket"],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "ready_now",
+    "main_blocker": "none"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://docs.discord.com/developers/reference", "quote": "Authorization: TOKEN_TYPE TOKEN"},
+      {"url": "https://docs.discord.com/developers/reference", "quote": "Using a bot token found on the Bot page within your app's settings."},
+      {"url": "https://docs.discord.com/developers/topics/oauth2", "quote": "We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks."},
+      {"url": "https://docs.discord.com/developers/topics/oauth2", "quote": "Bot users are automatically added to all apps, and are authenticated using the bot token found in your app's settings"}
+    ],
+    "access": [
+      {"url": "https://docs.discord.com/developers/quick-start/getting-started", "quote": "Enter a name for your app, then press **Create**"},
+      {"url": "https://docs.discord.com/developers/quick-start/getting-started", "quote": "If you don't have your own server already, you can create one for free"},
+      {"url": "https://docs.discord.com/developers/gateway/getting-started-with-privileged-intent-review", "quote": "If that number exceeds 10,000, your app needs to apply for Privileged Intent access"}
+    ],
+    "api": [
+      {"url": "https://docs.discord.com/developers/reference", "quote": "The Discord API is a REST API that allows you to interact with Discord data from your own applications"},
+      {"url": "https://docs.discord.com/developers/reference", "quote": "Discord's Gateway API is used for maintaining persistent, stateful websocket connections between your client and our servers"}
+    ],
+    "mcp": [
+      {"url": "https://mcp.discord.com/.well-known/oauth-protected-resource", "quote": "{\"resource\":\"https://mcp.discord.com\",\"authorization_servers\":[\"https://discord.com\"], ... \"resource_name\":\"Discord\"}"},
+      {"url": "https://mcp.discord.com/mcp", "quote": "www-authenticate: Bearer realm=\"mcp\", resource_metadata=\"https://mcp.discord.com/.well-known/oauth-protected-resource/mcp\", scope=\"identify guilds guilds.members.read connections personal.relationships.read ...\""},
+      {"url": "https://docs.discord.com/mcp", "quote": "This Model Context Protocol server provides search and retrieval tools for the Documentation - Discord site."}
+    ],
+    "buildability": [
+      {"url": "https://docs.discord.com/developers/topics/oauth2", "quote": "The authorization code grant is what most developers will recognize as \"standard OAuth2\""}
+    ]
+  },
+  "uncertain": {
+    "mcp": "Discord's developer docs (docs.discord.com/llms.txt) document no API MCP server; docs.discord.com/mcp is a docs-search-only MCP (Mintlify-style). However a live, Discord-hosted, OAuth-protected MCP endpoint exists at https://mcp.discord.com (protected-resource metadata names Discord as resource and discord.com as auth server; read-only 'personal.*' scopes). It is undocumented/unannounced and discord.com's OAuth metadata has no dynamic client registration endpoint, so it is likely limited to allow-listed clients. Labeled official_remote on the evidence of the vendor-hosted endpoint; if graders count only publicly documented, generally usable servers, the label would be community_only. Evidence for mcp.discord.com is from direct HTTP probes (headers/JSON), not a docs page.",
+    "auth_primary": "OAuth2 is offered, but user bearer tokens only cover identity-type scopes; most actions (messages, channels, moderation) require the bot token, and OAuth2 is mainly used to install the bot into a guild. Chose bot_token; a toolkit could arguably be described as oauth2 (install) + bot_token (calls)."
+  },
+  "notes": "Discord docs moved from discord.com/developers/docs to docs.discord.com/developers (301). Privileged intents review threshold changed from 100 servers to 10,000 unique users. App creation and bot tokens are free; no paid tier for API. Also a docs-only MCP exists at docs.discord.com/mcp (tools: search_documentation_discord, query_docs_filesystem_documentation_discord)."
+}

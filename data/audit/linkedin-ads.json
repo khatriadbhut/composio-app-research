@@ -1,0 +1,42 @@
+{
+  "slug": "linkedin-ads",
+  "app": "LinkedIn Ads",
+  "labels": {
+    "auth_methods": ["oauth2"],
+    "auth_primary": "oauth2",
+    "access": "approval_required",
+    "api_styles": ["rest"],
+    "api_breadth": "broad",
+    "mcp": "community_only",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "app_review"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access", "quote": "All permissions listed are Member Permissions (3-legged OAuth), meaning they require an authenticated LinkedIn member to grant consent"},
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview", "quote": "Applications must be authorized and authenticated before accessing LinkedIn data or member information."}
+    ],
+    "access": [
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview", "quote": "Vetted Product with development and standard tiers"},
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access", "quote": "All applications start with Development tier. You must apply separately to upgrade to the Standard tier."},
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access", "quote": "Development tier is designed to build end-to-end workflows and supports read-only access for unlimited ad accounts and edit capabilities for up to five (5) Ad Accounts."},
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start", "quote": "submit a tier upgrade request with a video demonstrating how your platform creates, edits, or optimizes LinkedIn campaigns."},
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access", "quote": "LinkedIn reserves the right to review applications and select partners at its discretion"}
+    ],
+    "api": [
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/ads-overview", "quote": "These APIs provide all features available in LinkedIn Campaign Manager, including creation and management of ad accounts, campaign groups, campaigns, creatives, ad types, and analytics."}
+    ],
+    "mcp": [
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start", "quote": "Token generator: Generate a new token for testing using the Developer Portal."}
+    ],
+    "buildability": [
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start", "quote": "Apply to the desired API under the Products tab of your app."},
+      {"url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start", "quote": "Review our API and data restrictions to ensure your use case is supported and your application is not rejected due to a restricted use case."}
+    ]
+  },
+  "uncertain": {
+    "mcp": "No vendor MCP found in LinkedIn/Microsoft Learn Marketing docs (the MCP evidence entry is only a docs-tools page, showing no MCP is listed); web search returned only third-party servers (PyPI linkedin-ads-mcp, danielpopamd, AdKit, Two Minute Reports, CData). The host mcp.linkedin.com resolves but sits behind a Cloudflare bot challenge (403 'Just a moment...'), so whether LinkedIn hosts an MCP there could not be determined; a human should check in a browser.",
+    "access": "Could be read as partner_gated: Advertising API is a 'Vetted Product' and LinkedIn 'reserves the right to ... select partners'. Chose approval_required because the Advertising API is a GA product 'open to all approved developers' via an application form, with a usable Development tier after approval."
+  },
+  "notes": "Creating an app requires a LinkedIn Page. Development tier: unlimited read, edit up to 5 ad accounts, 1 test ad account creatable via API; Standard tier via support ticket + demo video. Audience Insights / Media Planning APIs are restricted (additional criteria); Company Intelligence API closed to new applicants. Marketing API is versioned monthly (li-lms-2026-11)."
+}

@@ -1,0 +1,82 @@
+{
+  "slug": "notebooklm",
+  "app": "NotebookLM",
+  "labels": {
+    "auth_methods": [
+      "oauth2"
+    ],
+    "auth_primary": "oauth2",
+    "access": "paid_plan_required",
+    "api_styles": [
+      "rest",
+      "grpc"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "community_only",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "paid_plan"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+        "quote": "The projects.locations.notebooks REST API methods on this page require an authenticated user account with an active Gemini Notebook Enterprise license."
+      },
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rpc/google.cloud.notebooklm.v1alpha",
+        "quote": "Requires one of the following OAuth scopes: https://www.googleapis.com/auth/cloud-platform"
+      }
+    ],
+    "access": [
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+        "quote": "You buy licenses by the subscription. A subscription contains at least 15 licenses and can contain up to 5,000 licenses."
+      },
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+        "quote": "The free-trial tier: With this tier, you get a full-featured, 14-day trial subscription of 5000 licenses."
+      },
+      {
+        "url": "https://cloud.google.com/resources/notebooklm-enterprise",
+        "quote": "30-day trial then $9 USD per license per month (minimum 15 licenses)"
+      }
+    ],
+    "api": [
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+        "quote": "Pre-GA features are available \"as is\" and might have limited support."
+      },
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rpc/google.cloud.notebooklm.v1alpha",
+        "quote": "rpc CreateNotebook( CreateNotebookRequest ) returns ( Notebook )"
+      },
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/podcast-api",
+        "quote": "Deprecated: The Podcast API is deprecated. Google isn't allowlisting new customers."
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://docs.cloud.google.com/generative-ai-app-builder/docs/reference/mcp",
+        "quote": "The discoveryengine.googleapis.com MCP server has the following tools:"
+      },
+      {
+        "url": "https://docs.cloud.google.com/mcp/supported-products",
+        "quote": "Agent Search https://discoveryengine.googleapis.com/mcp Agent Search MCP reference"
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview",
+        "quote": "Users must be granted this role in order to access Gemini Notebook Enterprise (including for free-trial subscriptions)."
+      }
+    ]
+  },
+  "uncertain": {
+    "api_breadth": "About 11 live operations: notebooks create/get/listRecentlyViewed/batchDelete/share, sources batchCreate/uploadFile/get/batchDelete, audioOverviews create/delete (podcast API deprecated; DiscoverSources/Label services listed with no RPCs shown). No query/chat endpoint. Borderline narrow vs moderate; labeled moderate by the 10-50 count rule.",
+    "access": "Docs licensing page says 14-day free trial; marketing page says 30-day trial. Either way ongoing API use needs a paid license (US$9/license/month, minimum 15). Consumer NotebookLM (notebooklm.google.com) has no public API.",
+    "mcp": "Google's Supported products list for Google Cloud remote MCP servers has no NotebookLM entry; the discoveryengine MCP server only exposes search, conversational_search, list_engines. All NotebookLM MCP servers found (PyPI notebooklm-mcp-server, PleasePrompto/notebooklm-mcp, jacob-bd/notebooklm-mcp-cli) are third-party.",
+    "api_styles": "REST documented; an RPC/proto reference (google.cloud.notebooklm.v1alpha) is published, implying gRPC, but gRPC usage was not tested."
+  },
+  "notes": "Product appears renamed in docs to 'Gemini Notebook Enterprise'. API is v1alpha / Preview, user-credential only (gcloud user token), regional endpoints like us-discoveryengine.googleapis.com. For a multi-user toolkit, Google OAuth with the cloud-platform scope would likely need Google OAuth app verification (not confirmed here)."
+}

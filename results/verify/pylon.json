@@ -1,0 +1,203 @@
+{
+ "id": 15,
+ "slug": "pylon",
+ "app": "Pylon",
+ "category": "Support and Helpdesk",
+ "hint": "usepylon.com",
+ "pass": 2,
+ "at": "2026-11-24T17:46:08.413Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.usepylon.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pylon API webhooks docs.usepylon.com openapi"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/issues.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.usepylon.com/pylon-docs/developer/api/rate-limits"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "usepylon.com sign up free trial \"book a demo\" Pylon self-serve"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"B2B support platform unifying Slack, Teams, email and chat with ticketing and AI agents.\",\"subcategory\":\"B2B Helpdesk\",\"auth_methods\":[\"bearer_"
+  }
+ ],
+ "cost_usd": 0.27885920000000003,
+ "duration_ms": 73065,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "B2B support platform unifying Slack, Teams, email and chat with ticketing and AI agents.",
+  "subcategory": "B2B Helpdesk",
+  "auth_methods": [
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The REST API at api.usepylon.com (US) and api.eu.usepylon.com (EU) takes an admin-created API token as `Authorization: Bearer <token>`. Per the docs, tokens don't expire and have no separate scopes, so access is controlled only by a role. That role is either one chosen for the token's own identity or the role of the user/bot the token acts as. The pricing page does list \"Scoped API Tokens\", which conflicts with the docs. The REST API has no documented third-party OAuth. OAuth 2.0 exists only for the hosted MCP server, where an interactive client signs in and acts as the authorizing user. A multi-user toolkit would have each customer's admin paste a token, or would use MCP OAuth.",
+  "access": "contact_sales",
+  "access_notes": "Pylon has no free plan. The paid plans are Professional ($89/seat) and Advanced ($139/seat), both billed annually, plus Enterprise at a custom price. Free trials exist only for prospects, and a sales rep creates the demo org. There is no self-serve signup; the site's entry point is booking a demo. REST API and webhooks are included on every paid tier. The sandbox environment is Enterprise-only. Within a workspace, only Admins can create API tokens (Settings > Integrations & dev > API).",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The llms.txt index lists 25 API reference groups: Accounts (with Activities, Files, Highlights), Attachments, Audit Logs, Call Recordings, Contacts, Custom Fields, Custom Objects, Email, Issues, Feature Requests, Knowledge Base, Macros, Me, Messages, Surveys, Tags, Tasks & Projects, Teams, Ticket Forms, Training Data, User roles and Users. The Issues group alone has 6 or more operations (list, create, bulk update, merge, mark spam, external incidents), so the total is well above 50. Each endpoint has a limit of 30, 120 or 300 requests/min, shared across all of an org's tokens. Official SDKs exist for TypeScript, Python and Go.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted server is at https://mcp.usepylon.com (US) and https://mcp.eu.usepylon.com (EU). It accepts OAuth, where you sign in to Pylon and requests run as you, or a Bearer API token. An admin enables it under Settings > AI Controls > MCP Server. The connecting identity needs the MCP Access permission. Some tool groups depend on plan features such as Feature Requests, Account Intelligence and custom analytics.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "enterprise_sales",
+  "blocker_notes": "The API is public, well documented and broad, and has an OpenAPI spec. The obstacles are getting a workspace and handling auth. Pylon has no free plan or self-serve trial, so a test workspace means a sales-arranged trial or a paid per-seat annual plan. The REST API has no third-party OAuth, so each customer's admin must hand over a non-expiring, role-bound token. MCP OAuth is an alternative for per-user auth.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "quote": "Only Admins can create and manage API tokens."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "quote": "Tokens don't expire, and their access is controlled only by the role."
+   },
+   {
+    "field": "access",
+    "url": "https://www.usepylon.com/pricing",
+    "quote": "Pylon offers free trials for prospects."
+   },
+   {
+    "field": "access",
+    "url": "https://www.usepylon.com/pricing",
+    "quote": "$89/seat"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/rate-limits",
+    "quote": "Every endpoint uses one of three limits: 30, 120, or 300 requests per minute"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+    "quote": "To call the API from TypeScript, Python, or Go, use our SDKs"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/webhooks",
+    "quote": "Receive webhooks for various events happening in Pylon."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "quote": "Use OAuth with AI tools that offer an interactive connection flow."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Ask Pylon sales whether a partner or developer trial workspace is available. Two points need a human: the pricing page lists \"Scoped API Tokens\" while the auth docs say \"no separate scopes\", and the pricing-page figures came from a summarized fetch. Webhooks are trigger/macro-based, and no public list of event types was found.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[bearer_token]",
+    "new": "[bearer_token, oauth2]",
+    "why": "The official MCP server supports OAuth sign-in. Bearer tokens remain the primary method for the REST API."
+   },
+   {
+    "field": "access",
+    "old": "paid_plan_required",
+    "new": "contact_sales",
+    "why": "Pylon has no free plan, and trials are set up only by a sales rep. The site's entry point is booking a demo, so a developer cannot self-serve credentials."
+   },
+   {
+    "field": "access_notes",
+    "old": "free tier/trial unconfirmed",
+    "new": "No free plan; sales-arranged trials; API on all paid tiers; sandbox Enterprise-only",
+    "why": "Checked against the pricing page."
+   },
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "llms.txt lists 25 reference groups, and Issues alone has 6+ operations."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The API reference pages embed an OpenAPI 3.0.3 spec titled 'Pylon API.'"
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "The pricing page lists Sandbox Environment for Enterprise only, so there is no free developer sandbox."
+   },
+   {
+    "field": "main_blocker",
+    "old": "paid_plan",
+    "new": "enterprise_sales",
+    "why": "Getting any workspace requires a sales-arranged trial or an annual paid contract."
+   },
+   {
+    "field": "evidence",
+    "old": "auth quote 'Only Admins can create tokens.' and marketing-page webhook snippet",
+    "new": "Verbatim quotes from the auth, pricing, rate-limits, webhooks and MCP pages",
+    "why": "The original auth quote was not on the page verbatim (the page says 'create and manage API tokens'), and the webhook quote came from an unfetched search snippet. The record also had no evidence for access."
+   },
+   {
+    "field": "confidence.access",
+    "old": "low",
+    "new": "medium",
+    "why": "The pricing page and the vendor's facts page confirm there is no free plan and that trials go through sales."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "Endpoint groups, rate limits and the OpenAPI spec are confirmed in the docs."
+   }
+  ]
+ },
+ "flags_given": "- agent marked access confidence low\n- no evidence cited for access\n- quote for auth not found on https://docs.usepylon.com/pylon-docs/developer/api/authentication\n- agent's open question: Check whether Pylon offers a free trial or dev workspace, and whether an OpenAPI spec is published. Also check webhook event docs and rate limits, which I could not confirm from public pages. The webhook evidence comes from a search snippet of the marketing page. I did not fetch that page directly."
+}

@@ -1,0 +1,176 @@
+{
+ "id": 6,
+ "slug": "podio",
+ "app": "Podio",
+ "category": "CRM and Sales",
+ "hint": "podio.com",
+ "pass": 2,
+ "at": "2026-11-24T17:43:36.943Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.podio.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.podio.com/doc/oauth-authorization"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.podio.com/authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Podio API access plan requirement free plan API key"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.podio.com/index/faq"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.progress.com/podio/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.podio.com/doc/hooks"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"A customizable work-management and CRM platform built from apps, items, tasks and workflows.\",\"subcategory\":\"Work management / custom CRM\",\"aut"
+  }
+ ],
+ "cost_usd": 0.28630399999999995,
+ "duration_ms": 55003,
+ "turns": 11,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "A customizable work-management and CRM platform built from apps, items, tasks and workflows.",
+  "subcategory": "Work management / custom CRM",
+  "auth_methods": [
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Every flow is OAuth2-based and starts from an API key (client_id and client_secret). The current docs list four flows. Server-side flow is OAuth2 authorization code and the preferred flow for web apps. Client-side flow is implicit. Username & password flow is a last resort, and the older page says it is for trusted clients only. App authentication uses an app_id plus an app token, works for a single Podio app, and does not act as a user. App authentication is listed as \"other\". The older doc page saying \"Two step authorization is not yet completed!\" is legacy text; the current /authentication page documents the server-side flow as preferred.",
+  "access": "self_serve_free",
+  "access_notes": "The API is available on free and paid accounts at no extra charge within the base rate limits. The pricing page lists 1,000 calls/hour on Free, Plus and Premium. Only paid plans can buy add-ons for higher limits (2,500 to 50,000 calls/hour). Certain restricted operations, and programmatic access to app tokens, require contacting Podio support with a project description and the client_id. No app-review process for public OAuth distribution is documented. The free plan is capped at 100 items per organization.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The docs describe \"a complete programmable interface to all Podio functionality\". It covers items, apps, spaces, orgs, tasks, comments, files, contacts, hooks, statuses and more, which is well over 50 operations. Operations were not counted exactly. Client libraries exist for several languages.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.podio.com/mcp is hosted by Progress (Podio's vendor). It uses OAuth, works with default credentials or your own API key's client ID and secret, and exposes 22 read/write tools. It is in beta, \"intended for evaluation and testing\".",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Nothing major blocks a build. Minor caveats:\n- Rate limits are modest at 1,000 calls/hour on base plans, and only paid plans can buy add-ons for more.\n- A few restricted operations need a support request.\n- The vendor MCP server is in beta.\n- Some legacy doc pages are stale or return 410.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://developers.podio.com/",
+    "quote": "The Podio API is a complete programmable interface to all Podio functionality."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.podio.com/authentication",
+    "quote": "This is the preferred way of authenticating for web apps."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.podio.com/authentication",
+    "quote": "Use app authentication if you only need to interact with a single Podio app"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.podio.com/index/faq",
+    "quote": "The Podio API is available to use for both paid and free Podio accounts."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.podio.com/index/faq",
+    "quote": "Certain API operations are limited to API clients with an increased trust level."
+   },
+   {
+    "field": "access",
+    "url": "https://www.progress.com/podio/pricing",
+    "quote": "1000 calls per hour"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.podio.com/doc/hooks",
+    "quote": "Hooks are webhooks that can call external sites when certain actions occur in Podio."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+    "quote": "The Podio MCP Server gives your AI assistant 22 tools covering both reading and writing your Podio data"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+    "quote": "The Podio MCP Server is currently in beta and is intended for evaluation and testing."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Check whether Podio publishes an OpenAPI spec and whether a developer sandbox exists. Neither turned up in the docs.",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "OAuth2 code flow for general clients; password flow for trusted clients only; app-level auth unconfirmed; two-step flow called incomplete on old page.",
+    "new": "Four flows documented: server-side (authorization code, preferred), client-side, username/password (last resort), and app authentication (app_id plus app token). The 'incomplete' note is legacy.",
+    "why": "developers.podio.com/authentication lists all four flows, including app authentication, which confirms the 'other' method."
+   },
+   {
+    "field": "access_notes",
+    "old": "Did not confirm whether the API needs a paid plan or review.",
+    "new": "The API is free on free and paid accounts. 1,000 calls/hr on all plans. Rate-limit add-ons are paid-only. Restricted operations and app-token access require a support request.",
+    "why": "Developer FAQ and the Progress pricing page confirm this; access evidence was missing before."
+   },
+   {
+    "field": "evidence",
+    "old": "Five items, with no access or webhooks evidence.",
+    "new": "Added FAQ, pricing, hooks and authentication-page quotes; replaced the legacy oauth-authorization quotes.",
+    "why": "Fill the missing access evidence, cite the current auth docs, and support webhooks."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, buildability medium",
+    "new": "auth high, access high, buildability high",
+    "why": "Primary sources now confirm auth flows, free API access and webhooks."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Caveats: MCP beta; docs moved / 410.",
+    "new": "Added caveats on rate limits, paid-only add-ons and restricted operations.",
+    "why": "The access caveats are found in the FAQ and on the pricing page."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm paid plan/review requirement; OpenAPI spec; sandbox; 410 docs.",
+    "new": "Only the OpenAPI spec and sandbox remain unconfirmed.",
+    "why": "The paid-plan and review question was resolved by the FAQ and the pricing page."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: Confirm whether the Podio API key or OAuth app needs a paid plan or review before other users can connect. Also check whether an OpenAPI spec or sandbox exists. The old developer docs partly return 410."
+}

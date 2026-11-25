@@ -1,0 +1,71 @@
+{
+  "slug": "youtube-transcript",
+  "app": "YouTube Transcript",
+  "labels": {
+    "auth_methods": [
+      "api_key"
+    ],
+    "auth_primary": "api_key",
+    "access": "self_serve_free",
+    "api_styles": [
+      "rest"
+    ],
+    "api_breadth": "moderate",
+    "mcp": "official_remote",
+    "buildability": "ready_now",
+    "main_blocker": "none"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://transcriptapi.com/docs/llms-full.txt",
+        "quote": "The API uses Bearer token authentication. Include your API key in the `Authorization` header of every request:"
+      },
+      {
+        "url": "https://transcriptapi.com/openapi.json",
+        "quote": "Use Authorization: Bearer {your_api_key}"
+      }
+    ],
+    "access": [
+      {
+        "url": "https://transcriptapi.com/",
+        "quote": "You can start for free: new accounts get 100 free credits, no card required, and one transcript costs one credit."
+      },
+      {
+        "url": "https://transcriptapi.com/docs/llms-full.txt",
+        "quote": "New accounts get 100 free credits with no card required."
+      }
+    ],
+    "api": [
+      {
+        "url": "https://transcriptapi.com/openapi.json",
+        "quote": "GET /api/v2/youtube/transcript"
+      },
+      {
+        "url": "https://transcriptapi.com/openapi.json",
+        "quote": "Search YouTube videos or channels"
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://transcriptapi.com/docs/llms-full.txt",
+        "quote": "TranscriptAPI runs a hosted (remote) MCP server at `https://transcriptapi.com/mcp`."
+      },
+      {
+        "url": "https://transcriptapi.com/docs/llms-full.txt",
+        "quote": "Authentication: OAuth 2.1 (Claude, ChatGPT) or an API key sent as a Bearer token (OpenAI Agent Builder and other clients)."
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://transcriptapi.com/",
+        "quote": "After that, the paid plan is $5 a month for 1,000 credits per month, or $54 a year billed annually."
+      }
+    ]
+  },
+  "uncertain": {
+    "access": "100 one-time free credits (no card) rather than a recurring free tier; a grader may read this as a trial. No stated expiry. Ongoing use needs the $5/mo plan; docs note free endpoints still need at least 1 active credit.",
+    "auth_methods": "REST API is API-key only. OAuth 2.1 exists only for the hosted MCP server (Claude/ChatGPT), so oauth2 was not listed for the public API."
+  },
+  "notes": "OpenAPI lists 13 GET operations (transcript, info, metadata, search, channel resolve/info/videos/playlists/posts/sections/search/latest, playlist videos) -> moderate. MCP exposes 12 tools. Vendor also publishes GitHub ZeroPointRepo/youtube-mcp (homepage transcriptapi.com) and an npm transcriptapi-mcp package. This is an unofficial third-party YouTube data service (not Google); YouTube ToS risk sits with the vendor, not the integrator. Unauthenticated GET https://transcriptapi.com/mcp returned an OAuth invalid_token 401, consistent with a live hosted server."
+}

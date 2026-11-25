@@ -1,0 +1,92 @@
+{
+  "slug": "smartsheet",
+  "app": "Smartsheet",
+  "labels": {
+    "auth_methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "auth_primary": "oauth2",
+    "access": "paid_plan_required",
+    "api_styles": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "paid_plan"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth",
+        "quote": "OAuth 2.0 (OAuth) provides a way for your app users to grant limited access to their Smartsheet resources."
+      },
+      {
+        "url": "https://developers.smartsheet.com/api/smartsheet/openapi",
+        "quote": "An Authorization HTTP header containing an access token is required to authenticate all API requests"
+      },
+      {
+        "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
+        "quote": "Click the Generate new access token button to generate an API access token."
+      }
+    ],
+    "access": [
+      {
+        "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
+        "quote": "Required plan: Business, Enterprise, or Advanced Work Management"
+      },
+      {
+        "url": "https://help.smartsheet.com/articles/529590-smartsheet-free-trial-faqs",
+        "quote": "You can't generate API access tokens."
+      },
+      {
+        "url": "https://help.smartsheet.com/articles/529590-smartsheet-free-trial-faqs",
+        "quote": "The trial gives you access to a Business plan."
+      },
+      {
+        "url": "https://developers.smartsheet.com/register",
+        "quote": "The email address used to register for Developer Tools must belong to an existing licensed Smartsheet user on a Business plan or higher."
+      },
+      {
+        "url": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth",
+        "quote": "Upon accepting your request, Smartsheet activates the Developer Tools user interface for the user account."
+      }
+    ],
+    "api": [
+      {
+        "url": "https://developers.smartsheet.com/api/smartsheet/openapi",
+        "quote": "https://api.smartsheet.com/2.0/"
+      },
+      {
+        "url": "https://www.smartsheet.com/pricing",
+        "quote": "API calls - x x x"
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+        "quote": "United States US production https://mcp.smartsheet.com"
+      },
+      {
+        "url": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+        "quote": "For all other MCP-compliant tools, use the MCP Server endpoint with OAuth 2.0 or a personal access token."
+      },
+      {
+        "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server",
+        "quote": "Required plan: Business, Enterprise, or Advanced Work Management"
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://help.smartsheet.com/articles/529590-smartsheet-free-trial-faqs",
+        "quote": "You can't generate API access tokens."
+      }
+    ]
+  },
+  "uncertain": {
+    "access": "Paid plan is clearly required for tokens (trial cannot generate them). Developer Tools registration (needed for OAuth apps) also requires Smartsheet to accept the request, and an older Smartsheet blog mentions a sandbox account via Developer Registration; whether that sandbox is free for non-customers could not be confirmed. A grader could defensibly see approval_required as secondary.",
+    "api_breadth": "OpenAPI reference lists ~30 tag groups (Sheets, Rows, Columns, Cells, Reports, Dashboards, Workspaces, Folders, Users, Groups, Webhooks, etc.); operation count not exactly tallied but clearly >50."
+  },
+  "notes": "Pricing page 'API calls' row is '-' for Pro and 'x' for Business/Enterprise/AWM (quote is the stripped table row). Smartsheet also publishes a local open-source MCP server (npm @smartsheet/smar-mcp, GitHub smartsheet-platform/smar-mcp), so both official_remote and official_local exist; remote (mcp.smartsheet.com/.eu/.au, GA March 24 2026) chosen. MCP also requires Business+ plan."
+}

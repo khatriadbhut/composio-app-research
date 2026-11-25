@@ -1,0 +1,94 @@
+{
+  "slug": "lark-larksuite",
+  "app": "Lark (Larksuite)",
+  "labels": {
+    "auth_methods": [
+      "oauth2",
+      "bot_token"
+    ],
+    "auth_primary": "oauth2",
+    "access": "approval_required",
+    "api_styles": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official_local",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "app_review"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://open.larksuite.com/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM",
+        "quote": "The credentials required to call the API as an app."
+      },
+      {
+        "url": "https://open.larksuite.com/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM",
+        "quote": "The credentials required when calling the API as a user."
+      },
+      {
+        "url": "https://open.larksuite.com/document/common-capabilities/sso/api/obtain-oauth-code",
+        "quote": "This API is used to initiate user authorization."
+      }
+    ],
+    "access": [
+      {
+        "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+        "quote": "Custom Apps: Developed by internal personnel or authorized developers within an enterprise, these apps can only be published and used within the same enterprise."
+      },
+      {
+        "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+        "quote": "Any organization wishing to develop a store app and list it in the Lark App Directory must pass ISV verification."
+      },
+      {
+        "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+        "quote": "Store apps require review by the Lark official team before being listed in the app directory."
+      },
+      {
+        "url": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/api-call-guide/api-billing",
+        "quote": "The total number of basic API calls for all enterprise self-built applications under a single tenant is limited to 10,000 times per month"
+      }
+    ],
+    "api": [
+      {
+        "url": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/mcp_integration/mcp_introduction",
+        "quote": "providing a rich set of OpenAPI tools that cover Lark's core functions (such as messages, groups, calendars, Base apps, etc.)"
+      },
+      {
+        "url": "https://github.com/larksuite/lark-openapi-mcp/blob/main/docs/reference/tool-presets/tools-en.md",
+        "quote": "Smart Access Control-Access Record-Get access record list"
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://github.com/larksuite/lark-openapi-mcp",
+        "quote": "This is the Feishu/Lark official OpenAPI MCP (Model Context Protocol) tool designed to help users quickly connect to the Feishu/Lark platform"
+      },
+      {
+        "url": "https://github.com/larksuite/lark-openapi-mcp",
+        "quote": "This tool is currently in Beta stage."
+      },
+      {
+        "url": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/mcp_integration/mcp_introduction",
+        "quote": "Provides a simple and easy-to-use command line interface for quick configuration and startup."
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+        "quote": "Store apps require review by the Lark official team before being listed in the app directory."
+      },
+      {
+        "url": "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/api-call-guide/api-billing",
+        "quote": "The total number of basic API calls for all enterprise self-built applications under a single tenant is limited to 10,000 times per month"
+      }
+    ]
+  },
+  "uncertain": {
+    "access": "Within one tenant, a developer on the free Starter plan can create a custom app and get app_id/secret + user OAuth immediately (self-serve, but capped at 10,000 basic API calls/month). Serving many tenants needs a store app, which requires ISV verification and official listing review. Labelled approval_required; partner_gated is arguable because of the ISV-verification step.",
+    "auth_methods": "Besides user OAuth (user_access_token), apps authenticate with tenant_access_token/app_access_token minted from app_id+app_secret (app/bot identity). I mapped this to bot_token; 'other' or 'jwt_service_account' would be alternative readings.",
+    "mcp": "Official package @larksuiteoapi/lark-mcp is local (stdio, or self-hosted HTTP). I found no vendor-hosted remote MCP URL for Lark international; Feishu (China) may have one that I could not confirm.",
+    "access_pricing": "Lark pricing page (larksuite.com/en_us/plans) is JS-rendered and returned no text; the free Starter plan and its 10,000-call quota are confirmed from the developer billing doc instead."
+  },
+  "notes": "open.larksuite.com doc pages are a JS SPA; content was read via the site's own document_portal JSON endpoint (same doc paths, lang=en-US) and cited by the human doc URL. The official MCP tool list has ~1,300 tool rows, so the API is very broad. Lark also supports event delivery over a long-lived (WebSocket) connection, not counted in api_styles. Advanced APIs need a purchased quota on Basic/Pro/Enterprise plans. Official MCP repo last pushed 2025-08-14 and is still labelled Beta."
+}

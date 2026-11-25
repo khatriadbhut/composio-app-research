@@ -1,0 +1,40 @@
+{
+  "slug": "threads-meta",
+  "app": "Threads (Meta)",
+  "labels": {
+    "auth_methods": ["oauth2"],
+    "auth_primary": "oauth2",
+    "access": "approval_required",
+    "api_styles": ["rest"],
+    "api_breadth": "moderate",
+    "mcp": "official_remote",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "app_review"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://developers.facebook.com/documentation/threads/get-started", "quote": "API authentication is handled by Threads user access tokens that conform to the OAuth 2.0 protocol."}
+    ],
+    "access": [
+      {"url": "https://developers.facebook.com/documentation/threads/get-started", "quote": "For app users without a role on your app to grant your app these permissions, each permission must first be approved through the App Review process, and your app must be published."},
+      {"url": "https://developers.facebook.com/documentation/threads/get-started", "quote": "Threads testers can grant your app these permissions at any time."}
+    ],
+    "api": [
+      {"url": "https://developers.facebook.com/documentation/threads/reference", "quote": "The Threads API consists of the following endpoints."},
+      {"url": "https://developers.facebook.com/documentation/threads/reference", "quote": "Retrieve a Threads user's profile, posts, replies, mentions, ghost posts, and publishing limit, and look up public profiles and their posts."},
+      {"url": "https://developers.facebook.com/documentation/threads/overview", "quote": "Threads profiles are limited to 250 API-published posts within a rolling 24-hour period."}
+    ],
+    "mcp": [
+      {"url": "https://developers.facebook.com/documentation/threads/llms.txt", "quote": "Connect your Threads account to an AI assistant with the Threads MCP server to publish posts and check how they perform."},
+      {"url": "https://mcp.facebook.com/threads", "quote": "www-authenticate: Bearer resource_metadata=\"https://mcp.facebook.com/.well-known/oauth-protected-resource/threads\", scope=\"threads_basic threads_content_publish threads_manage_insights\""},
+      {"url": "https://developers.facebook.com/documentation/mcp", "quote": "Meta runs official remote Model Context Protocol (MCP) servers that bring Facebook, Instagram, WhatsApp, and Meta Ads capabilities to your agentic workflows."}
+    ],
+    "buildability": [
+      {"url": "https://developers.facebook.com/documentation/threads/get-started", "quote": "A Meta app created with the Threads use case."}
+    ]
+  },
+  "uncertain": {
+    "mcp": "The Threads docs index lists an official 'Threads MCP server' section (overview, get started, tool reference, changelog), but the page bodies render empty to non-browser fetches, so the server URL is not quoted from docs. The URL https://mcp.facebook.com/threads was confirmed by direct probe (401 with Threads scopes, whereas unknown paths return 'MCP server not found'). Threads is not yet in the Meta MCP hub table (which lists Ads, Social Technologies, WhatsApp; Instagram Business in its index). A human should open developers.facebook.com/documentation/threads/mcp-server/get-started in a browser to confirm URL and availability (e.g., beta/limited clients)."
+  },
+  "notes": "Endpoint count across Publishing, Media retrieval (incl. keyword_search), Reply management, User, Locations, Location search, Insights, oEmbed, Debug is ~25, hence moderate. Testers can be used without review; public users require App Review per permission (90-day grants for public profiles). Docs migrated to developers.facebook.com/documentation/threads/."
+}

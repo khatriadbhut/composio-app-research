@@ -1,0 +1,177 @@
+{
+ "id": 8,
+ "slug": "close",
+ "app": "Close",
+ "category": "CRM and Sales",
+ "hint": "close.com",
+ "pass": 2,
+ "at": "2026-11-24T17:44:41.623Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/integrations/publish.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/integrations/create-an-oauth-app.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.close.com/pricing"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Close CRM API sandbox organization developer test account"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.close.com/integrations.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Sales CRM for SMBs with calling, email, SMS, sequences and pipelines.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"api_key\",\"oauth2\"],\"auth_primary\":\""
+  }
+ ],
+ "cost_usd": 0.19534050000000003,
+ "duration_ms": 59120,
+ "turns": 11,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Sales CRM for SMBs with calling, email, SMS, sequences and pipelines.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API keys are sent with HTTP Basic Auth. Each key is tied to one user and one org, and keys suit scripts. OAuth 2.0 suits user-facing integrations: refresh tokens come with offline_access and the scope gives full access. The MCP server supports OAuth 2.0 with DCR, and also an API key in the Close-API-Key header.",
+  "access": "approval_required",
+  "access_notes": "Close has no free plan, but a 14-day trial needs no credit card. Pricing lists \"High-volume API access\" as not included on Solo and included on Essentials and above. API keys and private OAuth apps are self-serve inside your own org. Before other Close customers can authorize an OAuth app, Close must review it (\"Make Public and submit for review\"). Close gives integration partners free dev orgs on request (email support@close.com), and existing users can create a free secondary org.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers leads, contacts, opportunities, activities (email, SMS, call, notes), sequences, tasks, bulk actions, reporting, custom fields, users and orgs, webhooks and the event log. A public OpenAPI 3.1 spec is available in JSON and YAML. Operations were not counted exactly, but there are well over 50.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The URL is https://mcp.close.com/mcp, over Streamable HTTP. Auth is OAuth 2.0 with DCR, or an API key in the Close-API-Key header. Scopes are mcp.read, mcp.write_safe and mcp.write_destructive. I confirmed this on developer.close.com/mcp. The docs site also has its own docs MCP at developer.close.com/_mcp/server.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The API is broad, the OpenAPI spec is public and building is self-serve. A free dev org is available on request, or you can use the 14-day trial. A public multi-tenant OAuth app needs Close's review before other organizations can authorize it.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.close.com/",
+    "quote": "API keys for scripts or OAuth 2.0 for user-facing integrations."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.close.com/integrations/create-an-oauth-app.md",
+    "quote": "OAuth apps are Private by default, meaning only members of your own Close organization can authorize them."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.close.com/integrations/publish.md",
+    "quote": "Click Make Public and submit for review."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.close.com/integrations.md",
+    "quote": "work identically to standard Close organizations but have no subscription fees"
+   },
+   {
+    "field": "access",
+    "url": "https://www.close.com/pricing",
+    "quote": "14-day free trial"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.close.com/llms.txt",
+    "quote": "raw OpenAPI 3.1 specification for this API, JSON format"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.close.com/",
+    "quote": "Real-time event notifications and a 30-day event log."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.close.com/mcp",
+    "quote": "The MCP server URL is https://mcp.close.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Optionally confirm what \"High-volume API access\" (not on Solo) means for API rate limits on Solo.",
+  "changes": [
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "yes",
+    "why": "developer.close.com/integrations describes free Dev orgs (by emailing support@close.com) and free secondary orgs for existing users."
+   },
+   {
+    "field": "access_notes",
+    "old": "Did not confirm a free trial is needed...",
+    "new": "14-day trial with no card; free dev orgs; Solo lacks high-volume API; public OAuth needs review",
+    "why": "Checked against the pricing page and the integrations docs."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...access tokens last 1h...each refresh rotates the token...MCP uses OAuth with DCR",
+    "new": "Dropped the token-lifetime claims I could not verify. Added that the MCP server also accepts an API key in the Close-API-Key header.",
+    "why": "The MCP page lists Close-API-Key auth. I did not re-verify the token lifetime or rotation details."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "From a search summary, page not fetched",
+    "new": "Confirmed on developer.close.com/mcp",
+    "why": "I fetched the page directly. The URL, transport and scopes match."
+   },
+   {
+    "field": "evidence",
+    "old": "llms.txt quote 'OpenAPI JSON: The OpenAPI 3.1 specification in JSON format.'; publish quote 'submit for review'; mcp quote from the homepage",
+    "new": "Verbatim quotes from llms.txt and publish.md, plus new quotes from integrations.md, pricing and the MCP page",
+    "why": "The original api quote was not on the page. I replaced it, and the other quotes, with text I actually saw."
+   },
+   {
+    "field": "confidence",
+    "old": "access/mcp/buildability medium",
+    "new": "high",
+    "why": "Primary sources now confirm these fields."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm trial/paid org, sandbox, and the MCP page",
+    "new": "Only the meaning of Solo's high-volume API limit",
+    "why": "The other questions are now answered from primary sources."
+   }
+  ]
+ },
+ "flags_given": "- quote for api not found on https://developer.close.com/llms.txt\n- agent's open question: Confirm whether a Close trial or paid org is needed to get an API key or create an OAuth app, and whether a sandbox or dev org exists. Neither was found in the docs. Also check the MCP page at developer.close.com/mcp directly."
+}

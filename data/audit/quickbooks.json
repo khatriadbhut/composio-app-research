@@ -1,0 +1,84 @@
+{
+  "slug": "quickbooks",
+  "app": "QuickBooks",
+  "labels": {
+    "auth_methods": [
+      "oauth2"
+    ],
+    "auth_primary": "oauth2",
+    "access": "approval_required",
+    "api_styles": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "app_review"
+  },
+  "evidence": {
+    "auth": [
+      {
+        "url": "https://static.developer.intuit.com/output_html/qbo/docs/develop/authentication-and-authorization/oauth-2.0.html",
+        "quote": "Use the OAuth 2.0 protocol to implement authentication and authorization. Authorization is essential for both testing via sandbox companies and production apps."
+      }
+    ],
+    "access": [
+      {
+        "url": "https://static.developer.intuit.com/output_html/qbo/docs/develop/sandboxes.html",
+        "quote": "You can start with the sandbox company connected to your Intuit Developer account. This gives you sample data to test with."
+      },
+      {
+        "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started/get-client-id-and-client-secret.html",
+        "quote": "The client ID and client secret will be accessible only after completing the Production Key questionnaire and its approval."
+      },
+      {
+        "url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf",
+        "quote": "To publish an App, you must first complete a self-attested assessment questionnaire. Upon approval, your App moves to production, allowing you to begin connecting with customers."
+      },
+      {
+        "url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf",
+        "quote": "Utilize the Builder Tier to take advantage of the Intuit Developer Platform’s offerings without any monetary commitment."
+      }
+    ],
+    "api": [
+      {
+        "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started.html",
+        "quote": "The QuickBooks Online Accounting API utilizes the REST architecture and GraphQL so you can seamlessly integrate your app with QuickBooks Online and the Intuit Financial Ecosystem."
+      },
+      {
+        "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started.html",
+        "quote": "Silver, Gold, and Platinum partners have access to Premium APIs including the Projects API, Custom Fields API, Sales Tax API, and Payroll Compensation API."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+        "quote": "It includes full CRUD operations for 29 entity types and 11 financial reports"
+      }
+    ],
+    "mcp": [
+      {
+        "url": "https://raw.githubusercontent.com/IntuitDeveloper/intuit-3p-ai-pilot/main/README.md",
+        "quote": "Status: PILOT - By Invitation Only"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/IntuitDeveloper/intuit-3p-ai-pilot/main/README.md",
+        "quote": "Production Base URL | `https://mcp.quickbooks.intuit.com/mcp`"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+        "quote": "Note: this is a local MCP server. It runs as a stdio subprocess on the developer's or partner's machine and authenticates to a QuickBooks Online company."
+      }
+    ],
+    "buildability": [
+      {
+        "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started/get-client-id-and-client-secret.html",
+        "quote": "Tip : Remember, the client ID and client secret for Production work only for live, in-production apps. Those for Development are only for your sandbox companies."
+      }
+    ]
+  },
+  "uncertain": {
+    "mcp": "Intuit hosts an MCP URL (mcp.quickbooks.intuit.com/mcp) but it is an invitation-only pilot for App Partner Program partners, and Intuit also runs the end-user QuickBooks connector inside Claude. The generally available developer option is the open-source LOCAL server github.com/intuit/quickbooks-online-mcp-server. Labeled official_remote because a vendor-hosted URL exists; official_local is the defensible alternative if gating matters.",
+    "access": "Sandbox keys are free/self-serve; production keys require the Production Key questionnaire + approval (Builder tier free, capped at 500k CorePlus calls/month; Premium APIs need paid Silver+). Marketplace listing needs extra security/technical/content review. The developer.intuit.com pages are JS-rendered; quotes were taken from Intuit's static.developer.intuit.com output_html copies of the same docs."
+  },
+  "notes": "Builder tier is free but auto-enrolled; Silver is US$300/mo per partner-program search results (not directly quoted). OAuth 1.0a is long deprecated. Many third-party 'official' QuickBooks MCP listings are not Intuit's."
+}

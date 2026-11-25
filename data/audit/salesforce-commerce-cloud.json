@@ -1,0 +1,44 @@
+{
+  "slug": "salesforce-commerce-cloud",
+  "app": "Salesforce Commerce Cloud",
+  "labels": {
+    "auth_methods": ["oauth2", "jwt_service_account"],
+    "auth_primary": "oauth2",
+    "access": "contact_sales",
+    "api_styles": ["rest"],
+    "api_breadth": "broad",
+    "mcp": "official_local",
+    "buildability": "needs_partnership_or_sales",
+    "main_blocker": "enterprise_sales"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.html", "quote": "With a client secret configured, the CLI uses client credentials."},
+      {"url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.html", "quote": "JWT authentication uses a certificate instead of a client secret. You register a certificate in Account Manager"},
+      {"url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.html", "quote": "SCAPI Admin APIs need a client secret or JWT; browser sign-in isn't supported yet"}
+    ],
+    "access": [
+      {"url": "https://www.salesforce.com/commerce/pricing/", "quote": "Contact for pricing"},
+      {"url": "https://trailhead.salesforce.com/content/learn/modules/b2c-on-demand-sandbox/b2c-configure-on-demand-sandbox", "quote": "Organizations purchase sandbox credits to enable the creation and management of the sandboxes."},
+      {"url": "https://trailhead.salesforce.com/content/learn/modules/b2c-on-demand-sandbox/b2c-configure-on-demand-sandbox", "quote": "that you can get from your account executive (AE) or customer success manager (CSM)"}
+    ],
+    "api": [
+      {"url": "https://github.com/SalesforceCommerceCloud/commerce-sdk", "quote": "The Salesforce Commerce SDK allows easy interaction with the Salesforce B2C Commerce platform APIs on the Node.js runtime."},
+      {"url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.html", "quote": "OCAPI (the Open Commerce API / Data API) is deprecated and is being disabled across instances"}
+    ],
+    "mcp": [
+      {"url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp/", "quote": "The B2C MCP server connects your AI assistant to Salesforce B2C Commerce tools, documentation, and workflow skills."},
+      {"url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp/", "quote": "Clients that accept only a remote server URL need a compatible bridge or tunnel; this package runs locally."},
+      {"url": "https://registry.npmjs.org/@salesforce/b2c-dx-mcp", "quote": "Connect your AI assistant to Salesforce B2C Commerce tools, documentation, and workflow skills."}
+    ],
+    "buildability": [
+      {"url": "https://www.salesforce.com/commerce/pricing/", "quote": "Contact for pricing"}
+    ]
+  },
+  "uncertain": {
+    "mcp": "Vendor publishes @salesforce/b2c-dx-mcp (npm, repo SalesforceCommerceCloud/b2c-developer-tooling; latest 3.17.0), which runs locally -> official_local. Search results also show a Salesforce 'B2C Commerce MCP Shopper Service' / 'Agentic MCP Shopper Tools' described as fully hosted and in Pilot (requires SLAS + SCAPI and contacting an account executive); developer.salesforce.com returned 403 to automated fetches so this could not be opened and quoted. If a pilot hosted server counts, the label would be official_remote. Search snippets also called the DX MCP a 'Developer Preview'; the GitHub Pages doc no longer shows that label.",
+    "access": "developer.salesforce.com docs (Commerce API get-started, on-demand sandboxes) returned HTTP 403 to fetches, so access evidence comes from salesforce.com pricing and Trailhead. Partners in the Salesforce partner program may obtain sandboxes; partner_gated is a defensible alternative to contact_sales.",
+    "auth_methods": "Shopper APIs use SLAS (OAuth2 with PKCE / private client issuing JWT access tokens); Admin APIs use Account Manager API clients via client credentials or certificate-signed JWT. jwt_service_account included for the certificate/JWT client auth option."
+  },
+  "notes": "API surface is broad: commerce-sdk repo ships 31 OAS specs (shopper baskets, orders, products, search, customers, promotions, stores, SEO, plus admin catalogs, coupons, customers, orders, campaigns, promotions, zones, etc.). OCAPI is deprecated in favor of SCAPI. The official MCP is developer tooling (SCAPI code mode, cartridges, MRT, docs, CIP analytics), not a merchant-ops connector."
+}

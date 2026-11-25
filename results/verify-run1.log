@@ -1,0 +1,101 @@
+verify: 100 apps, model opus
+[1/100] ok   Podio                      6 changes: auth_notes, access_notes, evidence, confidence, blocker_notes, needs_human
+[2/100] ok   Twenty                     8 changes: auth_notes, access_notes, api_breadth, openapi_spec, sandbox, evidence, confidence, needs_human
+[3/100] ok   Attio                      9 changes: evidence (webhooks quote), sandbox, buildability, main_blocker, access_notes, api_breadth_notes, mcp_notes, confidence.access / confidence.buildability, needs_human
+[4/100] ok   Pipedrive                  10 changes: access, buildability, main_blocker, blocker_notes, access_notes, evidence.api quote, webhooks, mcp_notes, api_breadth_notes, confidence.mcp
+[5/100] ok   Salesforce                 11 changes: auth_methods, auth_notes, access_notes, api_styles, api_breadth_notes, mcp_notes, blocker_notes, evidence, confidence, needs_human, what_it_does
+[6/100] ok   HubSpot                    10 changes: access, access_notes, buildability, main_blocker, blocker_notes, mcp_notes, auth_notes, evidence, confidence.access / confidence.buildability, needs_human
+[7/100] ok   Copper                     7 changes: evidence, api_breadth_notes, access_notes, sandbox, confidence.api, confidence.buildability, needs_human
+[8/100] ok   Close                      7 changes: sandbox, access_notes, auth_notes, mcp_notes, evidence, confidence, needs_human
+[9/100] ok   Zoho CRM                   8 changes: openapi_spec, mcp_notes, evidence (access), evidence (auth, api), access_notes, blocker_notes / sandbox basis, confidence, needs_human
+[10/100] ok   DealCloud                  10 changes: auth_methods, auth_notes, access_notes, webhooks, mcp_notes, sandbox, evidence, confidence, what_it_does, needs_human
+[11/100] ok   Intercom                   10 changes: api_styles, buildability, main_blocker, blocker_notes, access_notes, auth_notes, mcp_notes, evidence, confidence, needs_human
+[12/100] ok   Zendesk                    7 changes: mcp, mcp_notes, access_notes, auth_notes, evidence, confidence, blocker_notes
+[13/100] ok   Freshdesk                  11 changes: mcp, mcp_notes, webhooks, sandbox, access_notes, buildability, main_blocker, auth_notes, evidence, confidence.mcp, confidence.auth
+[14/100] ok   Front                      7 changes: buildability, main_blocker, auth_notes, access_notes, mcp_notes, evidence, confidence
+[15/100] ok   Pylon                      10 changes: auth_methods, access, access_notes, api_breadth, openapi_spec, sandbox, main_blocker, evidence, confidence.access, confidence.api
+[16/100] ok   LiveAgent                  6 changes: mcp_notes, api_breadth_notes, auth_notes, evidence, blocker_notes, confidence
+[17/100] ok   Plain                      7 changes: auth_primary, auth_notes, access, mcp_notes, blocker_notes, evidence, confidence
+[18/100] ok   Help Scout                 10 changes: auth_methods, access_notes, api_breadth_notes, openapi_spec, sandbox, blocker_notes, mcp_notes, evidence, confidence, needs_human
+[19/100] ok   Gladly                     8 changes: access, buildability, main_blocker, api_breadth_notes, auth_notes, evidence, what_it_does, confidence
+[20/100] ok   Gorgias                    9 changes: access_notes, sandbox, webhooks, openapi_spec, api_breadth_notes, confidence.api, evidence, mcp_notes, needs_human
+[21/100] ok   Slack                      8 changes: auth_methods, openapi_spec, buildability, sandbox, api_breadth_notes, access_notes, evidence, needs_human
+[22/100] FAIL Telegram                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[23/100] FAIL Discord                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[24/100] FAIL WhatsApp Business          You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[25/100] FAIL Pumble                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[26/100] FAIL Lark (Larksuite)           You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[27/100] FAIL Aircall                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[28/100] FAIL Zoho Cliq                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[29/100] FAIL Google Ads                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[30/100] FAIL Vonage                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[31/100] FAIL Meta Ads                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[32/100] FAIL LinkedIn Ads               You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[33/100] FAIL GoHighLevel                You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[34/100] FAIL Klaviyo                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[35/100] FAIL Mailchimp                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[36/100] FAIL systeme.io                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[37/100] FAIL Pinterest                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[38/100] FAIL Threads (Meta)             You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[39/100] FAIL SendGrid                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[40/100] FAIL WooCommerce                You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[41/100] FAIL Shopify                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[42/100] FAIL BigCommerce                You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[43/100] FAIL Salesforce Commerce Cloud  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[44/100] FAIL Magento (Adobe Commerce)   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[45/100] FAIL Squarespace                You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[46/100] FAIL Ecwid                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[47/100] ok   Twilio                     9 changes: auth_methods, auth_notes, access_notes, mcp, mcp_notes, main_blocker, api_breadth_notes, evidence, confidence
+[48/100] FAIL Gumroad                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[49/100] FAIL Amazon Selling Partner     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[50/100] FAIL fanbasis                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[51/100] FAIL DataForSEO                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[52/100] FAIL SE Ranking                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[53/100] FAIL Ahrefs                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[54/100] FAIL MrScraper                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[55/100] FAIL Apify                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[56/100] FAIL Bright Data                You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[57/100] FAIL Sherlock                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[58/100] FAIL Firecrawl                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[59/100] FAIL Waterfall.io               You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[60/100] FAIL Clay                       You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[61/100] FAIL GitHub                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[62/100] FAIL Netlify                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[63/100] FAIL Cloudflare                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[64/100] FAIL Vercel                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[65/100] FAIL Supabase                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[66/100] FAIL Neo4j                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[67/100] FAIL Snowflake                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[68/100] FAIL MongoDB Atlas              You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[69/100] FAIL Datadog                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[70/100] FAIL Sentry                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[71/100] FAIL Notion                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[72/100] FAIL Airtable                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[73/100] FAIL Linear                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[74/100] FAIL Jira                       You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[75/100] FAIL Monday.com                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[76/100] FAIL Asana                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[77/100] FAIL ClickUp                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[78/100] FAIL Coda                       You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[79/100] FAIL Smartsheet                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[80/100] FAIL Harvest                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[81/100] FAIL Binance                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[82/100] FAIL Stripe                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[83/100] FAIL Plaid                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[84/100] FAIL Paygent Connect            You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[85/100] FAIL iPayX                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[86/100] FAIL QuickBooks                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[87/100] FAIL Ramp                       You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[88/100] FAIL Xero                       You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[89/100] FAIL Brex                       You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[90/100] FAIL PitchBook                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[91/100] FAIL NotebookLM                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[92/100] FAIL Otter AI                   You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[93/100] FAIL Fathom                     You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[94/100] FAIL Consensus                  You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[95/100] FAIL Reducto                    You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[96/100] FAIL Devin                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[97/100] FAIL higgsfield                 You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[98/100] FAIL Mermaid CLI                You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[99/100] FAIL YouTube Transcript         You've hit your 5-hour limit · resets 4am (Asia/Calcutta)
+[100/100] FAIL Grain                      You've hit your 5-hour limit · resets 4am (Asia/Calcutta)

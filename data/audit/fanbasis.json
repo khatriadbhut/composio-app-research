@@ -1,0 +1,43 @@
+{
+  "slug": "fanbasis",
+  "app": "fanbasis",
+  "labels": {
+    "auth_methods": ["api_key"],
+    "auth_primary": "api_key",
+    "access": "approval_required",
+    "api_styles": ["rest"],
+    "api_breadth": "moderate",
+    "mcp": "official_remote",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "app_review"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://apidocs.fan", "quote": "Every API request must include your API key in the x-api-key header. There are no usernames or passwords — just your key."},
+      {"url": "https://apidocs.fan", "quote": "Every endpoint is served under the /public-api/ path on https://www.fanbasis.com"}
+    ],
+    "access": [
+      {"url": "https://commas.com/assets/index-D0eLZkDI.js", "quote": "Request access to generate API keys and integrate FanBasis with your own systems. An admin reviews and approves your request, then you can create keys."},
+      {"url": "https://commas.com/assets/index-D0eLZkDI.js", "quote": "Your request is with an admin for review. You’ll be able to generate and manage API keys here once it’s approved."},
+      {"url": "https://apidocs.fan", "quote": "Your account is not approved by the Commas admin. Please contact support."},
+      {"url": "https://apidocs.fan", "quote": "No real charges. Safe to experiment freely. Base URL: https://api-sandbox.commas.net"}
+    ],
+    "api": [
+      {"url": "https://apidocs.fan", "quote": "Complete API reference for the Commas API. Checkout sessions, webhooks, customers, subscriptions, discount codes, and more."}
+    ],
+    "mcp": [
+      {"url": "https://apidocs.fan", "quote": "This gives the AI real-time access to query your data and execute actions through 44 built-in tools."},
+      {"url": "https://apidocs.fan", "quote": "Paste the server URL: https://www.fanbasis.com/mcp"},
+      {"url": "https://www.fanbasis.com", "quote": "Run Commas from your AI assistant. Create checkout links, issue refunds and pull your numbers in plain English."}
+    ],
+    "buildability": [
+      {"url": "https://www.fanbasis.com", "quote": "Embedded checkouts, multi-rail payouts, APIs and SDKs."}
+    ]
+  },
+  "uncertain": {
+    "access": "API-key access request/approval flow is evidenced by the vendor's seller-portal JS bundle (Developer page strings) and a documented 403 'not approved by the Commas admin' error, not by a prose policy page. Whether a Commas account itself is free to open, and how long/strict approval is, could not be confirmed without logging in.",
+    "mcp": "Vendor docs (apidocs.fan, linked from the vendor dashboard; canonical commasdocs.com) document a remote 'Commas MCP Connector' with 44 tools, ChatGPT setup via https://www.fanbasis.com/mcp with OAuth login, plus a downloadable fanbasis-mcp.mcpb and an mcp-remote config pointing at https://hearty-flow-production.up.railway.app/mcp with an x-api-key header. A direct POST probe to www.fanbasis.com/mcp returned 405 (GET/HEAD only), while the railway.app endpoint returned 401 'No API key provided.' So the vendor-provided remote server is live but hosted on a railway.app subdomain; the homepage marks MCP as 'beta'.",
+    "api_breadth": "Counted roughly 35-45 public-api operations (products, checkout sessions incl. embedded, transactions/refunds, customers/charge/payment-methods, subscribers, subscriptions, discount codes, invoices, webhook subscriptions, wallet transactions); near the moderate/broad boundary, labeled moderate."
+  },
+  "notes": "fanbasis has rebranded to Commas: fanbasis.com shows 'FanBasis is now Commas!' and docs/developers/api subdomains of fanbasis.com redirect to commas.com. API base remains https://www.fanbasis.com/public-api; sandbox at https://api-sandbox.commas.net. No public docs link on the marketing site; the API docs URL (apidocs.fan) was found in the seller-portal Developer page. Keys have scopes (e.g., wallet)."
+}

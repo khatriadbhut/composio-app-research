@@ -1,0 +1,1874 @@
+{
+ "sample_size": 20,
+ "fields": [
+  "auth_primary",
+  "auth_methods",
+  "access",
+  "api_styles",
+  "api_breadth",
+  "mcp",
+  "buildability",
+  "main_blocker"
+ ],
+ "passes": {
+  "pass1": {
+   "right": 126,
+   "total": 160,
+   "accuracy": 0.787,
+   "per_field": {
+    "auth_primary": {
+     "right": 18,
+     "total": 20
+    },
+    "auth_methods": {
+     "right": 13,
+     "total": 20
+    },
+    "access": {
+     "right": 17,
+     "total": 20
+    },
+    "api_styles": {
+     "right": 17,
+     "total": 20
+    },
+    "api_breadth": {
+     "right": 16,
+     "total": 20
+    },
+    "mcp": {
+     "right": 14,
+     "total": 20
+    },
+    "buildability": {
+     "right": 16,
+     "total": 20
+    },
+    "main_blocker": {
+     "right": 15,
+     "total": 20
+    }
+   }
+  },
+  "pass2": {
+   "right": 26,
+   "total": 32,
+   "accuracy": 0.813,
+   "per_field": {
+    "auth_primary": {
+     "right": 4,
+     "total": 4
+    },
+    "auth_methods": {
+     "right": 3,
+     "total": 4
+    },
+    "access": {
+     "right": 2,
+     "total": 4
+    },
+    "api_styles": {
+     "right": 4,
+     "total": 4
+    },
+    "api_breadth": {
+     "right": 3,
+     "total": 4
+    },
+    "mcp": {
+     "right": 4,
+     "total": 4
+    },
+    "buildability": {
+     "right": 3,
+     "total": 4
+    },
+    "main_blocker": {
+     "right": 3,
+     "total": 4
+    }
+   }
+  }
+ },
+ "cells": [
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "bearer_token",
+    "api_key"
+   ],
+   "want": [
+    "oauth2",
+    "bearer_token",
+    "api_key"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_free",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_now",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass1",
+   "slug": "hubspot",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "none",
+   "want": "none"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2"
+   ],
+   "want": [
+    "oauth2",
+    "api_key"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "access",
+   "ok": true,
+   "got": "contact_sales",
+   "want": "contact_sales"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "api_breadth",
+   "ok": false,
+   "got": "moderate",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "buildability",
+   "ok": true,
+   "got": "needs_partnership_or_sales",
+   "want": "needs_partnership_or_sales"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dealcloud",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "enterprise_sales",
+   "want": "enterprise_sales"
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2",
+    "api_key",
+    "basic"
+   ],
+   "want": [
+    "oauth2",
+    "basic"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "mcp",
+   "ok": false,
+   "got": "community_only",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "zendesk",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "bearer_token"
+   ],
+   "want": [
+    "oauth2",
+    "bearer_token"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "access",
+   "ok": false,
+   "got": "self_serve_free",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "buildability",
+   "ok": false,
+   "got": "ready_now",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "front",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "none",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2",
+    "bearer_token",
+    "api_key"
+   ],
+   "want": [
+    "oauth2",
+    "bot_token"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "api_styles",
+   "ok": false,
+   "got": [
+    "rest",
+    "websocket",
+    "sdk_only"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_local",
+   "want": "official_local"
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "lark-larksuite",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "auth_primary",
+   "ok": false,
+   "got": "oauth2",
+   "want": "bot_token"
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "bot_token",
+    "oauth2"
+   ],
+   "want": [
+    "bot_token",
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_free",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest",
+    "websocket"
+   ],
+   "want": [
+    "rest",
+    "websocket"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "mcp",
+   "ok": false,
+   "got": "community_only",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "buildability",
+   "ok": false,
+   "got": "ready_with_caveats",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass1",
+   "slug": "discord",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "app_review",
+   "want": "none"
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2"
+   ],
+   "want": [
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "moderate",
+   "want": "moderate"
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "mcp",
+   "ok": false,
+   "got": "community_only",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "threads-meta",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2"
+   ],
+   "want": [
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "mcp",
+   "ok": true,
+   "got": "community_only",
+   "want": "community_only"
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "linkedin-ads",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "api_key",
+   "want": "api_key"
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "api_key"
+   ],
+   "want": [
+    "api_key"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "api_breadth",
+   "ok": false,
+   "got": "narrow",
+   "want": "moderate"
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "mcp",
+   "ok": false,
+   "got": "none_found",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "fanbasis",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "other",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "jwt_service_account"
+   ],
+   "want": [
+    "oauth2",
+    "jwt_service_account"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "access",
+   "ok": false,
+   "got": "paid_plan_required",
+   "want": "contact_sales"
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_local",
+   "want": "official_local"
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "buildability",
+   "ok": false,
+   "got": "ready_with_caveats",
+   "want": "needs_partnership_or_sales"
+  },
+  {
+   "pass": "pass1",
+   "slug": "salesforce-commerce-cloud",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "paid_plan",
+   "want": "enterprise_sales"
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "none",
+   "want": "none"
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "none"
+   ],
+   "want": [
+    "none"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "access",
+   "ok": true,
+   "got": "no_public_api",
+   "want": "no_public_api"
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "cli_only"
+   ],
+   "want": [
+    "cli_only"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "api_breadth",
+   "ok": false,
+   "got": "none",
+   "want": "narrow"
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "mcp",
+   "ok": true,
+   "got": "community_only",
+   "want": "community_only"
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "buildability",
+   "ok": true,
+   "got": "not_buildable",
+   "want": "not_buildable"
+  },
+  {
+   "pass": "pass1",
+   "slug": "sherlock",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "local_only_tool",
+   "want": "local_only_tool"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "basic",
+   "want": "basic"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "basic"
+   ],
+   "want": [
+    "basic"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "access",
+   "ok": false,
+   "got": "self_serve_trial",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_now",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass1",
+   "slug": "dataforseo",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "none",
+   "want": "none"
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2",
+    "jwt_service_account",
+    "other"
+   ],
+   "want": [
+    "oauth2",
+    "jwt_service_account",
+    "bearer_token",
+    "other"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_trial",
+   "want": "self_serve_trial"
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "snowflake",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "paid_plan",
+   "want": "paid_plan"
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "auth_primary",
+   "ok": false,
+   "got": "oauth2",
+   "want": "basic"
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2",
+    "basic"
+   ],
+   "want": [
+    "basic",
+    "bearer_token",
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_free",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "moderate",
+   "want": "moderate"
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "mcp",
+   "ok": false,
+   "got": "official_local",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "buildability",
+   "ok": false,
+   "got": "ready_with_caveats",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass1",
+   "slug": "neo4j",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "other",
+   "want": "none"
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "bearer_token"
+   ],
+   "want": [
+    "oauth2",
+    "bearer_token"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_free",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_now",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass1",
+   "slug": "harvest",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "none",
+   "want": "none"
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "bearer_token"
+   ],
+   "want": [
+    "oauth2",
+    "bearer_token"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "access",
+   "ok": true,
+   "got": "paid_plan_required",
+   "want": "paid_plan_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "smartsheet",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "paid_plan",
+   "want": "paid_plan"
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "api_key",
+   "want": "api_key"
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "api_key",
+    "bearer_token"
+   ],
+   "want": [
+    "api_key",
+    "none"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "access",
+   "ok": true,
+   "got": "paid_plan_required",
+   "want": "paid_plan_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest",
+    "websocket"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "narrow",
+   "want": "narrow"
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "ipayx",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "narrow_api",
+   "want": "narrow_api"
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2"
+   ],
+   "want": [
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "api_styles",
+   "ok": false,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest",
+    "graphql"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "mcp",
+   "ok": false,
+   "got": "official_local",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "quickbooks",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2"
+   ],
+   "want": [
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "access",
+   "ok": true,
+   "got": "paid_plan_required",
+   "want": "paid_plan_required"
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "api_styles",
+   "ok": false,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest",
+    "grpc"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "api_breadth",
+   "ok": false,
+   "got": "narrow",
+   "want": "moderate"
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "mcp",
+   "ok": true,
+   "got": "community_only",
+   "want": "community_only"
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass1",
+   "slug": "notebooklm",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "paid_plan",
+   "want": "paid_plan"
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "api_key",
+   "want": "api_key"
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "api_key",
+    "bearer_token",
+    "oauth2"
+   ],
+   "want": [
+    "api_key"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_free",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "moderate",
+   "want": "moderate"
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_now",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass1",
+   "slug": "youtube-transcript",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "none",
+   "want": "none"
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "bearer_token",
+    "api_key"
+   ],
+   "want": [
+    "oauth2",
+    "bearer_token",
+    "api_key"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "access",
+   "ok": false,
+   "got": "approval_required",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "buildability",
+   "ok": false,
+   "got": "ready_with_caveats",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass2",
+   "slug": "hubspot",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "app_review",
+   "want": "none"
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "api_key"
+   ],
+   "want": [
+    "oauth2",
+    "api_key"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "access",
+   "ok": true,
+   "got": "contact_sales",
+   "want": "contact_sales"
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "api_breadth",
+   "ok": false,
+   "got": "moderate",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "buildability",
+   "ok": true,
+   "got": "needs_partnership_or_sales",
+   "want": "needs_partnership_or_sales"
+  },
+  {
+   "pass": "pass2",
+   "slug": "dealcloud",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "enterprise_sales",
+   "want": "enterprise_sales"
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2",
+    "api_key",
+    "basic"
+   ],
+   "want": [
+    "oauth2",
+    "basic"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass2",
+   "slug": "zendesk",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2",
+    "bearer_token"
+   ],
+   "want": [
+    "oauth2",
+    "bearer_token"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "access",
+   "ok": false,
+   "got": "self_serve_free",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_remote",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass2",
+   "slug": "front",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  }
+ ]
+}

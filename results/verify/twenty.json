@@ -1,0 +1,184 @@
+{
+ "id": 5,
+ "slug": "twenty",
+ "app": "Twenty",
+ "category": "CRM and Sales",
+ "hint": "twenty.com (open-source CRM)",
+ "pass": 2,
+ "at": "2026-11-24T17:43:41.826Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/developers/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/developers/extend/api.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://twenty.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://twenty.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/_llms/en/developers.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/developers/extend/oauth.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.twenty.com/developers/extend/webhooks.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Open-source CRM with a custom data model, REST/GraphQL APIs, webhooks and MCP.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"api_key\",\"oauth2\"],\"auth_p"
+  }
+ ],
+ "cost_usd": 0.2904826,
+ "duration_ms": 59829,
+ "turns": 11,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Open-source CRM with a custom data model, REST/GraphQL APIs, webhooks and MCP.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API keys are created in Settings → Developers → API, are shown once, and are sent as 'Authorization: Bearer <key>'. OAuth 2.0 uses the authorization code flow, with PKCE recommended (S256). Client credentials give server-to-server tokens with workspace-level access. Clients register dynamically through RFC 7591 at POST /oauth/register, with no dashboard setup. Discovery is at /.well-known/oauth-authorization-server; the other endpoints are /oauth/authorize and /oauth/token. Scopes are 'api' (full read/write on the Core and Metadata APIs; the default) and 'profile'. The base URL is https://api.twenty.com for Cloud and the instance domain for self-hosted. The MCP endpoint accepts OAuth 2.1 or an API key.",
+  "access": "self_serve_trial",
+  "access_notes": "Cloud has no permanent free plan. It offers a 30-day trial with no credit card, then Pro ($9/user/month), Organization ($39/user/month) or Enterprise (from $50k/year). Cloud Pro and Organization are billed yearly. All paid plans include the REST & GraphQL API, webhooks and the MCP server. Cloud API limits are 50/min on Pro, 100/min on Organization and custom on Enterprise. Self-hosting the open-source core is free and includes the full API. OAuth clients self-register dynamically; the docs describe no vendor app review, only the end user's consent screen.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST and GraphQL are generated from each workspace's schema. They give CRUD, batch and (in GraphQL) upsert on every standard object (people, companies, opportunities, tasks, notes, attachments and others) and on custom objects. Batches can hold up to 60 records per request. A Metadata API (/rest/metadata/, /metadata/) creates and changes objects, fields and relations. Across all objects this comes to well over 50 operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://{your-workspace-url}/mcp, streamable-http, OAuth 2.1 or an API-key Bearer token. The URL is per workspace, so cloud and self-hosted instances each have their own. Community servers also exist (e.g. jezweb/twenty-mcp).",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Minor caveats. The base URL varies by workspace and deployment (api.twenty.com vs a self-hosted domain). The OpenAPI spec is generated per workspace at /rest/open-api/core and /rest/open-api/metadata rather than published statically. Cloud rate limits are low (50/min on Pro). Cloud needs a paid plan after the 30-day trial. A free self-hosted instance works for development. Webhooks are configured in the Settings UI and have no event filtering.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://docs.twenty.com/developers/introduction",
+    "quote": "Read and write records over REST and GraphQL, get webhooks when records change, and connect apps with OAuth."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.twenty.com/developers/extend/api.md",
+    "quote": "Authorization: Bearer YOUR_API_KEY"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.twenty.com/developers/extend/oauth.md",
+    "quote": "No manual setup needed — register programmatically."
+   },
+   {
+    "field": "access",
+    "url": "https://twenty.com/pricing",
+    "quote": "Self-hosting the open source core is free."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.twenty.com/developers/extend/api.md",
+    "quote": "Both REST and GraphQL support batching up to 60 records per request."
+   },
+   {
+    "field": "api",
+    "url": "https://twenty.com/llms.txt",
+    "quote": "with per-workspace OpenAPI at /rest/open-api/core and /rest/open-api/metadata"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.twenty.com/developers/extend/webhooks.md",
+    "quote": "Validate signatures to ensure requests are authentic."
+   },
+   {
+    "field": "mcp",
+    "url": "https://twenty.com/llms.txt",
+    "quote": "(transport: streamable-http; auth: OAuth 2.1 or an API-key Bearer token)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "…I did not read the OAuth guide, so client registration details are unconfirmed.",
+    "new": "Dynamic client registration (RFC 7591), auth code + PKCE, client credentials, scopes api/profile, endpoints listed",
+    "why": "Read the OAuth guide at docs.twenty.com/developers/extend/oauth.md, which confirms these details."
+   },
+   {
+    "field": "access_notes",
+    "old": "Pro at $9/user/month… OAuth app registration needs no review that I could find.",
+    "new": "Adds Organization $39, Enterprise from $50k/yr and yearly billing; OAuth is self-registered with only user consent",
+    "why": "Confirmed on the pricing page and in the OAuth guide."
+   },
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "Generated CRUD, batch and upsert on every standard and custom object, plus a schema-management Metadata API, comes to well over 50 operations."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "yes (inferred)",
+    "new": "yes (confirmed)",
+    "why": "llms.txt states there is a per-workspace OpenAPI at /rest/open-api/core and /rest/open-api/metadata. The value is unchanged; it now has evidence."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes",
+    "new": "no",
+    "why": "No vendor sandbox or test mode is documented. The only options are the 30-day cloud trial and free self-hosting, which are a workaround rather than a sandbox."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items",
+    "new": "8 items incl. OAuth, webhooks, OpenAPI",
+    "why": "Added quotes from the OAuth guide, the webhooks doc and llms.txt that I read myself. All original quotes were re-verified on their pages."
+   },
+   {
+    "field": "confidence",
+    "old": "auth/access/api/buildability medium",
+    "new": "all high",
+    "why": "Primary docs now confirm the open questions."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check OAuth guide, webhooks, sandbox, OpenAPI",
+    "new": "",
+    "why": "All of these are resolved from primary sources."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Check the OAuth guide to confirm how third-party OAuth clients are registered and whether any review applies. Check the webhook docs and whether a sandbox or test workspace exists beyond self-hosting. I inferred the OpenAPI spec exists from the per-workspace API playground in Settings → Developers →"
+}

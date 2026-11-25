@@ -1,0 +1,47 @@
+{
+  "slug": "snowflake",
+  "app": "Snowflake",
+  "labels": {
+    "auth_methods": ["oauth2", "jwt_service_account", "bearer_token", "other"],
+    "auth_primary": "oauth2",
+    "access": "self_serve_trial",
+    "api_styles": ["rest"],
+    "api_breadth": "broad",
+    "mcp": "official_remote",
+    "buildability": "ready_with_caveats",
+    "main_blocker": "paid_plan"
+  },
+  "evidence": {
+    "auth": [
+      {"url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication", "quote": "Using a programmatic access token (PAT)"},
+      {"url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication", "quote": "Using workload identity federation"},
+      {"url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating", "quote": "Using key-pair authentication"},
+      {"url": "https://docs.snowflake.com/en/user-guide/oauth-custom", "quote": "Create a Snowflake OAuth integration using the CREATE SECURITY INTEGRATION command."},
+      {"url": "https://docs.snowflake.com/en/user-guide/oauth-custom", "quote": "Only account administrators (users with the ACCOUNTADMIN role) or a role with the global CREATE INTEGRATION privilege can execute this SQL command."}
+    ],
+    "access": [
+      {"url": "https://docs.snowflake.com/en/user-guide/admin-trial-account", "quote": "The trial continues for 30 days (from the sign-up date) or until you’ve depleted your free usage balance"},
+      {"url": "https://docs.snowflake.com/en/user-guide/admin-trial-account", "quote": "no payment information or other qualifying information is required"},
+      {"url": "https://docs.snowflake.com/en/user-guide/admin-trial-account", "quote": "At the end of the trial, the account is suspended."}
+    ],
+    "api": [
+      {"url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api", "quote": "Snowflake REST APIs for resource management provide a set of endpoints"},
+      {"url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating", "quote": "This topic describes how to authenticate to the server when using the Snowflake SQL API."}
+    ],
+    "mcp": [
+      {"url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp", "quote": "lets AI agents securely retrieve data from Snowflake accounts without needing to deploy separate infrastructure"},
+      {"url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp", "quote": "https://<account_url>/api/v2/databases/{database}/schemas/{schema}/mcp-servers/{name}"},
+      {"url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp", "quote": "Snowflake OAuth by default, with optional External OAuth"}
+    ],
+    "buildability": [
+      {"url": "https://docs.snowflake.com/en/user-guide/admin-trial-account", "quote": "At the end of the trial, the account is suspended."},
+      {"url": "https://docs.snowflake.com/en/user-guide/oauth-custom", "quote": "To register your client, create an integration."}
+    ]
+  },
+  "uncertain": {
+    "main_blocker": "Two caveats compete. (1) There is no free tier: dev access is a 30-day trial (about $400 of usage per Snowflake search snippets; the trial docs page gives no figure), then a paid account. (2) There is no global OAuth app. Each customer account's ACCOUNTADMIN must CREATE SECURITY INTEGRATION to register the client, which is per-tenant admin setup rather than vendor app review. I chose paid_plan; 'other' (per-account admin OAuth setup) is also defensible.",
+    "auth_primary": "OAuth2 is the natural multi-user choice, but it needs a per-account security integration. PAT or key-pair JWT is simpler for single-account setups.",
+    "access": "self_serve_trial per the trial page. Every real user of a toolkit is already a paying Snowflake customer, so for end users access is effectively paid."
+  },
+  "notes": "API surface: the SQL API (submit and poll arbitrary SQL statements) plus the Snowflake REST APIs for resource management (about 40 resource types: databases, schemas, tables, warehouses, users, roles, grants, tasks, stages, pipes, Cortex Search/Inference, etc.), alongside many drivers and SDKs. The vendor MCP is the 'Snowflake-managed MCP server': GA Nov 4, 2025 per release notes in search results, preview since Oct 2, 2025. It is a per-account object created with CREATE MCP SERVER and served from the account URL, so it is vendor-hosted but has no single global endpoint. It serves Cortex Analyst, Cortex Search, Cortex Agents, custom tools and SQL execution. The older local Snowflake-Labs/mcp repo is now archived on GitHub (archived=true per the GitHub API)."
+}

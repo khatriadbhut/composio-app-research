@@ -1,0 +1,221 @@
+{
+ "id": 2,
+ "slug": "hubspot",
+ "app": "HubSpot",
+ "category": "CRM and Sales",
+ "hint": "hubspot.com",
+ "pass": 2,
+ "at": "2026-11-24T17:44:14.547Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/api/intro-to-auth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/api/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/getting-started/account-types"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "HubSpot app marketplace listing requirements review public app install"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/HubSpot/HubSpot-public-api-spec-collection"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/api/webhooks/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/listing-your-app/app-marketplace-listing-requirements"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "HubSpot unlisted app install limit marketplace distribution 25 accounts"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/changelog/new-marketplace-distribution-app-install-limits"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "developers.hubspot.com webhooks API target URL subscriptions contact.creation app settings"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.hubspot.com/docs/api-reference/latest/webhooks/guide.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"CRM platform for sales, marketing, service and CMS, with a broad public API.\",\"subcategory\":\"CRM\",\"auth_methods\":[\"oauth2\",\"bearer_token\",\"api_"
+  }
+ ],
+ "cost_usd": 0.32050860000000003,
+ "duration_ms": 92585,
+ "turns": 16,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "CRM platform for sales, marketing, service and CMS, with a broad public API.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 is required for apps installed in multiple accounts, and it is the only auth method allowed for Marketplace-listed apps. Static auth access tokens (formerly private-app tokens) and service keys are single-account Bearer tokens. A developer API key is used only for some app features and settings. Client-credentials tokens (an OAuth grant) are used for the webhooks journal API. The HubSpot CLI creates a personal access key for local development.",
+  "access": "approval_required",
+  "access_notes": "Building and testing is self-serve: HubSpot accounts are free, and developer test accounts are free with a 90-day trial of many enterprise features. Distribution is gated. Static-token apps install in 1 standard account. Private OAuth apps install in up to 10 allowlisted accounts. Marketplace-distribution OAuth apps on platform 2025.2 (since September 22, 2025) are capped at 25 installs until the HubSpot Ecosystem Quality team reviews and lists the app. Listing requires at least 3 active, unique installs, OAuth as the sole auth method, and a manual review (initial review within 10 business days). AI connectors must require user-level permissions or be built with HubSpot's MCP Server.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers CRM objects (contacts, companies, deals, tickets, custom objects), associations, search, engagements, pipelines and properties, plus marketing, CMS, conversations, webhooks and more. Well over 50 operations, but I did not count them exactly.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote server: https://mcp.hubspot.com. It uses OAuth 2.0 through a user-level app. It gives read and write access to CRM objects such as contacts, companies and deals, and read-only access to some other content. Custom sensitive-data properties are excluded. HubSpot also publishes a local Developer MCP server through the HubSpot CLI (`hs mcp setup`, requires Developer Platform 2025.2).",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "OAuth app creation and testing are self-serve. A multi-tenant toolkit, however, is capped at 25 installs until it passes HubSpot Marketplace review and is listed. Listing also requires 3 active, unaffiliated installs and imposes AI-connector rules (user-level permissions or HubSpot's MCP Server).",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.hubspot.com/docs/api/intro-to-auth",
+    "quote": "If you want to limit distribution of your app to a single authorized account, you'll use a static auth access token."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.hubspot.com/docs/api/intro-to-auth",
+    "quote": "Service keys provide a way to query HubSpot's REST APIs directly without having to use the CLI"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.hubspot.com/changelog/new-marketplace-distribution-app-install-limits",
+    "quote": "capped at 25 installs until they are listed on the HubSpot Marketplace."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot",
+    "quote": "Until your app is reviewed by the HubSpot Ecosystem Quality team and listed on the Marketplace"
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/listing-your-app/app-marketplace-listing-requirements",
+    "quote": "your app must use OAuth as its sole authorization method."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.hubspot.com/docs/getting-started/account-types",
+    "quote": "Developer test accounts are free HubSpot accounts with access to a 90-day trial of many enterprise features"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.hubspot.com/mcp",
+    "quote": "HubSpot MCP server supports OAuth 2.0"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.hubspot.com/docs/api-reference/latest/webhooks/guide.md",
+    "quote": "enter the URL that HubSpot will make a POST request to when events trigger"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/HubSpot/HubSpot-public-api-spec-collection",
+    "quote": "No description, website, or topics provided."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The OpenAPI spec repo (HubSpot/HubSpot-public-api-spec-collection) contains OpenAPI 3.0 specs, but its README says they are meant for HubSpot's internal use and that external developers should rely on the docs. Confirm that the specs are usable for codegen. Some endpoints (for example custom objects) may also need specific paid Hub tiers in the customer's account; I did not verify this.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "self_serve_free",
+    "new": "approval_required",
+    "why": "Since September 22, 2025, marketplace-distribution OAuth apps are capped at 25 installs until HubSpot's Ecosystem Quality team reviews and lists them. Private OAuth apps are limited to 10 accounts and static-token apps to 1."
+   },
+   {
+    "field": "access_notes",
+    "old": "Says no app review is mentioned, but marketplace listing may include one.",
+    "new": "Documents the 25-install cap, the manual review, the 3-active-install prerequisite and the OAuth-only rule.",
+    "why": "Confirmed on the changelog, the manage-apps docs and the listing-requirements docs."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "A multi-tenant toolkit can't exceed 25 installs without passing Marketplace review."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "app_review",
+    "why": "Marketplace review is required to lift the install cap."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Self-serve OAuth; check marketplace review.",
+    "new": "Describes the 25-install cap, the review and the AI-connector rules.",
+    "why": "The open question is now answered from primary docs."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "mcp.hubspot.com ... read and write access to CRM data.",
+    "new": "Full URL https://mcp.hubspot.com, read/write vs read-only detail, plus the local Developer MCP server via `hs mcp setup`.",
+    "why": "The automated check flagged a missing URL. Also added the local server that the vendor documents on the same page."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Did not mention CLI personal access keys or the OAuth-only rule for listed apps.",
+    "new": "Adds both.",
+    "why": "Both appear on the auth and listing pages."
+   },
+   {
+    "field": "evidence",
+    "old": "The webhooks quote came from the v4 journal page, which has no push target URL.",
+    "new": "Replaced with the webhooks guide quote about POSTing to a target URL. Added changelog, manage-apps and listing-requirements quotes.",
+    "why": "The old webhooks quote proved OAuth on the journal API, not push webhooks."
+   },
+   {
+    "field": "confidence.access / confidence.buildability",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Install caps and the review requirement are explicitly documented."
+   },
+   {
+    "field": "needs_human",
+    "old": "Marketplace review, OpenAPI spec and classic webhooks were all open.",
+    "new": "Only the internal-use caveat on the spec repo and per-tier endpoint gating remain.",
+    "why": "Review and webhooks are now resolved from primary sources."
+   }
+  ]
+ },
+ "flags_given": "- official MCP claimed with no URL or package named\n- agent's open question: Confirm whether the app marketplace listing needs review before arbitrary customers can install a public OAuth app. Confirm the published OpenAPI spec (I believe it is in HubSpot's public API spec repo, but I did not open it). The webhooks page I fetched covered only the v4 journal API. It did not d"
+}
