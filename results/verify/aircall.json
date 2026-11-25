@@ -1,0 +1,183 @@
+{
+ "id": 29,
+ "slug": "aircall",
+ "app": "Aircall",
+ "category": "Communications and Messaging",
+ "hint": "aircall.io",
+ "pass": 2,
+ "at": "2026-11-25T03:45:19.996Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.aircall.io/api-references"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Aircall MCP server official"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.aircall.io/docs/mcp-faqs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://aircall.io/blog/tech/ai-ecosystem-developer-guide/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Aircall API access which plans \"API\" pricing Essentials Professional"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://aircall.io/pricing/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Aircall developer account technology partner apply sandbox trial developers.aircall.io"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.aircall.io/docs/launch-process"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud phone/contact-center system for business calls, SMS and AI voice agents.\",\"subcategory\":\"Cloud phone / VoIP\",\"auth_methods\":[\"oauth2\",\"ba"
+  }
+ ],
+ "cost_usd": 0.2715359,
+ "duration_ms": 60734,
+ "turns": 11,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud phone/contact-center system for business calls, SMS and AI voice agents.",
+  "subcategory": "Cloud phone / VoIP",
+  "auth_methods": [
+   "oauth2",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The Public API supports OAuth or Basic Auth. OAuth is for Technology Partners and gives a Bearer token. The docs say OAuth \"is mandatory for public apps unless there's a valid reason to use API keys.\" Basic Auth uses an api_id (username) and api_token (password), generated under Company Settings > API Keys. Basic Auth covers only that one account and suits private, single-account integrations.",
+  "access": "approval_required",
+  "access_notes": "API keys (Basic Auth) are self-serve for any Aircall customer. The pricing page says \"All plans include API access\", and APIs and webhooks are included on Essentials, Professional and Enterprise. The Messaging API is limited to Professional and Enterprise. There is no permanent free plan, but there is a free trial (\"free access to test the platform\"). Multi-tenant OAuth needs Technology Partner approval first: you apply through a form (review takes about 1–5 business days), then submit an integration plan, then Aircall issues the OAuth apps. A public Marketplace listing needs a live product and an existing customer base, and apps stay unlisted until they reach 10 customers.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST at api.aircall.io/v1. The API reference lists these resource groups: User V1/V2, Team, Call, Conversation, Dialer Campaign, Outbound Campaigns, Number, Conversation Intelligence, Content, Message, High Volume Messages, Contact, Tag, Webhook, Company, Integration, Participant, IVR Option, AI Voice Agent, Call AI Voice Agents and Analytics. That is well over 50 operations. Some endpoints need extra entitlements: Analytics+ for analytics exports, and AI Assist for Trackers.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "No official Aircall-hosted MCP server. The developer MCP FAQ (last updated 2026-09-04) still says \"we don't offer an MCP servier but stay tuned.\" The Sept 2026 blog post describes the reverse direction: partners register their own MCP servers so Aircall's AI agents can call them (\"Register a Public MCP\" / AI Actions). Third-party servers exist: themobilefirstco/Allo, itaygadot111, StackOne, Zapier, Composio, Metorial and Activepieces.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "partnership",
+  "blocker_notes": "Public multi-tenant OAuth needs Aircall Technology Partner approval (application, then integration-plan review, then OAuth apps issued). Without it, each end user must supply their own api_id/api_token from a paid Aircall account (or a trial). That works today but is clunky.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.aircall.io/api-references",
+    "quote": "With Aircall Public API, Authentication can be done through OAuth or Basic Auth."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.aircall.io/api-references",
+    "quote": "It is a requirement to be listed on the Aircall App Marketplace."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.aircall.io/docs/launch-process",
+    "quote": "Using OAuth is mandatory for public apps unless there's a valid reason to use API keys."
+   },
+   {
+    "field": "access",
+    "url": "https://aircall.io/pricing/",
+    "quote": "All plans include API access and 250+ integrations."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.aircall.io/docs/launch-process",
+    "quote": "Make sure you've been approved as an Aircall Technology Partner before moving forward."
+   },
+   {
+    "field": "buildability",
+    "url": "https://developer.aircall.io/docs/launch-process",
+    "quote": "The account is valid for 4 months and can be extended as needed as long as you remain in the program"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.aircall.io/api-references",
+    "quote": "We can call back any endpoint of your choice, each time an event occurs on an Aircall account."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.aircall.io/docs/mcp-faqs",
+    "quote": "As of this writting we don't offer an MCP servier but stay tuned. We might have news soon."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Aircall publishes an OpenAPI spec. None was found in the first 100k characters of the API reference.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "Basic Auth API keys are self-serve for any Aircall customer, but this needs a paid Aircall account. I did not find a free tier or a free developer account...",
+    "new": "All plans include API access (Messaging API limited to Professional and Enterprise). A free trial exists. OAuth needs Technology Partner approval plus an integration-plan review...",
+    "why": "The pricing page confirms API access on all plans and offers a free trial. The launch-process docs describe the approval steps."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The launch-process page says approved partners get a trial developer account (4 months, extendable) and a separate development OAuth app."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth ... gives a non-expiring Bearer token...",
+    "new": "Added that OAuth is mandatory for public apps; dropped the unverified 'non-expiring' claim",
+    "why": "The launch-process docs say OAuth is mandatory for public apps. I did not re-verify that the token is non-expiring."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Resources: users, teams, calls, ...",
+    "new": "Full resource-group list from the API reference, plus entitlement caveats",
+    "why": "Taken from the API reference navigation."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "FAQ undated...",
+    "new": "FAQ last updated 2026-09-04 and still says no MCP server. The Sept 2026 blog describes only partner-registered MCP servers.",
+    "why": "Rechecked the FAQ and the blog post. There is still no first-party server."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, none for access",
+    "new": "8 verified items, including pricing and launch-process quotes",
+    "why": "The automated check flagged that access had no cited evidence."
+   },
+   {
+    "field": "confidence",
+    "old": "access/api/mcp medium",
+    "new": "access/api/mcp high",
+    "why": "Confirmed against primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "MCP, OpenAPI, sandbox, partner process",
+    "new": "OpenAPI spec only",
+    "why": "The other questions are now resolved."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: Check whether Aircall now has an official MCP server, since the FAQ is undated and a newer blog hints at MCP. Also check whether an OpenAPI spec or a sandbox exists, and what the Technology Partner approval process involves. I did not read the whole API reference page."
+}

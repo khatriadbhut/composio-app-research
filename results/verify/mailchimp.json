@@ -1,0 +1,218 @@
+{
+ "id": 35,
+ "slug": "mailchimp",
+ "app": "Mailchimp",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "mailchimp.com/developer",
+ "pass": 2,
+ "at": "2026-11-25T03:46:42.885Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/build/ai-tools/mcp-server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Mailchimp official MCP server account data connector"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "mailchimp.com Claude connector ChatGPT Mailchimp app Standard Premium plan"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/docs/fundamentals/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/help/use-mailchimp-connector-claude"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Mailchimp free plan API access Marketing API free account rate limit 10 concurrent connections"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/pricing/marketing/compare-plans/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/api-concepts/rate-limits-and-timeouts"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/guides/quick-start/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Mandrill transactional MCP server mandrillapp.com/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mailchimp.com/developer/marketing/api/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Email marketing platform: audiences, campaigns, automations, ecommerce; Mandrill for transactional email.\",\"subcategory\":\"Email marketing\",\"aut"
+  }
+ ],
+ "cost_usd": 0.3465127000000001,
+ "duration_ms": 85779,
+ "turns": 17,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Email marketing platform: audiences, campaigns, automations, ecommerce; Mandrill for transactional email.",
+  "subcategory": "Email marketing",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Marketing API: the OAuth 2 authorization code flow uses a client_id and client_secret from the Registered Apps page. With an API key you call the API as yourself: either HTTP Basic auth (`anystring:<apikey>`) or passing the key as a token in the client libraries. The data center comes from the API key suffix or, for OAuth, from the metadata endpoint. Transactional (Mandrill) has a separate API key, sent as a Bearer header to its MCP. Marketing API limit: 10 simultaneous connections per user. That limit cannot be raised.",
+  "access": "self_serve_free",
+  "access_notes": "Any Mailchimp account can register an OAuth app on the Registered Apps page and get a client_id and client_secret. The OAuth guide lists only \"a Mailchimp account\" as a prerequisite and mentions no app review. The compare-plans page shows integrations as \"Included\" on Free. It has no explicit Marketing API row, so free-plan API access is implied but not stated. Transactional (Mandrill) is \"Demo only\" on Free and needs a paid add-on to send.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Marketing API v3.0 at api.mailchimp.com/3.0 covers lists/audiences, members, campaigns, automations, templates, reports, ecommerce, landing pages, batch operations and webhooks. That is well over 100 operations, though I did not count them exactly. The Transactional API is separate.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Two vendor-hosted MCP servers are documented, but neither gives access to Marketing account data. (1) https://mailchimp.com/developer/_mcp/server searches documentation only and needs no auth. (2) https://mandrillapp.com/mcp is the Transactional MCP, authenticated with a Bearer Mandrill API key. Mailchimp also ships a first-party Claude connector: the help article says to \"Sign in with your Intuit Mailchimp account\" from Claude's Connectors list. A ChatGPT app also exists. The hosted endpoint ai-inc.mailchimp.com/claude/mcp/v2 appears only in third-party directories. Mailchimp's docs do not document it as open to arbitrary MCP clients. Community servers (mailchimp-mcp, mcp-mailchimp, damientilman/mailchimp-mcp-server) use an API key.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The REST API is broad, with an OpenAPI spec, self-serve OAuth registration, and no documented review. The 10-connection-per-user cap matters for heavy concurrent agent use.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
+    "quote": "Registering gives you the `client_id` and `client_secret` your server needs."
+   },
+   {
+    "field": "auth",
+    "url": "https://mailchimp.com/developer/marketing/guides/quick-start/",
+    "quote": "anystring:${apikey}"
+   },
+   {
+    "field": "access",
+    "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
+    "quote": "This is the only time you'll be able to see `client_secret`, so you'll need to copy it and store it securely."
+   },
+   {
+    "field": "api",
+    "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+    "quote": "We use the OpenAPI Specification (formerly known as Swagger) to describe each endpoint."
+   },
+   {
+    "field": "api",
+    "url": "https://mailchimp.com/developer/marketing/api-concepts/rate-limits-and-timeouts",
+    "quote": "The Marketing API has a limit of 10 simultaneous connections."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/",
+    "quote": "You can also create list webhooks programmatically via the API."
+   },
+   {
+    "field": "mcp",
+    "url": "https://mailchimp.com/developer/marketing/build/ai-tools/mcp-server",
+    "quote": "This searches documentation, not your Mailchimp account."
+   },
+   {
+    "field": "mcp",
+    "url": "https://mailchimp.com/developer/transactional/guides/how-to-use-mailchimps-transactional-messaging-mcp/",
+    "quote": "Our MCP specifically allows you to interact with the Transactional Messaging API."
+   },
+   {
+    "field": "mcp",
+    "url": "https://mailchimp.com/help/use-mailchimp-connector-claude",
+    "quote": "Sign in with your Intuit Mailchimp account when prompted."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Mailchimp's pricing page does not state that the Free plan includes Marketing API access. It only shows integrations as \"Included\". Someone should create a key on a free account to confirm. Also unconfirmed: whether the Claude connector's MCP endpoint (reportedly ai-inc.mailchimp.com/claude/mcp/v2) accepts third-party clients.",
+  "changes": [
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The Marketing API fundamentals page says Mailchimp uses the OpenAPI Specification to describe each endpoint."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Lists the docs MCP, the Mandrill MCP and the ai-inc URL; connectors limited to Standard and Premium plans",
+    "new": "Says neither vendor-documented MCP gives access to Marketing account data; adds the verified first-party Claude connector; marks ai-inc as undocumented by Mailchimp; drops the plan claim",
+    "why": "The docs MCP page states it searches docs, not the account. The Claude connector help article lists no plan requirement, and Mailchimp's ChatGPT page says no specific plan is needed."
+   },
+   {
+    "field": "access_notes",
+    "old": "Did not verify free tier; consumer connectors limited to Standard and Premium",
+    "new": "OAuth guide's only prerequisite is a Mailchimp account; compare-plans shows integrations Included on Free and Transactional Demo only",
+    "why": "Checked the pricing compare page and the OAuth guide. The Standard/Premium claim came from a third-party blog and conflicts with Mailchimp's own ChatGPT page."
+   },
+   {
+    "field": "auth_notes",
+    "old": "API key (basic auth or bearer)",
+    "new": "Basic auth anystring:<apikey> or a client-library token; adds the 10-connection limit",
+    "why": "The quick-start shows Basic auth and does not mention bearer for the Marketing API. The rate-limit page gives the per-user connection cap."
+   },
+   {
+    "field": "evidence",
+    "old": "MCP quote 'MCP server' taken from a search summary; webhooks quote truncated; no access evidence",
+    "new": "Quotes taken from fetched pages for auth, access, api, webhooks and mcp",
+    "why": "The first-pass MCP quote was unsupported and the webhook sentence was not verbatim."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Remaining checks on free-tier and review",
+    "new": "Notes the OpenAPI spec, no documented review, and the 10-connection cap",
+    "why": "The OAuth guide mentions no app review; the rate-limit page documents the cap."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "Confirmed the API root and the OpenAPI spec on vendor pages."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "Self-serve OAuth with no documented review, and the API is broad and documented."
+   },
+   {
+    "field": "needs_human",
+    "old": "Four open questions",
+    "new": "Two remain: free-plan API confirmation and the third-party accessibility of the connector endpoint",
+    "why": "Resolved the OpenAPI question and the app-review question (no review is documented)."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: Check four things. (1) Whether a free Mailchimp account can register OAuth apps and what its API limits are. (2) Whether public OAuth distribution needs review. (3) Whether an OpenAPI spec is published. (4) Whether the ai-inc.mailchimp.com MCP is official and open to third-party clients. I fetched n"
+}

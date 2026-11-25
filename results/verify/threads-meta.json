@@ -1,0 +1,186 @@
+{
+ "id": 39,
+ "slug": "threads-meta",
+ "app": "Threads (Meta)",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.facebook.com/docs/threads",
+ "pass": 2,
+ "at": "2026-11-25T03:46:32.107Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/threads/get-started"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/threads/webhooks.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://pypi.org/project/mcp-threads/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Threads API official MCP server Meta"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/docs/threads"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/pegasusheavy/threads-mcp"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Threads API app review business verification required tech provider advanced access"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/development/release/access-verification.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.facebook.com/documentation/development/create-an-app/threads-use-case.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Meta's Threads API: publish posts, read profiles/replies, moderate, get insights.\",\"subcategory\":\"Social network publishing API\",\"auth_methods\""
+  }
+ ],
+ "cost_usd": 0.246171,
+ "duration_ms": 60000,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Meta's Threads API: publish posts, read profiles/replies, moderate, get insights.",
+  "subcategory": "Social network publishing API",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Uses Threads user access tokens obtained through the OAuth 2.0 authorization-code flow (Authorization Window). Tokens are app-scoped, meaning unique to each app and user pair. A short-lived token lasts 1 hour and can be exchanged for a long-lived token that lasts 60 days. Long-lived tokens are refreshed with GET /refresh_access_token. Permission grants from users with public profiles last 90 days and are extended when the token is refreshed. Scopes: threads_basic (required) plus optional threads_content_publish, threads_manage_replies, threads_read_replies, threads_manage_insights, threads_manage_mentions, threads_delete, threads_keyword_search and others. The docs describe no personal API key method.",
+  "access": "approval_required",
+  "access_notes": "Creating a Meta app with the Threads use case is free. Invited Threads Testers who accept the invitation can grant permissions at any time while the app is in dev mode. Any other user can connect only after each permission passes App Review and the app is published. Meta's access-levels docs tie Advanced Access to Business Verification. The Threads webhooks page says tech-provider apps need advanced-access permissions to receive webhooks. Meta's separate Tech Provider 'access verification' step is now marked as no longer required.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Doc guides cover single and carousel posts (container, then publish), media, profiles, reply moderation, mentions, insights, webhooks, keyword search, oEmbed and web intents. Delete is also supported. Roughly 20–40 operations; not counted exactly. Meta publishes a Postman collection, not an OpenAPI spec.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "Only community servers exist, for example the PyPI packages mcp-threads and meta-threads-mcp (which describes itself as 'Unofficial') and the GitHub repos pegasusheavy/threads-mcp (Pegasus Heavy Industries LLC) and baguskto/threads-mcp. No MCP server from Meta was found.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Development and testing work with free self-serve credentials and invited Threads Testers. Public multi-user use needs App Review for each permission and a published app. Advanced Access, which webhooks need for tech providers, also needs Business Verification. Tokens last 60 days and must be refreshed.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developers.facebook.com/docs/threads",
+    "quote": "Use the Threads API to create and publish posts, retrieve media and profiles, moderate replies, and access insights."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "API authentication is handled by Threads user access tokens that conform to the OAuth 2.0 protocol."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "Long-lived tokens can be refreshed before they expire by querying the GET /refresh_access_token endpoint."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "each permission must first be approved through the App Review process, and your app must be published."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "Threads testers can grant your app these permissions at any time."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/documentation/threads/webhooks.md",
+    "quote": "For tech providers, the apps must have permissions with an advanced access level."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/documentation/threads/webhooks.md",
+    "quote": "Mentions on a public Threads post tagging the authenticated user."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/pegasusheavy/threads-mcp",
+    "quote": "Production-ready Model Context Protocol server for Threads.com API."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Business Verification for Threads Advanced Access comes from Meta's general access-levels docs. The Threads pages themselves do not say it, and Meta's Tech Provider access-verification page is marked no longer required. A real App Review submission would confirm it.",
+  "changes": [
+   {
+    "field": "evidence.mcp",
+    "old": "pypi.org/project/mcp-threads quote 'MCP server wrapping the Threads API into 6 AI-callable tools...'",
+    "new": "github.com/pegasusheavy/threads-mcp quote 'Production-ready Model Context Protocol server for Threads.com API.'",
+    "why": "The PyPI page did not render, so the old quote could not be verified. The old text appears only as a search-result title. The GitHub README was fetched and the new quote checked."
+   },
+   {
+    "field": "evidence.webhooks",
+    "old": "'replies, delete, mentions, publish' (paraphrase)",
+    "new": "Verbatim sentences from the webhooks page on the advanced-access requirement and the mentions field",
+    "why": "The old quote was a paraphrase, not text from the page."
+   },
+   {
+    "field": "evidence.auth/access",
+    "old": "Paraphrased quotes ('which follows OAuth 2.0', 'Users without a role ... App Review and the app is published')",
+    "new": "Verbatim sentences from the get-started page",
+    "why": "The old wording did not match the page text."
+   },
+   {
+    "field": "access_notes",
+    "old": "Business verification may also be required; not confirmed",
+    "new": "Advanced Access is tied to Business Verification; tech-provider webhooks need advanced access; testers must accept an invitation",
+    "why": "Confirmed on Meta's webhooks page and its access-level and access-verification docs."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Five scopes; 60-day refreshable token",
+    "new": "Adds app-scoped tokens, the 90-day permission-grant renewal and more scopes (manage_mentions, delete, keyword_search)",
+    "why": "The get-started, webhooks and access-verification pages list these details."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Did not count operations",
+    "new": "Adds oEmbed, web intents and the Postman collection (not OpenAPI); rough operation estimate",
+    "why": "From the docs overview section list."
+   },
+   {
+    "field": "needs_human",
+    "old": "Questions on business verification, sandbox, OpenAPI and the webhook quote",
+    "new": "Only the Business Verification nuance remains",
+    "why": "Sandbox (dev mode with testers), OpenAPI (Postman only) and the webhook quote are now resolved."
+   },
+   {
+    "field": "confidence.access/buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "App Review gating is confirmed verbatim in the primary docs."
+   }
+  ]
+ },
+ "flags_given": "- quote for mcp not found on https://pypi.org/project/mcp-threads/\n- agent's open question: Confirm whether Meta business verification is needed for App Review. Confirm the sandbox status: dev mode with Threads Tester roles is the only test mode I found. Confirm that no OpenAPI spec exists. The webhook quote is a paraphrase of the supported fields, not a verbatim sentence."
+}

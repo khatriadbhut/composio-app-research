@@ -1,0 +1,216 @@
+{
+ "id": 53,
+ "slug": "ahrefs",
+ "app": "Ahrefs",
+ "category": "Data, SEO and Scraping",
+ "hint": "ahrefs.com/api",
+ "pass": 2,
+ "at": "2026-11-25T03:49:13.416Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://help.ahrefs.com/en/articles/6559232-about-api-v3"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/mcp/docs/introduction.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/docs/api/reference/introduction"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Ahrefs API v3 OpenAPI spec download"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/api/docs/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/openapi.json"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/api/docs/free-test-queries.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/ahrefs-connect/docs/api-guide"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/reference/index.json"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/ahrefs-connect/docs/api-guide.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/reference/management.json"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Ahrefs API key workspace owner admin expires one year API v3"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"SEO data platform: backlinks, keywords, SERPs, rank tracking, site audit, via API.\",\"subcategory\":\"SEO data / analytics API\",\"auth_methods\":[\"b"
+  }
+ ],
+ "cost_usd": 0.32002529999999996,
+ "duration_ms": 89307,
+ "turns": 18,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "SEO data platform: backlinks, keywords, SERPs, rank tracking, site audit, via API.",
+  "subcategory": "SEO data / analytics API",
+  "auth_methods": [
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Direct API v3 calls send an API key in the \"Authorization: Bearer <API_KEY>\" header. Only workspace owners and admins can create keys, and each key expires after 1 year. Third-party apps use Ahrefs Connect, which is OAuth 2.0 Authorization Code with PKCE. The authorize URL is https://app.ahrefs.com/web/oauth/authorize, the token URL is https://ahrefs.com/oauth/token, and the scope is apiv3-integration-apps. Access tokens last 1 year and no refresh tokens are issued, so users must re-authorize when a token expires. Requests use the connecting user's own API units. The hosted MCP server also uses an OAuth consent flow that issues a dedicated API key. Some \"public\" endpoints are free and need no key.",
+  "access": "approval_required",
+  "access_notes": "Joining Ahrefs Connect has no plan requirement. While an app is Inactive, the developer can make free test requests and test OAuth in staging. Going live needs Ahrefs approval: you notify support or sales, then submit for review, and the review includes showing secure token handling. The help center says API v3 is available on Lite and higher, and that \"all new applications require a Lite or higher subscription for activation\". Lite includes 200k units a month. I found no source for the first pass's Enterprise requirement, and the Connect pages I opened don't mention Enterprise. End users must have paid Ahrefs accounts, and their calls use their own units. Free test queries on direct API keys are limited to ahrefs.com, yep.com and firehose.com targets.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST at https://api.ahrefs.com/v3/{tool}/{endpoint}, split into 15 tool specs: Site Explorer, Competitive Analysis, Keywords Explorer, Site Audit, Rank Tracker, SERP Overview, Batch Analysis, Subscription Info, Management, Brand Radar, Content Helper, Web Analytics, GSC Insights, Social Media and Public. In the truncated views I could read, the Management spec showed 26 operations (CRUD on projects, keywords, keyword lists, competitors and Brand Radar prompts) and Site Explorer showed at least 14. The total is well over 50. The merged OpenAPI spec (3.2.0) is at https://docs.ahrefs.com/openapi.json.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Official hosted MCP server at https://api.ahrefs.com/mcp/mcp (Streamable HTTP). It uses an OAuth consent screen, and you can also generate an MCP key manually. It is for Lite plans and higher. I did not re-check the first pass's claim that the old local repo is archived.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Building is self-serve: Connect needs no plan, and inactive apps get free test requests. Shipping public OAuth to other users needs Ahrefs approval, and per the help center the app needs Lite or higher to activate. End users need paid Ahrefs plans and spend their own API units on every call (50-unit minimum per paid request). Tokens expire after a year with no refresh, so users must periodically re-authorize.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
+    "quote": "Your app integrates with Ahrefs API via OAuth."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md",
+    "quote": "No refresh tokens are issued."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.ahrefs.com/llms.txt",
+    "quote": "send your API key as a bearer token in the `Authorization: Bearer <API_KEY>` header."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
+    "quote": "There is no subscription plan requirement for developers joining Ahrefs Connect."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
+    "quote": "When development is complete, notify our support or sales team."
+   },
+   {
+    "field": "access",
+    "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3",
+    "quote": "all new applications require a Lite or higher subscription for activation"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.ahrefs.com/llms.txt",
+    "quote": "The complete OpenAPI specification for every tool is at /openapi.json"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.ahrefs.com/mcp/docs/introduction.md",
+    "quote": "https://api.ahrefs.com/mcp/mcp"
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/how-it-works.md",
+    "quote": "Make free test requests to API v3 endpoints."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Several docs.ahrefs.com pages return 404 without the .md suffix. I couldn't find the Enterprise activation requirement the first pass cited, and the help center says Lite. Someone with access should confirm the Connect approval criteria and timeline. Webhooks are marked \"no\" because neither llms.txt nor the visible part of the OpenAPI spec mentions them, but I couldn't read the full 3.8MB spec.",
+  "changes": [
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "There are 15 tool specs. The Management spec alone shows 26 operations, including CRUD, and Site Explorer shows at least 14, so the total is well over 50."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "llms.txt links the complete OpenAPI spec at docs.ahrefs.com/openapi.json, plus per-tool specs."
+   },
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "no",
+    "why": "Neither the docs index nor the visible part of the spec mentions webhooks. The API is request/response only."
+   },
+   {
+    "field": "auth_notes",
+    "old": "API key Bearer; Connect OAuth; MCP OAuth",
+    "new": "Adds OAuth details: PKCE, endpoints, scope, 1-year tokens with no refresh, units billed to the user",
+    "why": "Confirmed in the Connect OAuth guide. Missing refresh tokens matters for a toolkit."
+   },
+   {
+    "field": "access_notes",
+    "old": "Enterprise vs Lite conflict unresolved",
+    "new": "Lite or higher for activation (help center); no source found for Enterprise; approval goes through support/sales submission",
+    "why": "The Connect pages I opened don't mention Enterprise. The help center quote is verified."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access low, api medium, buildability medium",
+    "new": "auth high, access medium, api high, buildability high",
+    "why": "Primary sources now confirm the OAuth flow, the spec and the approval process."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, none for api",
+    "new": "9 verified quotes including api (OpenAPI) and buildability",
+    "why": "Re-opened every original URL (all 4 quotes held up) and added sources."
+   },
+   {
+    "field": "what_it_does",
+    "old": "SEO toolset ... with API v3 and hosted MCP.",
+    "new": "SEO data platform: backlinks, keywords, SERPs, rank tracking, site audit, via API.",
+    "why": "Kept to the product description, since MCP is covered in its own field."
+   }
+  ]
+ },
+ "flags_given": "- agent marked access confidence low\n- no evidence cited for api\n- agent's open question: Check the Ahrefs Connect approval process and whether production activation needs Enterprise or Lite. The docs and help center conflict, and several docs pages returned 404. Also confirm whether an OpenAPI spec and webhooks exist. Neither was found. I did not open the Connect page that states the En"
+}

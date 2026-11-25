@@ -1,0 +1,212 @@
+{
+ "id": 36,
+ "slug": "klaviyo",
+ "app": "Klaviyo",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.klaviyo.com",
+ "pass": 2,
+ "at": "2026-11-25T03:46:15.710Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/authenticate_"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/set_up_oauth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/reference/webhooks_api_overview"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Klaviyo remote MCP server mcp.klaviyo.com connect"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/klaviyo/openapi"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.klaviyo.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Klaviyo developers test account sandbox \"test account\" API"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.klaviyo.com/en/docs/create-a-test-account"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Marketing automation platform for email, SMS and customer data/CDP.\",\"subcategory\":\"Email/SMS marketing automation\",\"auth_methods\":[\"oauth2\",\"a"
+  }
+ ],
+ "cost_usd": 0.2416103,
+ "duration_ms": 55734,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Marketing automation platform for email, SMS and customer data/CDP.",
+  "subcategory": "Email/SMS marketing automation",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Server /api endpoints use a private API key (prefix pk_) sent as 'Authorization: Klaviyo-API-Key <key>'. Managing keys needs the Owner, Admin or Manager role. OAuth 2.0 with scopes is recommended for tech partners, and PKCE is required for both public and confidential clients. Client-side /client endpoints use a public key, the 6-char company/site ID. Outbound webhooks are signed with HMAC-SHA256.",
+  "access": "self_serve_free",
+  "access_notes": "The free plan allows up to 250 active profiles and 500 emails per month. The pricing page does not tie API access to any plan. Owner, Admin and Manager roles can create private keys and OAuth apps. An OAuth app can be shared by installation URL without a listing. App Marketplace listing requires OAuth and review, and apps that ask for more scopes than needed are rejected. The Webhooks API is limited to Advanced KDP customers and Klaviyo app partners.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "A JSON:API-style REST API with date-versioned revisions. It covers profiles, lists, segments, events, metrics, campaigns, flows, templates, catalogs, coupons, reviews, tags, images, webhooks and more. That is well over 50 operations, but I did not count them exactly in the spec.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official remote server at https://mcp.klaviyo.com/mcp. It uses OAuth with dynamic client registration and is limited to the Owner, Admin and Manager roles. Klaviyo also documents a local server option.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The REST API, OAuth (PKCE) and a free account and test account are all self-serve. Marketplace listing needs review but is not required, because apps can be distributed by installation URL. Managing webhook subscriptions through the API is limited to Advanced KDP customers and app partners. Klaviyo also runs an official remote MCP server.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "quote": "If you are a tech partner integrating with Klaviyo, we recommend using OAuth to make authorized API calls."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "quote": "Private keys will have the prefix pk_ followed by a longer alphanumeric string."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "quote": "All /client endpoints use a public API key: your 6-character company ID, also known as a site ID."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+    "quote": "Your app does not have to be listed to share and use your installation URL with customers."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/set_up_oauth",
+    "quote": "Note that only owner, admin, and manager roles can create OAuth apps in Klaviyo."
+   },
+   {
+    "field": "access",
+    "url": "https://www.klaviyo.com/pricing",
+    "quote": "Up to 250 active profiles and 500 emails per month"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/klaviyo/openapi",
+    "quote": "OpenAPI Specification for Klaviyo's API."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.klaviyo.com/en/docs/create-a-test-account",
+    "quote": "test custom integrations and applications without any risk to your production account."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server",
+    "quote": "https://mcp.klaviyo.com/mcp"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.klaviyo.com/en/docs/connect_to_the_klaviyo_mcp_server",
+    "quote": "This feature is only available to Klaviyo users with an Owner, Admin, or Manager role."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.klaviyo.com/en/reference/webhooks_api_overview",
+    "quote": "Note that only Advanced KDP customers and Klaviyo app partners can access and manage webhooks with our Webhooks API."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "evidence[auth]",
+    "old": "Klaviyo recommends OAuth for tech partners integrating with the platform; private keys start with pk_ and use the Klaviyo-API-Key header.",
+    "new": "Verbatim quotes from the authenticate_ page (OAuth recommendation, pk_ prefix, public company ID)",
+    "why": "The original quote was a paraphrase and does not appear on the page."
+   },
+   {
+    "field": "evidence[mcp]",
+    "old": "klaviyo_mcp_server page quote about remote vs local",
+    "new": "Added the connect_to_the_klaviyo_mcp_server page with the remote URL and role restriction",
+    "why": "The remote URL and the role restriction in mcp_notes are not on the overview page. They are on the connect page."
+   },
+   {
+    "field": "sandbox",
+    "old": "no",
+    "new": "yes",
+    "why": "Klaviyo documents a free, separate test account for testing integrations without risk to the production account."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...OAuth 2.0 with scopes for multi-account apps...",
+    "new": "Added the PKCE requirement and the Owner/Admin/Manager role needed to manage keys",
+    "why": "The set_up_oauth page requires PKCE, and the authenticate page states the role requirement."
+   },
+   {
+    "field": "access_notes",
+    "old": "...I did not confirm the free-tier limits.",
+    "new": "Free plan is 250 active profiles and 500 emails per month, with no API gating on the pricing page. Marketplace review rejects apps with excess scopes.",
+    "why": "Confirmed on the pricing page and the set_up_oauth page."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "200+ operations from general knowledge",
+    "new": "Well over 50 operations, not exactly counted",
+    "why": "Removed a count that no source supported."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Remote server at https://mcp.klaviyo.com/mcp, which uses OAuth sign-in...",
+    "new": "Specified OAuth with dynamic client registration",
+    "why": "The connect page lists OAuth with dynamic client registration."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, api medium, buildability medium",
+    "new": "all high",
+    "why": "The pricing page, the OpenAPI repo and the test-account doc confirm the open points."
+   },
+   {
+    "field": "needs_human",
+    "old": "Open questions on free-plan API access, OpenAPI spec, test mode, OAuth review",
+    "new": "",
+    "why": "All of these were resolved from primary sources."
+   }
+  ]
+ },
+ "flags_given": "- quote for auth not found on https://developers.klaviyo.com/en/docs/authenticate_\n- agent's open question: Check whether Klaviyo's free plan keeps full API access. Confirm the OpenAPI spec (I believe it is published at github.com/klaviyo/openapi, but I did not open it). Check whether there is a test mode: Klaviyo has no dedicated sandbox, and a free account is the usual way to test. Check what the OAuth "
+}

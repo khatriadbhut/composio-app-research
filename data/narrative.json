@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "headline": "{{buildableToday}} of 100 apps can be agent toolkits today. The work is in review queues, not code.",
+    "thesis": "An agent researched auth, access, API surface and MCP for 100 apps, citing a page for every answer. Only <b>{{needsDeal}}</b> need a business conversation and <b>{{notBuildable}}</b> have no usable API. The usual blocker is <b>{{topBlockerName}}</b> ({{topBlockerN}} apps): a developer can build freely, but shipping to other people's accounts needs the vendor's sign-off.",
+    "stats": [
+      { "v": "{{readyNow}}", "k": "ready now: public API, self-serve credentials" },
+      { "v": "{{caveats}}", "k": "ready with caveats: review, plan or narrow API" },
+      { "v": "{{acc_p1}} → {{acc_after}}", "k": "audited field accuracy, before → after the loops" },
+      { "v": "{{mcpOfficial}}", "k": "vendors already publish an official MCP server" }
+    ]
+  },
+  "links": [
+    { "label": "Source repo", "href": "https://github.com/khatriadbhut/composio-app-research" },
+    { "label": "apps.json", "href": "data/apps.json" },
+    { "label": "apps.csv", "href": "data/apps.csv" },
+    { "label": "llms.txt", "href": "llms.txt" }
+  ],
+  "patterns": [
+    {
+      "title": "OAuth2 dominates, and most OAuth apps also take a key",
+      "body": "<b>{{oauthAny}}</b> apps offer OAuth2, and it is the primary method for <b>{{oauthPrimary}}</b>. Only <b>{{oauthOnly}}</b> offer OAuth2 alone: <b>{{oauthPlusKey}}</b> also accept an API key or personal token, which is the fast path for a prototype. <b>{{keyOnly}}</b> apps have no OAuth at all, mostly data, scraping and AI-native tools, where one shared key per customer is the model.",
+      "viz": "auth"
+    },
+    {
+      "title": "The common blocker is publishing, not access",
+      "body": "<b>{{approval}}</b> apps let a developer build and test for free but put a review between the app and other people's accounts: Meta, Google, LinkedIn, Intuit, Slack, Atlassian. <b>{{paid}}</b> more need a paid plan or run only on a trial. Hard gates are rare: <b>{{gated}}</b> are partner-only, sales-only or have no API.",
+      "viz": "blockers"
+    },
+    {
+      "title": "Where self-serve lives, and where it doesn't",
+      "body": "Self-serve is most common in <b>{{mostSelfServe}}</b>. The fewest self-serve apps are in <b>{{leastSelfServe}}</b>, where ad platforms, marketplaces and fintech guard production access behind review or contracts.",
+      "viz": "access_heat",
+      "wide": true
+    },
+    {
+      "title": "Vendors are shipping their own MCP servers",
+      "body": "<b>{{mcpOfficial}}</b> of the 100 publish an official MCP server, <b>{{mcpRemote}}</b> of them hosted at a URL with OAuth. Another <b>{{mcpCommunity}}</b> have only community servers. This was also the field the first pass got wrong most often: several servers launched in 2026 and are announced on pages search hasn't caught up with.",
+      "viz": "mcp"
+    },
+    {
+      "title": "Easy wins versus outreach",
+      "body": "<b>{{easyWinsN}}</b> apps are ready now with self-serve credentials. <b>{{outreachN}}</b> need a partnership, a sales conversation or a different approach because there is no API. That second list is a business-development queue, not an engineering one.",
+      "viz": "wins",
+      "wide": true
+    }
+  ],
+  "agent": {
+    "lede": "Each app gets its own headless Claude Code session with web search and fetch, constrained by a JSON schema so every answer lands in a fixed vocabulary with at least three cited quotes. Sub-agents are switched off, because they paraphrase. Then the output goes through three checks, each built to catch a different kind of mistake.",
+    "steps": [
+      { "k": "Stage 1 · Sonnet", "title": "Research agent", "body": "One session per app, 8 in parallel. Searches, opens the vendor's docs, pricing and review policy, fills the schema.", "out": "100 records · {{p1_calls}} tool calls · {{p1_min}} agent-min" },
+      { "k": "Loop 1 · no LLM", "title": "Evidence check", "body": "Re-fetches every cited URL and looks for the quote on the page. Logic rules catch records that contradict themselves.", "out": "{{l1_links}} links · {{l1_found}} quotes found · {{l1_flagged}} records flagged" },
+      { "k": "Loop 2 · Composio API", "title": "Catalog cross-check", "body": "Compares the auth the agent found with Composio's own toolkit catalog, and marks which apps Composio already ships.", "out": "{{l2_line}}" },
+      { "k": "Loop 3 · Opus", "title": "Adversarial verifier", "body": "A second agent on a stronger model is told to assume the record is wrong, gets every flag, re-opens the sources, and logs each change with a reason.", "out": "{{l3_changed}} records changed on graded fields" },
+      { "k": "Loop 4 · human + browser", "title": "Audit and adjudication", "body": "Independent auditors label a seeded sample. Where they disagree with the final record, a browser check and a human decide.", "out": "{{audit_n}} apps · {{disputes}} disputed cells settled", "human": true }
+    ],
+    "human": [
+      "<b>Deciding judgment calls.</b> Some cells have no single fact behind them: an MCP endpoint that is live but undocumented, or whether a 100-credit grant counts as free. A person decided those, and each decision is logged in the audit files.",
+      "<b>Pages only a browser renders.</b> Meta's and Intuit's docs and some pricing tables come back empty to plain fetches. Those were read in Chrome.",
+      "<b>Product identity.</b> iPayX, Sherlock and fanbasis each matched more than one product. The hint in the request list settled it, and the agent was told to follow the hint.",
+      "<b>Login walls.</b> Approval flows that only show after sign-in (fanbasis API keys, Smartsheet tokens) were recorded as gated, with the evidence that exists in public."
+    ],
+    "cost": [
+      "<b>Research pass:</b> {{p1_cost}} of model usage, {{p1_min}} agent-minutes, about 50 seconds per app.",
+      "<b>Verifier pass:</b> {{p2_cost}}, about 4 minutes per app on Opus.",
+      "<b>Everything ran on a Claude Code subscription.</b> The dollar figures are what the same tokens would cost on the API.",
+      "<b>Two usage-limit stops</b> during the run. Every stage skips what is already done, so re-running continued where it stopped."
+    ]
+  },
+  "verification": {
+    "lede": "Accuracy was measured, not asserted. A seeded random sample of two apps per category was labelled by independent auditor agents that never saw the pipeline's output. Both the first pass and the verified records were graded against those labels, field by field.",
+    "note": "Graded fields: primary auth, full auth set, access, API style, API breadth, MCP, verdict, blocker. Auth sets and API styles must match exactly, with an API key and a static token counted as one family. Where a human found the auditor wrong, the label was corrected before grading, and that correction applies to both passes equally.",
+    "loops": [],
+    "misses": [],
+    "defeats": []
+  },
+  "proof": {
+    "cmd": "git clone https://github.com/khatriadbhut/composio-app-research\ncd composio-app-research\n\n# research one app (about a minute), then check its evidence\nnode src/research.mjs --only notion --force\nnode src/check-evidence.mjs\n\n# the full pipeline\necho 'COMPOSIO_API_KEY=...' > .env\nnpm run all",
+    "agentLinks": [
+      "<a href=\"data/apps.json\">apps.json</a>: all 100 verified records with evidence URLs, quotes and verifier changes",
+      "<a href=\"data/apps.csv\">apps.csv</a>: the same as a flat table",
+      "<a href=\"llms.txt\">llms.txt</a>: the patterns and one line per app, for a model to read",
+      "<a href=\"https://github.com/khatriadbhut/composio-app-research/blob/main/src/schema.json\">schema.json</a>: the record definition the agents are held to"
+    ]
+  },
+  "footer": "Built by Adbhut Khatri for the Composio AI Product Ops take-home · data as of {{run_date}} · every claim links to its source"
+}

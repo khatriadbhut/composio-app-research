@@ -1,0 +1,204 @@
+{
+ "id": 38,
+ "slug": "pinterest",
+ "app": "Pinterest",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.pinterest.com",
+ "pass": 2,
+ "at": "2026-11-25T03:46:38.759Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/key-concepts/access-tiers/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/about-pinterest-mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/getting-started/connect-app/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/llms.txt"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pinterest API v5 client_credentials grant conversion access token"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pinterest API webhooks developers.pinterest.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.pinterest.com/docs/getting-started/scopes/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Pinterest API v5 lead ads subscription webhook_url \"leads/subscriptions\""
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dev.pinterest.com/docs/work-with-ads/lead-ads/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "developers.pinterest.com authentication \"client credentials\" pinc token"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dev.pinterest.com/docs/getting-started/set-up-authentication-and-authorization"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Visual discovery platform; API for pins, boards, ads, analytics and catalogs.\",\"subcategory\":\"Social media / Ads platform\",\"auth_methods\":[\"oau"
+  }
+ ],
+ "cost_usd": 0.3039651,
+ "duration_ms": 71708,
+ "turns": 14,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Visual discovery platform; API for pins, boards, ads, analytics and catalogs.",
+  "subcategory": "Social media / Ads platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code flow with scopes. Redirect URIs must exactly match the registered ones. Refresh tokens are continuous: they expire after 60 days and can be refreshed indefinitely. Pinterest also supports the OAuth Client Credentials grant (tokens prefixed pinc, 30-day lifetime) for an app acting on its own behalf. Only some endpoints accept those tokens, and Pinterest's own community FAQ contradicts this, so test it first. After Trial approval, you can generate short-lived test tokens (24h) without setting up OAuth. The app ID and secret are issued after Pinterest approves the app.",
+  "access": "approval_required",
+  "access_notes": "Free, but Pinterest reviews each app request before issuing credentials. Approved apps get Trial access. Trial is rate limited per app per day, and Pins and Boards created on Trial are visible only to their creator as Sandbox entities. Offering the API to real users needs an upgrade to Standard access. The access-tiers page says the upgrade requires a video recording of the app using the API, including the OAuth flow. No turnaround time is published. No paid plan was found.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v5 covers pins, boards, user account, media, search, ad accounts, campaigns, ad groups, ads, audiences, catalogs, conversion events, lead ads, analytics and keywords. I did not count operations, but it is clearly over 50. A raw OpenAPI spec is published in Pinterest's api-description GitHub repo.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "developers.pinterest.com/about-pinterest-mcp/ shows https://api.pinterest.com/mcp (http transport, Bearer token, OAuth 2.0) in an example config. On re-check the page is still a pre-launch announcement (\"Be the first to know when it launches\", \"Sign up for updates\"), so the server is announced but not confirmed live. Several community MCP servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Pinterest must approve the app before it gets Trial access. Trial content lives in a creator-only sandbox and has daily per-app rate limits. A multi-user production toolkit needs the Standard upgrade, which is reviewed and requires a video demo of the OAuth flow. Webhooks exist only for lead ads.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+    "quote": "If approved for API use, your app receives Trial access, which is best for exploring our API features."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+    "quote": "all Pins and Boards created with Trial access are only visible to their creator as Sandbox entities."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/key-concepts/access-tiers/",
+    "quote": "we will still require a video recording of the OAuth flow."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+    "quote": "Application requests are reviewed by Pinterest."
+   },
+   {
+    "field": "auth",
+    "url": "https://dev.pinterest.com/docs/getting-started/set-up-authentication-and-authorization",
+    "quote": "This grant type is designed for situations when the client (your app) is acting on its own behalf, not a user."
+   },
+   {
+    "field": "auth",
+    "url": "https://dev.pinterest.com/docs/getting-started/set-up-authentication-and-authorization",
+    "quote": "Pinterest only supports the continuous refresh token (60-day expiration, refreshable indefinitely)"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+    "quote": "Once your app is approved for Trial access you can generate a token to test the API without setting up the Oauth flow."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.pinterest.com/llms.txt",
+    "quote": "Raw OpenAPI specification for the Pinterest API v5"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.pinterest.com/docs/getting-started/connect-app/",
+    "quote": "Our sandbox environment allows you to make test calls without impacting the Pinterest product environment."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://dev.pinterest.com/docs/work-with-ads/lead-ads/",
+    "quote": "Specify the callback URL via the webhook_url field, and include the lead_form_id if you want to specify the form."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.pinterest.com/about-pinterest-mcp/",
+    "quote": "Be the first to know when it launches."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Check whether the official MCP server at api.pinterest.com/mcp is live; the page still reads as pre-launch. Check whether Client Credentials (pinc) tokens work in practice: the official auth docs describe them, but Pinterest's community FAQ says only user authorization is supported. Standard-upgrade turnaround is unpublished.",
+  "changes": [
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The official lead-ads docs describe webhook subscriptions (POST leads/subscriptions with webhook_url). They are limited to lead ads."
+   },
+   {
+    "field": "auth_methods",
+    "old": "[oauth2]",
+    "new": "[oauth2, bearer_token]",
+    "why": "After Trial approval you can generate test tokens in the portal without OAuth (24h lifetime), per the connect-app page."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth code flow only; other methods unconfirmed",
+    "new": "Adds the Client Credentials grant (pinc tokens), continuous 60-day refresh tokens and 24h test tokens",
+    "why": "The official set-up-authentication page documents the Client Credentials grant and the refresh token type."
+   },
+   {
+    "field": "access_notes",
+    "old": "Trial: 1,000 requests/day; video demo based on community reports",
+    "new": "Trial rate limited per day per app; video demo of the OAuth flow required (official access-tiers page)",
+    "why": "The 1,000/day figure is not on the access-tiers page I fetched. The video requirement is stated by Pinterest itself, not only by community posts."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "...Trial limited to 1,000 requests/day...",
+    "new": "Daily per-app limits; video demo needed for Standard; webhooks only for lead ads",
+    "why": "Removed the unverified number and added confirmed details."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth/access/api/buildability high, mcp medium",
+    "why": "The primary sources were re-fetched and confirmed."
+   },
+   {
+    "field": "evidence",
+    "old": "6 items",
+    "new": "11 items",
+    "why": "Added verified quotes for client credentials, refresh tokens, test tokens, sandbox visibility, the video requirement and lead-ad webhooks."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Check whether Pinterest webhooks exist (nothing found in the docs index, only a \"Manage notifications\" reference). Check whether the official MCP server is live or still pre-launch. Check Standard-upgrade review requirements and turnaround, which come from community posts and the access-tiers page. "
+}

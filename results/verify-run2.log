@@ -1,0 +1,5 @@
+verify: 78 apps, model opus
+[1/78] ok   Pumble                     10 changes: mcp, mcp_notes, main_blocker, blocker_notes, access_notes, api_styles, auth_notes, evidence, confidence, needs_human
+[2/78] ok   Discord                    7 changes: access_notes, mcp_notes, evidence, blocker_notes, api_breadth_notes, confidence, needs_human
+[3/78] ok   Zoho Cliq                  9 changes: auth_methods, auth_notes, openapi_spec, webhooks, sandbox, api_breadth_notes, evidence, mcp_notes, confidence.api / buildability
+[4/78] ok   Lark (Larksuite)           7 changes: auth_methods, auth_notes, access, api_styles, confidence.auth, confidence.mcp, needs_human

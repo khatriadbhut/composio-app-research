@@ -1,0 +1,187 @@
+{
+ "id": 46,
+ "slug": "squarespace",
+ "app": "Squarespace",
+ "category": "Ecommerce",
+ "hint": "developers.squarespace.com",
+ "pass": 2,
+ "at": "2026-11-25T03:47:43.301Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/commerce-apis/overview"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Squarespace official MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/commerce-apis/building-an-oauth-flow"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://glama.ai/mcp/servers/integrations/squarespace"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Squarespace developer API key plan required Commerce Core Advanced site settings developer API keys"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "developers.squarespace.com OAuth \"request OAuth\" client registration Squarespace Extensions"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.squarespace.com/oauth"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Website builder with ecommerce; Commerce APIs for products, orders, inventory, contacts.\",\"subcategory\":\"Website builder / Ecommerce\",\"auth_met"
+  }
+ ],
+ "cost_usd": 0.25999930000000004,
+ "duration_ms": 63854,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Website builder with ecommerce; Commerce APIs for products, orders, inventory, contacts.",
+  "subcategory": "Website builder / Ecommerce",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "There are two methods. The first is a site-owner API key, generated under Settings > Advanced > Developer API Keys; it never expires while the site is active and covers one site. The second is OAuth 2.0 for multi-site Extensions. OAuth access tokens last 30 minutes and refresh tokens last 7 days. Scopes include website.orders, products, inventory, contacts, discounts and transactions, each with .read variants. The Webhook Subscriptions API is OAuth only.",
+  "access": "approval_required",
+  "access_notes": "OAuth clients must be registered at account.squarespace.com/developer-apps. Squarespace reviews the registration and only then issues a client_id and client_secret, so you cannot test OAuth before approval. The docs say \"Squarespace Extensions are required to use OAuth.\" Approval allows OAuth connections only; listing in the Extensions directory is a separate process. An API key for a custom app on one site needs the Commerce Advanced plan, which is paid. The docs name only that plan. Third-party guides disagree about whether lower tiers work.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "The Commerce APIs are Analytics, Contacts, Discounts, Inventory, Orders, Products, Profiles (in maintenance mode), Transactions and Webhook Subscriptions. The navigation also lists a Websites API. Coverage is commerce only, with no page or content editing. I did not count individual operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no official Squarespace MCP server. Glama lists only third-party servers, for example The1Studio/squarespace-mcp and timncox/Squarespace MCP. Zapier, StackOne, Metorial and MCPBundles offer hosted connectors. A GitHub issue (anthropics/claude-ai-mcp#372) asks for an official connector.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "A multi-tenant toolkit needs an OAuth client, which Squarespace must review and approve before it issues any credentials. The approved client also has to be tied to an Extension. Without approval, the only option is a per-site API key on the paid Commerce Advanced plan. The API covers commerce only, not site content or design.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "API keys will never expire as long as the merchant site remains active."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "With Squarespace's Commerce Advanced plan, you can develop a custom application for a Squarespace merchant site."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.squarespace.com/oauth",
+    "quote": "We will review your registration and respond with your_client_id and your_client_secret as soon as possible."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.squarespace.com/oauth",
+    "quote": "Access tokens in the response are only valid for 30 minutes."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.squarespace.com/commerce-apis/overview",
+    "quote": "Subscribe to notifications from a site, like when an order was created, by configuring a webhook endpoint."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.squarespace.com/commerce-apis/overview",
+    "quote": "Read and adjust stock information for product variants."
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "Squarespace Extensions are required to use OAuth."
+   },
+   {
+    "field": "mcp",
+    "url": "https://glama.ai/mcp/servers/integrations/squarespace",
+    "quote": "Squarespace MCP Servers & Connectors"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Check which plan tiers can generate Developer API Keys under the current plan names. The docs name only Commerce Advanced, and third-party guides cite Core or Business.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "...I did not verify whether a dev-mode OAuth client works on your own site before approval.",
+    "new": "Credentials are issued only after review; Extensions required for OAuth.",
+    "why": "The /oauth docs say Squarespace reviews the registration and then responds with the client_id and client_secret, so there is no pre-approval dev mode. The auth page says Extensions are required to use OAuth."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "Neither the OAuth page nor the overview mentions a test or dev mode, and credentials come only after review."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...plus Websites and Forms (read-only)",
+    "new": "Websites API listed in nav; Forms removed",
+    "why": "The overview page lists Websites in its navigation but does not mention a Forms API."
+   },
+   {
+    "field": "auth_notes",
+    "old": "No token lifetimes/scopes",
+    "new": "Added 30-minute access token, 7-day refresh token, scopes",
+    "why": "Verified on developers.squarespace.com/oauth."
+   },
+   {
+    "field": "evidence",
+    "old": "Paraphrased access and api quotes; MCP quote was a search title",
+    "new": "Verbatim quotes from the auth, oauth, overview and Glama pages",
+    "why": "The automated check failed to find the original quotes on the pages."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The approval flow is confirmed in the official docs."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "The blocker is confirmed by primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "dev-mode OAuth, OpenAPI, sandbox questions",
+    "new": "plan-tier question for API keys only",
+    "why": "The dev-mode and sandbox questions are resolved from the docs."
+   }
+  ]
+ },
+ "flags_given": "- quote for access not found on https://developers.squarespace.com/commerce-apis/authentication-and-permissions\n- quote for api not found on https://developers.squarespace.com/commerce-apis/overview\n- agent's open question: Confirm whether a dev-mode OAuth client works before approval. Confirm whether an OpenAPI spec is published and whether a sandbox exists. Neither appeared in the pages I fetched. The quotes are paraphrased summaries from the fetch tool, not verbatim page text, and the MCP quote is only a search-resu"
+}

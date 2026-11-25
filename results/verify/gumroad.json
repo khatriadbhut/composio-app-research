@@ -1,0 +1,178 @@
+{
+ "id": 48,
+ "slug": "gumroad",
+ "app": "Gumroad",
+ "category": "Ecommerce",
+ "hint": "gumroad.com/api",
+ "pass": 2,
+ "at": "2026-11-25T03:48:01.424Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/claude"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/mcp"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Gumroad API \"access token\" create application settings advanced help"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://api.gumroad.com/v2/products"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://gumroad.com/help/article/280-create-application-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://app.gumroad.com/api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.mintlify.com/antiwork/gumroad/api/authentication"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "github antiwork gumroad api docs resource_subscriptions sale refund dispute cancellation scopes view_sales"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mintlify.wiki/antiwork/gumroad/api/resource-subscriptions"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "github.com antiwork gumroad open source repository"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://raw.githubusercontent.com/antiwork/gumroad/main/app/javascript/components/server-components/Api/index.tsx"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docsearch.algolia.com/mcp/docs/repo/antiwork/gumroad"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://jentic.com/apis/gumroad.com/gumroad.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.n8n.io/integrations/builtin/credentials/gumroad"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Platform for creators to sell digital products, memberships and courses directly to customers.\",\"subcategory\":\"Creator commerce / digital produ"
+  }
+ ],
+ "cost_usd": 0.29089309999999996,
+ "duration_ms": 77788,
+ "turns": 18,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Platform for creators to sell digital products, memberships and courses directly to customers.",
+  "subcategory": "Creator commerce / digital products",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Create an application under Settings > Advanced, with a name and a redirect URI. Standard OAuth2 issues tokens scoped to view_profile, edit_products, view_sales, mark_sales_as_shipped, refund_sales or edit_sales. For your own account only, the 'Generate access token' button gives a personal token, and the redirect URI can be the placeholder http://127.0.0.1. Send the token as an access_token parameter or as an Authorization: Bearer header. Tokens don't expire until revoked. License verification needs no token. Gumroad's official API page and help article load their content with JavaScript, so the fetch got no text. The details come from secondary summaries that quote the help article (search snippets, n8n, Workato), not from a page I read directly.",
+  "access": "self_serve_free",
+  "access_notes": "Any Gumroad account can create an application and token from Advanced settings. Gumroad has no paid API tier: sellers pay a fee per sale rather than a subscription. I found no app-review or approval step for OAuth apps that serve other users. I could not read the official help article text directly to rule one out.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Base URL api.gumroad.com/v2, which returns 401 without a token. Resources: products (including enable/disable), offer codes, variant categories and variants, custom fields, licenses (verify, enable/disable, decrement uses), sales (list, get, mark shipped, refund), subscribers, resource subscriptions and user. Jentic describes a '26-endpoint surface'.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Gumroad hosts its own MCP server at https://gumroad.com/claude/v1/mcp, with OAuth sign-in. gumroad.com/mcp lists a separate URL for each assistant, and access is revoked from Gumroad settings. Community servers also exist, such as the npm package gumroad-mcp.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Public REST API with self-serve OAuth apps and tokens, plus an official hosted MCP server. The API covers less than the full product: there are no endpoints for writing posts, emails or payouts. I found no documented test mode.",
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://gumroad.com/claude",
+    "quote": "https://gumroad.com/claude/v1/mcp"
+   },
+   {
+    "field": "auth",
+    "url": "https://gumroad.com/mcp",
+    "quote": "Every assistant connects to its own URL and asks for OAuth access to your Gumroad account."
+   },
+   {
+    "field": "auth",
+    "url": "https://gumroad.com/claude",
+    "quote": "Disconnecting the connector in your chat app does not revoke its access token, so revoke it here to end the connection."
+   },
+   {
+    "field": "api",
+    "url": "https://jentic.com/apis/gumroad.com/gumroad.md",
+    "quote": "Pass the token as Authorization: Bearer <token>."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.n8n.io/integrations/builtin/credentials/gumroad",
+    "quote": "Create an application to generate an access token."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The official pages (gumroad.com/api and help article 280-create-application-api) load their content with JavaScript, so the fetch got no text. Scopes, webhook resources (sale, refund, cancellation, dispute, subscription_*) and the 'no review' finding come from secondary sources. Check them in a browser and confirm there is no test mode.",
+  "changes": [
+   {
+    "field": "evidence",
+    "old": "3 items, none for access",
+    "new": "Added an access quote from n8n and an extra auth quote from gumroad.com/claude; replaced the Jentic quote with the exact sentence on the page",
+    "why": "Automated check flagged missing access evidence; all quotes re-verified on fetched pages"
+   },
+   {
+    "field": "auth_notes",
+    "old": "Register an OAuth application in Gumroad settings... personal access token can be generated from the app page...",
+    "new": "Adds the Settings > Advanced location, the 127.0.0.1 redirect placeholder for personal tokens, the access_token parameter vs Bearer header, and the edit_sales refund scope",
+    "why": "Search summaries of Gumroad's help article add these details; the official page still loads only via JavaScript"
+   },
+   {
+    "field": "access_notes",
+    "old": "...could not read the official help article body to confirm.",
+    "new": "Notes that Gumroad has no paid API tier (sellers pay a fee per sale) and still has no evidence of OAuth app review",
+    "why": "Clarifies the free-tier versus plan question the method asks about"
+   },
+   {
+    "field": "buildability (confidence)",
+    "old": "medium",
+    "new": "high",
+    "why": "API access is self-serve and Gumroad's hosted MCP server is confirmed on gumroad.com/claude and gumroad.com/mcp"
+   },
+   {
+    "field": "blocker_notes",
+    "old": "The API is narrower than the full product. Verify whether OAuth apps need approval for public distribution.",
+    "new": "Public REST API with self-serve OAuth apps and tokens, plus an official hosted MCP server. The API covers less than the full product. I found no documented test mode.",
+    "why": "Searches found no OAuth review requirement; the open question moves to needs_human"
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: The official API docs at gumroad.com/api did not render in fetch, so the endpoint list, webhook details, and OAuth scopes come from third-party mirrors. Please confirm whether OAuth apps need review for public use and whether any test mode exists."
+}

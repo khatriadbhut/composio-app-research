@@ -1,0 +1,246 @@
+{
+ "id": 50,
+ "slug": "fanbasis",
+ "app": "fanbasis",
+ "category": "Ecommerce",
+ "hint": "fanbasis.com",
+ "pass": 2,
+ "at": "2026-11-25T03:48:48.815Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/FanBasis/fbnewapi"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "fanbasis API documentation api key"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "fanbasis MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://fb-apidocs.pages.dev/en/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://zapier.com/mcp/fanbasis"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.fanbasis.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.npmjs.com/package/@fanbasis/checkout-sdk"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "\"fanbasis\" \"x-api-key\" OR \"public-api\" checkout-sessions"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "FanBasis creator payments platform pricing fees"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://commasdocs.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://raw.githubusercontent.com/otniel-bit/fbnewapi/main/api-docs.md"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "FanBasis rebrand Commas commas.com API developers"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://edubracket.com/articles/fanbasis-alternatives-2026"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://commas.com/fanbasis-is-now-commas"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Commas MCP server FanBasis API key Claude"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "commasdocs.com API keys scopes webhooks sandbox"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://commasdocs.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://processingscoop.com/blog/fanbasis-review"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://raw.githubusercontent.com/FanBasis/fbnewapi/main/README.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://creatoreconomytools.com/tool/commas"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://commas.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://commas.com/enterprises"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Creator/info-product checkout and payments platform (FanBasis, rebranded Commas) with REST API.\",\"subcategory\":\"Creator payments / checkout pla"
+  }
+ ],
+ "cost_usd": 0.4294896,
+ "duration_ms": 106732,
+ "turns": 25,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Creator/info-product checkout and payments platform (FanBasis, rebranded Commas) with REST API.",
+  "subcategory": "Creator payments / checkout platform",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Each merchant has an API key, sent in an `x-api-key` header to https://www.fanbasis.com/public-api/. The base URL stayed the same after the rebrand to Commas. Keys reportedly carry granular scopes such as checkout-sessions, refunds and webhooks. No OAuth was found, so a multi-user toolkit would need each user to paste their own key. These details come from search-indexed text of commasdocs.com and a GitHub mirror of the same reference. The docs site is a JavaScript single-page app, so the page itself could not be rendered to confirm them.",
+  "access": "self_serve_free",
+  "access_notes": "Signup is public through \"Get started\" at commas.com/login, and no application step is shown. The indexed docs say keys are created in the dashboard under Account → API Keys, or with the CLI (`commas keys add sandbox`). Sandbox keys are separate and come from sandbox.commas.net. Pricing is not published: each business gets an individual quote, with fees taken per transaction. Taking live payments probably requires merchant onboarding and KYC as a payment processor, but this was not confirmed. Confidence in self-serve developer access is low to medium.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Indexed docs describe checkout sessions (create, get, delete, embedded), checkout transactions, refunds, subscription extension, products, discount codes and webhook subscriptions (list, create, delete, test). That is probably around 15–30 operations. The full list could not be counted because the docs SPA did not render.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The vendor's own MCP server is in beta. The commas.com homepage lists \"MCP (beta): Run Commas from your AI assistant\", covering checkout links, refunds and reporting. Per the indexed commasdocs.com text, the remote URL is https://www.fanbasis.com/mcp and it authenticates with a FanBasis API key. A one-click Claude Desktop install also exists. Zapier separately lists a FanBasis MCP integration, which is third-party.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The API key is per merchant, with no OAuth, so each user must supply their own key. The product was renamed: FanBasis became Commas on 2026-07-14, but the API host is still fanbasis.com. Pricing is quote-based, and live-payment onboarding is unverified. The docs site (commasdocs.com) is a JavaScript SPA that automated fetching could not render, so the endpoint details rest on indexed text.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://commas.com/fanbasis-is-now-commas",
+    "quote": "FanBasis did not shut down. It changed its name to Commas as part of a rebrand on July 14, 2026."
+   },
+   {
+    "field": "api",
+    "url": "https://commas.com/enterprises",
+    "quote": "APIs and embeddable components, live in days not quarters."
+   },
+   {
+    "field": "mcp",
+    "url": "https://commas.com/",
+    "quote": "Run Commas from your AI assistant."
+   },
+   {
+    "field": "auth",
+    "url": "https://commasdocs.com/",
+    "quote": "x-api-key: YOUR_API_KEY"
+   },
+   {
+    "field": "access",
+    "url": "https://creatoreconomytools.com/tool/commas",
+    "quote": "No published pricing. You get a quote."
+   },
+   {
+    "field": "mcp",
+    "url": "https://creatoreconomytools.com/tool/commas",
+    "quote": "There are APIs and SDKs, and an MCP integration in beta for connecting AI assistants."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "low",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "commasdocs.com is a JavaScript SPA that WebFetch could not render; it only showed \"Unpacking...\". The auth header, scopes, sandbox host, endpoint list and MCP URL (https://www.fanbasis.com/mcp) are taken from search-indexed text of that site, not from a rendered page. A human should open commasdocs.com in a browser and confirm three things: the MCP URL, whether sandbox API keys are fully self-serve, and whether live keys require merchant underwriting.",
+  "changes": [
+   {
+    "field": "what_it_does",
+    "old": "Payment and checkout platform for creators and info-product sellers, with a public API and checkout SDK.",
+    "new": "Creator/info-product checkout and payments platform (FanBasis, rebranded Commas) with REST API.",
+    "why": "The commas.com rebrand page confirms that FanBasis became Commas on 2026-07-14."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Unconfirmed; inferred from SDK description",
+    "new": "Per-merchant x-api-key header with scopes; base URL www.fanbasis.com/public-api",
+    "why": "The indexed commasdocs.com text shows the x-api-key header and the scope table."
+   },
+   {
+    "field": "access",
+    "old": "approval_required",
+    "new": "self_serve_free",
+    "why": "Signup is public through commas.com/login, the docs say keys come from Account → API Keys, and there is a separate self-serve sandbox. No application gate was found, though live-payment KYC is unverified."
+   },
+   {
+    "field": "access_notes",
+    "old": "Unverified; site unreachable",
+    "new": "Dashboard/CLI-issued keys, separate sandbox, quote-based pricing",
+    "why": "The commas.com homepage and the creatoreconomytools review were read directly."
+   },
+   {
+    "field": "api_breadth",
+    "old": "narrow",
+    "new": "moderate",
+    "why": "Besides checkout sessions, transactions and webhooks, the docs also cover refunds, products, discount codes and subscriptions."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "checkout-sessions, transactions, webhook-subscriptions only",
+    "new": "Added refunds, products, discount codes, subscription extension, embedded sessions",
+    "why": "Taken from the indexed scope table in the Commas API reference."
+   },
+   {
+    "field": "mcp",
+    "old": "none_found",
+    "new": "official_remote",
+    "why": "The commas.com homepage advertises an MCP beta, and the docs give the remote URL https://www.fanbasis.com/mcp."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "No MCP found; did not search",
+    "new": "Official beta remote MCP at https://www.fanbasis.com/mcp, API-key auth",
+    "why": "Found on the vendor homepage and in the docs."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Docs could not be verified...",
+    "new": "Per-merchant key, rebrand, quote pricing, SPA docs unrendered",
+    "why": "Updated with the findings above."
+   },
+   {
+    "field": "evidence",
+    "old": "github.com/FanBasis/fbnewapi (404) and npm (403) with paraphrased quotes",
+    "new": "commas.com pages, creatoreconomytools, commasdocs.com",
+    "why": "The original evidence links were dead or blocked when re-fetched, so their quotes were unsupported."
+   },
+   {
+    "field": "confidence",
+    "old": "all low",
+    "new": "auth/api/mcp/buildability medium, access low",
+    "why": "Vendor pages now confirm the API and MCP; access is still only partly verified."
+   }
+  ]
+ },
+ "flags_given": "- agent marked auth confidence low\n- no evidence cited for auth\n- agent marked access confidence low\n- no evidence cited for access\n- agent marked api confidence low\n- agent marked mcp confidence low\n- no evidence cited for mcp\n- agent marked buildability confidence low\n- dead link cited for api: https://github.com/FanBasis/fbnewapi\n- dead link cited for webhooks: https://github.com/FanBasis/fbnewapi\n- agent's open question: The official docs could not be opened: fanbasis.com and its docs host returned 403, and the GitHub and npm pages returned 404 or 403. The evidence quotes are paraphrased from search-result summaries, not read on the pages themselves. A human should confirm the docs URL, the auth method, how API keys"
+}

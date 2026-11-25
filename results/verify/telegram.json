@@ -1,0 +1,197 @@
+{
+ "id": 27,
+ "slug": "telegram",
+ "app": "Telegram",
+ "category": "Communications and Messaging",
+ "hint": "core.telegram.org",
+ "pass": 2,
+ "at": "2026-11-25T03:45:55.623Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/api/obtaining_api_id"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/api/auth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/bots/api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/bots/webapps"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Telegram official MCP server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Telegram login OAuth OpenID Connect core.telegram.org widgets login"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/bots/telegram-login"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://core.telegram.org/bots/features"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Messaging platform with an HTTP Bot API and MTProto user-client API.\",\"subcategory\":\"Messaging platform / bot API\",\"auth_methods\":[\"bot_token\","
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Messaging platform with an HTTP Bot API and MTProto user-client API.\",\"subcategory\":\"Messaging platform / bot API\",\"auth_methods\":[\"bot_token\","
+  }
+ ],
+ "cost_usd": 0.3602175,
+ "duration_ms": 96329,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Messaging platform with an HTTP Bot API and MTProto user-client API.",
+  "subcategory": "Messaging platform / bot API",
+  "auth_methods": [
+   "bot_token",
+   "other"
+  ],
+  "auth_primary": "bot_token",
+  "auth_notes": "Bot API: each bot gets a token from @BotFather, which is passed in the URL path (api.telegram.org/bot<token>/METHOD). MTProto user API: api_id/api_hash from my.telegram.org, then login by phone code (auth.sendCode), 2FA via SRP, or a QR-code login token. Bots can also log in over MTProto with auth.importBotAuthorization. Telegram now offers 'Log In with Telegram', a standard OIDC authorization-code flow with PKCE (oauth.telegram.org; scopes openid, profile, phone, telegram:bot_access). It gives identity only. Its one extra power is letting your bot DM the user. It does not grant API access to the user's chats, so it is not listed as an API auth method. A multi-user toolkit would use bot tokens. Acting as a user needs an MTProto session, with ban risk. Business Mode is a middle path: a user connects a bot to their account and chooses which chats it can access, but this needs Telegram Business (Premium).",
+  "access": "self_serve_free",
+  "access_notes": "Bot tokens are free and instant via @BotFather, with no review. api_id/api_hash is free at my.telegram.org. Each phone number can have only one api_id. Third-party clients must follow the API Terms of Service. All accounts that log in through unofficial API clients are automatically put under observation, and flooding or spam leads to a permanent ban. Business Mode bot connections require the end user to have Telegram Business/Premium.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Bot API is an HTTP API (GET/POST against api.telegram.org, currently version 10.5, dated 2026-11-22). It has 100+ methods covering messages, media, chats and members, inline mode, payments and Stars, stickers, business connections, Mini Apps and games. It can also run as a self-hosted Local Bot API Server. MTProto is a separate binary RPC protocol (not REST) with a full user-client method set, wrapped by the TDLib library. I did not count the methods exactly.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "No official Telegram MCP server was found. Community MTProto/user-account servers: chigwell/telegram-mcp (Telethon), sparfenyuk/mcp-telegram, overpod/mcp-telegram (GramJS), lexfrei/mcp-tg (Go), l1v0n1/telegram-mcp-server. There are also community Bot API-token servers.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "There is no delegated OAuth for API access. OIDC login gives identity and bot-DM permission only. Bots see only chats where they were started or added, or the chats a Business user explicitly connects (Premium only). Acting as a user requires an MTProto phone or QR login with ban monitoring and ToS risk. In a multi-user toolkit, each user would supply their own bot token.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/bots/api",
+    "quote": "Each bot is given a unique authentication token when it is created."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://core.telegram.org/bots/api",
+    "quote": "we will send an HTTPS POST request to the specified URL"
+   },
+   {
+    "field": "access",
+    "url": "https://core.telegram.org/api/obtaining_api_id",
+    "quote": "For the moment each number can only have one api_id connected to it."
+   },
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/api/auth",
+    "quote": "a text message containing an authorization code is sent to the user's phone using auth.sendCode"
+   },
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/bots/telegram-login",
+    "quote": "Our implementation follows the standard Authorization Code Flow with PKCE support."
+   },
+   {
+    "field": "auth",
+    "url": "https://core.telegram.org/bots/telegram-login",
+    "quote": "Allows your bot to send direct messages to the user after login."
+   },
+   {
+    "field": "api",
+    "url": "https://core.telegram.org/bots/features",
+    "quote": "https://api.telegram.org/bot<token>/test/METHOD_NAME"
+   },
+   {
+    "field": "api",
+    "url": "https://core.telegram.org/api/auth",
+    "quote": "it is sufficient to specify the phone number as 99966XYYYY, where YYYY are random numbers"
+   },
+   {
+    "field": "buildability",
+    "url": "https://core.telegram.org/bots/features",
+    "quote": "The account owner can specify which chats your bot can access."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/sparfenyuk/mcp-telegram",
+    "quote": "mcp telegram"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "A human needs to decide whether automating user accounts over MTProto is acceptable under Telegram's API ToS, given that such accounts are monitored. The exact Bot API method count was not verified because the page is about 620k characters.",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "Bot token + MTProto phone login; 'There is no OAuth2 for acting on a user's account.'",
+    "new": "Adds QR login, bot MTProto login, the OIDC 'Log In with Telegram' (identity only) and Business Mode.",
+    "why": "core.telegram.org/bots/telegram-login documents an OIDC auth-code+PKCE flow the first pass missed. It is identity only, so it was not added to auth_methods. bots/features documents Business Mode."
+   },
+   {
+    "field": "access_notes",
+    "old": "...monitored, and flooding or spam can get an account banned.",
+    "new": "Adds the ToS compliance requirement, the automatic observation of unofficial-client accounts, and the Premium requirement for Business Mode.",
+    "why": "Verified on obtaining_api_id and bots/features."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Roughly 100+ methods; MTProto (TDLib) broader.",
+    "new": "Adds the version (10.5, 2026-11-22), the Local Bot API Server, business connections, and that MTProto is a binary RPC protocol (not REST).",
+    "why": "Seen on the Bot API page. The api_styles enum has no RPC option, so the MTProto style is recorded in the notes."
+   },
+   {
+    "field": "evidence",
+    "old": "access quote 'Log in at my.telegram.org ... API development tools'; api quote 'Test numbers use the format 99966XYYYY'",
+    "new": "Replaced with verbatim quotes. Added a Bot API test-environment quote and OIDC and Business Mode quotes.",
+    "why": "The automated checks found both quotes were not verbatim, and re-fetching confirmed it."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes (MTProto test DC only)",
+    "new": "yes (Bot API test env also confirmed)",
+    "why": "bots/features documents https://api.telegram.org/bot<token>/test/METHOD_NAME, which resolves the open question."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Bots limited to chats they're in; no OAuth; per-user bot tokens.",
+    "new": "Adds that OIDC gives identity only and that Business Mode is a Premium-only partial path.",
+    "why": "Reflects the newly verified auth options."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "four community servers",
+    "new": "Adds l1v0n1/telegram-mcp-server and community Bot API-token servers.",
+    "why": "A second search still found no official server."
+   },
+   {
+    "field": "needs_human",
+    "old": "Truncation, unconfirmed Bot API test env, MCP search, ToS",
+    "new": "ToS decision and method count only",
+    "why": "The Bot API test environment and MCP status are now verified."
+   }
+  ]
+ },
+ "flags_given": "- quote for access not found on https://core.telegram.org/api/obtaining_api_id\n- quote for api not found on https://core.telegram.org/api/auth\n- agent's open question: The Bot API page was truncated at about 100k of 620k characters, so I did not read the full method list or the rate limits. The Bot API test environment is not confirmed. The MTProto test servers are confirmed at core.telegram.org/api/auth. The sandbox is \"yes\" on that basis. The community MCP searc"
+}

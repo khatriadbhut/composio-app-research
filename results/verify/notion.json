@@ -1,0 +1,198 @@
+{
+ "id": 71,
+ "slug": "notion",
+ "app": "Notion",
+ "category": "Productivity and Project Management",
+ "hint": "developers.notion.com",
+ "pass": 2,
+ "at": "2026-11-25T03:51:26.111Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.notion.com/guides/get-started/authorization"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.notion.com/reference/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.notion.com/guides/mcp/get-started-with-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.notion.com/reference/intro"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.notion.com/llms.txt"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Notion API free plan available integrations pricing page \"API\""
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.notion.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.notion.com/openapi.json"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "notion.com help create integration API \"all plans\" OR \"Free plan\" connections developers"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.notion.com/help/create-integrations-with-the-notion-api"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"All-in-one workspace for notes, docs, databases, wikis and project management.\",\"subcategory\":\"Docs / workspace / project management\",\"auth_met"
+  }
+ ],
+ "cost_usd": 0.256787,
+ "duration_ms": 72046,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "All-in-one workspace for notes, docs, databases, wikis and project management.",
+  "subcategory": "Docs / workspace / project management",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Three credential types, all sent as Bearer in the Authorization header with a Notion-Version header. (1) Internal connection API token: static, scoped to one workspace. (2) Personal access token (PAT): created by a Notion user in the Developer portal, and acts with that user's permissions. (3) OAuth 2.0 for public connections, with token create, refresh, introspect and revoke endpoints. Users choose which pages to share. Multi-user toolkits should use a public OAuth connection.",
+  "access": "self_serve_free",
+  "access_notes": "Free-plan workspaces can create connections, but on Free and Plus only workspace owners can do so. Business and Enterprise owners can let members create them. Public OAuth connections need no Marketplace submission or review; review applies only to a Marketplace listing. The pricing page lists \"Public API\" and \"Webhooks\" rows but showed no per-plan values. Business and Enterprise get higher rate limits. MCP bearer tokens are limited to Business and Enterprise, but that is separate from the REST API.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Base URL https://api.notion.com, versioned with a Notion-Version header. llms.txt lists 77 endpoint reference pages, about 74 distinct operations. They cover tokens, blocks, pages (including markdown read/write), databases and data sources (plus legacy endpoints), views, comments, file uploads, search, users, custom emoji, meeting notes, Notion Agents and sessions, and agent skills. An OpenAPI 3.1 spec is published at developers.notion.com/openapi.json, alongside openapi-adminApi.json and openapi-undocumented.json.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.notion.com/mcp, hosted by Notion. It uses OAuth by default. MCP bearer tokens are available on Business and Enterprise only, and only workspace owners can create them. Business and Enterprise also get higher MCP rate limits.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Public OAuth connections work without Marketplace review. On Free and Plus, only workspace owners can create the connection. End users must pick which pages the integration can access. There is no dedicated sandbox, but a free workspace can be used for testing.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.notion.com/guides/get-started/authorization",
+    "quote": "Marketplace submission or review is not required."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.notion.com/guides/get-started/authorization",
+    "quote": "Personal access tokens (PATs) are created directly by a Notion user in the Developer portal."
+   },
+   {
+    "field": "access",
+    "url": "https://www.notion.com/help/create-integrations-with-the-notion-api",
+    "quote": "On Free and Plus plans, only workspace owners can create connections."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.notion.com/reference/webhooks",
+    "quote": "Webhooks let your connection receive real-time updates from Notion."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+    "quote": "https://mcp.notion.com/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.notion.com/reference/intro",
+    "quote": "Send requests over HTTPS to `https://api.notion.com`."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.notion.com/openapi.json",
+    "quote": "\"openapi\": \"3.1.0\" ... \"title\": \"Notion API\""
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "...I did not find a pricing page confirming the API is available on the free plan...",
+    "new": "Free-plan workspaces can create connections (owners only on Free and Plus); no review for public OAuth; pricing table shows no per-plan values",
+    "why": "The Notion help center says Free-plan owners can create connections, which confirms free-tier access. The pricing page has no per-plan cells for Public API."
+   },
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "llms.txt lists about 77 endpoint reference pages (about 74 distinct operations), including views, agents, meeting notes and markdown endpoints."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...I did not count operations...",
+    "new": "~74 operations enumerated by group; OpenAPI 3.1 spec URLs",
+    "why": "Counted the operations from llms.txt."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "llms.txt links /openapi.json, which is an OpenAPI 3.1.0 document titled 'Notion API'."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "The docs mention no sandbox or test mode. Developers test in an ordinary free workspace."
+   },
+   {
+    "field": "evidence (webhooks)",
+    "old": "Notion will tell you the moment something important happens.",
+    "new": "Webhooks let your connection receive real-time updates from Notion.",
+    "why": "The original quote was not on the page."
+   },
+   {
+    "field": "evidence (access, auth PAT, api spec)",
+    "old": "none",
+    "new": "Added help-center access quote, PAT quote, openapi.json quote",
+    "why": "The access field had no evidence, and the PAT method had none either."
+   },
+   {
+    "field": "confidence.access / confidence.api",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Confirmed from primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm free plan, OpenAPI, sandbox, quotes",
+    "new": "",
+    "why": "All open questions were resolved from primary sources."
+   },
+   {
+    "field": "blocker_notes / auth_notes / mcp_notes",
+    "old": "free workspace unconfirmed; MCP token Business+",
+    "new": "Owner-only creation on Free and Plus; PAT acts as the user; MCP token owner-only, Business+",
+    "why": "Added details confirmed in the docs."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: Confirm that the API is free on the free Notion plan. Confirm whether an OpenAPI spec exists, since I did not find one. Confirm whether a sandbox exists. The fetch results are summaries, so the quotes are paraphrase-adjacent and worth spot-checking."
+}

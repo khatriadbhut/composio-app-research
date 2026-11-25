@@ -1,0 +1,184 @@
+{
+ "id": 30,
+ "slug": "vonage",
+ "app": "Vonage",
+ "category": "Communications and Messaging",
+ "hint": "developer.vonage.com",
+ "pass": 2,
+ "at": "2026-11-25T03:45:19.274Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/getting-started/concepts/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/mcp-server/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://api.support.vonage.com/hc/en-us/articles/204014853"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/api"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Vonage MCP server install Server API Bindings npm documentation-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/api/sms"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Vonage API free trial credit demo mode restrictions whitelisted numbers upgrade account"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/mcp-server/how-to-guides/install-tooling-mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/messages/concepts/messages-api-sandbox"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.vonage.com/en/getting-started/concepts/signing-messages"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud communications APIs: SMS, voice, messaging, verify, video, numbers.\",\"subcategory\":\"CPaaS / Communications APIs\",\"auth_methods\":[\"api_key"
+  }
+ ],
+ "cost_usd": 0.255223,
+ "duration_ms": 60020,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud communications APIs: SMS, voice, messaging, verify, video, numbers.",
+  "subcategory": "CPaaS / Communications APIs",
+  "auth_methods": [
+   "api_key",
+   "basic",
+   "jwt_service_account",
+   "hmac_signature",
+   "other"
+  ],
+  "auth_primary": "jwt_service_account",
+  "auth_notes": "Only account-level credentials are available:\n- API key/secret, sent as a Basic Authorization header or as parameters on legacy APIs.\n- JWT signed with RS256 using an application ID and private key. Docs recommend JWT for most uses, including Messages and Verify.\n- Digest auth (key as username, secret as password) for SIP trunking.\n- Signed SMS requests, which use SIGNATURE_SECRET instead of API_SECRET.\n\nThere is no OAuth2 delegated flow for third parties, so each end user must supply their own key/secret or application ID plus private key.",
+  "access": "self_serve_trial",
+  "access_notes": "Sign-up is self-serve and new accounts get a small free credit (docs cite €2) in DEMO mode. While in demo mode:\n- SMS can only go to the registered number plus a few whitelisted test numbers. Sources disagree on the count (4, 5 or 10).\n- Voice calls can only go to the registered number.\n- Trial SMS messages are tagged [FREE SMS DEMO, TEST MESSAGE].\n- Trial credit cannot buy virtual numbers.\n\nAdding funds converts the account to paid pay-as-you-go and lifts the limits. There is no app review and no plan tier gate.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The API reference lists these APIs:\n- Messages, Dispatch, SMS, External Accounts, WhatsApp Provisioning, Conversation, Alerts and 2FA.\n- Voice (with NCCO and Voice Webhooks) and Media.\n- Identity Insights and Device Location.\n- Application and Reports.\n- Number Management, Number Pools and US Number Deactivation.\n- Account and Pricing.\n- Verify, including custom templates.\n- Redact and Audit.\n\nVideo is also offered. Each API reference page has OpenAPI YAML/JSON downloads.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "Vonage publishes two official MCP servers:\n- **Server API Bindings (Tooling) MCP server:** npm `@vonage/vonage-mcp-server-api-bindings`. It runs locally over stdio via npx and needs VONAGE_API_KEY/SECRET, APPLICATION_ID and PRIVATE_KEY64 set as environment variables. This is the one that can call the APIs.\n- **Documentation MCP server:** hosted remotely at https://documentation-mcp.vonage.dev/mcp (HTTP). It only serves documentation and cannot call any APIs.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "There is no OAuth2, so users must paste an API key/secret or an application ID plus private key for JWT. Real sending beyond whitelisted test numbers requires topping up the account with credit, and trial credit is small. A free Messages API Sandbox (WhatsApp, Viber, Messenger, Instagram) helps with testing.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+    "quote": "basic authentication does not support webhooks or advanced features such as ACLs"
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/signing-messages",
+    "quote": "you will need to use the SIGNATURE_SECRET instead of your API_SECRET when sending the message"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.vonage.com/en/api",
+    "quote": "Details of the incoming webhooks sent by the Voice API"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.vonage.com/en/api/sms",
+    "quote": "Download OpenAPI Specification"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.vonage.com/en/mcp-server/how-to-guides/install-tooling-mcp-server",
+    "quote": "we only support the Private Key in Base64 format"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.vonage.com/en/messages/concepts/messages-api-sandbox",
+    "quote": "The Messages API Sandbox is a quick way to try out sending messages via certain messaging channels"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The trial support article (api.support.vonage.com/204014853) returned 403 to the fetcher. The trial credit amount (€2) and the test-number limit (sources say 4, 5 or 10) come from search snippets only, so check them on a dashboard sign-up.",
+  "changes": [
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The SMS API reference page has 'Download OpenAPI Specification' links in YAML and JSON."
+   },
+   {
+    "field": "sandbox",
+    "old": "no",
+    "new": "yes",
+    "why": "Vonage documents a free Messages API Sandbox for WhatsApp, Viber, Messenger and Instagram."
+   },
+   {
+    "field": "auth_methods",
+    "old": "api_key, basic, jwt_service_account, other",
+    "new": "api_key, basic, jwt_service_account, hmac_signature, other",
+    "why": "The signing-messages guide lets SMS requests be signed with SIGNATURE_SECRET in place of API_SECRET."
+   },
+   {
+    "field": "evidence",
+    "old": "auth quote 'API key and secret sent Base64 encoded in the Authorization header'; access quote from a support article",
+    "new": "Quotes I actually saw on the pages",
+    "why": "The first auth quote was a paraphrase that does not appear on the page verbatim. The support article returned 403, so its quote could not be verified."
+   },
+   {
+    "field": "access_notes",
+    "old": "Not verified against pricing pages",
+    "new": "Adds €2 demo credit, the trial SMS tag, the bar on buying numbers with trial credit, and the top-up upgrade path",
+    "why": "Details come from Vonage docs and support snippets."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "There is no dedicated sandbox.",
+    "new": "Mentions the Messages API Sandbox",
+    "why": "The sandbox exists."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Mentions both servers",
+    "new": "Adds the stdio/npx run mode, the required environment credentials, and that the docs server is remote HTTP and docs-only",
+    "why": "Confirmed in the install guides."
+   },
+   {
+    "field": "confidence",
+    "old": "api medium, mcp medium, buildability medium",
+    "new": "api high, mcp high, buildability high",
+    "why": "The OpenAPI specs and both MCP servers were confirmed on Vonage's own pages."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Confirm whether OpenAPI specs are published (the API reference is built from them, but I did not find a link). Confirm the current free-trial terms and credit amount on the pricing or sign-up pages. Check whether any API supports OAuth-style delegated access (I found none)."
+}

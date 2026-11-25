@@ -1,0 +1,75 @@
+verify: 74 apps, model opus
+[1/74] ok   LinkedIn Ads               6 changes: evidence (webhooks), evidence (mcp), mcp_notes, evidence (buildability), access_notes / blocker_notes, confidence.access / confidence.api
+[2/74] ok   Vonage                     8 changes: openapi_spec, sandbox, auth_methods, evidence, access_notes, blocker_notes, mcp_notes, confidence
+[3/74] ok   Aircall                    8 changes: access_notes, sandbox, auth_notes, api_breadth_notes, mcp_notes, evidence, confidence, needs_human
+[4/74] ok   Google Ads                 8 changes: api_styles, access_notes, auth_notes, mcp_notes, blocker_notes, evidence, confidence, needs_human
+[5/74] ok   GoHighLevel                11 changes: sandbox, access_notes, confidence.access, confidence.api, confidence.buildability, api_breadth_notes, auth_notes, mcp_notes, blocker_notes, evidence, needs_human
+[6/74] ok   Meta Ads                   8 changes: auth_notes, access_notes, mcp_notes, blocker_notes, evidence, confidence, needs_human, what_it_does
+[7/74] ok   WhatsApp Business          8 changes: api_styles, api_breadth, openapi_spec, mcp_notes, access_notes, evidence, confidence, needs_human
+[8/74] ok   Telegram                   8 changes: auth_notes, access_notes, api_breadth_notes, evidence, sandbox, blocker_notes, mcp_notes, needs_human
+[9/74] ok   Klaviyo                    9 changes: evidence[auth], evidence[mcp], sandbox, auth_notes, access_notes, api_breadth_notes, mcp_notes, confidence, needs_human
+[10/74] ok   SendGrid                   9 changes: auth_methods, auth_notes, access_notes, evidence, mcp_notes, confidence.mcp, confidence.buildability, blocker_notes, needs_human
+[11/74] ok   Threads (Meta)             8 changes: evidence.mcp, evidence.webhooks, evidence.auth/access, access_notes, auth_notes, api_breadth_notes, needs_human, confidence.access/buildability
+[12/74] ok   Pinterest                  7 changes: webhooks, auth_methods, auth_notes, access_notes, blocker_notes, confidence, evidence
+[13/74] ok   Mailchimp                  9 changes: openapi_spec, mcp_notes, access_notes, auth_notes, evidence, blocker_notes, confidence.api, confidence.buildability, needs_human
+[14/74] ok   systeme.io                 8 changes: api_breadth, api_breadth_notes, blocker_notes, auth_notes, mcp_notes, access_notes, evidence[auth].quote, confidence
+[15/74] ok   Shopify                    8 changes: auth_methods, auth_notes, access_notes, api_breadth_notes, mcp_notes, evidence, confidence, needs_human
+[16/74] ok   WooCommerce                6 changes: auth_notes, mcp_notes, confidence.mcp, evidence, access_notes, needs_human
+[17/74] ok   BigCommerce                9 changes: auth_methods, access, access_notes, api_styles, buildability, main_blocker, blocker_notes, mcp_notes, confidence.mcp / buildability
+[18/74] ok   Squarespace                8 changes: access_notes, sandbox, api_breadth_notes, auth_notes, evidence, confidence.access, confidence.buildability, needs_human
+[19/74] ok   Salesforce Commerce Cloud  10 changes: access, main_blocker, buildability, evidence, auth_notes, api_breadth_notes, mcp_notes, confidence.auth, confidence.access, confidence.mcp
+[20/74] ok   Amazon Selling Partner     7 changes: auth_methods, auth_notes, access_notes, mcp_notes, evidence, confidence, needs_human
+[21/74] ok   Gumroad                    5 changes: evidence, auth_notes, access_notes, buildability (confidence), blocker_notes
+[22/74] ok   Ecwid                      7 changes: access, openapi_spec, auth_notes, api_breadth_notes, mcp_notes, evidence, confidence
+[23/74] ok   DataForSEO                 8 changes: mcp_notes, openapi_spec, auth_notes, access_notes, api_breadth_notes, evidence, confidence, needs_human
+[24/74] ok   SE Ranking                 9 changes: auth_notes, access_notes, evidence[access].quote, evidence[auth].quote, api_breadth_notes, mcp_notes, sandbox, confidence, needs_human
+[25/74] ok   fanbasis                   11 changes: what_it_does, auth_notes, access, access_notes, api_breadth, api_breadth_notes, mcp, mcp_notes, blocker_notes, evidence, confidence
+[26/74] ok   MrScraper                  9 changes: access, access_notes, buildability, main_blocker, blocker_notes, api_breadth_notes, evidence.webhooks, evidence.access, needs_human
+[27/74] ok   Apify                      6 changes: auth_notes, access_notes, buildability, evidence, confidence, needs_human
+[28/74] ok   Firecrawl                  8 changes: auth_methods, api_breadth, api_breadth_notes, access_notes, evidence.what_it_does, auth_notes, confidence.api, needs_human
+[29/74] ok   Ahrefs                     8 changes: api_breadth, openapi_spec, webhooks, auth_notes, access_notes, confidence, evidence, what_it_does
+[30/74] ok   Bright Data                6 changes: openapi_spec, api_breadth_notes, mcp_notes, access_notes, evidence, confidence.access
+[31/74] ok   Sherlock                   5 changes: mcp_notes, evidence, confidence.mcp, confidence.buildability, needs_human
+[32/74] ok   Magento (Adobe Commerce)   8 changes: auth_methods, auth_primary, auth_notes, access_notes, api_breadth_notes, evidence, confidence, what_it_does
+[33/74] ok   Clay                       8 changes: mcp_notes, auth_notes, evidence, confidence.mcp, confidence.auth, api_breadth_notes, access_notes, needs_human
+[34/74] ok   GitHub                     7 changes: api_styles, access_notes, evidence, api_breadth_notes, auth_notes, confidence.access / confidence.api, needs_human
+[35/74] ok   Netlify                    6 changes: access_notes, evidence, confidence.access, auth_notes, mcp_notes, needs_human
+[36/74] ok   Waterfall.io               7 changes: access_notes, sandbox, mcp_notes, api_breadth_notes, evidence, confidence.access, needs_human
+[37/74] ok   Cloudflare                 9 changes: auth_primary, auth_methods, auth_notes, access_notes, blocker_notes, mcp_notes, evidence, confidence, needs_human
+[38/74] ok   Vercel                     9 changes: auth_notes, access_notes, api_breadth_notes, openapi_spec, what_it_does, mcp_notes, evidence, confidence, needs_human
+[39/74] ok   Supabase                   9 changes: webhooks, sandbox, evidence, access_notes, api_breadth_notes, what_it_does, blocker_notes, confidence.api, confidence.buildability
+[40/74] ok   Neo4j                      8 changes: auth_methods, auth_notes, access_notes, what_it_does, mcp_notes, evidence, confidence, blocker_notes
+[41/74] ok   Snowflake                  7 changes: auth_methods, auth_notes, access_notes, api_breadth_notes, mcp_notes, confidence.access, needs_human
+[42/74] ok   Linear                     9 changes: auth_methods, auth_notes, access_notes, api_breadth_notes, mcp_notes, blocker_notes, evidence, confidence.access, needs_human
+[43/74] ok   Sentry                     8 changes: auth_methods, access, openapi_spec, buildability, main_blocker, access_notes / blocker_notes, api_breadth_notes, evidence
+[44/74] ok   Datadog                    9 changes: access, access_notes, auth_notes, sandbox, main_blocker, blocker_notes, api_breadth_notes, confidence, evidence
+[45/74] ok   Notion                     10 changes: access_notes, api_breadth, api_breadth_notes, openapi_spec, sandbox, evidence (webhooks), evidence (access, auth PAT, api spec), confidence.access / confidence.api, needs_human, blocker_notes / auth_notes / mcp_notes
+[46/74] FAIL Smartsheet                 You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[47/74] ok   Airtable                   9 changes: api_breadth, api_breadth_notes, access_notes, auth_notes, mcp_notes, blocker_notes, evidence, confidence, needs_human
+[48/74] FAIL Harvest                    You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[49/74] FAIL Monday.com                 You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[50/74] FAIL Stripe                     You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[51/74] FAIL Plaid                      You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[52/74] FAIL Coda                       You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[53/74] FAIL Binance                    You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[54/74] ok   Jira                       8 changes: auth_methods, auth_notes, api_styles, blocker_notes, api_breadth_notes, confidence.api, mcp_notes, needs_human
+[55/74] FAIL Paygent Connect            You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[56/74] FAIL iPayX                      You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[57/74] FAIL QuickBooks                 You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[58/74] FAIL Xero                       You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[59/74] FAIL Brex                       You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[60/74] ok   Asana                      7 changes: access_notes, sandbox, mcp_notes, evidence, confidence.access / confidence.buildability, auth_notes, needs_human
+[61/74] FAIL Ramp                       You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[62/74] FAIL PitchBook                  You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[63/74] FAIL NotebookLM                 You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[64/74] FAIL Otter AI                   You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[65/74] FAIL Fathom                     You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[66/74] FAIL Consensus                  You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[67/74] FAIL Reducto                    You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[68/74] FAIL Devin                      You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[69/74] ok   ClickUp                    6 changes: openapi_spec, mcp_notes, evidence, access_notes, confidence, needs_human
+[70/74] FAIL higgsfield                 You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[71/74] FAIL Mermaid CLI                You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[72/74] FAIL YouTube Transcript         You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[73/74] FAIL Grain                      You've hit your 5-hour limit · resets 2:10pm (Asia/Calcutta)
+[74/74] ok   MongoDB Atlas              11 changes: auth_methods, auth_notes, access_notes, mcp, mcp_notes, api_breadth_notes, sandbox, buildability, main_blocker, confidence, needs_human

@@ -1,0 +1,185 @@
+{
+ "id": 65,
+ "slug": "supabase",
+ "app": "Supabase",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "supabase.com/docs",
+ "pass": 2,
+ "at": "2026-11-25T03:50:18.113Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/reference/api/introduction"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Supabase OAuth apps build integration \"OAuth\" Management API docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/guides/getting-started/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/pricing"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Supabase Management API \"webhooks\" organization project webhook endpoints events"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://supabase.com/docs/guides/platform/webhooks"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Postgres backend platform: database, auth, storage, edge functions, plus a Management API.\",\"subcategory\":\"Backend-as-a-service / Postgres plat"
+  }
+ ],
+ "cost_usd": 0.23571180000000003,
+ "duration_ms": 55600,
+ "turns": 10,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Postgres backend platform: database, auth, storage, edge functions, plus a Management API.",
+  "subcategory": "Backend-as-a-service / Postgres platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The Management API accepts an access token as an `Authorization: Bearer` header. The token is either a personal access token (PAT, generated manually with a custom expiry) or an OAuth2 token. OAuth2 tokens come from an OAuth app registered under the organization's OAuth Apps tab, via the authorization code flow at api.supabase.com/v1/oauth/authorize with refresh tokens. Scopes are fixed on the app, and the scope query parameter is deprecated. Per-project data APIs (PostgREST, Storage) use separate project API keys or JWTs. Platform webhook endpoint examples use a PAT.",
+  "access": "self_serve_free",
+  "access_notes": "A free account can create PATs and OAuth apps from the org dashboard (OAuth Apps tab). The pricing page shows a $0 Free plan with 2 active projects; inactive projects pause after 1 week. Pricing does not restrict the Management API to paid plans. The OAuth integration guide describes no review or approval step, but it says \"Once you've published your OAuth App\" without explaining what publishing involves. It also mentions unspecified \"current limitations\" pending fine-grained access control. Separately, the platform webhooks feature is limited to an early-access allowlist.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Management API reference has about 20 endpoint groups: Advisors, Analytics, Auth, Billing, Compute, Database, Domains, Edge Functions, Environments, OAuth, Organization webhooks, Organizations, Members/Invitations, Profile, Project webhooks, Projects, Realtime, Rest, Secrets, and Storage. That's well over 50 operations, though I didn't count them exactly. The OpenAPI spec is at https://api.supabase.com/api/v1-json. The standard rate limit is 120 requests per minute, with stricter limits on some endpoints; for OAuth apps the limit is shared across the app.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted server is at https://mcp.supabase.com/mcp, with an open-source repo at github.com/supabase/mcp. By default it uses OAuth with dynamic client registration; a PAT in the Authorization header is available for CI, and clients that need it can use an OAuth client ID and secret.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Credentials are self-serve on the free tier: PATs and OAuth apps created in the dashboard, with no documented review step. The OpenAPI spec is published. Caveats: (1) Platform Webhooks (/v2/.../webhooks/endpoints) are early access, allowlisted orgs only, and others get 403 access_disabled, which limits trigger support. (2) OAuth app \"publishing\" isn't explained in the docs. (3) An official hosted MCP server exists, so a toolkit would overlap with it.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "All API requests require an access token to be included in the Authorization header"
+   },
+   {
+    "field": "auth",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "PATs are tokens with a custom expiry that you manually generate to access the Management API."
+   },
+   {
+    "field": "access",
+    "url": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+    "quote": "In your organization's settings, navigate to the OAuth Apps tab."
+   },
+   {
+    "field": "access",
+    "url": "https://supabase.com/pricing",
+    "quote": "Limit of 2 active projects."
+   },
+   {
+    "field": "api",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "Rate limits are applied to prevent abuse and ensure fair usage of the Management API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://supabase.com/docs/guides/platform/webhooks",
+    "quote": "Platform Webhooks is available to organizations on an early access allowlist."
+   },
+   {
+    "field": "mcp",
+    "url": "https://supabase.com/docs/guides/getting-started/mcp",
+    "quote": "By default the hosted Supabase MCP server uses dynamic client registration to authenticate with your Supabase org."
+   },
+   {
+    "field": "buildability",
+    "url": "https://supabase.com/docs/guides/integrations/build-a-supabase-oauth-integration",
+    "quote": "Once you've published your OAuth App on Supabase, you can use the OAuth 2.0 protocol"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Confirm what \"publishing\" an OAuth app involves and whether users from other organizations can authorize an unpublished app. The docs show no review step but don't explain publishing. Check whether Platform Webhooks access can be requested; it is currently allowlist-only.",
+  "changes": [
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The Platform Webhooks docs describe org- and project-scoped webhook endpoints created through the Management API. Noted as early access, allowlist only."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes",
+    "new": "unknown",
+    "why": "No page documents a sandbox or test mode separate from production. The free plan is a limited production tier, and the local CLI does not serve the Management API."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote 'OpenAPI spec at https://api.supabase.com/api/v1-json' (not verbatim); no access evidence",
+    "new": "Verbatim quotes from the API intro, the OAuth integration guide, pricing, the platform webhooks page, and the MCP guide",
+    "why": "The automated check could not find the api quote on the page, and the record had no access evidence."
+   },
+   {
+    "field": "access_notes",
+    "old": "Unverified OAuth review; pricing not checked",
+    "new": "Pricing checked (Free plan $0, 2 active projects, no Management API restriction); OAuth guide shows no review step but mentions unexplained 'publishing'",
+    "why": "Primary sources checked."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Partial list of groups, no count",
+    "new": "About 20 endpoint groups listed from the reference sidebar, with rate-limit details",
+    "why": "Verified on the API reference."
+   },
+   {
+    "field": "what_it_does",
+    "old": "Open-source Postgres backend platform: database, auth, storage, edge functions, with a Management API.",
+    "new": "Postgres backend platform: database, auth, storage, edge functions, plus a Management API.",
+    "why": "Shortened to meet the 15-word limit."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Did not verify OAuth app review or webhook details",
+    "new": "Adds the early-access webhooks caveat and the unexplained OAuth publishing step",
+    "why": "New findings from the primary docs."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "Endpoint groups, OpenAPI spec, and rate limits all verified on the reference page."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "Self-serve credentials and the API surface are confirmed."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- quote for api not found on https://supabase.com/docs/reference/api/introduction\n- agent's open question: Confirm that OAuth apps can be used by other organizations without review. Confirm webhook availability. Webhooks appear only as sidebar entries in the Management API docs. The sandbox claim rests on the free tier and the local CLI. I didn't verify it on a page."
+}

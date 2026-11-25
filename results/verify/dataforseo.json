@@ -1,0 +1,182 @@
+{
+ "id": 51,
+ "slug": "dataforseo",
+ "app": "DataForSEO",
+ "category": "Data, SEO and Scraping",
+ "hint": "docs.dataforseo.com",
+ "pass": 2,
+ "at": "2026-11-25T03:48:18.214Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.dataforseo.com/v3/auth/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dataforseo.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://dataforseo.com/model-context-protocol"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/dataforseo/mcp-server-typescript"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.dataforseo.com/v3/serp/google/organic/task_post/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "DataForSEO OpenAPI specification github"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/dataforseo/OpenApiDocumentation"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.dataforseo.com/v3/appendix/sandbox/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Pay-as-you-go APIs for SEO data: SERP, keywords, backlinks, on-page, and business data.\",\"subcategory\":\"SEO data API\",\"auth_methods\":[\"basic\"],"
+  }
+ ],
+ "cost_usd": 0.21382299999999999,
+ "duration_ms": 49018,
+ "turns": 11,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Pay-as-you-go APIs for SEO data: SERP, keywords, backlinks, on-page, and business data.",
+  "subcategory": "SEO data API",
+  "auth_methods": [
+   "basic"
+  ],
+  "auth_primary": "basic",
+  "auth_notes": "The REST API accepts only HTTP Basic auth, using the API login and password from the API Access tab in the dashboard. The REST API has no OAuth, so a multi-user toolkit would have each user enter their own login and password. The vendor-hosted MCP server is different: it defaults to OAuth 2.0 with Bearer tokens and accepts login and password env vars as a fallback. That OAuth applies only to the MCP server, not to api.dataforseo.com.",
+  "access": "self_serve_trial",
+  "access_notes": "Anyone who registers gets API credentials. The Sandbox (sandbox.dataforseo.com/v3/) is free for every registered user and returns sample data. New accounts get a $1 trial credit. Beyond that, live data needs a prepaid balance, and the minimum top-up is $50. There is no subscription or recurring fee, and funds don't expire.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers SERP, Keywords Data, DataForSEO Labs, Backlinks, On-Page, Domain Analytics, Content Analysis, Business Data, App Data, Merchant and AI Optimization. Each has many task_post, task_get and live endpoints, well over 50 in total. The official OpenAPI 3.x YAML (dataforseo/OpenApiDocumentation) describes every endpoint.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The remote endpoint is https://mcp.dataforseo.com/v3/mcp, which the vendor calls its \"official DataForSEO remote endpoint\". It uses OAuth 2.0 by default. Repo: github.com/dataforseo/mcp-server-typescript. The npm package dataforseo-mcp-server runs locally. The vendor page also describes an \"official DataForSEO MCP image\" for Docker.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Users need their own DataForSEO account. Live data needs a funded balance (minimum top-up $50, after a $1 trial credit). Because the REST API uses Basic auth, each user enters credentials instead of going through an OAuth flow. Development and testing can run free against the Sandbox.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.dataforseo.com/v3/auth/",
+    "quote": "Basic authentication is the only way to access DataForSEO API;"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.dataforseo.com/v3/auth/",
+    "quote": "go to the API Access tab in the account dashboard to find your API login and password"
+   },
+   {
+    "field": "access",
+    "url": "https://dataforseo.com/pricing",
+    "quote": "The minimum account top-up is $50."
+   },
+   {
+    "field": "access",
+    "url": "https://dataforseo.com/pricing",
+    "quote": "use your $1 trial credit available to new accounts"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.dataforseo.com/v3/appendix/sandbox/",
+    "quote": "Sandbox is completely free for any registered user at DataForSEO."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/dataforseo/OpenApiDocumentation",
+    "quote": "openapi documentation of all DataForSEO endpoints"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.dataforseo.com/v3/serp/google/organic/task_post/",
+    "quote": "once the task is completed, we will send a POST request with its results compressed in the gzip format"
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/dataforseo/mcp-server-typescript",
+    "quote": "https://mcp.dataforseo.com/v3/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "mcp_notes",
+    "old": "Remote endpoint https://mcp.dataforseo.com/mcp ...",
+    "new": "Remote endpoint https://mcp.dataforseo.com/v3/mcp (OAuth 2.0 by default) ...",
+    "why": "The vendor MCP page and the GitHub README both give the /v3/mcp path. The README says the remote server uses OAuth 2.0 by default."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The official repo dataforseo/OpenApiDocumentation contains openapi_specification.yaml (OpenAPI 3.x) covering all endpoints."
+   },
+   {
+    "field": "auth_notes",
+    "old": "There is no OAuth ...",
+    "new": "The REST API is Basic only. The hosted MCP server uses OAuth 2.0 by default.",
+    "why": "Makes clear that the no-OAuth claim applies only to the REST API, based on the MCP repo README."
+   },
+   {
+    "field": "access_notes",
+    "old": "...free Sandbox returns sample responses...",
+    "new": "Adds the sandbox hostname and the 'completely free for any registered user' wording",
+    "why": "Confirmed on the docs Sandbox page."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "No spec mention",
+    "new": "Adds the official OpenAPI YAML reference",
+    "why": "An api evidence citation was missing, and the repo confirms full endpoint coverage."
+   },
+   {
+    "field": "evidence",
+    "old": "Paraphrased quotes and an MCP quote that was only a search-result title",
+    "new": "Verbatim quotes from the auth docs, pricing, sandbox docs, OpenAPI repo, task_post docs and MCP repo",
+    "why": "The first-pass quotes weren't verbatim, and the api and webhooks fields had no evidence."
+   },
+   {
+    "field": "confidence",
+    "old": "access/api/mcp medium",
+    "new": "all high",
+    "why": "Every claim is now confirmed on a primary source."
+   },
+   {
+    "field": "needs_human",
+    "old": "List of unverified items",
+    "new": "",
+    "why": "Every open question was resolved from primary sources."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for api\n- agent's open question: Not checked: whether an OpenAPI spec is published. The webhooks answer comes from memory of the postback_url and pingback_url task options, not from a fetched page. The quotes for auth and access come from fetched-page summaries, so they are paraphrased and not verbatim. The MCP evidence quote is on"
+}

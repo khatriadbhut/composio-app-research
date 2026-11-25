@@ -1,0 +1,189 @@
+{
+ "id": 73,
+ "slug": "linear",
+ "app": "Linear",
+ "category": "Productivity and Project Management",
+ "hint": "developers.linear.app",
+ "pass": 2,
+ "at": "2026-11-25T03:51:05.278Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/developers/oauth-2-0-authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/developers/graphql"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/developers/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/docs/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/developers/rate-limiting"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Linear integration directory submit app review OAuth application listing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://linear.app/docs/api-and-webhooks"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Issue tracking and project management for software teams, with cycles, projects and roadmaps.\",\"subcategory\":\"Issue tracking / project manageme"
+  }
+ ],
+ "cost_usd": 0.21051180000000003,
+ "duration_ms": 46481,
+ "turns": 11,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Issue tracking and project management for software teams, with cycles, projects and roadmaps.",
+  "subcategory": "Issue tracking / project management",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth2 uses the authorization code flow, with PKCE supported and either the user or the app as actor (actor=app). Apps can also use client credentials, which issue app-actor tokens valid for 30 days with no refresh token; this has to be turned on per app. Authorization-code access tokens last 24h and refresh tokens last 30 days. Personal API keys are sent as a raw `Authorization: <API_KEY>` header. Keys can be limited to Read, Write, Admin, Create issues or Create comments, and to specific teams. OAuth tokens go in the Bearer header.",
+  "access": "self_serve_free",
+  "access_notes": "The pricing page lists 'API and webhook access' as Included on the Free plan, with standard rate limits. Free is capped at 250 issues and 2 teams. Admins and permitted Members can create personal API keys, and admins can turn off key creation for Members. OAuth apps are created in workspace settings, and the docs describe no review step before other workspaces can authorize an app. Listing in Linear's Integration Directory is a separate, curated step: you submit a form and email integrations@linear.app. Distribution does not require it. Rate limits are 2,500 req/h per user for API keys and 5,000 req/h per user or app-user for OAuth apps. Creating or reading webhooks needs a workspace admin or the `admin` scope.",
+  "api_styles": [
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "A single GraphQL API at api.linear.app/graphql, the same one Linear uses internally. It covers issues, attachments, comments, labels, projects, project updates, cycles, documents, initiatives, customers and customer requests, teams and users. The schema supports introspection and there is a TypeScript SDK. I did not count operations, but the resources listed above put it well past 50.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.linear.app/mcp is read-write and https://mcp.linear.app/mcp/readonly is read-only. Transport is Streamable HTTP; the /sse endpoint is a deprecated fallback. The interactive flow uses OAuth 2.1 with dynamic client registration. The server also accepts `Authorization: Bearer <token>` with an OAuth token or an API key.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no review gate for OAuth apps, and API and webhooks are included on the Free plan. The API is GraphQL only, so there is no OpenAPI spec. Linear has no dedicated sandbox, but a free workspace (250-issue cap) can serve as a test environment. Rate limits are 2,500 req/h for API keys and 5,000 req/h for OAuth apps, plus complexity-point limits.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://linear.app/developers/oauth-2-0-authentication",
+    "quote": "Each refresh token expires 30 days after issuance."
+   },
+   {
+    "field": "auth",
+    "url": "https://linear.app/developers/oauth-2-0-authentication",
+    "quote": "Client-credentials tokens use the `app` actor, are valid for 30 days, and do not include a refresh token."
+   },
+   {
+    "field": "auth",
+    "url": "https://linear.app/developers/graphql",
+    "quote": "To authenticate your requests, you need to pass the API key with header: `Authorization: <API_KEY>`"
+   },
+   {
+    "field": "access",
+    "url": "https://linear.app/pricing",
+    "quote": "API and webhook access"
+   },
+   {
+    "field": "access",
+    "url": "https://linear.app/docs/api-and-webhooks",
+    "quote": "Admins and permitted Members can create personal API keys from Settings > Account > Security & Access."
+   },
+   {
+    "field": "api",
+    "url": "https://linear.app/developers/graphql",
+    "quote": "It supports introspection so you can query the whole schema."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://linear.app/developers/webhooks",
+    "quote": "Only workspace admins, or OAuth applications with the `admin` scope, can create or read webhooks."
+   },
+   {
+    "field": "mcp",
+    "url": "https://linear.app/docs/mcp",
+    "quote": "The interactive setup flow uses OAuth 2.1 with dynamic client registration."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\",\"api_key\",\"bearer_token\"]",
+    "new": "[\"oauth2\",\"api_key\"]",
+    "why": "The personal API key is the only static credential. It is sent as a raw Authorization header, so it belongs under api_key. Listing bearer_token as well counted the same credential twice. OAuth access tokens are already covered by oauth2."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth2 authorization code (PKCE supported)... Access tokens last 24h and refresh tokens 30 days.",
+    "new": "Adds that client credentials must be enabled per app, that client-credentials tokens last 30 days with no refresh token, and the permission and team scoping options on API keys.",
+    "why": "These details are on the OAuth and API key docs pages, and the old note was missing them."
+   },
+   {
+    "field": "access_notes",
+    "old": "Any workspace admin can create OAuth app and API keys. I did not check whether the free plan limits API use...",
+    "new": "Pricing confirms API and webhooks are on the Free plan. Admins and permitted Members can create API keys. Directory listing is curated but not required. Adds rate limits.",
+    "why": "The pricing page lists 'API and webhook access' as Included for Free. The API keys docs say Members can create keys too, not only admins. The open question about the free plan is now answered."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...I did not count operations.",
+    "new": "Expanded the resource list from the webhook entity list.",
+    "why": "The webhooks page names more resources that the API exposes, which supports the 'broad' rating."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "OAuth 2.1 with dynamic client registration, or a Bearer token or API key.",
+    "new": "Adds Streamable HTTP as the transport and the deprecated /sse fallback.",
+    "why": "The MCP docs page states both."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "No review gate...free workspace can serve as test environment.",
+    "new": "Adds Free-plan API inclusion, the 250-issue cap and the rate limits.",
+    "why": "Confirmed on the pricing and rate-limiting pages."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, none for access",
+    "new": "8 items, including the pricing page and the API key docs for access",
+    "why": "The automated check flagged that access had no cited evidence."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The pricing page and the API key docs confirm self-serve free access."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check whether Linear's free plan restricts API...",
+    "new": "",
+    "why": "Resolved: the pricing page includes API and webhooks on Free, the rate limits are documented, and no OAuth review appears in the docs."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: Check whether Linear's free plan restricts API or OAuth app creation, and whether there are rate limits. I did not open the pricing page. The OAuth page was silent on app review, so I inferred there is none."
+}

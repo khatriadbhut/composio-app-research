@@ -1,0 +1,176 @@
+{
+ "id": 67,
+ "slug": "snowflake",
+ "app": "Snowflake",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.snowflake.com",
+ "pass": 2,
+ "at": "2026-11-25T03:50:33.634Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/user-guide/admin-trial-account"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.snowflake.com/en/user-guide/programmatic-access-tokens"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Cloud data platform for SQL analytics, data engineering, and AI workloads.\",\"subcategory\":\"Cloud data warehouse\",\"auth_methods\":[\"oauth2\",\"jwt_"
+  }
+ ],
+ "cost_usd": 0.1876136,
+ "duration_ms": 49083,
+ "turns": 9,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Cloud data platform for SQL analytics, data engineering, and AI workloads.",
+  "subcategory": "Cloud data warehouse",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account",
+   "bearer_token",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The SQL API and REST APIs support four methods: OAuth (Snowflake OAuth or External OAuth via Okta or Entra ID), key-pair JWT, programmatic access tokens (PATs), and workload identity federation (listed here as \"other\"). PATs are sent as Bearer tokens. By default a user needs a network policy before a PAT will authenticate. OAuth is the choice for multi-user agents, but each customer's account needs its own security integration.",
+  "access": "self_serve_trial",
+  "access_notes": "The 30-day free trial needs only an email. It can also end early if the free credit balance runs out. AI features stay disabled on self-service trials until a credit card is added. Continued use needs a paid, consumption-billed account. There is no permanent free tier. OAuth is configured per customer account through a security integration, so there is no central app review.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The SQL API runs arbitrary SQL. The Snowflake REST APIs cover accounts, users, roles, grants, warehouses, databases, schemas, tables, views, stages, pipes, notebooks, Streamlit apps, compute pools and services, functions and procedures, network and password policies, secrets, alerts, Cortex Embed, Cortex Inference and Cortex Search, streams, tasks, integrations and tags. OpenAPI specs are published in the snowflake-rest-api-specs Git repo.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "The Snowflake-managed MCP server is at https://<account_url>/api/v2/databases/{database}/schemas/{schema}/mcp-servers/{name}. It accepts OAuth (Snowflake OAuth by default, or External OAuth) or a PAT as a Bearer token. The docs don't say whether it is GA or preview.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Each account has its own hostname, so the toolkit must collect the account identifier for each user. OAuth needs an admin to create a security integration. PATs need a network policy by default. Free use is limited to a 30-day, credit-capped trial, with AI features gated behind adding a card. There is no event-subscription webhook API. Snowflake's own notification integrations and alerts only send messages a customer defines, so triggers would need polling.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+    "quote": "Set up OAuth for authentication."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+    "quote": "Set up key-pair authentication."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+    "quote": "Using a programmatic access token (PAT)"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.snowflake.com/en/user-guide/programmatic-access-tokens",
+    "quote": "By default, the user must be subject to a network policy with one or more network rules."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+    "quote": "The trial continues for 30 days (from the sign-up date)"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+    "quote": "no payment information or other qualifying information is required."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+    "quote": "AI features are disabled by default on self-service trial accounts until you add a credit card to the account."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/snowflake-rest-api",
+    "quote": "These REST APIs are compliant with the OpenAPI specification."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+    "quote": "The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The MCP server's GA or preview status is not stated on the docs page.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[oauth2, jwt_service_account, other]",
+    "new": "[oauth2, jwt_service_account, bearer_token, other]",
+    "why": "The REST API auth page lists \"Using a programmatic access token (PAT)\" as a supported method. The PAT docs confirm PATs work for the REST APIs and the SQL API."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...Programmatic access tokens also exist (not verified here).",
+    "new": "PATs verified as a Bearer-token method, including the network-policy requirement.",
+    "why": "Verified on the PAT and REST API authentication docs."
+   },
+   {
+    "field": "access_notes",
+    "old": "30-day free trial needs only an email...",
+    "new": "Added that the trial can end early when the free credit balance runs out.",
+    "why": "The trial page says the trial ends after 30 days or when the free balance is used, whichever comes first."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Generic resource list",
+    "new": "Resource list matching the REST API overview page, plus the location of the OpenAPI specs repo",
+    "why": "Replaced the summary with the list from the docs page."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Uses OAuth",
+    "new": "Accepts OAuth or a PAT; GA status not stated",
+    "why": "The MCP doc page is still live at the same URL and lists PAT auth for clients that can't use OAuth."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "Trial terms and the AI-feature credit-card restriction were confirmed verbatim on the trial docs page."
+   },
+   {
+    "field": "needs_human",
+    "old": "Webhook absence unverified; AI credit-card restriction; MCP page may have moved",
+    "new": "Only MCP GA/preview status open",
+    "why": "The MCP page is live. The credit-card restriction is confirmed. Snowflake has no event-subscription webhooks; outbound notification integrations don't count as triggers."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Webhook absence is unverified. Confirm whether the trial's AI-feature credit-card restriction affects the toolkit's testing. The docs page I fetched for MCP is Cortex Agents MCP and may have moved."
+}

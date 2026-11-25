@@ -1,0 +1,175 @@
+{
+ "id": 59,
+ "slug": "waterfall-io",
+ "app": "Waterfall.io",
+ "category": "Data, SEO and Scraping",
+ "hint": "waterfall.io (contact/company intel)",
+ "pass": 2,
+ "at": "2026-11-25T03:50:02.033Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io/llms.txt"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "waterfall.io MCP server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://waterfall.io/pricing"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "docs.waterfall.io \"Get API access\""
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io/get-api-access"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io/v1/skills-overview.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.waterfall.io/v1/faq.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"B2B contact and company search and enrichment API that queries several data providers in sequence.\",\"subcategory\":\"Contact/company enrichment A"
+  }
+ ],
+ "cost_usd": 0.2557969,
+ "duration_ms": 72518,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "B2B contact and company search and enrichment API that queries several data providers in sequence.",
+  "subcategory": "Contact/company enrichment API",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The API key goes in the x-api-key header to api.waterfall.io. A master key can create, list and modify sub-keys through the /v1/api-keys endpoints, and each sub-key can have its own label, active status and rate limit. The docs mention no OAuth. Access to some capabilities, such as Company Titles, depends on what is enabled for the key.",
+  "access": "approval_required",
+  "access_notes": "API keys are issued only after approval. You request one with a work email or book a call, and the team reviews every request. Pricing is credit-based and quoted after a free benchmark on your data. Commitments and minimums are set in a contract. The docs and pricing page show no self-serve signup, public plans, free trial or free credits. Empty results are not charged.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "The docs list 13 APIs. Prospector, Search Contact, Search Company, Contact Enrichment, Phone Enrichment, Company Enrichment, Job Change, Company Reveal and Company Titles each have a launcher endpoint and a finder endpoint. The others are Email Verifier, Webhook JWKS, Account Reporter v2 and API key list/create/modify. That comes to about 25 operations. An OpenAPI spec is published at /api_specs.yaml.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "none_found",
+  "mcp_notes": "I found no official Waterfall.io MCP server in the docs, in llms.txt or in a web search. Waterfall publishes agent 'skills' instead, waterfall-direct-api and waterfall-integration, in a GitHub repository. These are not MCP servers. Workato's 'Waterfall Lead Enrichment MCP server' is a different product that chains ZoomInfo, Apollo and LeadIQ, so it does not count.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "Getting a key requires vendor approval, and use is billed under a contract with credit-based pricing and minimums. The toolkit itself is simple (REST plus API key, with an OpenAPI spec), but Composio and every end user need an approved key, and there is no free or test tier for development.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.waterfall.io",
+    "quote": "Send your API key in the `x-api-key` header."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.waterfall.io/llms.txt",
+    "quote": "Request an API key or book a call. Our team reviews every access request and helps you plan your integration."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.waterfall.io/v1/faq.md",
+    "quote": "API access is available by approval."
+   },
+   {
+    "field": "access",
+    "url": "https://waterfall.io/pricing",
+    "quote": "Commitments and minimums are set at contract and depend on volume and term."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.waterfall.io",
+    "quote": "Choose an API based on what you already know and what you want to find."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.waterfall.io",
+    "quote": "verify the origin and integrity of signed deliveries"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.waterfall.io/v1/skills-overview.md",
+    "quote": "Installing a skill does not create an account or provide API access."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "WebFetch returned summarized page text, so the quotes may differ slightly from the exact wording on the page.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "Team reviews every access request... quoted after a benchmark... no mention of free credits",
+    "new": "Approval confirmed in FAQ ('API access is available by approval'); contract minimums; free benchmark; empty results free",
+    "why": "I confirmed this directly in the FAQ, llms.txt and the pricing page. The first pass relied on a summary of a page it never opened."
+   },
+   {
+    "field": "sandbox",
+    "old": "no",
+    "new": "unknown",
+    "why": "The docs never mention a sandbox or test mode either way, so 'no' was not supported."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "No MCP mentioned; agents section refers to official API skills",
+    "new": "No official MCP; skills are GitHub skills, not MCP; Workato's 'Waterfall Lead Enrichment MCP' is a different product",
+    "why": "There was no MCP evidence before. I added the web search result and the skills page."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "13 APIs listed by sync/async",
+    "new": "13 APIs, about 25 operations (launcher/finder pairs) plus an OpenAPI spec",
+    "why": "llms.txt lists each operation, so the count can be given more precisely."
+   },
+   {
+    "field": "evidence",
+    "old": "Paraphrased quotes, including a pricing-page slogan used as access evidence",
+    "new": "Quotes from the FAQ, llms.txt, the pricing page and the skills page",
+    "why": "The old access quote did not support the approval claim, and there was no MCP evidence."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The FAQ states outright that access is by approval."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check Get API access page...",
+    "new": "Only caveat: the quotes come from summarized fetches",
+    "why": "The open question about access is now answered from primary sources."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for mcp\n- agent's open question: Check the 'Get API access' page for the approval process and any trial credits. The access-review finding comes from a summary of that page, which I did not open directly. Quotes are paraphrased from fetch summaries, not verbatim page text."
+}

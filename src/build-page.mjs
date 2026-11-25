@@ -75,6 +75,26 @@ const stats = {
 stats.easyWins = rows.filter((r) => r.build === "ready_now" && !r.composio).map((r) => r.app);
 stats.outreach = rows.filter((r) => ["needs_partnership_or_sales", "not_buildable"].includes(r.build) || ["partner_gated", "contact_sales"].includes(r.access)).map((r) => r.app);
 stats.topBlocker = Object.entries(blockers).sort((a, b) => b[1].length - a[1].length)[0] ?? ["none", []];
+stats.topBlockerName = (L.blocker[stats.topBlocker[0]] ?? stats.topBlocker[0]).toLowerCase();
+stats.topBlockerN = stats.topBlocker[1].length;
+stats.blocked = rows.filter((r) => r.blocker !== "none").length;
+const catSelf = cats.map((c) => { const rs = rows.filter((r) => r.category === c); return { c, n: rs.filter((r) => r.access.startsWith("self_serve")).length, t: rs.length }; }).sort((a, b) => b.n - a.n);
+stats.mostSelfServe = catSelf.filter((x) => x.n === catSelf[0].n).map((x) => `${x.c} (${x.n}/${x.t})`).join(", ");
+stats.leastSelfServe = catSelf.filter((x) => x.n === catSelf.at(-1).n).map((x) => `${x.c} (${x.n}/${x.t})`).join(", ");
+stats.approval = stats.access.approval_required ?? 0;
+stats.paid = (stats.access.paid_plan_required ?? 0) + (stats.access.self_serve_trial ?? 0);
+stats.gated = (stats.access.partner_gated ?? 0) + (stats.access.contact_sales ?? 0) + (stats.access.no_public_api ?? 0);
+stats.readyNow = stats.build.ready_now ?? 0; stats.caveats = stats.build.ready_with_caveats ?? 0;
+stats.needsDeal = stats.build.needs_partnership_or_sales ?? 0; stats.notBuildable = stats.build.not_buildable ?? 0;
+stats.buildableToday = stats.readyNow + stats.caveats;
+stats.oauthOnly = rows.filter((r) => r.auth.length === 1 && r.auth[0] === "oauth2").length;
+stats.oauthPlusKey = rows.filter((r) => r.auth.includes("oauth2") && (r.auth.includes("api_key") || r.auth.includes("bearer_token"))).length;
+stats.keyOnly = rows.filter((r) => !r.auth.includes("oauth2") && (r.auth.includes("api_key") || r.auth.includes("bearer_token") || r.auth.includes("basic"))).length;
+stats.mcpCommunity = mcpBy.community_only?.length ?? 0; stats.mcpNone = mcpBy.none_found?.length ?? 0;
+stats.mcpLocal = mcpBy.official_local?.length ?? 0;
+stats.easyWinsN = stats.easyWins.length; stats.outreachN = stats.outreach.length;
+stats.notInComposio = rows.length - inComposio.length;
+for (const [k, v] of Object.entries(meta)) stats[k] ??= v;
 
 const heat = { type: "heat", cols: accessOrder.filter((a) => stats.access[a]), rows: cats.map((c) => ({
   label: c, cells: accessOrder.filter((a) => stats.access[a]).map((a) => { const ap = rows.filter((r) => r.category === c && r.access === a).map((r) => r.app); return { n: ap.length, apps: ap }; }) })) };

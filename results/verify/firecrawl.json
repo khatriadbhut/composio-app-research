@@ -1,0 +1,186 @@
+{
+ "id": 56,
+ "slug": "firecrawl",
+ "app": "Firecrawl",
+ "category": "Data, SEO and Scraping",
+ "hint": "firecrawl.dev",
+ "pass": 2,
+ "at": "2026-11-25T03:49:13.144Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.firecrawl.dev/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/webhooks/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/rate-limits"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "firecrawl openapi.json v2 api reference"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/api-reference/v2-openapi.json"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/api-reference/v2-openapi.json"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.firecrawl.dev/api-reference/v2-openapi.json"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Web search, scrape, crawl and browser-interaction API that returns LLM-ready Markdown/JSON.\",\"subcategory\":\"Web scraping API\",\"auth_methods\":[\""
+  }
+ ],
+ "cost_usd": 0.24734040000000002,
+ "duration_ms": 63285,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Web search, scrape, crawl and browser-interaction API that returns LLM-ready Markdown/JSON.",
+  "subcategory": "Web scraping API",
+  "auth_methods": [
+   "api_key",
+   "none"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API (https://api.firecrawl.dev/v2) uses one auth scheme: the OpenAPI spec's securitySchemes defines only bearerAuth (type http, scheme bearer), which carries the dashboard API key as `Authorization: Bearer fc-...`. Keyless use is allowed for search, scrape, parse and interact, capped per IP per day. Crawl, map, extract and batch scrape need a key. OAuth sign-in exists only for the hosted MCP server (/v2/mcp-oauth). It is not an OAuth flow for the REST API, so it is not listed. A multi-user toolkit would have each user supply their own API key.",
+  "access": "self_serve_free",
+  "access_notes": "The free plan is $0, needs no credit card and gives 1,000 credits a month. Free-plan rate limits are 10 requests per minute for scrape, map and search, and 2 per minute for crawl and agent. Paid plans are Hobby $19, Standard $99, Growth $399, Scale $749 (monthly) and Enterprise (custom). No app review or approval is needed.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The v2 OpenAPI spec lists about 60 or more operations. They cover scrape (plus job get and interact), batch scrape, crawl (start, status, cancel, errors, active, params-preview), map, search (plus developer, gov and research-paper search, and feedback), extract, agent (plus trace and snapshots), interact/browser sessions (create, execute, delete, list), parse, monitor (full CRUD, run and checks), and team usage, credit and queue endpoints. I read about 60% of the spec, so the count is a minimum.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Vendor-hosted servers: https://mcp.firecrawl.dev/v2/mcp (API key as a bearer token, or keyless for search, scrape and parse) and https://mcp.firecrawl.dev/v2/mcp-oauth (OAuth browser sign-in). The docs also link a guide to run the server locally (firecrawl-mcp).",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "API keys are self-serve on a free tier, and there is a published OpenAPI spec. The only friction is the low free-plan rate limits (2 to 10 requests per minute) and credit-based metering, with each user needing their own key.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://docs.firecrawl.dev/introduction",
+    "quote": "Firecrawl is the context API for AI agents."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.firecrawl.dev/introduction",
+    "quote": "add -H \"Authorization: Bearer $FIRECRAWL_API_KEY\" for higher rate limits"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.firecrawl.dev/rate-limits",
+    "quote": "No other endpoints (crawl, extract, map, batch scrape, etc.) are available without a key."
+   },
+   {
+    "field": "access",
+    "url": "https://www.firecrawl.dev/pricing",
+    "quote": "no credit card required"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.firecrawl.dev/api-reference/v2-openapi.json",
+    "quote": "\"title\": \"Firecrawl API\" ... \"url\": \"https://api.firecrawl.dev/v2\""
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.firecrawl.dev/mcp-server",
+    "quote": "https://mcp.firecrawl.dev/v2/mcp-oauth"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.firecrawl.dev/webhooks/overview",
+    "quote": "Crawl: started, page, completed"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[api_key, bearer_token, oauth2, none]",
+    "new": "[api_key, none]",
+    "why": "The spec defines only bearerAuth, which carries the API key, so listing bearer_token as well counts the same credential twice. OAuth exists only for MCP client sign-in, not for the REST API."
+   },
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "The v2 OpenAPI spec has about 60 or more operations (monitor CRUD, agent, interact sessions, team usage, specialised search and more)."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Lists capabilities; only scrape, search and interact were seen explicitly",
+    "new": "Endpoint inventory taken from v2-openapi.json",
+    "why": "I opened the spec and counted the paths."
+   },
+   {
+    "field": "access_notes",
+    "old": "10 requests per minute for scrape, map and search",
+    "new": "Adds 2 requests per minute for crawl and agent",
+    "why": "The rate-limits docs give lower free limits for crawl and agent."
+   },
+   {
+    "field": "evidence.what_it_does",
+    "old": "Firecrawl is a context API for AI agents. It lets you search the web, scrape pages, and interact with live pages",
+    "new": "Firecrawl is the context API for AI agents.",
+    "why": "The original quote is not verbatim; the page says 'the context API'."
+   },
+   {
+    "field": "auth_notes",
+    "old": "requests without a key work at lower limits",
+    "new": "Keyless use covers only search, scrape, parse and interact, capped per IP per day",
+    "why": "The rate-limits page says crawl, map, extract and batch scrape need a key."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "The OpenAPI spec was opened and read."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm the OpenAPI spec URL and the endpoint count",
+    "new": "",
+    "why": "Resolved: the spec is at https://docs.firecrawl.dev/api-reference/v2-openapi.json."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Confirm the OpenAPI spec URL. I believe one is published (Firecrawl's docs and GitHub repo carry one), but I did not open it. Also confirm the full endpoint count."
+}

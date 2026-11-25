@@ -51,41 +51,41 @@
    }
   },
   "pass2": {
-   "right": 26,
-   "total": 32,
-   "accuracy": 0.813,
+   "right": 44,
+   "total": 56,
+   "accuracy": 0.786,
    "per_field": {
     "auth_primary": {
-     "right": 4,
-     "total": 4
+     "right": 6,
+     "total": 7
     },
     "auth_methods": {
-     "right": 3,
-     "total": 4
+     "right": 5,
+     "total": 7
     },
     "access": {
-     "right": 2,
-     "total": 4
+     "right": 4,
+     "total": 7
     },
     "api_styles": {
-     "right": 4,
-     "total": 4
+     "right": 7,
+     "total": 7
     },
     "api_breadth": {
-     "right": 3,
-     "total": 4
+     "right": 6,
+     "total": 7
     },
     "mcp": {
-     "right": 4,
-     "total": 4
+     "right": 6,
+     "total": 7
     },
     "buildability": {
-     "right": 3,
-     "total": 4
+     "right": 5,
+     "total": 7
     },
     "main_blocker": {
-     "right": 3,
-     "total": 4
+     "right": 5,
+     "total": 7
     }
    }
   }
@@ -1865,6 +1865,229 @@
   {
    "pass": "pass2",
    "slug": "front",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "auth_methods",
+   "ok": false,
+   "got": [
+    "oauth2",
+    "bearer_token"
+   ],
+   "want": [
+    "oauth2",
+    "bot_token"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "access",
+   "ok": false,
+   "got": "self_serve_free",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest",
+    "websocket"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "mcp",
+   "ok": true,
+   "got": "official_local",
+   "want": "official_local"
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass2",
+   "slug": "lark-larksuite",
+   "field": "main_blocker",
+   "ok": true,
+   "got": "app_review",
+   "want": "app_review"
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "auth_primary",
+   "ok": false,
+   "got": "oauth2",
+   "want": "bot_token"
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "bot_token",
+    "oauth2"
+   ],
+   "want": [
+    "bot_token",
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "access",
+   "ok": true,
+   "got": "self_serve_free",
+   "want": "self_serve_free"
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest",
+    "websocket"
+   ],
+   "want": [
+    "rest",
+    "websocket"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "mcp",
+   "ok": false,
+   "got": "community_only",
+   "want": "official_remote"
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "buildability",
+   "ok": false,
+   "got": "ready_with_caveats",
+   "want": "ready_now"
+  },
+  {
+   "pass": "pass2",
+   "slug": "discord",
+   "field": "main_blocker",
+   "ok": false,
+   "got": "app_review",
+   "want": "none"
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "auth_primary",
+   "ok": true,
+   "got": "oauth2",
+   "want": "oauth2"
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "auth_methods",
+   "ok": true,
+   "got": [
+    "oauth2"
+   ],
+   "want": [
+    "oauth2"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "access",
+   "ok": true,
+   "got": "approval_required",
+   "want": "approval_required"
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "api_styles",
+   "ok": true,
+   "got": [
+    "rest"
+   ],
+   "want": [
+    "rest"
+   ]
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "api_breadth",
+   "ok": true,
+   "got": "broad",
+   "want": "broad"
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "mcp",
+   "ok": true,
+   "got": "community_only",
+   "want": "community_only"
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
+   "field": "buildability",
+   "ok": true,
+   "got": "ready_with_caveats",
+   "want": "ready_with_caveats"
+  },
+  {
+   "pass": "pass2",
+   "slug": "linkedin-ads",
    "field": "main_blocker",
    "ok": true,
    "got": "app_review",

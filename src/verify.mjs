@@ -31,6 +31,7 @@ const todo = apps.filter((a) => (!opts.only || opts.only.split(",").includes(a.s
 console.log(`verify: ${todo.length} apps, model ${opts.model}`);
 let done = 0;
 await pool(todo, Number(opts.concurrency), async (app) => {
+  if (!opts.force && existsSync(`${opts.out}/${app.slug}.json`)) return; // another run finished it
   const p1 = JSON.parse(readFileSync(`${opts.in}/${app.slug}.json`, "utf8"));
   const prompt = fill(tpl, { ...app, record: JSON.stringify(p1.record, null, 1), flags: flagsFor(app.slug) });
   let r;

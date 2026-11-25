@@ -1,0 +1,166 @@
+{
+ "id": 57,
+ "slug": "bright-data",
+ "app": "Bright Data",
+ "category": "Data, SEO and Scraping",
+ "hint": "brightdata.com",
+ "pass": 2,
+ "at": "2026-11-25T03:49:16.266Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.brightdata.com/api-reference/introduction"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/brightdata/brightdata-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.brightdata.com/products/scrapers/scrapers-library/data-delivery"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Bright Data API openapi.json account management API zones docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://brightdata.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.brightdata.com/api-reference/account-management-api/get-all-zones.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://brightdata.com/pricing/web-unlocker"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.brightdata.com/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.brightdata.com/api-reference/account-management-api/Get_active_Zones.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Web data platform: proxies, Web Unlocker, SERP API, scrapers, datasets, cloud browsers.\",\"subcategory\":\"Web scraping / proxy data platform\",\"au"
+  }
+ ],
+ "cost_usd": 0.22094250000000001,
+ "duration_ms": 57403,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Web data platform: proxies, Web Unlocker, SERP API, scrapers, datasets, cloud browsers.",
+  "subcategory": "Web scraping / proxy data platform",
+  "auth_methods": [
+   "bearer_token",
+   "api_key",
+   "basic"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The REST API takes an account API key, sent as 'Authorization: Bearer <API key>'. Native (proxy) access uses a proxy-protocol username and password. Bright Data has no OAuth, so each end user supplies their own key. Some account-management calls require Admin or Ops roles. The hosted MCP takes the token as a URL query parameter.",
+  "access": "self_serve_free",
+  "access_notes": "Accounts are self-serve and an API key comes from account settings. The Web Unlocker pricing page shows a Free Tier of 5K requests a month, then pay-as-you-go at $1.5 per 1K requests. Neither pricing page I opened says whether a credit card is needed. Residential proxy zones created after July 7, 2026 need KYC approval (per a search-result summary of the docs; I did not open that page), but the scraping and Unlocker APIs are not gated.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "The API covers Web Unlocker and SERP (POST /request), Scraper API (sync and async trigger, snapshots), Scraper Studio, Dataset Marketplace, Browser API, and Functions. Account Management covers zones: list all and active zones, zone info, add and remove zones, and available countries. I could not get a full endpoint count, and the total may be near the 50-operation threshold. The official MCP server exposes 31 tools.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted server is https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN_HERE. The local server is the npm package @brightdata/mcp (GitHub repo brightdata/brightdata-mcp). It exposes 31 tools.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Nothing blocks a build. Each user brings an API key because there is no OAuth, and usage is billed to that user's account. Webhooks are per-job delivery callbacks: Bright Data POSTs results to an endpoint you set on the trigger, with an optional auth_header. They are not account-level event subscriptions.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.brightdata.com/api-reference/introduction",
+    "quote": "This <token> is your API key, which is required for every API request."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.brightdata.com/api-reference/account-management-api/get-all-zones.md",
+    "quote": "Use your Bright Data API Key as a Bearer token in the Authorization header."
+   },
+   {
+    "field": "access",
+    "url": "https://brightdata.com/pricing/web-unlocker",
+    "quote": "$1.5/1K requests"
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/brightdata/brightdata-mcp",
+    "quote": "https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN_HERE"
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/brightdata/brightdata-mcp",
+    "quote": "Free tier: 5,000 requests per month."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.brightdata.com/products/scrapers/scrapers-library/data-delivery",
+    "quote": "Bright Data sends a POST request to that URL with the scraped data once the job completes."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Unconfirmed: the full endpoint count (moderate vs. broad) and whether signup requires a credit card. The free-tier terms appear on the MCP README and the Web Unlocker pricing page, but no page says whether a card is needed.",
+  "changes": [
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The docs pages embed an OpenAPI 3.0.1 spec ('openapi: 3.0.1', 'api-reference/openapi GET /zone/get_all_zones')."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...MCP server exposes about 60+ prebuilt scrapers",
+    "new": "Adds the confirmed Account Management zone endpoints; the MCP server exposes 31 tools",
+    "why": "The GitHub README says 'It exposes 31 tools'. The zone endpoints are confirmed in the docs."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Hosted URL + npm @brightdata/mcp",
+    "new": "Same, plus the 31-tool count",
+    "why": "Confirmed on the GitHub README."
+   },
+   {
+    "field": "access_notes",
+    "old": "Pricing page not opened; $8/GB browser figure",
+    "new": "Web Unlocker pricing page confirms the 5K/month Free Tier and $1.5/1K; residential zones need KYC",
+    "why": "I opened the pricing page. I could not confirm the $8/GB figure, and the KYC requirement comes from a search-result summary of the docs."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote 'API Access is recommended for...' (not verbatim); webhooks quote 'endpoint'",
+    "new": "Verbatim quotes from the opened pages",
+    "why": "The automated check could not find the api quote, and the webhook quote was a single word. I replaced both with verbatim quotes."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The vendor's pricing page confirms the free tier and the pay-as-you-go rate."
+   }
+  ]
+ },
+ "flags_given": "- quote for api not found on https://docs.brightdata.com/api-reference/introduction\n- agent's open question: Not confirmed: whether an OpenAPI spec is published, the exact paid plan and pricing terms beyond the free tier, and the webhook details. The webhook details come from search snippets, not a fully opened page. The data-delivery page URL is a search result I did not open."
+}

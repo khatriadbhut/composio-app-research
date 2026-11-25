@@ -1,0 +1,224 @@
+{
+ "id": 43,
+ "slug": "bigcommerce",
+ "app": "BigCommerce",
+ "category": "Ecommerce",
+ "hint": "developer.bigcommerce.com",
+ "pass": 2,
+ "at": "2026-11-25T03:47:28.564Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/docs/start/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/docs/start/about/sandboxes"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/docs/integrations/webhooks"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/docs/start/about/sandboxes"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "BigCommerce unlisted app draft app install without approval developer portal"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/bigcommerce/docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/publishing-apps"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/bc-bm/docs"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "BigCommerce free trial pricing plans API access developer"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/managing-apps-in-dev-portal"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.bigcommerce.com/pricing/faq/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Hosted ecommerce platform: storefronts, catalog, orders, customers, with headless APIs.\",\"subcategory\":\"Ecommerce platform\",\"auth_methods\":[\"oa"
+  }
+ ],
+ "cost_usd": 0.28087949999999995,
+ "duration_ms": 72186,
+ "turns": 15,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Hosted ecommerce platform: storefronts, catalog, orders, customers, with headless APIs.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "bearer_token",
+   "basic",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Most REST and GraphQL Admin calls send an access token in the X-Auth-Token header. Store-level API accounts include a static access token. App-level API accounts get one token per installing store through BigCommerce's grant-code OAuth flow. Account-level API accounts have a single token owned by the parent account. Other methods: BigCommerce-generated JWTs sent as Bearer for GraphQL Storefront and B2B GraphQL, and with the PAT scheme for Payments; user-signed JWTs for Customer Login; signed payload JWTs sent to control-panel apps; and the app client ID passed as a query parameter for Current Customer. Legacy HTTP basic auth is deprecated, and new stores can't create legacy accounts. Store Management MCP uses OAuth 2.1 with PKCE. I removed jwt_service_account because no service-account JWT grant is documented.",
+  "access": "self_serve_trial",
+  "access_notes": "A developer can sign up for a 15-day free trial store with no credit card and create a store-level API account. Using a store past the trial needs a paid plan (Core from $39/mo). API limits are 20k calls/hr on Core and Growth and 60k on Scale. Partners can create sandbox stores for development in the Partner Portal, but the sandbox page doesn't state any cost or eligibility rules. An app-level OAuth app can be built in the Developer Portal without review, but as a draft it installs only on stores registered to the app owner's email. To make it installable on other merchants' stores, it must be submitted for approval, including unlisted apps.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers catalog, orders, customers, carts, checkouts, inventory, themes, channels, pricing, metafields, payments, B2B Edition, and the Account API. Includes REST V2 and V3, plus GraphQL Storefront and Admin APIs. Well over 50 operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Store Management MCP is at https://api.bigcommerce.com/mcp, with a store-scoped URL that includes the store hash. It is in early access for all stores, uses OAuth 2.1 with PKCE, and only the store owner can enable it. Storefront MCP gives each storefront its own URL and acts as a shopper; the store owner enables it. Community servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "A multi-merchant OAuth toolkit needs BigCommerce approval before stores outside the developer's own email can install the app, whether it is listed or unlisted. Until then, the options are draft-app installs on the developer's own stores, or each merchant pasting a store-level API token. Both are workable as a fallback but don't scale like OAuth.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.bigcommerce.com/docs/start/authentication",
+    "quote": "The X-Auth-Token header uses access tokens to authenticate requests."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.bigcommerce.com/docs/start/authentication",
+    "quote": "Store-level API accounts include a static access token that does not change."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.bigcommerce.com/docs/start/authentication",
+    "quote": "Legacy API accounts used HTTP basic authentication."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/managing-apps-in-dev-portal",
+    "quote": "To make an app available to other stores, submit it for approval."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.bigcommerce.com/developer/docs/integrations/apps/guide/managing-apps-in-dev-portal",
+    "quote": "in a store where the app owner's email address is registered"
+   },
+   {
+    "field": "access",
+    "url": "https://www.bigcommerce.com/pricing/faq/",
+    "quote": "fully functional 15-day free trial"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.bigcommerce.com/docs/start/about/sandboxes",
+    "quote": "Sandbox stores are intended for developing and testing apps. They cannot process any live transactions."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.bigcommerce.com/docs/integrations/webhooks",
+    "quote": "Webhooks notify applications when specific events occur on a BigCommerce store."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+    "quote": "Store Management MCP is in early access and available to all stores."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+    "quote": "Only the store owner can turn on Management MCP and accept the terms of service."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/bc-bm/docs",
+    "quote": "OpenAPI Specification (.yml)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Not resolved: whether Partner Portal sandbox stores are free, and which partner tier can create them. The sandbox page names no cost. The OpenAPI evidence comes from github.com/bc-bm/docs, which is a fork; the canonical BigCommerce docs repo URL wasn't confirmed because github.com/bigcommerce/docs returned 404.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "oauth2, api_key, bearer_token, jwt_service_account, basic, other",
+    "new": "oauth2, api_key, bearer_token, basic, other",
+    "why": "The auth docs describe no service-account JWT grant. The JWTs listed are storefront/customer tokens or user-signed login tokens, so they fall under bearer_token and other."
+   },
+   {
+    "field": "access",
+    "old": "self_serve_free",
+    "new": "self_serve_trial",
+    "why": "Self-serve credentials come from a 15-day free trial store. Ongoing use needs a paid plan from $39/mo, and the docs don't confirm sandboxes are free."
+   },
+   {
+    "field": "access_notes",
+    "old": "...private or unlisted installs don't appear to need it",
+    "new": "Draft apps install only on stores tied to the owner's email; any other store requires approval",
+    "why": "The Dev Portal docs say draft apps install only where the app owner's email is registered, and 'To make an app available to other stores, submit it for approval.'"
+   },
+   {
+    "field": "api_styles",
+    "old": "rest, graphql, websocket",
+    "new": "rest, graphql",
+    "why": "I found no WebSocket API in the docs I reviewed."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "A multi-merchant OAuth toolkit needs BigCommerce app approval."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "app_review",
+    "why": "Approval is required before stores outside the developer's own email can install the app."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "A toolkit can still use per-merchant OAuth apps or store-level tokens without it.",
+    "new": "Approval is needed even for unlisted apps; the fallbacks are draft installs or pasted store tokens.",
+    "why": "Corrected the unlisted-app assumption."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "includes docs MCP at docs.bigcommerce.com/_mcp/server",
+    "new": "removed docs MCP",
+    "why": "Not confirmed on any page I fetched."
+   },
+   {
+    "field": "confidence.mcp / buildability",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Both are confirmed on vendor pages."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Confirm that sandbox stores are free and that unlisted OAuth apps can be installed without Marketplace review. The pricing page and the approval-requirements page weren't opened. The GitHub OpenAPI evidence comes only from a search-result summary, not a fetched page."
+}
