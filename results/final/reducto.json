@@ -1,0 +1,117 @@
+{
+ "id": 95,
+ "slug": "reducto",
+ "app": "Reducto",
+ "category": "AI, Research and Media-native",
+ "hint": "reducto.ai (document parsing)",
+ "source": "verify",
+ "record": {
+  "what_it_does": "API for parsing, extracting, splitting, classifying and editing documents into structured data.",
+  "subcategory": "Document parsing API",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "A static API key sent as Authorization: Bearer $REDUCTO_API_KEY. You create keys in Studio (studio.reducto.ai/api-keys) or inline on the quickstart page after signing in. There is no OAuth, so each user would supply their own key. The record now lists one auth method (api_key) because the Bearer header is just how the key is sent.",
+  "access": "self_serve_free",
+  "access_notes": "The quickstart says \"Sign up for a free account\" and you can then create a key right away. The Standard plan is pay-as-you-go and includes $150 in free usage. Growth and Enterprise plans go through sales.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "About 20 operations. Parse, Extract, Split, Classify, Edit and Pipeline each have sync and async versions. Upload and delete upload. Jobs: get, list, cancel, delete. Configure webhook, and Version. These are document-processing functions, not CRUD resources.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Reducto hosts it at https://mcp.reducto.ai/mcp and documents it at docs.reducto.ai/mcp-server. Auth is the API key as Authorization: Bearer. I opened the page directly and confirmed these details.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is public, self-serve and comes with $150 of free credit. Auth uses a user-supplied API key rather than OAuth. The API is narrow in purpose (document processing) but has a reasonable number of operations.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "quote": "Authorization: Bearer $REDUCTO_API_KEY"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "quote": "OpenAPI schema"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.reducto.ai/api-reference/overview",
+    "quote": "The webhook configuration for the asynchronous processing."
+   },
+   {
+    "field": "access",
+    "url": "https://reducto.ai/pricing",
+    "quote": "Standard accounts include $150 in free credits."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.reducto.ai/quickstart",
+    "quote": "Sign up for a free account without leaving the docs."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.reducto.ai/mcp-server",
+    "quote": "runs at https://mcp.reducto.ai/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[bearer_token, api_key]",
+    "new": "[api_key]",
+    "why": "There is only one credential, a static API key. Bearer is just the header it is sent in, not a separate method."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "The API overview and quickstart don't mention any sandbox or test mode. The free $150 credit is the only way to test."
+   },
+   {
+    "field": "evidence",
+    "old": "api/webhooks/access quotes not found on page",
+    "new": "Replaced with verbatim quotes from the pages",
+    "why": "The automated check flagged the original quotes. I replaced them with text I saw on the API overview, pricing, quickstart and MCP pages."
+   },
+   {
+    "field": "access_notes",
+    "old": "Key-creation flow unconfirmed",
+    "new": "Quickstart confirms free sign-up and immediate key creation",
+    "why": "I opened docs.reducto.ai/quickstart."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Seen only in search summaries",
+    "new": "Confirmed on docs.reducto.ai/mcp-server",
+    "why": "I opened the page directly."
+   },
+   {
+    "field": "confidence",
+    "old": "auth/access/mcp/buildability medium",
+    "new": "all high",
+    "why": "Primary sources confirmed these fields."
+   },
+   {
+    "field": "needs_human",
+    "old": "Sandbox, sign-up and MCP checks",
+    "new": "",
+    "why": "All three were resolved from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

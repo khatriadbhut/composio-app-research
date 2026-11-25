@@ -1,0 +1,136 @@
+{
+ "id": 70,
+ "slug": "sentry",
+ "app": "Sentry",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.sentry.io/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Application error monitoring, tracing, session replay and alerting platform.",
+  "subcategory": "Error monitoring / observability",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "basic",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Public integrations use OAuth2 with the authorization code grant (\"Public integrations require an OAuth flow for tokens\"). Bearer auth tokens come from personal user tokens (User settings) or from internal integrations, which generate tokens automatically when installed. Legacy API keys use Basic auth; they are still supported but disabled for new accounts. DSN (client key) auth is a limited 'other' method that covers only a few endpoints. Per the first pass, tokens are scoped to the one organization the user selected. I did not re-verify the token lifetime or the device flow.",
+  "access": "paid_plan_required",
+  "access_notes": "Sentry's pricing page lists 'API | No' and 'Third-party integrations | No' for the free Developer plan. Team ($29/mo and up), Business and Enterprise get 'API & third-party integrations'. A developer can register an integration under Developer Settings. Public integrations start unpublished ('for development purposes'). To make one available to all Sentry users you click Publish, which emails integrations-platform@sentry.io for review. So the end users' orgs need a paid plan, and distributing to everyone needs Sentry's approval.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API v0. Covers organizations, projects, teams, members, events and issues, releases and deploys, alerts and monitors, dashboards, replays, integrations, SCIM and more. The published OpenAPI schema (getsentry/sentry-api-schema, openapi-derefed.json) covers well over 50 operations. Some endpoints are beta. Regional hosts us.sentry.io and de.sentry.io exist.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Vendor-hosted remote server at https://mcp.sentry.dev/mcp, which uses OAuth for all connections. A stdio option runs through the Sentry CLI (`sentry mcp`), and the legacy `npx @sentry/mcp-server` package also exists. The pricing page lists 'MCP access' on the free Developer plan.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "A multi-tenant OAuth toolkit needs a published public integration, and publishing means Sentry reviews it (the Publish button emails integrations-platform@sentry.io). Until it is approved, an unpublished integration is only for development. Also, the pricing page says the free Developer plan has no API access, so end users on the free tier may not be able to use the toolkit. Tokens are scoped to one organization.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "Sentry supports OAuth2 with the authorization code grant type."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "API keys are a legacy means of authenticating."
+   },
+   {
+    "field": "access",
+    "url": "https://sentry.io/pricing/",
+    "quote": "API | No | Yes | Yes | Yes"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.sentry.io/organization/integrations/integration-platform/public-integration/",
+    "quote": "start in an unpublished state for development purposes and can be submitted later for approval to publish."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.sentry.io/organization/integrations/integration-platform/public-integration/",
+    "quote": "This sends an email to integrations-platform@sentry.io, letting us know your integration is ready for review"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/getsentry/sentry-api-schema",
+    "quote": "Sentry's public API schema"
+   },
+   {
+    "field": "mcp",
+    "url": "https://mcp.sentry.dev/",
+    "quote": "All connections use OAuth."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.sentry.io/organization/integrations/integration-platform/webhooks/",
+    "quote": "Webhooks should respond within 1 second. Otherwise, the response is considered a timeout."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check four things. First, whether the free Developer plan really blocks all REST API and auth-token use, or only third-party integrations; the pricing table says 'API: No', but in practice user tokens may still work. Second, how long public-integration review takes; a search snippet from a login-walled Zendesk article claimed 4–5 weeks, which I could not verify. Third, whether any sandbox or test org exists beyond unpublished integrations. Fourth, the token lifetime and device-flow claims from the first pass, which I did not re-verify.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "oauth2, bearer_token, api_key, other",
+    "new": "oauth2, bearer_token, basic, other",
+    "why": "The legacy API keys use Basic auth, not an api_key header or query param, and they are disabled for new accounts. 'other' stays for DSN auth."
+   },
+   {
+    "field": "access",
+    "old": "self_serve_free",
+    "new": "paid_plan_required",
+    "why": "The pricing page table shows 'API | No' and 'Third-party integrations | No' for the free Developer plan. Team and higher plans list 'API & third-party integrations'."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "getsentry/sentry-api-schema publishes openapi-derefed.json, which is synced from getsentry/sentry."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "Making a public integration available to all users needs Sentry's review, and the API needs a paid plan."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "app_review",
+    "why": "The public-integration docs confirm that clicking Publish emails integrations-platform@sentry.io for review, and that unpublished integrations are for development only."
+   },
+   {
+    "field": "access_notes / blocker_notes",
+    "old": "No review step described; free-tier unconfirmed",
+    "new": "Review step confirmed; free Developer plan lacks API",
+    "why": "Primary sources: the public-integration docs and the pricing page."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "did not count operations",
+    "new": "OpenAPI schema covers well over 50 operations",
+    "why": "A published OpenAPI schema exists."
+   },
+   {
+    "field": "evidence",
+    "old": "5 items, access quote did not address review or plan",
+    "new": "Added pricing, publication-review, OAuth and schema quotes",
+    "why": "The original quotes were present on their pages but did not support the access or buildability conclusions."
+   }
+  ]
+ },
+ "human_fixes": []
+}

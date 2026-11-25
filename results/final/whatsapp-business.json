@@ -1,0 +1,134 @@
+{
+ "id": 28,
+ "slug": "whatsapp-business",
+ "app": "WhatsApp Business",
+ "category": "Communications and Messaging",
+ "hint": "developers.facebook.com/docs/whatsapp",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Meta's WhatsApp Cloud API for sending/receiving business messages, templates and calls.",
+  "subcategory": "Business messaging platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Graph API calls (graph.facebook.com) use Bearer access tokens, which you can get three ways. (1) A temporary token from the API Setup panel, for test messages. The get-started guide says it \"expires quickly and is not suitable for development purposes\". (2) A permanent System User access token, created in Business Settings with the whatsapp_business_messaging, whatsapp_business_management and business_management permissions. (3) Facebook Login for Business / Embedded Signup OAuth, which lets each customer business connect its own WhatsApp Business Account (WABA). A multi-tenant toolkit would use Embedded Signup OAuth and store the business tokens it returns. The vendor MCP server uses OAuth sign-in with the business_management, whatsapp_business_management and whatsapp_business_messaging scopes.",
+  "access": "approval_required",
+  "access_notes": "Self-serve for your own business. A developer registers, creates a Business app, and gets Standard Access to the permissions automatically. A test business phone number is generated and registered for them, and they can test with a temporary or system-user token. Meta's app-review page says direct developers using the API for themselves \"do not need Advanced access or app review\". An app \"that other businesses will be using\" must request Advanced access through App Review for whatsapp_business_management and whatsapp_business_messaging, with a screencast and a usage write-up. Without it, calls to WABAs the business doesn't own return error 200. Tech Provider / Embedded Signup onboarding applies to multi-tenant use. The app-review page does not mention Business Verification, so I could not confirm that requirement. Pricing: Meta charges per delivered message, and the rate depends on the template category (marketing, utility, authentication). Each business phone number gets 1,000 free delivered service messages per month. Inbound messages are free.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Graph API REST surface covering: messages (text, media, template, interactive), media upload and download, business phone numbers (register, verify, settings), message templates CRUD, business profile, WABA management and subscribed apps, flows, calling, groups, payments, analytics, QR codes and block users. Across all these resources the operation count is clearly above about 50. Meta publishes an OpenAPI spec in github.com/facebook/openapi (business-messaging-api_v23.0.yaml). The Graph API is not GraphQL, so I removed graphql.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Meta's official WhatsApp Business Tools MCP is at https://mcp.facebook.com/whatsapp_business_tools (Streamable HTTP). It signs in with OAuth through a Meta developer account, using automatic client registration, so you don't need a client ID or a Meta app. It is in beta and rolling out gradually. It is built for development and testing (setting up accounts, phone numbers, templates, webhooks and test messages), not for production sending at scale. Requests are rate-limited per user per tool. Supported clients are Claude Code, Claude Desktop, ChatGPT and Codex. A separate Meta Business Messaging MCP is also rolling out.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Building and testing is self-serve, with Standard Access and a test number. Letting arbitrary end-users connect their own WABAs needs Advanced access through Meta App Review, plus Tech Provider / Embedded Signup onboarding. Messaging is billed per delivered message after the free service-message tier. Template rules and the 24-hour customer service window limit what an agent can send.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+    "quote": "expires quickly and is not suitable for development purposes"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
+    "quote": "incoming messages, the status of outgoing messages, call events, and other important information"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp",
+    "quote": "https://mcp.facebook.com/whatsapp_business_tools"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.facebook.com/blog/post/2026/09/15/whatsapp-business-messaging-mcp-ai-agent/",
+    "quote": "This release is built for development and testing workflows, not production sending at scale."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/whatsapp/solution-providers/app-review",
+    "quote": "you do not need Advanced access or app review"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/whatsapp/pricing",
+    "quote": "Each business phone number has one free tier of 1,000 delivered service messages per month."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/facebook/openapi",
+    "quote": "Business Messaging - WhatsApp API OpenAPI Specification"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers.md",
+    "quote": "a test business phone number is generated and registered for you automatically"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Two things I could not confirm from Meta's own pages. (1) Whether Business Verification is required for App Review / Tech Provider. The app-review page does not mention it. (2) The five-recipient limit on the test number. Search results say it exists, but the phone-numbers page I opened does not state it. Also check the pricing details on the live pricing page: the fetch summary said service messages are charged from 2026-10-01 after the free tier, and I could not quote that directly.",
+  "changes": [
+   {
+    "field": "api_styles",
+    "old": "[\"rest\", \"graphql\"]",
+    "new": "[\"rest\"]",
+    "why": "The Graph API is a REST-style HTTP API, not GraphQL. The first pass admitted graphql was a guess."
+   },
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "Messages, media, phone numbers, templates, profile, WABA, flows, calling, groups, payments and analytics together add up to well over 50 operations."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "github.com/facebook/openapi publishes the Business Messaging - WhatsApp API OpenAPI spec (business-messaging-api_v23.0.yaml)."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Server URL not seen; setup guide not opened",
+    "new": "https://mcp.facebook.com/whatsapp_business_tools, Streamable HTTP, OAuth, beta, dev/testing only",
+    "why": "I opened the setup guide, which states the endpoint and the auth model."
+   },
+   {
+    "field": "access_notes",
+    "old": "Pricing/test number unconfirmed; App Review + Business Verification asserted",
+    "new": "Direct developers need no App Review; Advanced access is needed only for other businesses' WABAs; 1,000 free service messages per month; Business Verification not confirmed",
+    "why": "Verified against the app-review page and the pricing page."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items incl. llms.txt index quote",
+    "new": "8 quotes from the get-started, webhooks, MCP guide, blog, app-review, pricing, phone-numbers and OpenAPI pages",
+    "why": "Replaced the index-page evidence with quotes I saw on the primary pages."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "all high",
+    "why": "The primary sources confirm the key claims."
+   },
+   {
+    "field": "needs_human",
+    "old": "five open questions",
+    "new": "Business Verification requirement, the five-recipient test limit, and pricing details to check on the live page",
+    "why": "I answered most of the open questions from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

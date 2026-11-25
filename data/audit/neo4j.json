@@ -1,46 +1,98 @@
 {
-  "slug": "neo4j",
-  "app": "Neo4j",
-  "labels": {
-    "auth_methods": ["basic", "bearer_token", "oauth2"],
-    "auth_primary": "basic",
-    "access": "self_serve_free",
-    "api_styles": ["rest"],
-    "api_breadth": "moderate",
-    "mcp": "official_remote",
-    "buildability": "ready_now",
-    "main_blocker": "none"
-  },
-  "evidence": {
-    "auth": [
-      {"url": "https://neo4j.com/docs/query-api/current/authentication-authorization/", "quote": "Both basic and bearer authentication are supported."},
-      {"url": "https://neo4j.com/docs/query-api/current/authentication-authorization/", "quote": "It is up to your application to generate bearer tokens via your SSO provider."},
-      {"url": "https://neo4j.com/docs/aura/api/authentication/", "quote": "The Aura API uses OAuth 2.0 for API authentication."},
-      {"url": "https://neo4j.com/docs/aura/api/authentication/", "quote": "Access tokens are temporary and expire after one hour."}
-    ],
-    "access": [
-      {"url": "https://neo4j.com/pricing/", "quote": "Learn and Explore Graphs $0"},
-      {"url": "https://neo4j.com/pricing/", "quote": "No credit card or other payment method required"},
-      {"url": "https://neo4j.com/docs/aura/api/authentication/", "quote": "All tiers can create Aura API credentials."}
-    ],
-    "api": [
-      {"url": "https://neo4j.com/docs/query-api/current/", "quote": "The Query API allows to execute Cypher statements against a Neo4j server through HTTP requests."},
-      {"url": "https://neo4j.com/docs/aura/api/overview/", "quote": "The Aura API allows you to programmatically perform actions on your Aura instances"}
-    ],
-    "mcp": [
-      {"url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/", "quote": "Neo4j MCP for Aura is a hosted MCP server for your Aura instances."},
-      {"url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/", "quote": "MCP for Aura is available for Free, Professional, and Business Critical tier instances."},
-      {"url": "https://github.com/neo4j/mcp", "quote": "Neo4j official MCP Server"}
-    ],
-    "buildability": [
-      {"url": "https://neo4j.com/pricing/", "quote": "No credit card or other payment method required"},
-      {"url": "https://neo4j.com/docs/query-api/current/authentication-authorization/", "quote": "Both basic and bearer authentication are supported."}
-    ]
-  },
-  "uncertain": {
-    "api_breadth": "The data-plane Query API has only a handful of endpoints (implicit query plus explicit transactions), but it runs arbitrary Cypher. The Aura management API v1 has about 26 operations (counted from aura_api_spec_v1.yaml) and v2beta1 has about 95 (beta). moderate reflects GA operations; broad is defensible if beta management endpoints or Cypher's expressiveness count.",
-    "auth_primary": "There is no user-delegated OAuth authorization-code flow. Database access is username/password (Basic) or an SSO bearer token; the Aura API uses OAuth2 client credentials (client id/secret exchanged for a 1-hour token). For a multi-user toolkit, Basic (URI + user + password) is the realistic primary.",
-    "mcp": "The MCP for Aura docs page does not say whether it is preview or GA. A Neo4j blog post ('Introducing MCP for Aura') exists but I did not open it."
-  },
-  "notes": "AuraDB Free is $0 with no credit card, and the Query API and the instance-management API are both listed as included on every tier, Free included. Neo4j has three MCP offerings: (1) the hosted 'MCP for Aura', a per-instance URL https://<INSTANCE_ID>.mcp-instances.neo4j.io that requires 'Tool authentication' enabled in the Aura console; (2) the official local neo4j/mcp (Go binary, PyPI neo4j-mcp-server, latest v2.1.2 on 2026-11-23; tools get-schema, read-cypher, write-cypher, list-gds-procedures); (3) the separate Neo4j Labs servers in neo4j-contrib/mcp-neo4j (cypher, memory, aura-manager, data-modeling), which are not the official product. The hint URL neo4j.com/docs/api returned 404. Bolt drivers (a binary protocol) are the main client path but are not a separate api_style enum."
+ "slug": "neo4j",
+ "app": "Neo4j",
+ "labels": {
+  "auth_methods": [
+   "basic",
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "basic",
+  "access": "self_serve_free",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "mcp": "official_remote",
+  "buildability": "ready_now",
+  "main_blocker": "none"
+ },
+ "evidence": {
+  "auth": [
+   {
+    "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+    "quote": "Both basic and bearer authentication are supported."
+   },
+   {
+    "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+    "quote": "It is up to your application to generate bearer tokens via your SSO provider."
+   },
+   {
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "The Aura API uses OAuth 2.0 for API authentication."
+   },
+   {
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "Access tokens are temporary and expire after one hour."
+   }
+  ],
+  "access": [
+   {
+    "url": "https://neo4j.com/pricing/",
+    "quote": "Learn and Explore Graphs $0"
+   },
+   {
+    "url": "https://neo4j.com/pricing/",
+    "quote": "No credit card or other payment method required"
+   },
+   {
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "All tiers can create Aura API credentials."
+   }
+  ],
+  "api": [
+   {
+    "url": "https://neo4j.com/docs/query-api/current/",
+    "quote": "The Query API allows to execute Cypher statements against a Neo4j server through HTTP requests."
+   },
+   {
+    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "quote": "The Aura API allows you to programmatically perform actions on your Aura instances"
+   }
+  ],
+  "mcp": [
+   {
+    "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+    "quote": "Neo4j MCP for Aura is a hosted MCP server for your Aura instances."
+   },
+   {
+    "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+    "quote": "MCP for Aura is available for Free, Professional, and Business Critical tier instances."
+   },
+   {
+    "url": "https://github.com/neo4j/mcp",
+    "quote": "Neo4j official MCP Server"
+   }
+  ],
+  "buildability": [
+   {
+    "url": "https://neo4j.com/pricing/",
+    "quote": "No credit card or other payment method required"
+   },
+   {
+    "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+    "quote": "Both basic and bearer authentication are supported."
+   }
+  ]
+ },
+ "uncertain": {
+  "api_breadth": "The data-plane Query API has only a handful of endpoints (implicit query plus explicit transactions), but it runs arbitrary Cypher. The Aura management API v1 has about 26 operations (counted from aura_api_spec_v1.yaml) and v2beta1 has about 95 (beta). moderate reflects GA operations; broad is defensible if beta management endpoints or Cypher's expressiveness count.",
+  "auth_primary": "There is no user-delegated OAuth authorization-code flow. Database access is username/password (Basic) or an SSO bearer token; the Aura API uses OAuth2 client credentials (client id/secret exchanged for a 1-hour token). For a multi-user toolkit, Basic (URI + user + password) is the realistic primary.",
+  "mcp": "The MCP for Aura docs page does not say whether it is preview or GA. A Neo4j blog post ('Introducing MCP for Aura') exists but I did not open it."
+ },
+ "notes": "AuraDB Free is $0 with no credit card, and the Query API and the instance-management API are both listed as included on every tier, Free included. Neo4j has three MCP offerings: (1) the hosted 'MCP for Aura', a per-instance URL https://<INSTANCE_ID>.mcp-instances.neo4j.io that requires 'Tool authentication' enabled in the Aura console; (2) the official local neo4j/mcp (Go binary, PyPI neo4j-mcp-server, latest v2.1.2 on 2026-11-23; tools get-schema, read-cypher, write-cypher, list-gds-procedures); (3) the separate Neo4j Labs servers in neo4j-contrib/mcp-neo4j (cypher, memory, aura-manager, data-modeling), which are not the official product. The hint URL neo4j.com/docs/api returned 404. Bolt drivers (a binary protocol) are the main client path but are not a separate api_style enum.",
+ "human": {
+  "overrides": {},
+  "notes": {}
+ }
 }

@@ -1,0 +1,172 @@
+{
+ "id": 68,
+ "slug": "mongodb-atlas",
+ "app": "MongoDB Atlas",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "mongodb.com/docs/atlas/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Managed cloud MongoDB service; the Admin API manages orgs, projects, clusters and users.",
+  "subcategory": "Managed database / cloud data platform",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The Atlas Administration API takes three kinds of credential. (1) Service account access tokens, using the OAuth 2.0 client-credentials flow with a client ID and secret. This is the recommended self-serve path. (2) Legacy programmatic API keys, using HTTP Digest. (3) User-delegated OAuth 2.1 (authorization code + PKCE S256) through Atlas App Connections. Option 3 is only open to approved design partners, and MongoDB issues the client_id during onboarding. Authorize URL: https://cloud.mongodb.com/oauth/authorize. Token URL: https://authorize.mongodb.com/tokens. Access tokens last 10 minutes. Refresh tokens rotate, expire after 7 days idle, and expire after 30 days at most. The IP access list applies to service accounts and API keys and is on by default for orgs created in the UI. It does not apply to delegated traffic. The first pass's \"jwt_service_account\" label was wrong: Atlas service accounts use OAuth client credentials, not signed-JWT assertions. The first pass also said delegated access covered only AI clients and the CLI. In fact a partner OAuth path exists, but it is gated.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone with a free Atlas account who is Organization Owner can create service accounts or API keys. The API docs and pricing results show no plan gate, and Free clusters can even be created through the Admin API's Clusters resource, though not modified through it. A public one-click OAuth connect (App Connections) needs approved design-partner status through MongoDB's partner form. Customers' orgs must also allow third-party app connections, which are disabled by default for existing orgs. Without partner status, each customer has to create their own service account and handle the IP access list.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Atlas Administration API v2 is versioned through the Accept header (application/vnd.atlas.YYYY-MM-DD+json). Base URL is https://cloud.mongodb.com/api/atlas/v2. It covers orgs, projects, clusters, database users, network access, alerts, backups, third-party integrations, service accounts, MCP configurations and more. That is well over 50 operations, though I did not count them exactly. The OpenAPI spec is published in the github.com/mongodb/openapi repo and as a download on the docs reference at mongodb.com/docs/api/doc/atlas-admin-api-v2. A Postman workspace is also available.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The Atlas Managed MCP Server is hosted by MongoDB at https://mcp.mongodb.com. It went GA on 2026-08-13, uses OAuth through Atlas App Connections, and is disabled by default for existing orgs. There is also an official local server, the npm package mongodb-mcp-server (github.com/mongodb-js/mongodb-mcp-server). It uses MDB_MCP_API_CLIENT_ID and MDB_MCP_API_CLIENT_SECRET for Atlas tools and supports stdio or HTTP transport.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "partnership",
+  "blocker_notes": "A toolkit can be built today with service account credentials (OAuth client credentials) that each customer supplies. The catch is that customers must create a service account themselves and either add the toolkit's egress IPs to the API access list or disable the list. A real per-user OAuth connect flow needs MongoDB to approve you as a design partner (via the Become a Partner form, mentioning \"Partner API\"). Each customer org must also enable third-party app connections, which are off by default for existing orgs. There is no separate partner or test environment. Webhooks only deliver alert notifications per project; there is no general event subscription.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "Service account access tokens (OAuth 2.0)"
+   },
+   {
+    "field": "auth",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "API keys (HTTP Digest Authentication)"
+   },
+   {
+    "field": "auth",
+    "url": "https://www.mongodb.com/docs/atlas/app-connections/",
+    "quote": "Atlas App Connections is the MongoDB Atlas OAuth 2.1 platform that lets apps act on behalf of Atlas users through user-delegated access."
+   },
+   {
+    "field": "access",
+    "url": "https://www.mongodb.com/docs/atlas/app-connections/partner-integration-guide/",
+    "quote": "This guide is for approved design partners. To become a partner, submit the Become a Partner form"
+   },
+   {
+    "field": "access",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "To create a service account or API keys for an organization, you must have Organization Owner access to that organization."
+   },
+   {
+    "field": "access",
+    "url": "https://www.mongodb.com/docs/atlas/reference/free-shared-limitations/",
+    "quote": "You can create a Free cluster using the Clusters API resource."
+   },
+   {
+    "field": "buildability",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "If you make a request to the Atlas Administration API without an IP access list entry, the server responds with a 403 status code."
+   },
+   {
+    "field": "api",
+    "url": "https://www.mongodb.com/docs/atlas/api/",
+    "quote": "Atlas Administration API resources add, edit, or delete administrative objects within Atlas, including projects, users, and clusters."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/mongodb/openapi",
+    "quote": "This repository hosts the OpenAPI specification for the Atlas Administration API (v2.0)."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.mongodb.com/products/updates/now-ga-mongodb-atlas-managed-mcp-server/",
+    "quote": "backed by the MongoDB Atlas Managed MCP Server, a MongoDB-hosted Model Context Protocol (MCP) server"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.mongodb.com/docs/mcp-server/get-started/",
+    "quote": "devin mcp add mongodb-atlas https://mcp.mongodb.com"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.mongodb.com/docs/atlas/tutorial/webhook-integration/",
+    "quote": "You can configure Atlas to send alert notifications to a webhook endpoint as HTTP POST requests for programmatic processing."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether Composio is, or could become, an approved App Connections design partner. That decides between a one-click OAuth connect and asking each customer for a service account.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[jwt_service_account, oauth2, api_key]",
+    "new": "[oauth2, api_key]",
+    "why": "Atlas service accounts use the OAuth 2.0 client-credentials flow, not JWT assertions, so they already count as oauth2."
+   },
+   {
+    "field": "auth_notes",
+    "old": "No per-end-user OAuth consent flow for third-party apps; delegated access only for AI clients/CLI",
+    "new": "Partner OAuth 2.1 (PKCE) through App Connections exists but is limited to approved design partners; added endpoints and token lifetimes",
+    "why": "The App Connections page and the partner integration guide both document a partner OAuth path."
+   },
+   {
+    "field": "access_notes",
+    "old": "Did not open pricing; plan gate inferred absent",
+    "new": "No plan gate; the Admin API works with Free clusters; partner approval needed for delegated OAuth",
+    "why": "Checked the free-cluster limitations page and the partner guide."
+   },
+   {
+    "field": "mcp",
+    "old": "official_local",
+    "new": "official_remote",
+    "why": "MongoDB hosts the Atlas Managed MCP Server (GA 2026-08-13) at https://mcp.mongodb.com."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Package and hosted URL unverified",
+    "new": "Hosted URL https://mcp.mongodb.com; local npm package mongodb-mcp-server confirmed on GitHub",
+    "why": "Confirmed on the get-started docs and in the GitHub README."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Spec location from memory; mentions Data API",
+    "new": "Spec confirmed at github.com/mongodb/openapi and in the docs downloads",
+    "why": "The first pass could not load the spec page."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes",
+    "new": "no",
+    "why": "The partner guide says Atlas has no separate partner environments; a free M0 cluster is a free production cluster, not a sandbox."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "Per-user OAuth needs partner approval, and the default-on IP access list makes hosted multi-tenant calls harder."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "partnership",
+    "why": "One-click delegated OAuth needs approved design-partner status. Service accounts work as a self-serve fallback."
+   },
+   {
+    "field": "confidence",
+    "old": "access/api/mcp medium",
+    "new": "access/api/mcp high",
+    "why": "Each is now confirmed by a primary source."
+   },
+   {
+    "field": "needs_human",
+    "old": "Four open questions",
+    "new": "Only the partner-status question remains",
+    "why": "Resolved the free tier, MCP package and URL, spec location and webhooks from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

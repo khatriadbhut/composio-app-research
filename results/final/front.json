@@ -1,0 +1,147 @@
+{
+ "id": 14,
+ "slug": "front",
+ "app": "Front",
+ "category": "Support and Helpdesk",
+ "hint": "front.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Shared inbox and customer communication platform for email, chat, SMS and other channels.",
+  "subcategory": "Helpdesk / shared inbox",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth2 supports only the authorization code grant. Access tokens expire after 60 minutes and refresh tokens after 6 months; a new refresh token is issued in the last 24 hours of validity. The end user authorizing a private or public OAuth app must be an admin, except for the MCP server, which any teammate can authorize. Front also has company-level API tokens, used as Bearer tokens. Only admins can create them, they are scoped to namespaces (global, shared, private), and permissions can be limited to read, write, delete and send. They are meant for a company's own scripts. Partner integrations must use OAuth unless Front grants an exception. API tokens cannot be used with the MCP server.",
+  "access": "approval_required",
+  "access_notes": "A free developer account can be created on the Developer Portal. It is separate from production and is recommended for anyone who is not a paying customer. A community post suggests these accounts have channel and time limits (for example, 3 channels for 6 months, extendable), so it may not be permanent. Only company admins can create apps and API tokens. A multi-tenant integration offered to all Front customers must be published through Front's partnership program. Front tests the integration, may run a security or legal review, and can refuse it. Partner integrations must use OAuth. The pricing page (Starter, Professional, Enterprise) does not say which plans include API access. An API rate-limit add-on is listed as available on all plans.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Core API covers conversations, messages, contacts, inboxes, teammates, teams, tags, comments, drafts, channels, rules, accounts and more. A separate Channel API and an Application API also exist. An OpenAPI spec (core-api.json in frontapp/front-api-specs) and a Postman collection are published. Operations were not counted.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The server is at https://mcp.frontapp.com/mcp and uses Streamable HTTP. It requires OAuth 2.1 with PKCE and does not support Dynamic Client Registration, so the client needs a client ID and secret from a Front developer app. Authorization is user-scoped, and any teammate can connect. Rate limits are 100, 200 and 300 tool calls per minute on Starter, Professional and Enterprise. The docs page has no beta/GA label and no launch date, so the earlier claims about an April 2026 beta and August 2026 GA are unverified. Docs: https://dev.frontapp.com/docs/mcp-server",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Development can start with a free developer account. Offering the integration to all Front customers requires publishing through Front's partnership program, where Front tests the app, may review it, and can refuse it. Partner integrations must use OAuth. Only admins can authorize OAuth apps, which limits which end users can connect.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://dev.frontapp.com/docs/oauth",
+    "quote": "End users authorizing OAuth apps must be admins. This applies to both private and public OAuth apps."
+   },
+   {
+    "field": "auth",
+    "url": "https://dev.frontapp.com/docs/oauth",
+    "quote": "Front's OAuth implementation only supports the authorization code grant type."
+   },
+   {
+    "field": "auth",
+    "url": "https://dev.frontapp.com/docs/create-and-revoke-api-tokens",
+    "quote": "You must be an admin to create or manage API tokens."
+   },
+   {
+    "field": "access",
+    "url": "https://help.front.com/en/articles/2309",
+    "quote": "Follow the instructions on the Developer Portal to create a free developer account."
+   },
+   {
+    "field": "access",
+    "url": "https://dev.frontapp.com/docs/partnering-with-front",
+    "quote": "We reserve the right to refuse certain integrations."
+   },
+   {
+    "field": "access",
+    "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+    "quote": "If you want to make an app available for all Front customers to use, you must publish your app."
+   },
+   {
+    "field": "api",
+    "url": "https://dev.frontapp.com/docs/tools",
+    "quote": "Front provides the Core API Postman collection in our Postman public workspace."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://dev.frontapp.com/docs/webhooks-1",
+    "quote": "Application webhooks retry failed deliveries, so a transient failure on your side does not mean a lost event."
+   },
+   {
+    "field": "mcp",
+    "url": "https://dev.frontapp.com/docs/mcp-server",
+    "quote": "Agents authenticate as a specific Front user, with permissions matching that user's role (user-scoped authorization)."
+   },
+   {
+    "field": "buildability",
+    "url": "https://dev.frontapp.com/docs/partnering-with-front",
+    "quote": "we require that partner integrations connect to the Core API via OAuth"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Not resolved: (1) which paid Front plans include Core API and OAuth app access, because the pricing page does not say; (2) whether the free developer account expires. A July 2024 community post describes a 6-month account with limited channels.",
+  "changes": [
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "To reach all Front customers, an integration must be published through the partnership program. Front tests it, may review it, and can refuse it."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "app_review",
+    "why": "Partnering page: 'We reserve the right to refuse certain integrations', plus a technical test and a possible security or legal review."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...company-level API tokens, which are not confirmed on a fetched page...",
+    "new": "API tokens confirmed: admin-only, namespace-scoped, permission-limited, not usable with MCP; partners must use OAuth",
+    "why": "The create-and-revoke-api-tokens page loads and confirms this."
+   },
+   {
+    "field": "access_notes",
+    "old": "No app review described; plans unverified",
+    "new": "Free dev account confirmed on the help center; publishing requires Front's test and possible review; admin-only app creation; plans still not on the pricing page",
+    "why": "Primary sources found: help article 2309 and the partnering and create-and-manage-apps pages."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "GA-stable as of August 2026 (beta April 2026), listed in Claude's connector directory",
+    "new": "OAuth 2.1+PKCE, no DCR, any teammate, per-plan rate limits; no status or date on the docs page",
+    "why": "The MCP docs page has no beta/GA label or dates, and the connector-directory listing was not verified."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote 'Core API spec is viewable on GitHub (frontapp/front-api-specs)'",
+    "new": "Verbatim quotes from the tools, API tokens, help center, partnering and apps pages",
+    "why": "The original api quote is not on the tools page, and access had no evidence."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access low, api medium",
+    "new": "auth high, access medium, api high",
+    "why": "These claims are now backed by pages that were fetched."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "access",
+   "old": "\"self_serve_free\"",
+   "new": "\"approval_required\"",
+   "why": "Docs: apps are private to one customer; 'To publish your app, notify our team as described in the Partnering with Front topic.' The verifier flipped a correct pass-1 value.",
+   "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+   "by": "browser check (Chrome)"
+  }
+ ]
+}

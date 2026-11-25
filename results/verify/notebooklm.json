@@ -1,0 +1,180 @@
+{
+ "id": 91,
+ "slug": "notebooklm",
+ "app": "NotebookLM",
+ "category": "AI, Research and Media-native",
+ "hint": "cloud.google.com/gemini (Enterprise API)",
+ "pass": 2,
+ "at": "2026-11-25T03:56:02.844Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "NotebookLM Enterprise API sources audio overview discoveryengine"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "NotebookLM official MCP server Google"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rpc/google.cloud.notebooklm.v1alpha"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks-sources"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Google Cloud managed MCP servers list supported products NotebookLM"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.cloud.google.com/mcp/supported-products?hl=en"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "NotebookLM Enterprise pricing per license per month Gemini Enterprise"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Google's AI research notebook; Enterprise edition exposes a preview notebooks API.\",\"subcategory\":\"AI research assistant / notebooks\",\"auth_met"
+  }
+ ],
+ "cost_usd": 0.30531980000000003,
+ "duration_ms": 67103,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Google's AI research notebook; Enterprise edition exposes a preview notebooks API.",
+  "subcategory": "AI research assistant / notebooks",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Docs authenticate with a Google user access token (`gcloud auth print-access-token`, Bearer header). The RPC reference lists these OAuth scopes: cloud-platform, discoveryengine.readwrite and discoveryengine.serving.readwrite, plus discoveryengine.assist.readwrite for BatchCreateSources. Adding Drive sources needs user credentials with Drive access. The caller must be a user with a Gemini Notebook for business/Enterprise license and the roles/discoveryengine.notebookLmUser role. The docs don't mention service accounts, and the per-user license requirement makes service-account use unlikely. This is unconfirmed.",
+  "access": "self_serve_trial",
+  "access_notes": "API calls need a user with an active Gemini Notebook license. Licenses are bought as subscriptions from the Gemini Enterprise page of the Cloud console and billed monthly or yearly to the project's Cloud Billing account. A self-serve free trial gives a \"full-featured, 14-day trial subscription of 5000 licenses\". After that, a paid subscription is required. The licensing page lists no price. Gemini Enterprise seats reportedly start around $21–30 per user per month, from a non-English page snapshot that I didn't verify. The API is Pre-GA (v1alpha). Consumer NotebookLM has no public API.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "About 11 operations on discoveryengine.googleapis.com v1alpha (google.cloud.notebooklm.v1alpha):\n- Notebooks: create, get, listRecentlyViewed, batchDelete, share.\n- Sources: batchCreate, uploadFile, get, batchDelete. Supported sources are Drive Docs/Slides, raw text, web URLs, YouTube, and uploaded PDF/DOCX/PPTX/XLSX/TXT/MD, audio and image files.\n- Audio overviews: create, delete.\nThe reference also lists DiscoverSourcesService and LabelService, but neither has published RPC methods. There is no list-notebooks-by-query endpoint and no chat/query endpoint.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "community_only",
+  "mcp_notes": "NotebookLM is not on Google's managed MCP \"Supported products\" page (docs.cloud.google.com/mcp/supported-products). The page lists an Agent Search MCP at discoveryengine.googleapis.com/mcp, which is a different product. Only community servers exist, e.g. pleaseprompto/notebooklm-mcp, PyPI notebooklm-mcp-server, mcp-notebooklm and moodrobotics/notebooklm-mcp-server. They are unofficial and mostly automate the consumer web app using cookies or browser sessions.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "End users need a paid Gemini Notebook/Gemini Enterprise license on a Google Cloud project; a developer can build and test on the 14-day trial. The API is v1alpha/Pre-GA. The surface covers notebook, source and audio-overview management, with no chat/query. Auth is user OAuth with cloud-platform scope, so a public OAuth app would likely face Google sensitive-scope verification. Consumer NotebookLM has no API.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "require an authenticated user account with an active Gemini Notebook for business license."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "gcloud auth print-access-token generates an access token for your user account."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "https://ENDPOINT_LOCATION-discoveryengine.googleapis.com/v1alpha/projects/PROJECT_NUMBER/locations/LOCATION/notebooks"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/reference/rpc/google.cloud.notebooklm.v1alpha",
+    "quote": "SourceService: BatchCreateSources, BatchDeleteSources, GetSource"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+    "quote": "full-featured, 14-day trial subscription of 5000 licenses"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "Pre-GA features are available \"as is\" and might have limited support."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.cloud.google.com/mcp/supported-products?hl=en",
+    "quote": "Agent Search | https://discoveryengine.googleapis.com/mcp"
+   },
+   {
+    "field": "mcp",
+    "url": "https://pypi.org/project/notebooklm-mcp-server/",
+    "quote": "MCP server for NotebookLM (notebooklm.google.com)"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Quotes came through a summarizing fetch tool. The RPC-reference and MCP-page quotes in particular are reconstructed from summaries, so please check them verbatim. Still to confirm: whether service accounts can call the API, the exact Gemini Notebook license price, and whether the Agent Search MCP at discoveryengine.googleapis.com/mcp covers any NotebookLM functions (probably not).",
+  "changes": [
+   {
+    "field": "access",
+    "old": "paid_plan_required",
+    "new": "self_serve_trial",
+    "why": "The licensing page offers a self-serve 14-day free trial of 5000 licenses. After that, a paid subscription is needed."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Notebooks only; sources unread; audio not mentioned",
+    "new": "Notebooks (5) + sources (4) + audio overviews (2), plus the list of source types",
+    "why": "I opened the sources page and the RPC reference. Sources and audio overview endpoints exist."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote truncated endpoint; no mcp evidence",
+    "new": "Full endpoint string, RPC reference, licensing trial quote, MCP supported-products page and community PyPI",
+    "why": "The api quote failed the check, and mcp had no evidence."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "No Google-official server found",
+    "new": "Checked Google's managed MCP supported-products list: NotebookLM is absent. Only community servers exist.",
+    "why": "Primary-source check of Google's official MCP catalog."
+   },
+   {
+    "field": "auth_notes",
+    "old": "user token; service account unconfirmed",
+    "new": "Added the OAuth scopes from the RPC reference and the Drive-access note",
+    "why": "More precise auth detail from the primary docs."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "paid license, v1alpha, small surface",
+    "new": "Added the trial, the lack of a chat/query endpoint, and likely Google OAuth sensitive-scope verification",
+    "why": "Reflects the verified API surface and access path."
+   },
+   {
+    "field": "what_it_does",
+    "old": "...preview API for notebooks via Discovery Engine.",
+    "new": "Google's AI research notebook; Enterprise edition exposes a preview notebooks API.",
+    "why": "Shortened to under 15 words."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for mcp\n- quote for api not found on https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks\n- agent's open question: The evidence quotes come from a fetch tool that summarizes pages, so they may be paraphrased. I didn't open the sources page or the licensing and pricing pages. Please check whether service-account auth works, what the sources and audio endpoints cover, and the NotebookLM Enterprise price."
+}

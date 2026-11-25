@@ -1,0 +1,135 @@
+{
+ "id": 75,
+ "slug": "asana",
+ "app": "Asana",
+ "category": "Productivity and Project Management",
+ "hint": "developers.asana.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Work and project management platform for tasks, projects, and team collaboration.",
+  "subcategory": "Project management",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "jwt_service_account",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The authentication docs list four methods: Personal access token, Service Account, OAuth and OpenID Connect. Use OAuth 2.0 for apps that act for many users. A PAT (bearer token) suits scripts and internal tools. Service accounts are Enterprise-only and only super admins can create them. They are mapped to jwt_service_account here, but they actually issue a static bearer token, not a JWT grant. OpenID Connect is for sign-in only and is mapped to 'other'. Users with a view-only license get limited API access.",
+  "access": "self_serve_free",
+  "access_notes": "Developers can build without review. You create an app in the developer console and get a client ID and secret. Apps start private to the developer. Under Manage distribution you can share an app with specific workspaces, or with 'Any workspace' so any Asana user with the authorize URL can install it. The docs give no review step for either setting. Only listing in the App Directory needs Asana's review, and apps built with app components get an extra security review. The docs say to test in an existing workspace, a free account, or a developer sandbox. The docs do not say what the API costs. An Asana forum post (not fetched) says the API works on the free tier, with plan-based feature limits. Workspace admins can block apps through app management.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST API covers tasks, projects, sections, users, workspaces, teams, portfolios, goals, custom fields, webhooks, attachments, stories, tags and more. Asana publishes an OpenAPI spec in github.com/Asana/openapi; the README cites ./defs/asana_oas.yaml. Endpoints were not counted, but there are well over 50 operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The official remote server is at https://mcp.asana.com/v2/mcp. It uses Streamable HTTP and OAuth. Some clients need a client ID and secret from an Asana app. The v1 beta server at https://mcp.asana.com/sse was deprecated and was scheduled to shut down on 2026-05-11. Admin controls for allowing or blocking MCP clients exist only on Enterprise+ and Legacy Enterprise tiers.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blocker found. OAuth apps are self-serve and can be shared with 'Any workspace' without review. Review applies only to App Directory listing. Service accounts and some premium features depend on the plan. Workspace admins may block third-party apps.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.asana.com/docs/authentication",
+    "quote": "Service Accounts are an Enterprise tier feature and can only be created by Asana super admins"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.asana.com/docs/authentication",
+    "quote": "This is the best choice if multiple users need to sign in to your app."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.asana.com/docs/share-your-app",
+    "quote": "This will allow users from any Asana workspace to authorize the app if they are given the authorization URL."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.asana.com/docs/overview",
+    "quote": "You can test in any of your existing workspaces, create a free account, or request a developer sandbox."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.asana.com/docs/developer-sandbox",
+    "quote": "A developer sandbox is a temporary Asana domain with limited users."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.asana.com/docs/webhooks-guide",
+    "quote": "Webhooks allow an application to be notified of changes in Asana."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.asana.com/docs/using-asanas-mcp-server",
+    "quote": "Ensure your client supports OAuth authentication and Streamable HTTP transport"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/asana/openapi",
+    "quote": "To build (i.e., update) the OpenAPI specifications for the REST API (./defs/asana_oas.yaml)"
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.asana.com/docs/share-your-app",
+    "quote": "All apps submitted for publication to the app directory must be shared to Any workspace."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The fetched docs say nothing about API cost by plan. A free account working for API calls is backed only by an Asana staff forum post seen in search results.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "Asana says its API is free for anyone with an Asana account (seen in search results, not on a fetched page)... I did not check whether the app directory or distribution needs review.",
+    "new": "OAuth apps can be shared with Any workspace without review. Only App Directory listing is reviewed. Testing is possible on a free account or a developer sandbox.",
+    "why": "The share-your-app, overview and app-review docs were fetched and confirm this."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The developer-sandbox page describes 'a temporary Asana domain with limited users' for integration developers."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "https://mcp.asana.com/v2/mcp (Streamable HTTP, OAuth). Setup guide: ...",
+    "new": "v2 URL confirmed. Added that the v1 /sse beta was deprecated (shutdown 2026-05-11) and that the admin allow/block controls are limited to Enterprise+.",
+    "why": "Stated on the fetched using-asanas-mcp-server page."
+   },
+   {
+    "field": "evidence",
+    "old": "No access evidence; OpenAPI quote was a bare path; quote from /docs/mcp-server not re-verified",
+    "new": "Added access quotes from share-your-app, overview and developer-sandbox. Replaced the OpenAPI quote with README text. Dropped the unverified /docs/mcp-server quote.",
+    "why": "The automated check flagged missing access evidence, and every quote must be one actually seen."
+   },
+   {
+    "field": "confidence.access / confidence.buildability",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Primary docs now confirm self-serve distribution without review."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth 2.0 for multi-user apps; PAT for scripts; service accounts (Enterprise only); OIDC for sign-in.",
+    "new": "Added that service accounts issue a static token (the jwt_service_account mapping is approximate) and that view-only licenses have limited API access.",
+    "why": "From the authentication page."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check OAuth app creation on free account, distribution review, sandbox, API free claim, OpenAPI path",
+    "new": "Only API cost by plan is still unconfirmed in the fetched docs.",
+    "why": "The other questions were resolved with primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

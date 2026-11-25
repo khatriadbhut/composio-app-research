@@ -1,0 +1,138 @@
+{
+ "id": 86,
+ "slug": "quickbooks",
+ "app": "QuickBooks",
+ "category": "Finance and Fintech",
+ "hint": "developer.intuit.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud accounting software for small businesses: invoicing, bills, payments, bookkeeping.",
+  "subcategory": "Accounting",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 authorization code flow, with apps registered in the Intuit Developer Portal. Sandbox accepts localhost redirect URIs. Production needs a public HTTPS callback. Access tokens are short-lived, and refresh tokens rotate and must be persisted. No personal access token or API-key option was found. The OAuth docs pages on developer.intuit.com render client-side and returned no content, so the auth details are confirmed through Intuit's own MCP README.",
+  "access": "approval_required",
+  "access_notes": "A free developer account gives development keys and sandbox companies. Production keys need a successful app assessment questionnaire, completed per app; Intuit blocks production keys if requirements aren't met. App Partner Program: every partner starts in the free Builder tier. Core (data-in) calls are free and unlimited. CorePlus (data-out/read) calls are capped at 500,000 per month on Builder, and calls over the cap error out. Silver, Gold and Platinum tiers carry fees and need a payment method. Publishing to the App Store needs a separate review.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The QuickBooks Online Accounting API (REST/JSON v3) covers about 40 entities, including Customer, Vendor, Invoice, Bill, Payment, Account, Item, JournalEntry, Estimate, PurchaseOrder, Attachable and Reports. Each supports create, read, update, delete and query operations, plus a SQL-like query endpoint and batch. Intuit's MCP server exposes 145 tools over this API, which supports roughly 100+ operations. Payments, Payroll and some GraphQL (Premium APIs) are separate. The exact count wasn't confirmed from Intuit's API Explorer, which renders client-side.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted: https://ai-inc.quickbooks.intuit.com/v1/mcp, on Intuit's domain, using Streamable HTTP and OAuth through Intuit sign-in. Directories credit it to QuickBooks, and it is reportedly listed in Claude's directory as 'Made by Intuit QuickBooks'. Local: github.com/intuit/quickbooks-online-mcp-server, MIT licence, stdio, 145 tools. Many third-party hosted servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Development and sandbox work is self-serve. Connecting real companies needs production keys gated by the per-app assessment questionnaire, plus terms, company address and other setup. Read-heavy agent usage may exceed the free Builder cap of 500k CorePlus calls per month, which needs a paid tier.",
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "A comprehensive Model Context Protocol (MCP) server for QuickBooks Online"
+   },
+   {
+    "field": "auth",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "This server uses OAuth 2.0 to authenticate to a QuickBooks Online company."
+   },
+   {
+    "field": "api",
+    "url": "https://raw.githubusercontent.com/intuit/quickbooks-online-mcp-server/main/README.md",
+    "quote": "145 Total Tools"
+   },
+   {
+    "field": "mcp",
+    "url": "https://mcp.so/servers/quickbooks",
+    "quote": "https://ai-inc.quickbooks.intuit.com/v1/mcp"
+   },
+   {
+    "field": "access",
+    "url": "https://www.apideck.com/blog/quickbooks-api-pricing-and-the-intuit-app-partner-program",
+    "quote": "CorePlus API Credits: 500,000 per month"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/get-started/partner-faq",
+    "quote": "all partners will begin in the Builder tier and be afforded 500,000 CorePlus API calls per month without incurring any charges"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/webhooks",
+    "quote": "you'll only receive change notifications for QuickBooks Online companies that are connected and authorized via OAuth 2.0"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The hosted MCP endpoint (ai-inc.quickbooks.intuit.com/v1/mcp) is attributed to Intuit only by third-party directories (mcp.so, mcpservers.org). Confirm it in Intuit's announcement or Claude's connector directory. The Intuit partner-FAQ and webhooks quotes come from search snippets because developer.intuit.com renders client-side. The questionnaire requirement comes from Intuit's blog via search snippets; the blog redirects to Medium, which returned 403.",
+  "changes": [
+   {
+    "field": "mcp",
+    "old": "official_local",
+    "new": "official_remote",
+    "why": "An Intuit-domain hosted endpoint, https://ai-inc.quickbooks.intuit.com/v1/mcp, is listed under author QuickBooks with OAuth. The local GitHub server remains in the notes."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Local stdio server only; no vendor-hosted remote found",
+    "new": "Hosted ai-inc.quickbooks.intuit.com/v1/mcp plus local intuit/quickbooks-online-mcp-server",
+    "why": "The first pass never searched for a remote server."
+   },
+   {
+    "field": "access_notes",
+    "old": "Builder-tier pricing and free allowance unconfirmed",
+    "new": "Builder tier is free with 500k CorePlus calls/month; Core calls are free and unlimited; questionnaire is per app",
+    "why": "Confirmed via Intuit's partner FAQ (search snippet) and Apideck's pricing write-up."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "no",
+    "why": "Only community OpenAPI copies were found (kinlane gist, api-evangelist); none is published by Intuit."
+   },
+   {
+    "field": "what_it_does",
+    "old": "Cloud accounting software for small businesses (invoices, bills, payments, bookkeeping, payroll).",
+    "new": "Cloud accounting software for small businesses: invoicing, bills, payments, bookkeeping.",
+    "why": "Shortened to under 15 words. Payroll is a separate API."
+   },
+   {
+    "field": "evidence",
+    "old": "4 README quotes, none for api",
+    "new": "Added api, remote-MCP, pricing and webhook quotes",
+    "why": "The automated check flagged that no evidence was cited for api."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "The gating is now confirmed: production keys need the questionnaire, and the free Builder tier exists."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "…possibly App Partner Program fees",
+    "new": "Free Builder cap of 500k CorePlus/month; paid tiers beyond that",
+    "why": "Fee structure clarified."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "api_styles",
+   "old": "[\"rest\"]",
+   "new": "[\"rest\",\"graphql\"]",
+   "why": "Intuit documents GraphQL APIs alongside the REST Accounting API.",
+   "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started.html",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ]
+}

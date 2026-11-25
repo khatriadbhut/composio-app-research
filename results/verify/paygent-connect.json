@@ -1,0 +1,170 @@
+{
+ "id": 84,
+ "slug": "paygent-connect",
+ "app": "Paygent Connect",
+ "category": "Finance and Fintech",
+ "hint": "paygent (NMI-powered)",
+ "pass": 2,
+ "at": "2026-11-25T03:54:55.084Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebSearch,WebFetch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "\"Paygent Connect\" payment gateway"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Paygent NMI gateway"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.nmi.com/reference"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "paygent.com payments merchant gateway API"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.nmi.com/reference/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.pay-gent.com/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.gopaygent.com/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Paygent \"NMI\" white label payment gateway partner Paygent Connect portal"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.nmi.com/resources/payments-101/faq/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "gopaygent \"Paygent Connect\" marketplace payments"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"NMI-powered white-label payment gateway; the \\\"Paygent Connect\\\" branding is unverified.\",\"subcategory\":\"Payment gateway\",\"auth_methods\":[\"api_"
+  }
+ ],
+ "cost_usd": 0.3409375,
+ "duration_ms": 72506,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "NMI-powered white-label payment gateway; the \"Paygent Connect\" branding is unverified.",
+  "subcategory": "Payment gateway",
+  "auth_methods": [
+   "api_key",
+   "other"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "This describes NMI's API, which a Paygent-branded NMI gateway would expose. No Paygent-specific API docs were found. The v5 APIs take a security key in the Authorization header. The classic APIs take an api_key field in the body. Merchants create keys in Merchant Portal > Settings > Security Keys, and partners create them in Partner Portal > Settings > Security Keys. The authentication page does not mention OAuth. The partner-only Merchant Sign-Up API has an Authorization endpoint that returns an access token. That is a token exchange, not a third-party OAuth2 consent flow, so it is listed as 'other'. A toolkit would need each merchant's own security key.",
+  "access": "partner_gated",
+  "access_notes": "NMI says it \"operates exclusively through a partner channel\" and does not onboard merchants directly. A production key therefore requires a merchant account from a reseller or ISO, which would presumably be Paygent. A merchant who already has an account can create keys themselves in the portal. NMI's Integration Portal advertises a developer sandbox (\"Start building in our Sandbox\"), but this pass did not confirm its sign-up terms.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The NMI API Reference has these sections: Merchant Sign-Up, Online Payments, In-Person Payments, Account Management, Reporting, Administration, Other Resources and Classic APIs. Classic covers the Payment API, Customer Vault, recurring billing and query. Webhook subscriptions and webhooks are also documented. Operations were not counted. The breadth estimate comes from the navigation.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "none_found",
+  "mcp_notes": "No MCP server for Paygent was found. NMI hosts a docs MCP server, listed on docs.nmi.com/reference, that lets AI coding assistants query NMI's documentation. It does not call the payments API, and it belongs to NMI, not Paygent. An unrelated \"Paygent\" MCP connector (ai.paygenthq, on Glama) exists for an AI-agent payments product and should not be confused with this one.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The product identity is the main blocker. \"Paygent\" is the name of at least four unrelated companies: Japan's Paygent (connect ID/password credentials), gopaygent.com (an API-first gateway that markets a \"Connect\" marketplace product), pay-gent.com, and paygent.tech/paygenthq (AI-agent payments with MCP). No source ties any of them to NMI. If the product really is an NMI white-label, a toolkit could target the NMI API with per-merchant security keys. Production accounts come only through NMI partners.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.nmi.com/reference",
+    "quote": "API authentication using security keys, with best practices for merchants and partners."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.nmi.com/reference",
+    "quote": "This page describes the webhook feature and how to set it up."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.nmi.com/reference",
+    "quote": "A hosted MCP server is provided to allow AI coding assistants (Claude Code, Cursor, VS Code) to query these docs directly."
+   },
+   {
+    "field": "access",
+    "url": "https://www.nmi.com/resources/payments-101/faq/",
+    "quote": "NMI operates exclusively through a partner channel. We don't directly onboard individual merchants as end users."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.nmi.com/reference",
+    "quote": "Merchant Sign-Up Authentication: The Authorization endpoint allows clients to securely authenticate and obtain an access token for making requests to the API."
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "medium",
+   "buildability": "low"
+  },
+  "needs_human": "Someone needs to confirm which \"Paygent\" is meant. No source links any Paygent to NMI. The candidates are Paygent Co. in Japan (paygent.co.jp, with its own connect-ID API), gopaygent.com (which has a \"Connect\" product), pay-gent.com, and paygent.tech/paygenthq (AI-agent payments). If it is an NMI white-label, a human should get the Paygent reseller's onboarding terms and the gateway URL. A human should also check whether NMI's Integration Portal sandbox is free and self-serve, and whether NMI publishes an OpenAPI spec.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"api_key\",\"oauth2\"]",
+    "new": "[\"api_key\",\"other\"]",
+    "why": "The NMI authentication page covers security keys only. The Merchant Sign-Up token is a partner token exchange, not a third-party OAuth2 consent flow."
+   },
+   {
+    "field": "access",
+    "old": "approval_required",
+    "new": "partner_gated",
+    "why": "The NMI FAQ says NMI works exclusively through partners and does not onboard merchants directly, so credentials have to come from a reseller account."
+   },
+   {
+    "field": "mcp",
+    "old": "official_remote",
+    "new": "none_found",
+    "why": "No Paygent MCP exists. NMI's hosted MCP only queries NMI's docs, belongs to NMI, and cannot call the payment API."
+   },
+   {
+    "field": "evidence",
+    "old": "webhooks/mcp quotes not present on docs.nmi.com/reference; no access evidence",
+    "new": "Replaced with verbatim quotes from docs.nmi.com/reference and the NMI FAQ",
+    "why": "The automated check found the original quotes were not on the page. Access had no evidence at all."
+   },
+   {
+    "field": "confidence.access",
+    "old": "low",
+    "new": "medium",
+    "why": "NMI's own FAQ confirms the partner-only model."
+   },
+   {
+    "field": "what_it_does",
+    "old": "White-label payment gateway (NMI platform) reached via merchant API keys; the Paygent Connect product itself is unconfirmed.",
+    "new": "NMI-powered white-label payment gateway; the \"Paygent Connect\" branding is unverified.",
+    "why": "Shortened to fit the limit of under 15 words."
+   },
+   {
+    "field": "needs_human",
+    "old": "Mentions only the Japanese Paygent as an alternative",
+    "new": "Lists the four distinct Paygent companies found",
+    "why": "Searches turned up gopaygent.com (which has a Connect product), pay-gent.com and paygent.tech/paygenthq, which make the identity question sharper."
+   }
+  ]
+ },
+ "flags_given": "- official MCP claimed with no URL or package named\n- agent marked access confidence low\n- no evidence cited for access\n- agent marked buildability confidence low\n- quote for webhooks not found on https://docs.nmi.com/reference\n- quote for mcp not found on https://docs.nmi.com/reference\n- agent's open question: The product identity is unconfirmed. Searches found no \"Paygent Connect\" page, and nothing linking Paygent to NMI. Paygent could also mean the Japanese Paygent PSP, which has its own API. Someone should confirm which product is meant, and how a Paygent-branded NMI account is provisioned (sandbox sig"
+}

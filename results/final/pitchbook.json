@@ -1,0 +1,139 @@
+{
+ "id": 90,
+ "slug": "pitchbook",
+ "app": "PitchBook",
+ "category": "Finance and Fintech",
+ "hint": "pitchbook.com (research API)",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Private-market data on companies, deals, investors, funds and LPs, via a contract-gated API.",
+  "subcategory": "Financial data / private markets research",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "PitchBook's own Postman-hosted API v2 docs confirm a static API key. It is sent on every request as the header \"Authorization: PB-Token {API_KEY}\". The REST API has no OAuth. Keys belong to the customer organization, and each call spends that organization's API credits (402 means insufficient credit). Production and sandbox use separate keys. Composio's existing PitchBook toolkit uses API_KEY auth. The Premium MCP connector is separate: users sign in with PitchBook SSO through Claude, not with an API key.",
+  "access": "contact_sales",
+  "access_notes": "The API is a quote-only add-on. It requires a PitchBook platform subscription plus a separate Direct Data/API contract. Keys and credits come through the account manager, not a self-serve dashboard, and there is no free tier. Every call has a credit cost, and credits are added through the account manager. Sandbox keys are provisioned separately.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The base URL is https://api.pitchbook.com, shared by production and sandbox. The API covers Companies, Deals, People, Investors, Funds, Service Providers and Limited Partners, plus credit news and research, patents, fund performance and cash flows, valuation estimates, VC exit predictions, bulk endpoints, and account and credit usage. Composio's PitchBook toolkit wraps 130 tools, so the API is well over 50 operations. A public Postman documenter page exists (documenter.gw.postman.com/view/metadata/TzCV1iRc), but third parties say the full endpoint reference requires a login.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "The official server is https://premium.mcp.pitchbook.com/mcp (\"PitchBook Premium\"). Claude's marketplace lists it as made by PitchBook. PitchBook help pages describe it as the Premium Connector for Claude, and there is also a ChatGPT version. To use it you need a seat-based, unlimited or trial PitchBook license plus SSO credentials, and a Claude org owner must enable it first. PitchBook currently includes it free for subscribers. Third-party wrappers exist from Strac, Apify, Merge and Vinkius.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "enterprise_sales",
+  "blocker_notes": "The API is public, documented and key-based, and Composio already ships a 130-tool PitchBook toolkit with API_KEY auth, so it can be built. The catch is that each end-user organization must hold a PitchBook subscription plus a separately contracted API add-on with credits. Composio cannot get test credentials without a contract or partnership. The official remote MCP is an alternative for PitchBook license holders.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://documenter.gw.postman.com/view/metadata/TzCV1iRc",
+    "quote": "include a header named \"Authorization\" with the value of \"PB-Token {API_KEY}\" with each API request."
+   },
+   {
+    "field": "api",
+    "url": "https://documenter.gw.postman.com/view/metadata/TzCV1iRc",
+    "quote": "Companies, Deals, People, Investors, Fund, Service Provider and Limited Partner information."
+   },
+   {
+    "field": "access",
+    "url": "https://documenter.gw.postman.com/view/metadata/TzCV1iRc",
+    "quote": "Each request for data to the API will have an associated credit cost."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "quote": "PitchBook API keys are provisioned as part of a paid API add-on rather than generated self-serve."
+   },
+   {
+    "field": "access",
+    "url": "https://pipeline.zoominfo.com/sales/pitchbook-api-review",
+    "quote": "PitchBook's API and data feed are quote-only add-ons."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.frontegg.com/agen-for-work/connectors/marketplace/pitchbook.md",
+    "quote": "PitchBook also offers a test sandbox environment that uses the same base URL with a separate key."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.composio.dev/toolkits/pitchbook.md",
+    "quote": "Tools: 130"
+   },
+   {
+    "field": "mcp",
+    "url": "https://claude.com/marketplace/connectors/pitchbook",
+    "quote": "https://premium.mcp.pitchbook.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "pitchbook.com help pages still return 403 to automated fetches, so a human should confirm the MCP licensing and SSO terms there (they come from search snippets of pitchbook.com/help/getting-started-with-pitchbook-premium-connector). It is still unknown whether PitchBook publishes an OpenAPI spec or webhooks.",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "Header format from third-party guides, not confirmed on PitchBook docs; MCP sign-in likely OAuth",
+    "new": "PB-Token header confirmed on PitchBook's own Postman docs; credit-metered keys; MCP uses PitchBook SSO",
+    "why": "PitchBook's Postman documenter page states the header verbatim. Search snippets of PitchBook's help page say the MCP requires SSO credentials."
+   },
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "Composio's own PitchBook toolkit exposes 130 tools covering companies, deals, investors, funds, LPs, people, news, patents and financials."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Docs behind login; operation count could not be checked",
+    "new": "130 operations via the Composio toolkit; partial public Postman docs",
+    "why": "The operation count is now verifiable, and a PitchBook-hosted Postman page is publicly reachable."
+   },
+   {
+    "field": "buildability",
+    "old": "needs_partnership_or_sales",
+    "new": "ready_with_caveats",
+    "why": "The API is public and key-based, and Composio already ships a PitchBook toolkit. The contract requirement makes this a caveat, not a blocker."
+   },
+   {
+    "field": "access_notes",
+    "old": "Paid add-on via account manager; sandbox key on request",
+    "new": "Added that every call costs credits, which are bought through the account manager, and that the API needs a separate Direct Data contract on top of a platform subscription",
+    "why": "PitchBook's Postman docs state the credit cost per call, and the ZoomInfo review says the API is a quote-only add-on."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Requires sign-in; for PitchBook clients",
+    "new": "Requires a seat-based, unlimited or trial license plus SSO; a Claude org owner must enable it; currently free for subscribers",
+    "why": "Comes from PitchBook help-page and investor Q&A search snippets."
+   },
+   {
+    "field": "evidence",
+    "old": "Frontegg (3) + Claude marketplace",
+    "new": "Added PitchBook Postman docs, the Composio toolkit and the ZoomInfo review",
+    "why": "Adds primary vendor documentation and a verified operation count."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, api low, mcp medium, buildability medium",
+    "new": "auth high, access high, api medium, mcp high, buildability medium",
+    "why": "Auth and access are now confirmed in PitchBook's own docs."
+   },
+   {
+    "field": "what_it_does",
+    "old": "Private-market company, deal, investor and fund data platform with a paid Direct Data API.",
+    "new": "Private-market data on companies, deals, investors, funds and LPs, via a contract-gated API.",
+    "why": "Shortened to fit the 15-word limit."
+   }
+  ]
+ },
+ "human_fixes": []
+}

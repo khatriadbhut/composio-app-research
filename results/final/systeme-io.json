@@ -1,0 +1,118 @@
+{
+ "id": 37,
+ "slug": "systeme-io",
+ "app": "systeme.io",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "systeme.io (funnel builder)",
+ "source": "verify",
+ "record": {
+  "what_it_does": "All-in-one funnel builder, email marketing, courses and e-commerce platform.",
+  "subcategory": "Funnel builder / marketing platform",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Public API: the user creates a key in Settings > MCP & API keys (max 3 per account, unique names, optional expiry, key shown only once) and sends it in the X-API-Key header. The MCP server uses a separate MCP key, sent in the X-MCP-Key header or the mcpKey query parameter. No OAuth exists, so a multi-user toolkit would have each end user paste their own key.",
+  "access": "self_serve_free",
+  "access_notes": "Any account holder creates keys in account settings, and the help article names no plan requirement. The pricing page has an \"API requests per minute\" row that differs by plan (search snapshots suggest 30/60/120/Unlimited, but the values did not render for me). This points to per-plan rate limits rather than a paywall. Free-plan API access is not explicitly confirmed by an official page.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "developer.systeme.io/llms.txt lists about 180 operations. They cover Contacts, ContactFields, Tags, Automation rules, Booking calendar, Community (communities, memberships, topics, posts), Domains, Files, Funnels and steps, Mailing (newsletters, campaigns, campaign steps, automation emails, statistics), Page editor, Payment (coupons, price plans, digital and physical products, offers, sale settings), SMS, School (courses, modules, lectures, enrollments), Subscriptions, Webhooks CRUD, Workflows (beta) and Workspace members. Collections use cursor pagination. The API is built on API Platform (Hydra-style resource names).",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official remote server at https://mcp.systeme.io/mcp?mcpKey=YOURMCPKEY. The MCP key goes in the X-MCP-Key header or the mcpKey query parameter. The server is an initial release covering contacts, tags, contact fields and newsletters only. All MCP keys share one rate-limit quota. A community local server also exists (snzeeee/mcp-server-systeemio).",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no OAuth, so authentication uses a per-user API key (3 keys per account). Webhooks can be registered through the API (POST /api/webhooks) for six events: CONTACT_OPT_IN, CONTACT_CREATED, CONTACT_TAG_ADDED, CONTACT_TAG_REMOVED, SALE_NEW and SALE_CANCELED. Rate limits vary by plan.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.systeme.io/reference/api",
+    "quote": "attach your API key to the `X-API-Key` header of each request"
+   },
+   {
+    "field": "access",
+    "url": "https://help.systeme.io/article/2323-how-to-use-systeme-io-public-api",
+    "quote": "You can create up to 3 API keys per account."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.systeme.io/llms.txt",
+    "quote": "Creates a Webhook resource.: https://developer.systeme.io/reference/api_webhooks_post-1.md"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://help.systeme.io/article/2930-how-to-use-systeme-ios-webhook-service",
+    "quote": "Triggered when a customer makes a purchase (supports both funnels and creator stores)."
+   },
+   {
+    "field": "mcp",
+    "url": "https://help.systeme.io/article/11230-how-to-connect-your-systemeio-account-with-claude-using-mcp-keys",
+    "quote": "https://mcp.systeme.io/mcp?mcpKey=YOURMCPKEY"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Confirm the free plan's API rate limit on the pricing page, which renders client-side: snapshots suggest 30 requests per minute for Free, but no official page confirmed it. I also could not confirm whether an OpenAPI JSON is downloadable from the ReadMe docs.",
+  "changes": [
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "llms.txt lists about 180 operations across about 20 resource groups"
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Only contacts/tags seen; size unconfirmed",
+    "new": "Full resource list from llms.txt",
+    "why": "Endpoint index verified"
+   },
+   {
+    "field": "blocker_notes",
+    "old": "unconfirmed whether webhooks can be registered via API",
+    "new": "Webhooks CRUD exists in the API",
+    "why": "llms.txt lists the Webhook create, list, get, update and delete endpoints"
+   },
+   {
+    "field": "auth_notes",
+    "old": "API key in X-API-Key only",
+    "new": "Adds the MCP key in the X-MCP-Key header or mcpKey query parameter",
+    "why": "The developer MCP docs describe both methods"
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Funnel editing not supported",
+    "new": "Initial release limited to contacts, tags, fields and newsletters, with a shared rate limit",
+    "why": "The developer.systeme.io MCP Server docs say so"
+   },
+   {
+    "field": "access_notes",
+    "old": "MCP included in all plans",
+    "new": "Rate limits vary by plan, and free-plan access is likely but unconfirmed",
+    "why": "The 'all plans' statement is ambiguous (it may refer to Claude plans), and the pricing page shows an API requests/min row"
+   },
+   {
+    "field": "evidence[auth].quote",
+    "old": "Send your API key in the X-API-Key header of each request.",
+    "new": "attach your API key to the `X-API-Key` header of each request",
+    "why": "Replaced with the exact quote from the page"
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, api low, mcp medium, buildability medium",
+    "new": "auth high, access medium, api high, mcp high, buildability high",
+    "why": "Primary sources verified"
+   }
+  ]
+ },
+ "human_fixes": []
+}

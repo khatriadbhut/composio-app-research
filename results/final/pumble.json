@@ -1,0 +1,155 @@
+{
+ "id": 25,
+ "slug": "pumble",
+ "app": "Pumble",
+ "category": "Communications and Messaging",
+ "hint": "pumble.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "CAKE.com team chat app with channels, DMs, calls and third-party apps.",
+  "subcategory": "Team chat / messaging",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The main method is an OAuth2 authorization-code flow. Consent happens at app.pumble.com/access-request?clientId=...&redirectUrl=...&scopes=..., and the token exchange is a POST to https://api-ga.pumble.com/oauth2/access. The exchange returns a user accessToken and a botToken. The docs say \"Generated access tokens do not need to be refreshed.\" Reinstalling the app invalidates the old bot token. API requests send two headers: x-app-token (the app key) and token (the user or bot token). There is also an \"API keys\" add-on that issues a key per user. It is limited to 1000 requests per minute per user and suits single-user use only. The official MCP server uses the same token and x-app-token headers, taken from an app the user creates in their own workspace.",
+  "access": "approval_required",
+  "access_notes": "Any workspace user, including on the Free plan, can create an app (Configure apps → Create app) and get an app key plus user and bot tokens. The API keys add-on is \"Available on all plans.\" The Free plan caps a workspace at 3 apps or integrations; Pro allows 10, and Business and Enterprise are unlimited. Distribution goes through the CAKE.com Marketplace and needs a Marketplace developer account. Public apps, which any workspace can install, must pass review before publishing, and each new version is reviewed again. Private apps are limited to whitelisted workspaces and can be published immediately.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "The SDK ApiClient has about 40 methods. They cover messages (post, DM, reply, edit, delete, reactions, search, scheduled, ephemeral), channels, users, user groups, profile and status, workspace info, files, calls and the app home view. The official MCP server exposes 19 tools, including send_message, search_messages, create_channel, get_users and schedule_message. The API keys add-on has a smaller set (send, reply and delete messages, reactions, create channel, list messages, channels and DMs), documented in an API reference on pumble-api-keys.addons.marketplace.cake.com.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The official remote MCP server is at https://mcp.pumble.com/mcp. CAKE.com announced it on 2026-07-01 as \"available to all new and existing Pumble users.\" It authenticates with token and x-app-token headers from an app the user creates; the docs show no OAuth for it. The tools available depend on the scopes granted. There is also a Claude connector under Configure apps. Community servers exist too, such as the pumble-mcp-server npm package (shoutkol) and @infralayers/pumble-mcp.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "OAuth, scopes and event subscriptions (signed HTTP event delivery) are documented, and a developer can build and test for free. The catch is reaching arbitrary customer workspaces: that needs a Public app on the CAKE.com Marketplace, which goes through review, and each new version is re-reviewed. Private apps only work in whitelisted workspaces. Free-plan workspaces can install only 3 apps or integrations. Developer docs are mainly on the SDK site, cake-com.github.io/pumble-node-sdk.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+    "quote": "Generated access tokens do not need to be refreshed."
+   },
+   {
+    "field": "access",
+    "url": "https://pumble.com/help/integrations/add-pumble-apps/api-keys-integration",
+    "quote": "Available on all plans."
+   },
+   {
+    "field": "access",
+    "url": "https://cake-com.github.io/pumble-node-sdk/publish-to-marketplace.html",
+    "quote": "it needs to go through the review process before publishing"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://cake-com.github.io/pumble-node-sdk/manifest.html",
+    "quote": "URL where Pumble events will be sent. These requests do not need to be acknowledged."
+   },
+   {
+    "field": "mcp",
+    "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
+    "quote": "https://mcp.pumble.com/mcp"
+   },
+   {
+    "field": "mcp",
+    "url": "https://cake.com/updates/mcp-server",
+    "quote": "The MCP server is available to all new and existing Pumble users."
+   },
+   {
+    "field": "api",
+    "url": "https://pumble.com/help/integrations/add-pumble-apps/api-keys-integration",
+    "quote": "The rate limit is up to 1000 requests per minute per user."
+   },
+   {
+    "field": "buildability",
+    "url": "https://cake-com.github.io/pumble-node-sdk/publish-to-marketplace.html",
+    "quote": "you first need to create an account on CAKE.com Marketplace"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Two things are unconfirmed. (1) The API keys add-on reference (pumble-api-keys.addons.marketplace.cake.com/api-docs/) is a JS-rendered Scalar page, and I could not see its raw OpenAPI JSON, so whether a downloadable spec exists is unverified. No spec was found for the main OAuth API. (2) How long Marketplace review takes, and whether an unpublished app can be installed in other workspaces.",
+  "changes": [
+   {
+    "field": "mcp",
+    "old": "none_found",
+    "new": "official_remote",
+    "why": "Pumble's help center documents an official MCP server at https://mcp.pumble.com/mcp, and CAKE.com announced it on 2026-07-01."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "No MCP server turned up in my searches...",
+    "new": "Official remote server https://mcp.pumble.com/mcp plus community servers",
+    "why": "Primary sources found."
+   },
+   {
+    "field": "main_blocker",
+    "old": "other",
+    "new": "app_review",
+    "why": "The publish guide says Public Marketplace apps must go through review before publishing."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Marketplace requirements unverified...",
+    "new": "Public apps need Marketplace review; private apps are whitelisted only; Free plan allows 3 apps",
+    "why": "Verified on the publish-to-marketplace guide and the pricing page."
+   },
+   {
+    "field": "access_notes",
+    "old": "Whether installing in other workspaces... needs review is unconfirmed",
+    "new": "Free self-serve app creation; Free plan capped at 3 apps; public distribution needs Marketplace account and review",
+    "why": "Pricing page and publish guide."
+   },
+   {
+    "field": "api_styles",
+    "old": "[\"rest\",\"sdk_only\"]",
+    "new": "[\"rest\"]",
+    "why": "A REST API exists (api-ga.pumble.com and the API keys add-on), so the sdk_only label is wrong."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...",
+    "new": "Adds that the MCP server uses the same token and x-app-token headers",
+    "why": "From the MCP help page."
+   },
+   {
+    "field": "evidence",
+    "old": "auth and webhooks quotes flagged as not found",
+    "new": "Replaced with verbatim quotes that were re-checked, and added mcp and access evidence",
+    "why": "The automated check flagged the earlier quotes."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, mcp low",
+    "new": "access high, mcp high",
+    "why": "Confirmed from primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "4 open questions",
+    "new": "2 remaining (OpenAPI JSON availability, review timeline and unpublished install)",
+    "why": "MCP, marketplace review and domain questions are resolved."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "access",
+   "old": "\"self_serve_free\"",
+   "new": "\"approval_required\"",
+   "why": "the record names app review as its main blocker, which the rubric labels approval_required",
+   "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+   "by": "consistency rule"
+  }
+ ]
+}

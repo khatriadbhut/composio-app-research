@@ -1,0 +1,203 @@
+{
+ "id": 97,
+ "slug": "higgsfield",
+ "app": "higgsfield",
+ "category": "AI, Research and Media-native",
+ "hint": "higgsfield.ai/cli (content suite)",
+ "pass": 2,
+ "at": "2026-11-25T03:57:03.175Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://higgsfield.ai/cli"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.higgsfield.ai"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://higgsfield.ai/enterprise-help-center/platform/integrations"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://mcp.higgsfield.ai/.well-known/oauth-protected-resource"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.higgsfield.ai/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://higgsfield.ai/_clerk/.well-known/oauth-authorization-server"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "docs.higgsfield.ai API webhook openapi"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.higgsfield.ai/docs/api-reference/overview.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.higgsfield.ai/docs/how-to/webhooks.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI image and video generation platform with a REST API, CLI and hosted MCP.\",\"subcategory\":\"AI image/video generation\",\"auth_methods\":[\"api_key"
+  }
+ ],
+ "cost_usd": 0.22772240000000002,
+ "duration_ms": 59652,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "AI image and video generation platform with a REST API, CLI and hosted MCP.",
+  "subcategory": "AI image/video generation",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API (api.higgsfield.ai) uses the header `Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET}`, with credentials generated in the console at open.higgsfield.ai. The key is shown only once. The hosted MCP (mcp.higgsfield.ai/mcp) uses standard OAuth 2.0: its protected-resource metadata points to a Clerk authorization server at higgsfield.ai/_clerk, with the authorization-code flow plus PKCE (S256) and scopes openid, email and offline_access. Dynamic client registration is available at higgsfield.ai/_clerk/oauth/register. That OAuth path covers the MCP only; the REST API still needs a per-user key ID and secret. The CLI uses browser sign-in (`higgsfield auth login`).",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up and create API credentials in the console, and no plan or subscription is required. However, the API runs only on a prepaid USD balance: you register a payment method and top up at least $5. That balance is separate from consumer plan credits. I found no free API credits, so real testing costs at least $5. The MCP and CLI draw on the user's own Higgsfield plan credits.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "The API is generation-focused. Each model has its own submit endpoint (many image and video models), plus request status (/requests/{id}/status) and cancel (/requests/{id}/cancel). There is no account, asset or other resource CRUD. Python and TypeScript SDKs wrap the REST API.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official hosted MCP at https://mcp.higgsfield.ai/mcp. It uses OAuth 2.0 through Clerk (higgsfield.ai/_clerk) with PKCE and dynamic client registration, and no API key is needed. The official CLI is @higgsfield/cli (`npm i -g @higgsfield/cli`), which works with MCP-compatible CLI agents. A community wrapper also exists (geopopos/higgsfield_ai_mcp).",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "This is not a hard blocker. The REST API has no per-user OAuth, so each user supplies their own key ID and secret, and usage needs a prepaid balance (minimum $5). The official hosted MCP already offers OAuth with dynamic client registration, which overlaps with a Composio toolkit.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.higgsfield.ai",
+    "quote": "Authorization: Key ${HF_API_KEY_ID}:${HF_API_KEY_SECRET}"
+   },
+   {
+    "field": "access",
+    "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+    "quote": "No plan or subscription is involved."
+   },
+   {
+    "field": "access",
+    "url": "https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api",
+    "quote": "the minimum top-up is $5"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.higgsfield.ai/docs/api-reference/overview.md",
+    "quote": "generated from the public OpenAPI specification"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.higgsfield.ai/docs/how-to/webhooks.md",
+    "quote": "Pass an HTTPS endpoint in the `hf_webhook` query parameter when submitting generation."
+   },
+   {
+    "field": "mcp",
+    "url": "https://higgsfield.ai/enterprise-help-center/platform/integrations",
+    "quote": "Paste https://mcp.higgsfield.ai/mcp and click Connect."
+   },
+   {
+    "field": "auth",
+    "url": "https://higgsfield.ai/_clerk/.well-known/oauth-authorization-server",
+    "quote": "registration_endpoint: https://higgsfield.ai/_clerk/oauth/register"
+   },
+   {
+    "field": "what_it_does",
+    "url": "https://higgsfield.ai/cli",
+    "quote": "Run Higgsfield from the command line in any MCP-compatible CLI agent"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The base host is unclear: docs show api.higgsfield.ai, while some webhook examples and directories show platform.higgsfield.ai. Also, no sandbox is documented, but I can't fully rule one out.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[api_key, oauth2, other]",
+    "new": "[api_key, oauth2]",
+    "why": "The 'Key ID:SECRET' header is an API key, so 'other' added nothing. I confirmed oauth2 from the MCP's OAuth metadata (Clerk, PKCE, dynamic client registration)."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...hosted MCP's user sign-in (the flow type is unconfirmed)...",
+    "new": "MCP uses standard OAuth 2.0 through Clerk, with PKCE and dynamic client registration; the REST API uses the Key ID:SECRET header",
+    "why": "I verified this from the .well-known OAuth metadata on mcp.higgsfield.ai and higgsfield.ai/_clerk."
+   },
+   {
+    "field": "api_styles",
+    "old": "[rest, sdk_only]",
+    "new": "[rest]",
+    "why": "The SDKs wrap a public REST API, so sdk_only is wrong."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...status, cancel and cost-estimate endpoints...",
+    "new": "per-model submit endpoints plus status and cancel",
+    "why": "The API reference overview lists only Generation, Status and Cancellation. I found no cost-estimate endpoint."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The API reference says it is generated from the public OpenAPI specification."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "Docs and the help center mention no sandbox or test mode, and the API runs only on a prepaid real balance."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Sign-in is required and no API key is needed (from search snippets)",
+    "new": "OAuth 2.0 through Clerk with PKCE and dynamic client registration; URL confirmed on the enterprise help page",
+    "why": "I fetched the help page and the OAuth metadata directly."
+   },
+   {
+    "field": "evidence",
+    "old": "help-center/cli/docs quotes, one paraphrased",
+    "new": "quotes re-verified, plus OpenAPI, webhook and OAuth metadata evidence",
+    "why": "The original quote 'No plan or subscription is required' actually reads 'No plan or subscription is involved.'"
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm MCP OAuth, OpenAPI, sandbox, header form",
+    "new": "Only the api.higgsfield.ai vs platform.higgsfield.ai host question remains",
+    "why": "The other questions are now resolved from primary sources."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth high, access high, api medium, mcp high, buildability medium",
+    "why": "Primary sources were fetched directly."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Confirm whether the hosted MCP's sign-in is a standard OAuth flow that third parties can use. I did not fetch the MCP help page directly; those details come from search snippets. Also confirm whether an OpenAPI spec is published, whether a sandbox exists, and which of the two auth header forms (sing"
+}

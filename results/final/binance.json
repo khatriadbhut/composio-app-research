@@ -1,0 +1,137 @@
+{
+ "id": 83,
+ "slug": "binance",
+ "app": "Binance",
+ "category": "Finance and Fintech",
+ "hint": "binance-docs.github.io",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Global crypto exchange with spot, futures, margin, wallet and trading APIs.",
+  "subcategory": "Crypto exchange",
+  "auth_methods": [
+   "api_key",
+   "hmac_signature",
+   "oauth2"
+  ],
+  "auth_primary": "hmac_signature",
+  "auth_notes": "Users create their own API keys and send them in the X-MBX-APIKEY header. Signed requests also carry a signature made with HMAC, RSA (PKCS#8) or Ed25519, and Binance recommends Ed25519. By default a key cannot TRADE. Binance Login (OAuth 2.0) for third-party apps is \"only provided to close ecosystem partners now\". The official remote MCP server uses its own browser consent flow (\"Binance Agentic Account Access\"), which is limited to an Agentic sub-account. For a multi-user toolkit, per-user API keys are the practical route.",
+  "access": "self_serve_free",
+  "access_notes": "API keys cost nothing, but a user can only create them after enabling 2FA, depositing any amount to their Spot Account and completing identity verification (KYC). Spot testnet keys come from a GitHub login at testnet.binance.vision. OAuth (Binance Login) is limited to close ecosystem partners, and access goes through the business team. Binance.com is not available in some regions, such as the US, where Binance.US is a separate platform.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers spot, margin, USD-M and COIN-M futures, options, wallet, sub-accounts, convert, staking, mining and more. That is well over 50 endpoints. Rate limits are per IP, not per API key. Official connectors exist for Python, JS, Java, Rust and Go, and there are Postman collections.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Binance hosts an official MCP server at https://agent.binance.com/mcp/agentic, part of Binance Agent OS. It covers market data, plus trading in Spot, Margin, Convert, USDⓈ-M and COIN-M Futures inside a dedicated Agentic sub-account. It authenticates through a browser consent flow, stores no local API keys and has no withdrawal scope. The Binance Skills Hub is also official. Community servers such as the PyPI binance-mcp-server also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The API is buildable with per-user API keys. Each end user needs a KYC-verified, funded Binance account in a supported region and must paste in a key and secret, often with an IP whitelist. OAuth is partner-only, so there is no standard delegated-auth flow. Rate limits are per IP, so users would share one limit behind a shared backend. Trading actions are high-risk.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+    "quote": "It is highly recommended to use Ed25519 API keys"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information",
+    "quote": "The limits on the API are based on the IPs, not the API keys."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.binance.com/docs/login/introduction",
+    "quote": "only provided to close ecosystem partners now"
+   },
+   {
+    "field": "access",
+    "url": "https://www.binance.com/en/support/faq/360002502072",
+    "quote": "Make a deposit of any amount to your Spot Account to activate your account;"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.binance.com/docs/binance-spot-api-docs/testnet/rest-api",
+    "quote": "API keys can be created on the SPOT Test Network (https://testnet.binance.vision) upon logging in with your Github account."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.binance.com/en/docs/agent-native/mcp-server/agentic",
+    "quote": "Spot, Margin, Convert, USDⓈ-M Futures, and COIN-M Futures"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/binance/binance-api-swagger",
+    "quote": "Swagger for the Binance Public API"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The swagger repo shows no last-update date, so check whether it covers the current endpoints.",
+  "changes": [
+   {
+    "field": "mcp",
+    "old": "community_only",
+    "new": "official_remote",
+    "why": "Binance docs describe an official hosted MCP server at agent.binance.com/mcp/agentic (Binance Agent OS)."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Only community servers found; official unconfirmed",
+    "new": "Official remote server URL, scope and consent-based auth",
+    "why": "Confirmed on developers.binance.com/en/docs/agent-native/mcp-server/agentic."
+   },
+   {
+    "field": "access_notes",
+    "old": "Any verified user can create keys; OAuth approval unconfirmed",
+    "new": "Free keys after 2FA, a deposit and KYC; OAuth partner-only; region limits",
+    "why": "Binance FAQ lists the prerequisites. The Login intro page confirms OAuth is partner-only."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth partner limit unconfirmed",
+    "new": "Partner-only OAuth confirmed; MCP consent flow added; Ed25519 recommended",
+    "why": "Fetched the Login introduction and general API info pages."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "There is no open OAuth. Each end user needs a KYC-verified, funded account in a supported region, and rate limits are shared per IP."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "other",
+    "why": "The KYC and deposit requirement, plus partner-only OAuth, slows a multi-user toolkit."
+   },
+   {
+    "field": "evidence",
+    "old": "Five quotes, including an unverified MCP quote from the README",
+    "new": "Seven verified quotes, including access and official MCP evidence",
+    "why": "The README MCP quote was not found on the page. Added access evidence, which the record lacked."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, mcp low",
+    "new": "auth high, access high, mcp high",
+    "why": "Claims are now confirmed on primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "MCP, OAuth and webhook questions",
+    "new": "Swagger repo freshness only",
+    "why": "Resolved the MCP and OAuth questions from vendor docs."
+   }
+  ]
+ },
+ "human_fixes": []
+}

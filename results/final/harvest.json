@@ -1,0 +1,135 @@
+{
+ "id": 80,
+ "slug": "harvest",
+ "app": "Harvest",
+ "category": "Productivity and Project Management",
+ "hint": "harvestapp.com (help.getharvest.com/api-v2)",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Time tracking, invoicing and expense SaaS with a public REST API v2.",
+  "subcategory": "Time tracking",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth2 through Harvest ID, with both the Authorization Code flow (server-side) and the Implicit Grant flow (client-side). Personal Access Tokens are recommended for your own scripts and are created in the Developers section of Harvest ID. Every request needs a Harvest-Account-Id header, because one token can reach several Harvest or Forecast accounts. Every request also needs a User-Agent header, or it returns 400.",
+  "access": "self_serve_free",
+  "access_notes": "PATs and OAuth apps are created self-serve in the Developers section of Harvest ID. The auth docs mention no app review. The pricing page lists a Free plan (1 seat, 2 projects) plus Teams, Enterprise and Enterprise Plus. Teams and Enterprise come with a 30-day free trial and need no credit card. Neither the pricing page nor the API docs gate API access by plan. Rate limits are 100 requests per 15 seconds in general, and 100 requests per 15 minutes for the Reports API.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The docs index lists these sections: Clients, Company Settings, Invoices, Estimates, Expenses, Tasks, Timesheets, Projects, Roles, Users, Reports, Paid Time Off, Approvals, Notifications, Reimbursements, Imports, Integrations and Forecast. A community server says it wraps 64 Harvest API endpoints. Either way, the count is well over 50 operations.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Harvest's support article \"Harvest MCP\" gives the endpoint https://api.harvestapp.com/mcp. It is added as a custom connector in Claude, or in Claude Code with `claude mcp add --transport http harvest https://api.harvestapp.com/mcp`, and the article has setup steps for Cursor. Fetching the article directly returns 403, so this comes from search snippets of Harvest's own page. Its auth (probably OAuth) is not confirmed. Community servers also exist: ianaleck/harvest-mcp-server, taiste, standardbeagle, valtirallc and southleft.",
+  "sandbox": "unknown",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blocker found. OAuth2 apps and PATs are self-serve with no documented review, and a Free plan exists. The rate limits are modest, especially on Reports (100 requests per 15 minutes). There are no native webhooks, so triggers would have to poll.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "Personal Access Tokens are the preferred method when you want to write your own scripts that consume our API."
+   },
+   {
+    "field": "auth",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "We use the Authorization Code flow for server-side authorization."
+   },
+   {
+    "field": "access",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "The API can be accessed by creating a Personal Access Token from the Developers section of Harvest ID."
+   },
+   {
+    "field": "access",
+    "url": "https://www.getharvest.com/pricing",
+    "quote": "Get started on any plan with a free trial. No credit card required."
+   },
+   {
+    "field": "api",
+    "url": "https://help.getharvest.com/api-v2/",
+    "quote": "Paid Time Off API"
+   },
+   {
+    "field": "api",
+    "url": "https://help.getharvest.com/api-v2/introduction/overview/general/",
+    "quote": "The rate limit for general API requests is 100 requests per 15 seconds."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+    "quote": "The Harvest MCP is the connection that gives an MCP-compatible assistant — such as Claude — controlled access to your Harvest account."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The Harvest MCP support article returns 403 to automated fetches. Open it in a browser to confirm the endpoint https://api.harvestapp.com/mcp and its auth method, which is probably OAuth. The webhooks value of \"no\" rests on the API v2 docs index having no webhooks section, plus third-party guides (Rollout, Nango) saying no native webhooks exist. The sandbox question is still unknown; the Free plan or a 30-day trial could serve as a test account.",
+  "changes": [
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "no",
+    "why": "The full API v2 docs index lists 20 sections and none of them is webhooks. The general overview page doesn't mention webhooks either, and Rollout and Nango both say Harvest has no native webhooks."
+   },
+   {
+    "field": "what_it_does",
+    "old": "Time tracking, invoicing, expenses and project management SaaS with a public REST API v2.",
+    "new": "Time tracking, invoicing and expense SaaS with a public REST API v2.",
+    "why": "Made it shorter to fit the 15-word limit."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth2 authorization code (and implicit) via Harvest ID; personal access tokens for own scripts. Requests also need a Harvest-Account-Id header.",
+    "new": "Adds the User-Agent requirement and where PATs and apps are created",
+    "why": "The overview page says a missing User-Agent header returns 400 Bad Request."
+   },
+   {
+    "field": "access_notes",
+    "old": "Free tier, limits not checked",
+    "new": "Free plan is 1 seat and 2 projects; Teams and Enterprise have a 30-day trial; API not gated by plan; rate limits added",
+    "why": "Checked the pricing page and the API overview page. The first pass cited no evidence for access."
+   },
+   {
+    "field": "evidence",
+    "old": "API quote listing sections in a made-up format; no access evidence",
+    "new": "Verbatim section name from the docs index, plus quotes from the access, pricing and rate-limit pages",
+    "why": "The automated check flagged that the API quote isn't on the page, and access had no evidence."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "No blocker found...",
+    "new": "Adds the rate limits and the lack of webhooks (polling needed)",
+    "why": "These are verified constraints that matter for an agent toolkit."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The pricing page confirms the Free plan, and the auth docs confirm self-serve token creation."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "Self-serve OAuth, a broad documented REST API, and no review step."
+   },
+   {
+    "field": "needs_human",
+    "old": "Webhooks, sandbox, MCP article, free plan limits",
+    "new": "Only the MCP article auth and the sandbox remain open",
+    "why": "Free plan limits and webhooks are now resolved from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

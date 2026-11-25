@@ -1,0 +1,123 @@
+{
+ "id": 17,
+ "slug": "plain",
+ "app": "Plain",
+ "category": "Support and Helpdesk",
+ "hint": "plain.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "API-first B2B customer support platform with AI agents and Slack/email/in-app channels.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "API keys belong to machine users, carry fine-grained permissions, and are sent as \"Authorization: Bearer plainApiKey_xxx\". OAuth apps are created under Settings → OAuth applications and use authorization code with refresh, PKCE for client-side apps, scopes openid and offline_access, and endpoints at signin.auth.plain.com. The OAuth docs say \"The app only works in the workspace you created it in.\" That means no multi-tenant OAuth app is available for distribution, so a multi-user toolkit would have each customer supply a per-workspace API key or create their own OAuth app. The MCP server uses OAuth login tied to the Plain user.",
+  "access": "self_serve_trial",
+  "access_notes": "There is no permanent free tier. Plans are Foundation ($45/user/mo), Horizon ($99/user/mo) and Frontier (custom), all billed annually. \"Every plan starts with a free 7-day trial, and the trial doesn't need a credit card.\" Neither the pricing page nor the billing docs restrict the API, webhooks or MCP to a particular plan; the developer platform is listed generally. Lasting access needs a paid plan.",
+  "api_styles": [
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "GraphQL API at https://core-api.uk.plain.com/graphql/v1, with the schema published at /graphql/v1/schema.graphql. It covers customers, threads, events, labels, tiers, companies, webhook targets, API keys, billing and more. The MCP server alone exposes \"nearly 400 tools\", which points to a very large operation surface.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Vendor-hosted at https://mcp.plain.com/mcp. It uses OAuth (\"No API keys needed\") and has the same permissions as the Plain user. The docs say \"nearly 400 tools\".",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "There is no free tier. Testing needs a 7-day trial (no credit card) or a paid workspace. OAuth apps only work in the workspace that created them, so no shared multi-tenant OAuth app is possible and the toolkit must rely on per-workspace API keys. The API is GraphQL only, with no OpenAPI spec.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.plain.com/docs/api-reference/graphql/authentication",
+    "quote": "Authorization: Bearer plainApiKey_xxx"
+   },
+   {
+    "field": "auth",
+    "url": "https://www.plain.com/docs/graphql/oauth.md",
+    "quote": "The app only works in the workspace you created it in."
+   },
+   {
+    "field": "api",
+    "url": "https://www.plain.com/docs/api-reference/graphql/introduction",
+    "quote": "https://core-api.uk.plain.com/graphql/v1"
+   },
+   {
+    "field": "access",
+    "url": "https://www.plain.com/docs/product/billing/pricing.md",
+    "quote": "Every plan starts with a free 7-day trial, and the trial doesn't need a credit card."
+   },
+   {
+    "field": "access",
+    "url": "https://www.plain.com/pricing",
+    "quote": "Start with a 7-day free trial, no credit card required."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.plain.com/docs/webhooks",
+    "quote": "Webhooks allow you to get notified about events happening in your Plain workspace."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.plain.com/docs/agents/mcp-server",
+    "quote": "https://mcp.plain.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "No public doc says whether a specific plan restricts API or webhook access. None was found, but this would need confirming in a trial workspace. Also confirm there is no way to request a multi-workspace (public) OAuth app from Plain.",
+  "changes": [
+   {
+    "field": "auth_primary",
+    "old": "oauth2",
+    "new": "api_key",
+    "why": "The OAuth docs say an OAuth app only works in the workspace that created it, so a multi-user toolkit can't use one shared OAuth app."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth app availability unverified",
+    "new": "OAuth details verified: authorization code with PKCE, signin.auth.plain.com endpoints, single-workspace only",
+    "why": "The first pass hadn't opened the OAuth page. I opened it."
+   },
+   {
+    "field": "access",
+    "old": "paid_plan_required",
+    "new": "self_serve_trial",
+    "why": "No doc restricts the API to a plan. Credentials can be obtained through a 7-day trial with no credit card."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "43 tools per changelog",
+    "new": "nearly 400 tools per MCP docs",
+    "why": "The current MCP docs page says \"nearly 400 tools\"."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "OAuth distribution status unverified",
+    "new": "OAuth apps are single-workspace only, so per-workspace API keys are needed",
+    "why": "Verified on the OAuth docs page."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, webhooks inferred",
+    "new": "Added OAuth, billing-trial and webhooks docs quotes",
+    "why": "The webhooks claim now rests on the vendor's webhooks doc rather than an inference from the pricing page."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access low, api medium",
+    "new": "auth high, access medium, api high",
+    "why": "Primary docs confirmed the auth methods, the trial terms and the API schema."
+   }
+  ]
+ },
+ "human_fixes": []
+}

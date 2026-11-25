@@ -1,0 +1,151 @@
+{
+ "id": 69,
+ "slug": "datadog",
+ "app": "Datadog",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.datadoghq.com/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud observability platform: metrics, logs, traces, monitors, dashboards, incidents, security.",
+  "subcategory": "Observability / monitoring",
+  "auth_methods": [
+   "api_key",
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST API: an API key handles writes. Reads need full access plus an application key. Both are sent as headers (DD-API-KEY / DD-APPLICATION-KEY), and application keys can be scoped. Personal Access Tokens and Service Access Tokens are documented for API calls (\"Pass the PAT as a Bearer token in the Authorization header. This method does not require an API key\"). OAuth2 clients are limited to a restricted set of authorization scopes. They are created in a partner developer org through the Developer Platform, and other orgs can authorize them only after Datadog publishes the integration. Credentials and base URLs are site-specific (US1/US3/US5/EU1/AP1/AP2/UK1/FED). Without DPN membership, a multi-user toolkit would collect a per-user API and app key pair, or a PAT, plus the user's site.",
+  "access": "self_serve_free",
+  "access_notes": "Sign-up is self-serve and starts a free trial. The pricing page says: \"When your free trial ends, you can choose to upgrade to a paid plan or move to the Free tier\". The Free tier covers up to 5 Basic hosts with 1-day metric retention. Any org can create API and application keys or PATs, so a developer can get working credentials alone. The pricing page does not state the trial length. Public multi-tenant OAuth is the gated part: the API-integration guide lists \"joined the Datadog Partner Network\" and \"have access to a partner developer organization\" as prerequisites. It also says the client can be authorized only from that partner org until Datadog publishes the integration.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API v1 and v2 cover metrics, events, logs, monitors, dashboards, incidents, SLOs, synthetics, users and roles, key management, security, APM and more, with hundreds of operations (not counted exactly). OpenAPI specs are published in DataDog/datadog-api-client-* repos under .generator/schemas/v1 and v2 (openapi.yaml).",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The Datadog-hosted MCP server has per-site endpoints, for example https://mcp.datadoghq.com/v1/mcp and https://mcp.datadoghq.eu/v1/mcp, with US3/US5/AP1/AP2/UK1 variants. US1-FED and US2-FED are not supported. Auth options are OAuth 2.0 (recommended), PAT/SAT as a Bearer token, or API plus app key headers. The docs say it is \"under significant development\", and some toolsets are in Preview.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "partnership",
+  "blocker_notes": "A toolkit can be built today with per-user API and app keys or PATs, which any org can create, including Free-tier orgs. The user's site has to be captured too. A published, public OAuth integration requires Datadog Partner Network membership and a partner developer org, and the client works only inside that org until Datadog publishes it. OAuth clients also get only a limited scope set.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.datadoghq.com/api/latest/authentication/",
+    "quote": "Requests that read data require full access and also require an `application key`."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.datadoghq.com/account_management/personal-access-tokens/",
+    "quote": "Pass the PAT as a Bearer token in the `Authorization` header. This method does not require an API key"
+   },
+   {
+    "field": "access",
+    "url": "https://www.datadoghq.com/pricing/",
+    "quote": "On the Free tier, you get up to five Basic hosts with 1-day metric retention, at no cost."
+   },
+   {
+    "field": "access",
+    "url": "https://www.datadoghq.com/pricing/",
+    "quote": "When your free trial ends, you can choose to upgrade to a paid plan or move to the Free tier."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.datadoghq.com/developers/integrations/api_integration/",
+    "quote": "Until your integration is published by Datadog, you can only test OAuth within your Datadog partner developer organization."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.datadoghq.com/developers/authorization/oauth2_in_datadog/",
+    "quote": "Within your Datadog Partner Sandbox Account, create and configure your OAuth client in the Developer Platform."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.datadoghq.com/mcp_server/setup.md",
+    "quote": "For most users, OAuth 2.0 is the recommended authentication method, and your MCP client handles it during setup."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.datadoghq.com/bits_ai/mcp_server/",
+    "quote": "The Datadog MCP Server is under significant development."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.datadoghq.com/integrations/webhooks/",
+    "quote": "It triggers a POST request to the URL you set with the following content in JSON format."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.datadoghq.com/api/latest/scopes/",
+    "quote": "Can only be assigned authorization scopes (limited set)."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The trial length (commonly 14 days) is not on the pricing page. It is still unconfirmed whether a Free-tier org keeps full REST API access after the trial. That access is expected, since keys exist in every org, but no doc states it outright. DPN application criteria and cost were not checked.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "self_serve_trial",
+    "new": "self_serve_free",
+    "why": "The pricing page confirms a permanent Free tier (5 Basic hosts, 1-day retention) that orgs can move to after the trial. Keys and PATs are self-serve in any org."
+   },
+   {
+    "field": "access_notes",
+    "old": "Unverified trial/free tier; partner approval unconfirmed",
+    "new": "Free tier confirmed; DPN membership + partner developer org confirmed as prerequisite for OAuth integrations",
+    "why": "Verified on the pricing page and the API-integration guide."
+   },
+   {
+    "field": "auth_notes",
+    "old": "PAT/SAT confirmed only on MCP page; OAuth needs partner access",
+    "new": "PAT Bearer auth confirmed on PAT docs; OAuth gated by DPN/publishing and limited scopes",
+    "why": "The PAT docs page confirms Bearer auth for API calls. The scopes page confirms OAuth clients get a limited scope set."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes",
+    "new": "no",
+    "why": "The only sandbox is the partner developer org, which requires Datadog Partner Network membership. Ordinary developers get no free test mode distinct from production; they would test in a Free or trial org."
+   },
+   {
+    "field": "main_blocker",
+    "old": "other",
+    "new": "partnership",
+    "why": "Public multi-user OAuth requires DPN membership and publication by Datadog. Key-based access is not blocked."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Paid or trial org access needed for testing; partner approval probable",
+    "new": "Free-tier orgs can create keys; OAuth publishing needs DPN membership (confirmed)",
+    "why": "Verified on the pricing page and the integration guide."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Did not count; spec location unverified",
+    "new": "Adds OpenAPI spec location in datadog-api-client repos",
+    "why": "Confirmed openapi.yaml in DataDog/datadog-api-client-python .generator/schemas/v2."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access low, api medium, buildability medium",
+    "new": "all high",
+    "why": "Primary sources confirmed the open questions."
+   },
+   {
+    "field": "evidence",
+    "old": "5 items",
+    "new": "10 items incl. pricing, PAT, API-integration guide, scopes",
+    "why": "All five original quotes were re-verified as present. New quotes were added to support the changed fields."
+   }
+  ]
+ },
+ "human_fixes": []
+}

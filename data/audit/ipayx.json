@@ -1,81 +1,85 @@
 {
-  "slug": "ipayx",
-  "app": "iPayX",
-  "labels": {
-    "auth_methods": [
-      "api_key",
-      "none"
-    ],
-    "auth_primary": "api_key",
-    "access": "paid_plan_required",
-    "api_styles": [
-      "rest"
-    ],
-    "api_breadth": "narrow",
-    "mcp": "official_remote",
-    "buildability": "ready_with_caveats",
-    "main_blocker": "narrow_api"
-  },
-  "evidence": {
-    "auth": [
-      {
-        "url": "https://www.ipayx.ai/docs/api",
-        "quote": "Every request requires a Bearer token in the `Authorization` header. Keys start with `ipx_live_`."
-      },
-      {
-        "url": "https://www.ipayx.ai/.well-known/mcp.json",
-        "quote": "API keys are optional. Transaction audits and forensic reports share 3 free calls per IP per calendar month."
-      },
-      {
-        "url": "https://www.ipayx.ai/.well-known/openapi.json",
-        "quote": "Supabase JWT or iPayX API key (ipx_live_...)"
-      }
-    ],
-    "access": [
-      {
-        "url": "https://www.ipayx.ai/developers",
-        "quote": "Access your dashboard and generate your production API key."
-      },
-      {
-        "url": "https://www.ipayx.ai/llms.txt",
-        "quote": "Forensic Pack from $297, API plans from $99/mo."
-      },
-      {
-        "url": "https://www.ipayx.ai/pricing",
-        "quote": "3 audits, lifetime"
-      }
-    ],
-    "api": [
-      {
-        "url": "https://www.ipayx.ai/llms.txt",
-        "quote": "POST https://api.ipayx.ai/functions/v1/fx-audit-engine"
-      },
-      {
-        "url": "https://www.ipayx.ai/.well-known/openapi.json",
-        "quote": "Run a forensic FX audit on one or more transactions"
-      }
-    ],
-    "mcp": [
-      {
-        "url": "https://www.ipayx.ai/llms.txt",
-        "quote": "Endpoint: https://mcp.ipayx.ai/mcp"
-      },
-      {
-        "url": "https://www.ipayx.ai/.well-known/mcp.json",
-        "quote": "\"server_url\": \"https://mcp.ipayx.ai/mcp\""
-      }
-    ],
-    "buildability": [
-      {
-        "url": "https://www.ipayx.ai/docs/mcp-server",
-        "quote": "HTTP Bearer token in `Authorization` header"
-      }
-    ]
-  },
-  "uncertain": {
-    "access": "Vendor pages contradict each other: pricing page shows Free (3 audits lifetime), Credit Pack 100 $99, Unlimited $299/mo; developers page lists Developer $99/mo through Scale $4,999/mo; mcp.json says 3 free calls per IP per month with keys optional; docs/mcp-server says 10 free audits/day per API key. Whether a free account can mint an ipx_ key could not be confirmed without signing up. Labeled paid_plan_required because API plans start at $99/mo.",
-    "main_blocker": "Both narrow_api (3-4 endpoints, single FX-audit use case) and paid_plan apply; narrow_api chosen.",
-    "api_breadth": "Endpoint lists differ by page: OpenAPI has /fx-audit-engine, /fetch-spot-rate, /roi-calculator; docs/api lists POST /audit, GET /rates, POST /audit/document. Narrow either way."
-  },
-  "notes": "The hint URL ipayx.ai/docs returns a 404 page; docs live at /docs/api and /docs/mcp-server, plus llms.txt and /.well-known/openapi.json and mcp.json. Not the 2017 iPayX acquired by BillingTree; this is 'iPayX Protocol' (11850091 Canada Inc.), a FINTRAC-registered FX audit service. Live probe of https://mcp.ipayx.ai/mcp returned tools/list without auth (serverInfo 'iPayX FX Audit' v1.4.0). REST server in OpenAPI is a supabase.co Edge Functions URL; api.ipayx.ai custom domain 'coming soon' per developers page. MCP endpoint also differs by page (mcp.ipayx.ai/mcp vs supabase functions/v1/mcp-server)."
+ "slug": "ipayx",
+ "app": "iPayX",
+ "labels": {
+  "auth_methods": [
+   "api_key",
+   "none"
+  ],
+  "auth_primary": "api_key",
+  "access": "paid_plan_required",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "mcp": "official_remote",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "narrow_api"
+ },
+ "evidence": {
+  "auth": [
+   {
+    "url": "https://www.ipayx.ai/docs/api",
+    "quote": "Every request requires a Bearer token in the `Authorization` header. Keys start with `ipx_live_`."
+   },
+   {
+    "url": "https://www.ipayx.ai/.well-known/mcp.json",
+    "quote": "API keys are optional. Transaction audits and forensic reports share 3 free calls per IP per calendar month."
+   },
+   {
+    "url": "https://www.ipayx.ai/.well-known/openapi.json",
+    "quote": "Supabase JWT or iPayX API key (ipx_live_...)"
+   }
+  ],
+  "access": [
+   {
+    "url": "https://www.ipayx.ai/developers",
+    "quote": "Access your dashboard and generate your production API key."
+   },
+   {
+    "url": "https://www.ipayx.ai/llms.txt",
+    "quote": "Forensic Pack from $297, API plans from $99/mo."
+   },
+   {
+    "url": "https://www.ipayx.ai/pricing",
+    "quote": "3 audits, lifetime"
+   }
+  ],
+  "api": [
+   {
+    "url": "https://www.ipayx.ai/llms.txt",
+    "quote": "POST https://api.ipayx.ai/functions/v1/fx-audit-engine"
+   },
+   {
+    "url": "https://www.ipayx.ai/.well-known/openapi.json",
+    "quote": "Run a forensic FX audit on one or more transactions"
+   }
+  ],
+  "mcp": [
+   {
+    "url": "https://www.ipayx.ai/llms.txt",
+    "quote": "Endpoint: https://mcp.ipayx.ai/mcp"
+   },
+   {
+    "url": "https://www.ipayx.ai/.well-known/mcp.json",
+    "quote": "\"server_url\": \"https://mcp.ipayx.ai/mcp\""
+   }
+  ],
+  "buildability": [
+   {
+    "url": "https://www.ipayx.ai/docs/mcp-server",
+    "quote": "HTTP Bearer token in `Authorization` header"
+   }
+  ]
+ },
+ "uncertain": {
+  "access": "Vendor pages contradict each other: pricing page shows Free (3 audits lifetime), Credit Pack 100 $99, Unlimited $299/mo; developers page lists Developer $99/mo through Scale $4,999/mo; mcp.json says 3 free calls per IP per month with keys optional; docs/mcp-server says 10 free audits/day per API key. Whether a free account can mint an ipx_ key could not be confirmed without signing up. Labeled paid_plan_required because API plans start at $99/mo.",
+  "main_blocker": "Both narrow_api (3-4 endpoints, single FX-audit use case) and paid_plan apply; narrow_api chosen.",
+  "api_breadth": "Endpoint lists differ by page: OpenAPI has /fx-audit-engine, /fetch-spot-rate, /roi-calculator; docs/api lists POST /audit, GET /rates, POST /audit/document. Narrow either way."
+ },
+ "notes": "The hint URL ipayx.ai/docs returns a 404 page; docs live at /docs/api and /docs/mcp-server, plus llms.txt and /.well-known/openapi.json and mcp.json. Not the 2017 iPayX acquired by BillingTree; this is 'iPayX Protocol' (11850091 Canada Inc.), a FINTRAC-registered FX audit service. Live probe of https://mcp.ipayx.ai/mcp returned tools/list without auth (serverInfo 'iPayX FX Audit' v1.4.0). REST server in OpenAPI is a supabase.co Edge Functions URL; api.ipayx.ai custom domain 'coming soon' per developers page. MCP endpoint also differs by page (mcp.ipayx.ai/mcp vs supabase functions/v1/mcp-server).",
+ "human": {
+  "overrides": {},
+  "notes": {}
+ }
 }

@@ -1,0 +1,140 @@
+{
+ "id": 40,
+ "slug": "sendgrid",
+ "app": "SendGrid",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "sendgrid.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Twilio SendGrid: cloud email API for transactional and marketing email.",
+  "subcategory": "Email delivery / ESP",
+  "auth_methods": [
+   "api_key",
+   "basic"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "Users create API keys in the SendGrid console and send them as 'Authorization: Bearer <API key>'. For some services, Basic auth also works, with a fixed username and the API key as the password. Basic auth with a username and password is not supported, and Basic auth is unavailable for 2FA-enabled users. The auth docs do not mention OAuth, so a multi-user toolkit has each user supply their own API key.",
+  "access": "self_serve_trial",
+  "access_notes": "The pricing page offers a free 60-day trial with 100 emails/day and no credit card. Paid plans start at Essentials $19.95/mo, then Pro $89.95/mo and Premier (custom). The page also uses the phrase 'free plan', but it describes free use only as the 60-day trial and says to 'Upgrade to a paid plan when you're ready to scale.' No permanent free tier is confirmed. API keys are self-serve during the trial. Sending also requires a verified sender identity or domain.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The v3 REST API covers mail send, Marketing Campaigns (contacts, lists, segments, single sends), templates, suppressions, stats, subusers, API keys, IP management, sender and domain authentication, and webhook settings. This is well over 50 operations, though I did not count them exactly. An OpenAPI spec is published in twilio/sendgrid-oai.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no official Twilio SendGrid MCP server. Twilio's blog post 'Build a SendGrid MCP Server' is a community contributor tutorial whose code lives in the third-party repo FINCH285/SendGrid-MCP-Server. Community servers include neschadin/sendgrid-mcp, Garoth/sendgrid-mcp, deyikong/sendgrid-mcp and @codespar/mcp-sendgrid, plus hosted options from Pipedream, Composio and Metorial. Twilio's own MCP server (twilio-labs/mcp) is reported to cover the Twilio Public API, not SendGrid v3; I saw that only in a secondary source.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Per-user API keys are self-serve, and there is no OAuth app review. Caveats: new accounts get only a 60-day, 100 emails/day trial before a paid plan is needed, and senders must verify a sender identity or domain. Twilio's docs have a page on Sandbox Mode for mail send over Web API v3.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+    "quote": "To use an API key, pass an Authorization header with a value of `Bearer <Your-API-Key-Here>`"
+   },
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication",
+    "quote": "Twilio SendGrid supports Basic Authentication using an API key as your password value for some services."
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+    "quote": "Free trial lets you send 100 emails/day for 60 days"
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/en-us/products/email-api/pricing",
+    "quote": "Plans run from a free 60-day trial to Essentials at $19.95/mo, Pro at $89.95/mo, and custom Premier pricing."
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "quote": "The SendGrid v3 Web API provides a REST interface to send email at scale"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/getting-started-event-webhook",
+    "quote": "To have Twilio SendGrid post email event data to a URL you control, add and configure an Event Webhook."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.twilio.com/en-us/blog/developers/community/build-a-sendgrid-mcp-server-for-ai-email-workflows",
+    "quote": "Opinions expressed by Twilio contributors are their own."
+   },
+   {
+    "field": "buildability",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/sandbox-mode",
+    "quote": "Learn how to use Sandbox Mode when sending mail over SendGrid's Web API v3."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The pricing page uses both 'free plan' and '60-day trial' wording. Someone with an account should confirm whether API access continues, at reduced limits, after the trial ends without upgrading.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[api_key, bearer_token, basic]",
+    "new": "[api_key, basic]",
+    "why": "The Bearer header carries the same SendGrid API key, so it is not a separate credential type. Listing bearer_token double-counted api_key."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Basic auth with username 'apikey' also works for some services...",
+    "new": "Adds that the docs say username/password Basic auth is not supported and that Basic is unavailable for 2FA users",
+    "why": "The auth docs page states both restrictions."
+   },
+   {
+    "field": "access_notes",
+    "old": "60-day trial; did not confirm a permanent free tier",
+    "new": "Free use is described only as the 60-day/100 per day trial; the page says to upgrade to a paid plan to scale",
+    "why": "Re-fetched the pricing page. The old quote was not on it, so I replaced it with verbatim text."
+   },
+   {
+    "field": "evidence",
+    "old": "Access quote '$0 for 60 days...' and API quotes that were not on the pages",
+    "new": "Verbatim quotes from the pricing, API reference, auth, sandbox-mode and community blog pages",
+    "why": "The automated check flagged the old quotes as missing. The new quotes were seen on the pages."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Community servers; Twilio blog tutorial; low confidence",
+    "new": "Confirmed the Twilio blog post is a community contributor tutorial with a third-party repo; no official SendGrid MCP found",
+    "why": "Fetched the blog post directly. It has a contributor byline and links to the FINCH285 repo."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "low",
+    "new": "medium",
+    "why": "The primary source confirms the Twilio blog post is not an official server, and searches found no vendor MCP."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "The auth, pricing, API reference and sandbox docs were all verified on primary pages."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Sandbox claim from background knowledge",
+    "new": "Sandbox Mode for Web API v3 mail send has its own Twilio docs page",
+    "why": "Fetched the sandbox-mode docs page."
+   },
+   {
+    "field": "needs_human",
+    "old": "Free plan, MCP, sandbox questions",
+    "new": "Only the post-trial API access question remains",
+    "why": "Resolved the MCP and sandbox questions from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

@@ -1,0 +1,151 @@
+{
+ "id": 19,
+ "slug": "gorgias",
+ "app": "Gorgias",
+ "category": "Support and Helpdesk",
+ "hint": "gorgias.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Ecommerce-focused customer support helpdesk with tickets, macros, rules and AI agent.",
+  "subcategory": "Helpdesk (ecommerce)",
+  "auth_methods": [
+   "api_key",
+   "basic",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Private apps send the account email as the username and an API key as the password (HTTP basic). Public apps must use OAuth2 with scopes. A multi-user toolkit would use OAuth2.",
+  "access": "approval_required",
+  "access_notes": "There is no free plan. Paid plans start at $10/month (Starter) and run through Basic, Pro, Advanced and Enterprise. A 7-day free trial needs no card, and a trial account can create a private-app API key. For ongoing development, Gorgias gives tech partners a sandbox: it starts as a Demo account, you need a draft app to be approved for it, and the partner team switches it to a Developer plan. Public OAuth2 apps must pass review by the tech partnership team before they appear in the App Store. The docs don't say whether an unreviewed OAuth app can be installed on other merchants' accounts.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The llms.txt index lists about 23 REST resources, each with list, create, retrieve, update and delete endpoints. Resources include Account, Customers, Custom Fields, Events, Files, Integrations, Jobs, Macros, Metric Cards, Rules, Satisfaction Surveys, Search, Statistics, Tags, Teams, Tickets, Ticket Messages, Users, Views, Voice Calls (plus recordings and events) and Widgets. That comes to well over 50 operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.gorgias.com/mcp. Open beta, authorized in the browser by entering your subdomain and approving access. One Gorgias account per connection; for multiple brands, add a gorgias_subdomain parameter. Works on any plan at no extra cost. Reads are fully live, while some writes, such as Macro edits and AI Agent configuration, are restricted during the beta.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Distributing to many merchants needs a public OAuth2 app, and that needs tech-partner review. A developer sandbox needs a draft app and partner-team approval. Without one, the only self-serve options are the 7-day trial or a paid plan from $10/month. Webhooks are outbound HTTP integrations that fire on ticket events, carry no signature, and are configured per account.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.gorgias.com/reference/authentication",
+    "quote": "Using OAuth2 is mandatory for public apps."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.gorgias.com/reference/authentication",
+    "quote": "Use your email (username) and your API key"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.gorgias.com/docs/1-register-on-developer-portal",
+    "quote": "You will need to have a draft app to get approved for the Sandbox Account."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.gorgias.com/docs/5-submit-app-for-review",
+    "quote": "Our tech partnership team will review your app to make sure it works properly and is aligned with our expectations."
+   },
+   {
+    "field": "access",
+    "url": "https://www.gorgias.com/pricing",
+    "quote": "The Gorgias trial period lasts 7 days."
+   },
+   {
+    "field": "mcp",
+    "url": "https://helpcenter.gorgias.com/en-US/connect-your-ai-assistant-to-gorgias-6310546",
+    "quote": "https://mcp.gorgias.com/mcp"
+   },
+   {
+    "field": "mcp",
+    "url": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta",
+    "quote": "Any plan works."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.gorgias.com/reference/introduction",
+    "quote": "The Gorgias API is structured with REST in mind."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.gorgias.com/reference/the-tickethttpintegration-object",
+    "quote": "TicketHttpIntegration represents a ticket context available in http integrations calls."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.gorgias.com/reference/the-integration-object",
+    "quote": "Only available for HTTP integrations, defines the configuration of the integration."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Confirm whether an unreviewed public OAuth2 app can be installed on merchant accounts other than the sandbox. The docs only say that approved apps appear in the App Store. \"No OpenAPI spec\" rests on a third-party claim (Jentic) and on finding no spec link in the official docs.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "A private app with an API key works on any Gorgias account. I didn't find a free tier or trial terms. ...",
+    "new": "No free plan; paid plans from $10/month; 7-day no-card trial; partner sandbox needs an approved draft app; public OAuth apps reviewed",
+    "why": "The pricing page shows plans and a 7-day trial. The developer-portal registration page describes how the sandbox is approved."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The developer portal documents a 'Gorgias Sandbox Account' that the partner team switches to a Developer plan."
+   },
+   {
+    "field": "webhooks",
+    "old": "yes (inferred from search snippets)",
+    "new": "yes (verified)",
+    "why": "Official reference pages document HTTP integrations with an http.triggers map (ticket-created, ticket-updated) and a TicketHttpIntegration context object."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "no",
+    "why": "The official docs have no spec link, and only third-party specs exist (apis.io, Jentic). Jentic states that Gorgias does not publish one."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Did not count operations",
+    "new": "About 23 resources, each with CRUD; well over 50 operations",
+    "why": "Counted from the llms.txt index."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "Resource list verified in the official index."
+   },
+   {
+    "field": "evidence",
+    "old": "llms.txt quote 'building a public app (including app review)'",
+    "new": "Quotes from the register and submit-for-review pages",
+    "why": "The llms.txt quote could not be verified verbatim. The MCP quote was trimmed to the verified text 'Any plan works.'"
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Some writes are gated during the beta",
+    "new": "Adds no extra cost, any plan, and that Macro edits and AI Agent configuration are restricted",
+    "why": "Taken from the open-beta announcement."
+   },
+   {
+    "field": "needs_human",
+    "old": "Trial, OAuth pre-review, OpenAPI, sandbox, webhooks",
+    "new": "Only the pre-review OAuth install question remains, plus a caveat on the OpenAPI finding",
+    "why": "The other questions are now resolved from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

@@ -1,0 +1,133 @@
+{
+ "id": 60,
+ "slug": "clay",
+ "app": "Clay",
+ "category": "Data, SEO and Scraping",
+ "hint": "clay.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "GTM data enrichment and prospecting platform: find people and companies, then enrich them.",
+  "subcategory": "Data enrichment / GTM automation",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The Public API takes a Clay API key in the `clay-api-key` header. You create the key in the web app under API and CLI → API keys, or with `clay api-keys create`, and it is shown once. Keys are tied to a Clay user and that user's workspace access, so a multi-user toolkit would have each user paste a key. The Public API offers no OAuth. The separate hosted Clay MCP (https://api.clay.com/v3/mcp) uses OAuth 2.0 with the authorization-code flow and PKCE, plus Dynamic Client Registration. Its access tokens are Bearer tokens that expire after 1 hour, and refresh tokens rotate. Workspace admins must allow the MCP client under \"Allowed MCP clients\".",
+  "access": "self_serve_free",
+  "access_notes": "Clay University says the developer platform is available on all plans, including free, trial and Legacy. Usage limits vary by plan, and going over one returns HTTP 402. Structured table queries (joins, ranges, paging past 100 rows) need API table sync, an Enterprise feature. API calls use workspace credits. For the MCP, a workspace admin must allow the client.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "The llms.txt index lists about 18 operations. Audiences: 2 (privacy delete, status). Credits: 1. Me: 1. Routines: 5 (run 1–100 items, get run, start batch, get batch, presigned upload URL). Search: 6 (3 deprecated). Tables: 1 (structured query, Enterprise). Workflow runs (beta): 2. The API is built for running searches and routines, not CRUD on tables. The spec is served at /openapi.json.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Clay hosts an official MCP at https://api.clay.com/v3/mcp, confirmed on Clay University's \"Connect to Clay MCP\" page. It uses OAuth 2.0 with PKCE and DCR, and runs Clay's find-and-enrich tools and custom functions on behalf of a signed-in user. Workspace admins gate which clients are allowed. Clay also ships a local stdio `clay mcp` with its CLI and agent plugin, which authenticates through `clay login`. Neither MCP accepts an API key.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "narrow_api",
+  "blocker_notes": "The API is self-serve on all plans, but it is narrow (about 18 operations) and new, focused on routines and searches. Table queries are Enterprise-only. Every call consumes credits. The Public API is API-key only. An OAuth path exists through the hosted MCP, but each workspace admin must allow the client. Webhooks fire when a routine run finishes.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.clay.com/public-api/authentication.md",
+    "quote": "Every request to the Clay Public API must include a Clay API key in the `clay-api-key` header."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.clay.com/public-api/authentication.md",
+    "quote": "API keys are tied to a Clay user and workspace access."
+   },
+   {
+    "field": "access",
+    "url": "https://university.clay.com/docs/using-clay-as-an-api",
+    "quote": "The developer platform is available across all Clay plans, including free, trial, and Legacy plans."
+   },
+   {
+    "field": "access",
+    "url": "https://university.clay.com/docs/using-clay-as-an-api",
+    "quote": "Structured queries — joins, ranges, and paging past 100 rows — need API table sync, an Enterprise feature."
+   },
+   {
+    "field": "api",
+    "url": "https://developers.clay.com/llms.txt",
+    "quote": "Execute a routine against 1-100 items"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.clay.com/llms.txt",
+    "quote": "Get notified when a routine run finishes, then verify and handle the delivery."
+   },
+   {
+    "field": "mcp",
+    "url": "https://university.clay.com/docs/connect-to-clay-mcp",
+    "quote": "run Clay's find-and-enrich tools and custom functions on behalf of a signed-in Clay user"
+   },
+   {
+    "field": "mcp",
+    "url": "https://university.clay.com/docs/connect-to-clay-mcp",
+    "quote": "Pick the type by whether your client can keep a secret. PKCE is mandatory either way."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Fetch /openapi.json and confirm the exact operation count. Check the rate-limit values at /public-api/rate-limits.md. Whether a test mode exists is unknown. The fetch tool returns summarized page text, so quotes may differ slightly from the raw pages.",
+  "changes": [
+   {
+    "field": "mcp_notes",
+    "old": "Endpoint api.clay.com/v3/mcp unconfirmed on Clay's site; sourced from Nango",
+    "new": "Confirmed on university.clay.com/docs/connect-to-clay-mcp: OAuth 2.0 with PKCE and DCR, admin-gated allowed clients; also a local `clay mcp`",
+    "why": "Found the vendor's primary source"
+   },
+   {
+    "field": "auth_notes",
+    "old": "Key created via CLI; MCP OAuth per Nango",
+    "new": "Adds the clay-api-key header, web-app key creation, user-tied keys, and MCP OAuth details from Clay's own docs",
+    "why": "Primary auth page gives specifics"
+   },
+   {
+    "field": "evidence",
+    "old": "Quotes paraphrased (e.g. 'uses its own API key, not your CLI sign-in'; llms.txt 'Webhooks notify you when a routine run finishes'); Nango used for MCP",
+    "new": "Quotes taken from the re-fetched vendor pages",
+    "why": "The original quotes didn't match the page text, and the MCP evidence was third-party"
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "low",
+    "new": "high",
+    "why": "Vendor docs confirm the hosted endpoint"
+   },
+   {
+    "field": "confidence.auth",
+    "old": "medium",
+    "new": "high",
+    "why": "The authentication page confirms API-key-only auth for the Public API"
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Estimated under 20 operations",
+    "new": "About 18 operations counted from the llms.txt index",
+    "why": "Counted the listed endpoints"
+   },
+   {
+    "field": "access_notes",
+    "old": "Search result limits vary by plan",
+    "new": "Usage limits vary by plan and return HTTP 402 when exceeded; MCP needs admin allow-listing",
+    "why": "Matches the page wording"
+   },
+   {
+    "field": "needs_human",
+    "old": "MCP URL, OpenAPI, rate limits, key scope, Enterprise tables",
+    "new": "Only the OpenAPI operation count, rate-limit values and test mode remain",
+    "why": "Other questions were resolved"
+   }
+  ]
+ },
+ "human_fixes": []
+}

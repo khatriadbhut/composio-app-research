@@ -1,0 +1,110 @@
+{
+ "id": 58,
+ "slug": "sherlock",
+ "app": "Sherlock",
+ "category": "Data, SEO and Scraping",
+ "hint": "github.com/sherlock-project/sherlock",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Open-source CLI that checks a username across 400+ social networks to find accounts.",
+  "subcategory": "OSINT username enumeration CLI",
+  "auth_methods": [
+   "none"
+  ],
+  "auth_primary": "none",
+  "auth_notes": "There is no hosted API and no authentication. Sherlock is a local MIT-licensed Python CLI, installed with pipx, Docker or dnf. Neither the GitHub README nor sherlockproject.xyz mentions an API, hosted service, accounts or pricing. Third-party hosted wrappers such as Apify actors use their own tokens.",
+  "access": "no_public_api",
+  "access_notes": "The vendor offers no hosted service and issues no credentials. You run the tool yourself for free (pipx install sherlock-project, docker run sherlock/sherlock, or dnf install). Serving many users means hosting it on your own infrastructure.",
+  "api_styles": [
+   "cli_only"
+  ],
+  "api_breadth": "none",
+  "api_breadth_notes": "Only a CLI exists. It looks up usernames across 400+ sites and has export, site-filter, proxy and timeout options. There is no REST or other network API.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "community_only",
+  "mcp_notes": "There is no official MCP server from sherlock-project. The relevant community wrapper is Burnsedia/sherlock-mcp, a FastMCP stdio server with one search_username tool that shells out to the Sherlock CLI. Several servers share the name but are unrelated: H4RR1SON/covertlabs \"Sherlock MCP\" is for Covertlabs infostealer intelligence, and Fewsats/sherlock-mcp on PyPI is for buying domains.",
+  "sandbox": "no",
+  "buildability": "not_buildable",
+  "main_blocker": "local_only_tool",
+  "blocker_notes": "Sherlock is a local CLI with no hosted API or auth. A toolkit would have to run the CLI (or Docker image) on infrastructure Composio hosts. The other option is a third-party Apify actor, which is a separate product with its own billing.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "Hunt down social media accounts by username across social networks"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "pipx install sherlock-project"
+   },
+   {
+    "field": "auth",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "docker run -it --rm sherlock/sherlock"
+   },
+   {
+    "field": "access",
+    "url": "https://sherlockproject.xyz",
+    "quote": "Hunt down social media accounts by username across 400+ social networks"
+   },
+   {
+    "field": "buildability",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "MIT © Sherlock Project"
+   },
+   {
+    "field": "mcp",
+    "url": "https://glama.ai/mcp/servers/Burnsedia/sherlock-mcp",
+    "quote": "FastMCP server integration for the Sherlock OSINT tool – Seamlessly search social media accounts across 400+ platforms"
+   },
+   {
+    "field": "mcp",
+    "url": "https://glama.ai/mcp/servers/H4RR1SON/sherlock-mcp",
+    "quote": "An official Model Context Protocol (MCP) server for the Covertlabs infostealer intelligence platform."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The \"auth\" and \"access\" evidence shows that a local install exists and that the vendor pages say nothing about a hosted API. It cannot prove a negative. The page fetches came back as summaries. They found no hosted service, API, accounts or pricing.",
+  "changes": [
+   {
+    "field": "mcp_notes",
+    "old": "Community wrappers exist, e.g. Burnsedia/sherlock-mcp (FastMCP, search_username tool), H4RR1SON/sherlock-mcp, and Apify actors. This is based on a search, not on opening each repo.",
+    "new": "Burnsedia/sherlock-mcp is the only relevant community wrapper. H4RR1SON/covertlabs and Fewsats sherlock-mcp are unrelated products.",
+    "why": "I opened the H4RR1SON Glama page. It is a Covertlabs infostealer-intelligence server, not a Sherlock wrapper. Apify actors are not MCP servers."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, none for auth/access; mcp quote was a page title",
+    "new": "Added auth and access evidence, a verbatim Glama description, and the H4RR1SON page as a counter-example",
+    "why": "The automated checks flagged that auth and access had no evidence. I re-fetched every quote and confirmed it."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "I opened the listings and searched for an official server. The sherlock-project org has none."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "The vendor site and README confirm there is no hosted service or API."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm no official hosted Sherlock service...",
+    "new": "Only notes that the claim is a negative and the fetches were summaries",
+    "why": "I checked sherlockproject.xyz directly and found no hosted service, API or pricing."
+   }
+  ]
+ },
+ "human_fixes": []
+}

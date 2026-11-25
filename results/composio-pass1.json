@@ -647,12 +647,10 @@
    "tools": 9,
    "triggers": 0,
    "composio_auth": [
-    "dcr_oauth"
+    "oauth2"
    ],
-   "agrees": false,
-   "missing_vs_composio": [
-    "dcr_oauth"
-   ]
+   "agrees": true,
+   "missing_vs_composio": []
   },
   "notebooklm": {
    "in_composio": true,
@@ -689,12 +687,10 @@
    "tools": 3,
    "triggers": 0,
    "composio_auth": [
-    "dcr_oauth"
+    "oauth2"
    ],
-   "agrees": false,
-   "missing_vs_composio": [
-    "dcr_oauth"
-   ]
+   "agrees": true,
+   "missing_vs_composio": []
   },
   "paygent-connect": {
    "in_composio": false
@@ -799,11 +795,11 @@
    "tools": 12,
    "triggers": 0,
    "composio_auth": [
-    "dcr_oauth"
+    "oauth2"
    ],
    "agrees": false,
    "missing_vs_composio": [
-    "dcr_oauth"
+    "oauth2"
    ]
   },
   "quickbooks": {

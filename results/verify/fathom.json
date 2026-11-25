@@ -1,0 +1,219 @@
+{
+ "id": 93,
+ "slug": "fathom",
+ "app": "Fathom",
+ "category": "AI, Research and Media-native",
+ "hint": "fathom.video",
+ "pass": 2,
+ "at": "2026-11-25T03:56:26.585Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/llms.txt"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/oauth.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/quickstart.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/mcp-docs"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/faq.md"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Fathom API access free plan rate limit 60 requests per minute"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/api-overview.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/api-reference/openapi.yaml"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/sdks/typescript/oauth.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.fathom.video/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://fathom.ai/pricing"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "developers.fathom.ai sdk oauth authorization url scope public_api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.fathom.ai/sdks/oauth.md"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://nango.dev/docs/api-integrations/fathom-oauth/how-to-register-your-own-fathom-oauth-app"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI meeting recorder that transcribes, summarizes, and shares call notes.\",\"subcategory\":\"AI meeting notetaker\",\"auth_methods\":[\"api_key\",\"oauth"
+  }
+ ],
+ "cost_usd": 0.2868514,
+ "duration_ms": 74030,
+ "turns": 17,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "AI meeting recorder that transcribes, summarizes, and shares call notes.",
+  "subcategory": "AI meeting notetaker",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The API key is user-scoped. It is created in User Settings > API Access and sent in the X-Api-Key header. It only sees meetings the user recorded or that were shared with them or their team. OAuth 2.0 is for integrations that multiple Fathom accounts install. You register the app via fathom.video/marketplace_applications/new to get a client ID and secret. The token endpoint is https://api.fathom.ai/external/v1/oauth2/token and is limited to 60 requests per 60 seconds per app. The only scope is public_api. Access tokens are short-lived and come with refresh tokens. The OpenAPI spec lists ApiKeyAuth and BearerAuth. OAuth apps cannot use include_summary/include_transcript on /meetings; they must use the /recordings endpoints.",
+  "access": "self_serve_free",
+  "access_notes": "The FAQ says \"API access—keys and webhooks— are included on all plans\", which includes Free. OAuth apps need a registration form on Fathom's marketplace. Fathom says OAuth apps are \"subject to review\", but the docs describe review as a quarterly usage check for listing (20+ users get an invitation), not a gate before other users can authorize. The rate limit is 60 calls/min globally, and heavy summary/transcript calls are capped at 30/min. Per the pricing page, MCP looks tied to paid Team/Premium tiers and limited to work domains.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "The OpenAPI spec lists 11 operations, base https://api.fathom.ai/external/v1: GET /meetings, GET /meeting_types, GET /recordings/{id}/summary, GET /recordings/{id}/transcript, POST /recordings/{id}/download, GET /recordings/{id}/downloads/{download_id}, GET /teams, GET /team_members, GET /users, POST /webhooks, DELETE /webhooks/{id}. Everything is read-only apart from webhooks and download requests. There are official TypeScript and Python SDKs.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Fathom hosts an MCP server at https://api.fathom.ai/mcp, documented at developers.fathom.ai/mcp-docs with ChatGPT and Claude guides. The pricing page lists MCP under Team/Premium and says \"Only for work domains; Max 5 users / domain\".",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "narrow_api",
+  "blocker_notes": "Credentials are self-serve on all plans, and OAuth app registration is a form. The main limit is the small API: 11 mostly read-only operations covering meetings, recordings, teams, users, and webhooks, with no write actions on meetings or notes. Rate limits are tight (60/min, and 30/min for transcripts and summaries). Fathom may review OAuth apps, but the docs don't say review blocks installs.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.fathom.ai/faq.md",
+    "quote": "API access—keys and webhooks— are included on all plans."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.fathom.ai/quickstart.md",
+    "quote": "API keys are scoped to the user who creates them."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.fathom.ai/sdks/oauth.md",
+    "quote": "Currently, the only available scope is: public_api — Access to the Fathom API"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.fathom.ai/oauth.md",
+    "quote": "subject to review to ensure the best experience for all users"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.fathom.ai/api-reference/openapi.yaml",
+    "quote": "https://api.fathom.ai/external/v1"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.fathom.ai/api-reference/openapi.yaml",
+    "quote": "createWebhook"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.fathom.ai/mcp-docs",
+    "quote": "https://api.fathom.ai/mcp"
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.fathom.ai/api-overview.md",
+    "quote": "https://api.fathom.ai/external/v1/oauth2/token"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "A fetch model summarized the pages; I did not read them verbatim. The pricing table was flattened, so which plans include MCP and the 'Public API' row is unclear. The FAQ separately confirms API keys and webhooks are on all plans. Check whether an unreviewed OAuth app can be authorized by Fathom users outside the developer's own account. Nango mentions separate dev and prod credentials, but this is unconfirmed on Fathom's own docs. Don't confuse with usefathom.com, which is Fathom Analytics, a different product.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "approval_required",
+    "new": "self_serve_free",
+    "why": "The FAQ says API keys and webhooks are on all plans. OAuth review is described as a quarterly usage check for listing, not as a gate on use."
+   },
+   {
+    "field": "main_blocker",
+    "old": "app_review",
+    "new": "narrow_api",
+    "why": "The real constraint is 11 mostly read-only operations. The docs don't show review blocking use."
+   },
+   {
+    "field": "api_styles",
+    "old": "[rest, sdk_only]",
+    "new": "[rest]",
+    "why": "The SDKs wrap a public REST API, so sdk_only is wrong."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "About 10 REST operations...",
+    "new": "11 operations listed from OpenAPI spec",
+    "why": "I counted the operations in the spec."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Scopes not confirmed...",
+    "new": "public_api is the only scope; token endpoint, header, and OAuth limitations documented",
+    "why": "Fathom's SDK OAuth docs and API overview confirm these."
+   },
+   {
+    "field": "what_it_does",
+    "old": "AI meeting recorder ... API exposes meetings, transcripts, summaries, webhooks.",
+    "new": "AI meeting recorder that transcribes, summarizes, and shares call notes.",
+    "why": "It was over 15 words."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "https://api.fathom.ai/mcp (docs...)",
+    "new": "Added pricing-page plan and domain limits",
+    "why": "The pricing page ties MCP to Team/Premium and work domains."
+   },
+   {
+    "field": "evidence",
+    "old": "webhooks quote cited from llms.txt",
+    "new": "webhooks cited from openapi.yaml createWebhook; added access evidence from FAQ",
+    "why": "The llms.txt quote could not be confirmed, and access had no evidence."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access low, api medium, mcp medium, buildability medium",
+    "new": "all high",
+    "why": "Primary sources (FAQ, OpenAPI spec, SDK OAuth docs) confirm each field."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Narrow, mostly read-only API. Public OAuth apps are subject to Fathom review...",
+    "new": "Narrow API and rate limits; plan question resolved",
+    "why": "The FAQ answers the plan question."
+   }
+  ]
+ },
+ "flags_given": "- agent marked access confidence low\n- no evidence cited for access\n- quote for webhooks not found on https://developers.fathom.ai/llms.txt\n- agent's open question: Confirm which Fathom plan includes API access. Confirm whether OAuth apps can be used by non-owner users before marketplace review. Check for any sandbox or test mode. The OAuth scope list is unconfirmed. The docs I fetched are summarized by a fetch model, not read verbatim."
+}

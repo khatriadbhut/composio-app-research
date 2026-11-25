@@ -1,0 +1,192 @@
+{
+ "id": 79,
+ "slug": "smartsheet",
+ "app": "Smartsheet",
+ "category": "Productivity and Project Management",
+ "hint": "smartsheet.com/developers",
+ "pass": 2,
+ "at": "2026-11-25T03:54:41.805Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Smartsheet developer account sandbox free \"developer tools\" register"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/openapi/schemas/title"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/register"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Smartsheet webhooks API callbackUrl sheet events"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Smartsheet MCP server general availability announcement smar-mcp github"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/smartsheet-platform/smar-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developers.smartsheet.com/api/smartsheet/guides/webhooks/launch-a-webhook"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Work management platform with sheets, projects, automation, reports and dashboards.\",\"subcategory\":\"Work management / project management\",\"auth"
+  }
+ ],
+ "cost_usd": 0.28574049999999995,
+ "duration_ms": 59214,
+ "turns": 15,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Work management platform with sheets, projects, automation, reports and dashboards.",
+  "subcategory": "Work management / project management",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Multi-user apps use 3-legged OAuth 2.0. Apps are registered in Developer Tools, which issues a client ID and secret and requires at least one access scope. Single-user or machine-to-machine use can rely on a personal API access token sent as a Bearer header. The hosted MCP server accepts either OAuth 2.0 or a personal access token.",
+  "access": "paid_plan_required",
+  "access_notes": "Generating an API access token needs a Business, Enterprise or Advanced Work Management plan. Registering for Developer Tools (needed for OAuth apps) needs an email that belongs to a licensed user on Business or higher, and Smartsheet may deny the request. No free developer account or sandbox was found. Publishing an app is an opt-in setting that makes its profile page public; the docs describe no formal app-review step. Whether a 30-day Business trial can register for Developer Tools is unverified.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers sheets, rows, columns, cells, attachments, discussions and comments, workspaces, folders, reports, dashboards (sights), users, groups, webhooks, search and more. Regional hosts exist for US, EU and AU. A downloadable OpenAPI spec is at developers.smartsheet.com/_bundle/api/smartsheet/openapi.yaml.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Official hosted MCP server at https://mcp.smartsheet.com (US), https://mcp.smartsheet.eu (EU) and https://mcp.smartsheet.au (AU). It went GA on March 24, 2026, authenticates with OAuth 2.0 or a personal access token, and needs a Business, Enterprise or AWM plan. The older local repo, smartsheet-platform/smar-mcp on GitHub, is deprecated in favour of the hosted server.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Getting an API token, registering an OAuth app in Developer Tools and using the MCP server all need a licensed Business-or-higher account. No free sandbox exists. Once you have a paid seat, OAuth app registration is self-serve with no documented review.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/getting-started",
+    "quote": "Required plan: Business, Enterprise, or Advanced Work Management"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.smartsheet.com/register",
+    "quote": "must belong to an existing licensed Smartsheet user on a Business plan or higher"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+    "quote": "the Smartsheet implementation of OAuth 2.0 is a 3-legged process, which requires human intervention"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+    "quote": "Each API request requires passing in an access token as the `Bearer` value in your authorization header."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth",
+    "quote": "Developer Tools is a Smartsheet user interface for registering client applications that use OAuth"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/install-the-smartsheet-mcp-server",
+    "quote": "https://mcp.smartsheet.com"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.smartsheet.com/content-center/smartsheet-mcp-server-now-generally-available",
+    "quote": "You can now connect Smartsheet to any MCP-compliant AI tool through the new Smartsheet MCP Server"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.smartsheet.com/api/smartsheet/openapi/schemas/title",
+    "quote": "Smartsheet OpenAPI Reference"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/webhooks/launch-a-webhook",
+    "quote": "`callbackUrl` is the location of the event-handling endpoint."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Optional: check whether a 30-day Business free trial account can register for Developer Tools. That would be the only free route to test credentials.",
+  "changes": [
+   {
+    "field": "sandbox",
+    "old": "yes",
+    "new": "no",
+    "why": "The registration page says Developer Tools needs a licensed user on Business or higher. No official free sandbox was found, and community threads show users asking for one."
+   },
+   {
+    "field": "access_notes",
+    "old": "Developer account (free registration) gives Developer Tools to register OAuth apps and a sandbox account. Whether public OAuth distribution needs review was not confirmed.",
+    "new": "Developer Tools registration needs a licensed Business-or-higher user and may be denied; no sandbox; publishing is opt-in with no documented review.",
+    "why": "The claim of free developer registration with a sandbox is contradicted by developers.smartsheet.com/register. The OAuth guide shows that 'Publish App?' only makes the profile page public."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "...Also local package @smartsheet/smar-mcp.",
+    "new": "Hosted US/EU/AU endpoints, GA March 24, 2026; the old smar-mcp repo is deprecated.",
+    "why": "The smartsheet-platform/smar-mcp README says the project is deprecated. The GA date and auth details were confirmed on the vendor's announcement page."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "developer account/sandbox is available for testing",
+    "new": "No free sandbox; all credential paths need a Business+ seat",
+    "why": "Follows from the corrected sandbox and access findings."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, mcp medium, buildability medium",
+    "new": "all high",
+    "why": "Every claim is now backed by fetched vendor pages."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items",
+    "new": "9 items with verified quotes, including the register page, MCP GA announcement and webhooks guide",
+    "why": "Added primary sources for the access, MCP and webhook claims."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: Confirm sandbox availability/terms and whether OAuth apps need Smartsheet review before public distribution; the MCP and sandbox details came from search summaries, not fetched pages."
+}

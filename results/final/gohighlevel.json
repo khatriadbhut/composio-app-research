@@ -1,0 +1,157 @@
+{
+ "id": 34,
+ "slug": "gohighlevel",
+ "app": "GoHighLevel",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "highlevel.stoplight.io",
+ "source": "verify",
+ "record": {
+  "what_it_does": "All-in-one CRM, marketing automation and white-label agency platform for agencies and SMBs.",
+  "subcategory": "Marketing CRM / agency platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "API v2 supports two methods. The first is OAuth 2.0 through a Marketplace app; it is needed for public integrations, webhooks and custom modules. The second is the Private Integration Token (PIT), a static bearer token for internal use on one sub-account at a time. HighLevel's help center says the legacy API v1 keys have reached end-of-support. The vendor's MCP server uses a HighLevel login with no API key, but the docs page does not name the protocol.",
+  "access": "approval_required",
+  "access_notes": "The Marketplace developer portal has self-serve signup (email and phone verification), and the developer account gets sandbox accounts for testing. Private apps are not listed and are meant for development and testing. Listing a public app requires submitting it for approval: \"all apps go through a rigorous review process before getting listed.\" A Loom demo is required at submission. End users need a paid HighLevel plan: the help center says API access, including OAuth and PIT, is on Starter, Unlimited and Founder (formerly Agency Pro), and some endpoints require Founder. I could not confirm whether the developer account itself costs anything.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v2 covers contacts, opportunities, calendars, conversations, invoices, payments, products, locations, users, social planner, workflows and more. The vendor's MCP docs say 717 actions are available to a connection.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Vendor-hosted at https://services.leadconnectorhq.com/mcp/anthropic/v2 for Claude. Other clients have their own paths: /mcp/openai/v2/, /mcp/cursor/v2 and /mcp/muse/v2/. The server has 4 meta-tools (list_locations, search_operations, describe_operation, execute_operation) that reach 717 actions. Users sign in with their HighLevel login, with no API key.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "A toolkit used by many agencies needs a public Marketplace OAuth app, and public listing requires review and approval, including a Loom demo and justification for each requested scope. Development and testing are self-serve through a private app plus a sandbox account, which lasts up to 6 months. End users need a paid HighLevel plan, and some endpoints require the Founder plan.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc",
+    "quote": "HighLevel currently supports two types of authorization:"
+   },
+   {
+    "field": "auth",
+    "url": "https://marketplace.gohighlevel.com/docs/Authorization/authorization_doc",
+    "quote": "You're developing a full-scale integration intended for public use."
+   },
+   {
+    "field": "mcp",
+    "url": "https://marketplace.gohighlevel.com/docs/other/mcp.md",
+    "quote": "No API key to create or paste. Sign in with your HighLevel login, connect your sub-account."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://marketplace.gohighlevel.com/docs/webhook/WebhookIntegrationGuide",
+    "quote": "We offer a comprehensive set of webhook events that cover all major activities in our platform."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/GoHighLevel/highlevel-api-docs",
+    "quote": "Markdown and OpenAPI-based documentation for easy readability and automation."
+   },
+   {
+    "field": "access",
+    "url": "https://www.gohighlevel.com/landing-marketplace",
+    "quote": "all apps go through a rigorous review process before getting listed"
+   },
+   {
+    "field": "access",
+    "url": "https://help.gohighlevel.com/support/solutions/articles/48001060529-highlevel-api-documentation",
+    "quote": "Both OAuth 2.0 and Private Integration Tokens (PIT) are available across plans."
+   },
+   {
+    "field": "access",
+    "url": "https://marketplace.gohighlevel.com/docs/oauth/SandboxAccount.md",
+    "quote": "A Sandbox account remains active for up to 6 months from the creation date."
+   },
+   {
+    "field": "buildability",
+    "url": "https://marketplace.gohighlevel.com/docs/oauth/AppReviewGuidelines.md",
+    "quote": "A Loom demo is required as the final step in the app submission flow."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Two things are unconfirmed. First, whether signing up for a Marketplace developer account is free and needs no HighLevel subscription; the docs describe signup but give no price. Second, whether the GitHub repo's apps/ folder holds the OpenAPI JSON files; the repo describes itself as OpenAPI-based, but I did not list the folder's contents.",
+  "changes": [
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The SandboxAccount doc says Marketplace developers can create sandbox accounts from the Developer Portal, active for up to 6 months."
+   },
+   {
+    "field": "access_notes",
+    "old": "Did not confirm free tier; review only suggested",
+    "new": "Self-serve developer signup plus sandbox; public listing needs review and approval with a Loom demo; end users need a paid plan (Starter, Unlimited or Founder)",
+    "why": "Confirmed from the marketplace landing page, the App Review Guidelines, the SandboxAccount doc and the help-center API article."
+   },
+   {
+    "field": "confidence.access",
+    "old": "low",
+    "new": "medium",
+    "why": "Review and plan requirements are now confirmed from primary sources. Only the cost of the developer account is still unknown."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "The vendor's MCP docs give a count of 717 actions."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "App review requirement and sandbox availability are confirmed."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Estimate, operations not counted",
+    "new": "Adds the 717-action count from the vendor's MCP docs",
+    "why": "The MCP page states the number of actions."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Old API v1 keys not covered",
+    "new": "API v1 has reached end-of-support; PIT is a static bearer token; OAuth is needed for webhooks",
+    "why": "The help center says v1 reached end-of-support, and the webhook guide requires an OAuth app."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Listed anthropic, openai and cursor paths",
+    "new": "Adds the muse path and the 4 meta-tools covering 717 actions",
+    "why": "Both are on the vendor's MCP docs page."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Review likely; terms not verified",
+    "new": "Review confirmed: Loom demo and scope justification; private app plus sandbox for development",
+    "why": "Verified against the App Review Guidelines and the marketplace landing page."
+   },
+   {
+    "field": "evidence",
+    "old": "Access quote from GettingStarted only showed the distribution concept",
+    "new": "Added quotes from the review, plan and sandbox pages",
+    "why": "The original access quote did not support the access claims."
+   },
+   {
+    "field": "needs_human",
+    "old": "Three open questions",
+    "new": "Two remaining: developer account cost and OpenAPI files in the repo",
+    "why": "App review and sandbox questions are resolved."
+   }
+  ]
+ },
+ "human_fixes": []
+}

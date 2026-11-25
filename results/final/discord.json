@@ -1,0 +1,154 @@
+{
+ "id": 26,
+ "slug": "discord",
+ "app": "Discord",
+ "category": "Communications and Messaging",
+ "hint": "discord.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Community chat platform; API for bots, messaging, guilds, and OAuth2 user integrations.",
+  "subcategory": "Community chat / messaging platform",
+  "auth_methods": [
+   "bot_token",
+   "oauth2"
+  ],
+  "auth_primary": "bot_token",
+  "auth_notes": "A bot token (header \"Authorization: Bot <token>\") covers bot actions in guilds the bot was added to. OAuth2 supports the authorization code grant (PKCE recommended), the implicit grant (prototypes only), and client credentials. OAuth2 is used to act as a user with limited scopes (identify, email, guilds, guilds.join, etc.) and to install the bot via the bot/applications.commands scopes. A multi-user toolkit would use OAuth2 for identity and guild install, then act through the bot token. OAuth2 grants no user-level message read/send, and self-botting with user tokens violates the ToS. Incoming channel webhooks carry a token in the URL and are post-only.",
+  "access": "approval_required",
+  "access_notes": "Anyone can create an app and bot for free in the Developer Portal. No paid plan is needed. Some OAuth scopes are partner-approval only: dm_channels.read, voice, rpc*, identify.premium, and applications.builds.upload. Bots in 100+ guilds must be verified. Privileged intents (GUILD_PRESENCES, GUILD_MEMBERS, MESSAGE_CONTENT) can be toggled freely below that size, but verified apps must be approved for them.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST covers channels, messages, guilds, members, roles, threads, webhooks, interactions, application commands, users, emojis, stickers, scheduled events, entitlements, and more. The Gateway websocket delivers real-time events. There is an official OpenAPI 3.1 spec, in public preview.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Discord hosts a docs-only MCP endpoint at https://docs.discord.com/mcp. It is a Mintlify-style server that searches and retrieves developer docs and has a feedback tool. A GET returns HTTP 405, which fits a POST-only MCP endpoint. It does not wrap the Discord API, so it is not counted as an official product MCP. Product MCP servers are community-built, e.g. SaseQ/discord-mcp, which uses a bot token, plus Workato and other vendor connectors.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The API is open and free but bot-centric. OAuth2 does not give user-level message read/send, so the toolkit acts as a bot that each user must install in their guild. Scaling past 100 guilds requires bot verification, and the MESSAGE_CONTENT, GUILD_MEMBERS and GUILD_PRESENCES intents then need approval. Some scopes, such as dm_channels.read, are partner-only. HTTP webhook events cover only app authorization, entitlements, and lobby/game DMs. Message and guild triggers need a persistent Gateway websocket connection.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.discord.com/developers/topics/oauth2",
+    "quote": "We support the authorization code grant, the implicit grant, client credentials"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.discord.com/developers/topics/oauth2",
+    "quote": "Some scopes require approval from Discord to use."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.discord.com/developers/topics/oauth2",
+    "quote": "Verified bots do not have a maximum number of guilds."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.discord.com/developers/events/gateway",
+    "quote": "For verified apps (required for apps in 100+ guilds)"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.discord.com/developers/events/gateway",
+    "quote": "After your app is verified, you can request privileged intents within the app's settings within the Developer Portal."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.discord.com/developers/events/webhook-events",
+    "quote": "Webhook events are one-way events sent to your app over HTTP to notify you when an event occurred."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/discord/discord-api-spec",
+    "quote": "This repository contains the public preview of the OpenAPI 3.1 specification for Discord's API."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/SaseQ/discord-mcp",
+    "quote": "A MCP server for the Discord integration."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The docs-only MCP at docs.discord.com/mcp was seen only through search snippets; a GET returned 405. If the rubric counts docs-search MCP servers as official_remote, change mcp to official_remote.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "...privileged intents such as Message Content need approval at that scale (I know this from prior knowledge; the page I fetched didn't cover it).",
+    "new": "Lists the partner-only scopes and the privileged intents (GUILD_PRESENCES, GUILD_MEMBERS, MESSAGE_CONTENT); verified apps (100+ guilds) must get intent approval.",
+    "why": "Confirmed on the Gateway docs page. Removed the reliance on prior knowledge."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "...could not confirm; it would not cover messaging anyway.",
+    "new": "Docs-only MCP at docs.discord.com/mcp (search, retrieval, feedback tools); a GET returns 405, consistent with a POST-only endpoint; not an API MCP. Community servers such as SaseQ/discord-mcp.",
+    "why": "Search results describe the endpoint as a docs-site search/retrieval server. It does not wrap the product API, so community_only stays."
+   },
+   {
+    "field": "evidence",
+    "old": "5 items, none for mcp; OpenAPI quote was the repo tagline",
+    "new": "Added Gateway privileged-intent quotes, the SaseQ MCP repo quote, and the OpenAPI 3.1 README quote",
+    "why": "Fill the evidence gaps for mcp and access."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Webhook events are limited and need a public endpoint",
+    "new": "Webhook events cover only app authorization, entitlements, and lobby/game DMs; message triggers need the Gateway",
+    "why": "The webhook-events page lists only those event types."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "REST covers channels... Gateway websocket delivers real-time events.",
+    "new": "Added more resources and a note on the official OpenAPI 3.1 spec (public preview)",
+    "why": "Confirmed from the discord-api-spec README."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, buildability medium",
+    "new": "access high, buildability high",
+    "why": "Verification and privileged-intent rules are now confirmed in the primary docs."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm the official MCP and the verification/intent requirements",
+    "new": "Only the rubric question of whether a docs-only MCP counts as official_remote",
+    "why": "Verification and intents are now confirmed."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "mcp",
+   "old": "\"community_only\"",
+   "new": "\"official_remote\"",
+   "why": "Discord hosts a live OAuth-protected MCP endpoint on its own domain; its developer docs don't mention it. Ruled vendor-official, noted as undocumented.",
+   "url": "https://mcp.discord.com/.well-known/oauth-protected-resource",
+   "by": "human (Adbhut), after browser check"
+  },
+  {
+   "field": "auth_primary",
+   "old": "\"oauth2\"",
+   "new": "\"bot_token\"",
+   "why": "Nearly every Discord action runs as a bot; OAuth2 mainly installs the bot and reads identity.",
+   "url": "https://docs.discord.com/developers/reference",
+   "by": "human (Adbhut)"
+  },
+  {
+   "field": "access",
+   "old": "\"self_serve_free\"",
+   "new": "\"approval_required\"",
+   "why": "'Verification is required for your app to scale past 100 servers.' Same kind of gate as HubSpot's 25-install cap, so labelled the same way.",
+   "url": "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified",
+   "by": "browser check (Chrome)"
+  }
+ ]
+}

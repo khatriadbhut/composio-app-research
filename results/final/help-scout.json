@@ -1,0 +1,157 @@
+{
+ "id": 18,
+ "slug": "help-scout",
+ "app": "Help Scout",
+ "category": "Support and Helpdesk",
+ "hint": "helpscout.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Shared-inbox customer support platform with email, chat, Docs knowledge base and reports.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The Inbox (Mailbox) API 2.0 supports only OAuth2. The Authorization Code flow is for integrations used by other Help Scout users. The Client Credentials flow, which uses your app ID and secret, is for internal integrations. Tokens are Bearer tokens. A Client Credentials token is valid for 2 days, and expiry is signalled by HTTP 401. Authorization Code tokens come with refresh tokens. The OAuth app is created under Your Profile > My apps, and a redirect URL is required for the Authorization Code flow. The Mailbox API has no personal access token. The separate Docs API uses an API key, passed as the username in HTTP Basic auth with a dummy password 'X'. A multi-user toolkit would use the Authorization Code flow for the Mailbox API, plus an optional per-user Docs API key.",
+  "access": "paid_plan_required",
+  "access_notes": "The pricing page lists a Free plan (5 users, 1 Inbox, 1 Docs site), but its 'API access' row shows no value for Free. API access appears on the paid plans with plan-based rate limits: 200, 400 and 800 calls per minute, most likely for Standard, Plus and Pro. Help Scout's MCP article confirms that Standard, Plus and Pro are the plans that include API access. Standard and Plus offer a self-serve 15-day trial with no credit card that includes 'all of the plan's features', so a developer can probably test the API during a trial. That is inferred and not stated explicitly. The Pro trial goes through sales. Creating an OAuth app is self-serve (Owner or Admin role, under My apps). The developer docs I checked describe no review or approval step for Authorization Code apps.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The base URL is https://api.helpscout.net/v2. The Inbox API 2.0 reference has 13 resource groups with about 149 operations: Conversations 29, Customers 33, Inboxes 11, Organizations 14, Properties 4, Ratings 1, Reports 32, System-users 2, Tags 2, Teams 3, Users 10, Webhooks 5 and Workflows 3. The Docs API adds Articles, Assets, Categories, Collections, Redirects and Sites. All users on an account share one rate limit, which depends on the plan. Writes count as 2 requests.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Help Scout's official connector is at https://mcp.helpscout.net/mcp. Each user signs in with OAuth on Help Scout's own login page, and the connector registers itself, so a client ID and secret are optional. A Docs API key is optional and only needed for Docs tools. The article names Claude, ChatGPT and Cursor as clients. The connector is available on Standard, Plus and Pro, and its report tools need Plus or Pro. A community server also exists (drewburchfield/help-scout-mcp-server), but I did not re-verify it.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The Free plan has no API access, so end users need Standard, Plus or Pro. For development, a 15-day Standard or Plus trial with no credit card appears to work. The docs describe no separate sandbox and no app review for OAuth apps. Help Scout publishes no official OpenAPI spec; only third-party specs exist (for example, Jentic).",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+    "quote": "The Authorization Code flow is typically used for integrations to be used by other Help Scout users."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+    "quote": "The Client Credentials flow is meant for internal integrations."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.helpscout.com/docs-api/",
+    "quote": "The API key is passed via HTTP Basic Authentication and goes in the username field."
+   },
+   {
+    "field": "access",
+    "url": "https://www.helpscout.com/pricing/",
+    "quote": "API access ... (200 calls/minute) ... (400 calls/minute) ... (800 calls/minute)"
+   },
+   {
+    "field": "access",
+    "url": "https://www.helpscout.com/pricing/",
+    "quote": "you'll get 15 days to take all of the plan's features for a test drive"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+    "quote": "This integration is available on the Standard, Plus, and Pro plans — any plan that includes Help Scout API access."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.helpscout.com/mailbox-api/",
+    "quote": "https://api.helpscout.net/v2"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.helpscout.com/mailbox-api/overview/rate-limiting/",
+    "quote": "Your current rate limit depends on your plan."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.helpscout.com/webhooks/",
+    "quote": "Webhooks enable Help Scout to call a script on your server when one or more events have happened."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+    "quote": "https://mcp.helpscout.net/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The pricing page's comparison table does not label its columns in the text I could read. A human should confirm that the Free plan's 'API access' cell is empty and that the 15-day trial account can create a My App and call the API.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\"]",
+    "new": "[\"oauth2\", \"api_key\", \"basic\"]",
+    "why": "The Docs API docs say authentication is by API key, sent through HTTP Basic auth. The first pass mentioned this in its notes but did not list the methods."
+   },
+   {
+    "field": "access_notes",
+    "old": "Apps under My apps; API on Standard/Plus/Pro; trial and app review unconfirmed",
+    "new": "The Free plan exists but shows no API access. Paid plans give API access at 200/400/800 calls per minute. The 15-day Standard/Plus trial includes all plan features. The docs describe no OAuth app review.",
+    "why": "The pricing page and developer docs answer the open questions. Access evidence was also missing."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Roughly 50+ operations, estimated",
+    "new": "13 groups, about 149 operations counted, plus the Docs API resources and rate-limit details",
+    "why": "I counted the operations from the Inbox API 2.0 reference page."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "no",
+    "why": "The vendor docs and llms.txt mention no official spec. Only third-party specs (Jentic) were found."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "No sandbox or test environment is documented. Testing would rely on the 15-day trial."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Paid plan; review/trial/sandbox unconfirmed",
+    "new": "The Free plan has no API. Development is possible through the 15-day trial. There is no sandbox, no documented app review and no official OpenAPI spec.",
+    "why": "These points are now confirmed from primary sources."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Works with Claude and ChatGPT custom connectors",
+    "new": "Adds that the connector self-registers (client ID/secret optional), an optional Docs API key, Cursor as a named client, and that report tools need Plus or Pro",
+    "why": "This detail comes from the vendor's MCP article."
+   },
+   {
+    "field": "evidence",
+    "old": "5 items, no access evidence",
+    "new": "10 items, including the pricing page, the Docs API auth page and the rate-limit page",
+    "why": "The automated check flagged that no evidence was cited for access. I re-verified every quote."
+   },
+   {
+    "field": "confidence",
+    "old": "api medium, buildability medium",
+    "new": "api high, buildability high",
+    "why": "The operation count and the plan and trial details are now verified."
+   },
+   {
+    "field": "needs_human",
+    "old": "Trial, review, OpenAPI, sandbox and rate limits unconfirmed",
+    "new": "Only confirm the Free plan's API cell and that the trial has API access",
+    "why": "Most of the open questions are now answered from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

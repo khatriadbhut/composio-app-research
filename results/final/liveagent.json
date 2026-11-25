@@ -1,0 +1,113 @@
+{
+ "id": 16,
+ "slug": "liveagent",
+ "app": "LiveAgent",
+ "category": "Support and Helpdesk",
+ "hint": "liveagent.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Multichannel helpdesk and live chat software with ticketing, call center and knowledge base.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "api_key",
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API v3 uses a per-account API key sent in the `apikey` HTTP header. I confirmed this on the vendor's API key article, which gives a cURL example against https://your.ladesk.com/api/v3/tickets. Admins create keys under Configuration > System > API and set permissions per key. API v1 keys are separate and v1 is deprecated. The key is bound to the customer's own domain (<account>.ladesk.com or a custom domain). The built-in MCP endpoint supports OAuth 2.1 (Authorization Code + PKCE), which is recommended, or a bearer token generated in the agent's profile. The generated Python SDK also has an `access_token` setting, which suggests the spec defines an OAuth/token scheme, but I found no documented public OAuth app registration for the REST API. A multi-user toolkit would have each user supply their domain and v3 API key.",
+  "access": "paid_plan_required",
+  "access_notes": "There is no free plan, only a 30-day trial with no credit card. The pricing page says \"When the trial ends, upgrade to a paid plan\". It lists API keys per plan: Starter 1, Team 5, Business 10, Enterprise unlimited. The plans are Starter, Team, Business and Enterprise. Keys are self-serve in the account during the trial and on any paid plan. Connecting LiveAgent's MCP server to external AI tools is only available on Business and Enterprise, not on Starter or Team.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v3 covers tickets, messages, calls, agents, contacts, companies, departments, tags, devices, bans, phone numbers, grids, knowledge base and more. The official generated Python client (QualityUnit/LiveAgent-api-python) lists about 39 API classes and roughly 218 operations. The full reference is served per account at /docs/api/v3.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Each account has its own built-in endpoint at https://<your-liveagent-domain>/api/mcp over Streamable HTTP. Auth is OAuth 2.1 with PKCE or a bearer token. The pricing page limits external MCP connections to the Business and Enterprise plans. I could not confirm the \"early preview\" label on the support article. QualityUnit, the vendor, also publishes a self-hosted Python server at github.com/QualityUnit/liveagent-mcp-server. It is small (7 commits) and uses LIVEAGENT_BASE_URL and LIVEAGENT_V3_API_KEY.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The API needs a paid plan after the 30-day trial. Starter allows only 1 API key, and external MCP needs Business or higher. Credentials are per account and per domain, so users must enter their own subdomain and API key. The full API reference is only visible inside a logged-in account, though the OpenAPI descriptor and the generated SDK help. Outbound events need a Rules action that each user sets up in the UI (\"HTTP request to external URL\"). There is no API-managed webhook subscription.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://support.liveagent.com/741982-API-key",
+    "quote": "Your API key has to be set in header of your requests:"
+   },
+   {
+    "field": "auth",
+    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "quote": "OAuth 2.1 (Authorization Code + PKCE) or Bearer token."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "quote": "Streamable HTTP"
+   },
+   {
+    "field": "api",
+    "url": "https://support.liveagent.com/094128-Swagger-API-descriptor",
+    "quote": "you can use the swagger (OpenAPI) API descriptor which can be found at the very top of the API v3 documentation."
+   },
+   {
+    "field": "access",
+    "url": "https://www.liveagent.com/pricing/",
+    "quote": "When the trial ends, upgrade to a paid plan to keep your account and everything you set up."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://support.liveagent.com/679034-Notification-postback-calls-to-external-applications-scripts",
+    "quote": "Besides simple GET request to external URL there are also options for POST and DELETE request"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Check whether the v3 OpenAPI spec defines an OAuth2 scheme usable by third-party apps, since the SDK exposes access_token; the in-account docs are login-gated. Also check whether the support article still marks MCP as a preview.",
+  "changes": [
+   {
+    "field": "mcp_notes",
+    "old": "...It is described as an early preview. A separate open-source server... published by QualityUnit.",
+    "new": "Built-in endpoint, external use limited to Business/Enterprise; preview label unconfirmed; QualityUnit self-hosted server uses LIVEAGENT_V3_API_KEY",
+    "why": "I re-fetched the article and it does not mention preview status. The pricing page confirms the plan gating. I read the GitHub repo directly."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "I did not count the operations.",
+    "new": "about 39 API classes and roughly 218 operations from the official generated Python client",
+    "why": "I counted them from the QualityUnit/LiveAgent-api-python README."
+   },
+   {
+    "field": "auth_notes",
+    "old": "apikey header detail from search summaries",
+    "new": "Confirmed on support.liveagent.com/741982-API-key with a cURL example; added a note on the SDK's access_token option",
+    "why": "I opened the primary source myself."
+   },
+   {
+    "field": "evidence",
+    "old": "mcp quote 'https://<your-liveagent-domain>/api/mcp'; access quote '30-day free trial'",
+    "new": "Quotes I saw on the pages: the API key header, OAuth/Bearer, Streamable HTTP, the trial-to-paid sentence and the HTTP request rule",
+    "why": "The automated check flagged the mcp quote, and the old evidence did not support auth or webhooks."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "...",
+    "new": "Added the Starter 1-key limit, the MCP Business+ requirement and webhooks being rule-based only",
+    "why": "These are caveats from the pricing page and the rules article."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth/access/api/mcp high, buildability medium",
+    "why": "Primary sources now confirm the key claims."
+   }
+  ]
+ },
+ "human_fixes": []
+}

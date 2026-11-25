@@ -1,0 +1,143 @@
+{
+ "id": 45,
+ "slug": "magento-adobe-commerce",
+ "app": "Magento (Adobe Commerce)",
+ "category": "Ecommerce",
+ "hint": "developer.adobe.com/commerce",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Ecommerce platform (Magento Open Source / Adobe Commerce) exposing per-store REST, GraphQL, and SOAP APIs.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth1",
+   "bearer_token",
+   "oauth2",
+   "other"
+  ],
+  "auth_primary": "oauth1",
+  "auth_notes": "PaaS, on-prem and Open Source: an admin creates an Integration on their own store, which yields a consumer key, consumer secret, access token and access token secret. Requests are signed with OAuth 1.0a. Using the integration access token alone as a Bearer token is disabled by default because the token never expires. The merchant can turn it back on (Stores > Configuration > Services > OAuth > Consumer Settings, or `bin/magento config:set oauth/consumer/enable_integration_as_bearer 1`). Short-lived admin tokens (4 hours) and customer tokens (1 hour) are issued from username and password and sent as Bearer tokens. Storefront and Admin use session cookies. SaaS (Adobe Commerce as a Cloud Service) uses Adobe IMS OAuth 2.0 instead: either server-to-server client_credentials (scope commerce.accs, with x-api-key and x-gw-ims-org-id headers) or an OAuth Web App authorization-code flow for an admin user. Every store is its own instance with its own base URL and credentials, so no central OAuth app exists for PaaS or Open Source. A multi-tenant toolkit would collect the store URL plus either the four OAuth 1.0a integration credentials or a bearer-enabled integration token.",
+  "access": "self_serve_free",
+  "access_notes": "Magento Open Source is licensed OSL-3.0 and AFL-3.0 on GitHub (magento/magento2), so a developer can install it free and create an Integration without any approval. Adobe Commerce (PaaS licence or Cloud Service SaaS) is paid and sales-led. For SaaS, credentials come from the Adobe Developer Console and need an org admin. No central app-review gate applies to API access on a merchant's own store. Adobe Commerce pricing was not confirmed on a fetched page.",
+  "api_styles": [
+   "rest",
+   "graphql",
+   "soap"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST API covers catalog, orders, customers, carts, inventory, invoices, shipments, CMS and more, and there is an async/bulk variant. The docs give no endpoint count. SaaS (Cloud Service) offers fewer REST endpoints and points users to GraphQL for similar functions. GraphQL covers the storefront. SOAP (WSDL) is documented on its own Getting Started page.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "Adobe's own MCP tooling is the Commerce extensibility developer agent: an App Builder MCP server plus Dropins tools, meant for IDE and development work, not store operations. Third-party store-operations servers include CData, StackOne (hosted), Cequence AI Gateway, Truto, rafaelstz/adobe-commerce-dev-mcp, and Marketplace modules from miniOrange, Freento and Webdevs. No official Adobe MCP server for store operations was found.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "other",
+  "blocker_notes": "The API is per-merchant and self-hosted: each user must supply their store base URL and credentials, and there is no central OAuth app. On PaaS and Open Source the default integration auth is OAuth 1.0a request signing. Simple bearer use needs the merchant to enable a config flag. SaaS needs a separate Adobe IMS OAuth 2.0 path. Webhooks are synchronous and configured on the store side (Adobe Commerce Webhooks module), and the asynchronous I/O Events path needs App Builder.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+    "quote": "Third-party applications use OAuth-based authentication to access the web APIs."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token",
+    "quote": "This behavior has been disabled by default due to the security implications of a never-expiring access token."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.adobe.com/commerce/webapi/rest/authentication/user",
+    "quote": "User authentication enables Commerce administrators to authenticate through Adobe's Identity Management System (IMS)."
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/magento/magento2",
+    "quote": "Each Magento source file included in this distribution is licensed under OSL 3.0 or the terms and conditions of the applicable ordering document"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.adobe.com/commerce/webapi/",
+    "quote": "The Web API documentation is divided into three guides: REST, GraphQL, and Getting Started."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/soap-web-api-calls",
+    "quote": "Protected SOAP resources can be accessed using bearer tokens (OAuth access tokens) over HTTP."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.adobe.com/commerce/webapi/rest/quick-reference/generate-local",
+    "quote": "By default, the `/swagger` endpoint is open on Commerce instances."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.adobe.com/commerce/extensibility/webhooks/",
+    "quote": "Webhooks enable developers to configure synchronous logic to execute calls to external systems"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/tools-overview",
+    "quote": "IDE integration for Commerce development tasks"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Adobe Commerce pricing was not checked; the business.adobe.com page timed out. It is unconfirmed whether Adobe's first-party Webhooks module (magento/commerce-webhooks) installs on Magento Open Source or only on Adobe Commerce. The sandbox rating rests on being able to self-install Open Source, not on a vendor sandbox program.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[bearer_token, oauth1, other]",
+    "new": "[oauth1, bearer_token, oauth2, other]",
+    "why": "SaaS (Cloud Service) uses Adobe IMS OAuth 2.0: client_credentials server-to-server and an authorization-code Web App flow, both documented."
+   },
+   {
+    "field": "auth_primary",
+    "old": "bearer_token",
+    "new": "oauth1",
+    "why": "Docs say standalone bearer use of integration access tokens is disabled by default. The default third-party integration auth is OAuth 1.0a signing, and bearer use needs the merchant to change a config setting."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Integration access token as bearer; IMS not verified",
+    "new": "Adds the bearer-disabled-by-default detail, the admin (4h) and customer (1h) token lifetimes, and the verified IMS flows",
+    "why": "Verified against the token-auth, server-to-server and user-auth doc pages."
+   },
+   {
+    "field": "access_notes",
+    "old": "Open Source free (no cited evidence)",
+    "new": "Cites the OSL-3.0/AFL-3.0 licence on the magento/magento2 GitHub repo; SaaS credentials come via Adobe Developer Console",
+    "why": "The automated check flagged that access had no evidence."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "SOAP known from prior knowledge; hundreds of endpoints",
+    "new": "SOAP confirmed by the docs page; no endpoint count in docs; SaaS REST surface is reduced",
+    "why": "Found the SOAP page. The REST reference gives no count. The REST overview says Cloud Service has fewer endpoints."
+   },
+   {
+    "field": "evidence",
+    "old": "auth quote 'Third-party applications use OAuth to access the web APIs'",
+    "new": "'Third-party applications use OAuth-based authentication to access the web APIs.' plus new access, SOAP, Swagger and IMS quotes",
+    "why": "The original auth quote was not verbatim on the page. Added primary-source quotes for the claims that previously came from prior knowledge."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, api medium",
+    "new": "auth high, api high",
+    "why": "Auth methods and API styles, including SOAP and Swagger, are now confirmed on vendor docs."
+   },
+   {
+    "field": "what_it_does",
+    "old": "...merchant-hosted REST and GraphQL APIs.",
+    "new": "...per-store REST, GraphQL, and SOAP APIs.",
+    "why": "SOAP is confirmed, and SaaS is not merchant-hosted."
+   }
+  ]
+ },
+ "human_fixes": []
+}

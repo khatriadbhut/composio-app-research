@@ -1,0 +1,176 @@
+{
+ "id": 94,
+ "slug": "consensus",
+ "app": "Consensus",
+ "category": "AI, Research and Media-native",
+ "hint": "consensus.app (OAuth requested)",
+ "pass": 2,
+ "at": "2026-11-25T03:56:47.672Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/home/api/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://docs.consensus.app/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "docs.consensus.app API x-api-key authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/home/mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/home/pricing/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://github.com/Consensus-NLP/consensus-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/pricing/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Consensus API \"/v1/search\" consensus.app API key paid plan"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://consensus.app/.well-known/pricing.md"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI search engine over peer-reviewed papers, with a cited-answer research agent.\",\"subcategory\":\"AI research / scholarly search\",\"auth_methods\":"
+  }
+ ],
+ "cost_usd": 0.2328905,
+ "duration_ms": 68573,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "AI search engine over peer-reviewed papers, with a cited-answer research agent.",
+  "subcategory": "AI research / scholarly search",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST API: the API key goes in an x-api-key header. consensus.app/home/mcp shows a curl example with -H \"x-api-key: $CONSENSUS_API_KEY\". Hosted MCP (https://mcp.consensus.app/mcp): the user either signs in with OAuth or sends the API key as \"Authorization: Bearer YOUR_API_KEY\", according to the Consensus-NLP/consensus-mcp README. The README doesn't mention DCR, and no primary source confirms it. I found no documented OAuth for the REST API, so OAuth exists only on the MCP server. Each API key belongs to one user, so a multi-user toolkit would collect each user's key or go through MCP OAuth.",
+  "access": "paid_plan_required",
+  "access_notes": "The REST API page says API access is \"Included on every paid plan\". Paid plans are Pro, Deep, Team and Enterprise. consensus.app/.well-known/pricing.md is less generous: it lists the Search API only under Team (\"Optional access ... available upon approval, rate limited\") and Enterprise (custom pricing). The two sources conflict on whether approval is needed. MCP is more open. Its search tool works with no account at 3 papers per search. The Free plan gets 10 papers per search and 30 calls a month, without DOI or full-text fields. Pro/Teams get 500 calls a month, Deep 2,000, and Enterprise custom limits. Paid plans can turn on extra usage at $0.05 per call.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "REST has two main endpoints: GET /v1/search, which returns ranked papers, and POST /v1/threads, which starts an async research agent run in Pro or Deep mode. The MCP server exposes five tools: search, create_thread, get_thread, add_to_thread and find_threads. Filters include study design, sample size, journal quartile and year.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted server is at https://mcp.consensus.app/mcp and supports OAuth sign-in or a Bearer API key. The repo is github.com/Consensus-NLP/consensus-mcp and the setup guide is at docs.consensus.app/consensus-mcp. The MCP search tool works without an account, and a free tier allows 30 calls a month.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "REST access needs a paid plan, and one Consensus page says Team access is \"available upon approval\". The API surface is small. The OAuth the request asked for is available only on the MCP server, not the REST API. A toolkit could use REST with each user's own API key, or wrap the official remote MCP over OAuth, which also covers free and no-account users with limits. The docs site (docs.consensus.app) returns 403 to automated fetches.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://consensus.app/home/api/",
+    "quote": "POST /v1/threads async"
+   },
+   {
+    "field": "access",
+    "url": "https://consensus.app/home/api/",
+    "quote": "Included on every paid plan"
+   },
+   {
+    "field": "access",
+    "url": "https://consensus.app/.well-known/pricing.md",
+    "quote": "Optional access to the Consensus Search API (available upon approval, rate limited"
+   },
+   {
+    "field": "auth",
+    "url": "https://consensus.app/home/mcp/",
+    "quote": "-H \"x-api-key: $CONSENSUS_API_KEY\""
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/Consensus-NLP/consensus-mcp",
+    "quote": "https://mcp.consensus.app/mcp"
+   },
+   {
+    "field": "auth",
+    "url": "https://github.com/Consensus-NLP/consensus-mcp",
+    "quote": "Authorization: Bearer YOUR_API_KEY"
+   },
+   {
+    "field": "mcp",
+    "url": "https://consensus.app/home/api/",
+    "quote": "https://mcp.consensus.app/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "docs.consensus.app returns 403 to automated fetches. Two Consensus sources disagree on REST access. The API page says it is included on every paid plan. pricing.md lists it only for Team and Enterprise and says Team access needs approval. Someone should log in and check whether a Pro account can create a REST key without approval. They should also check whether an OpenAPI spec, webhooks or a sandbox exist.",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "x-api-key unconfirmed; MCP OAuth reported as DCR by third parties",
+    "new": "x-api-key confirmed for REST via curl example on consensus.app/home/mcp; MCP takes OAuth sign-in or Bearer API key; DCR unconfirmed",
+    "why": "Vendor page shows the header, and the official GitHub README documents both MCP auth modes."
+   },
+   {
+    "field": "access_notes",
+    "old": "API on every paid plan; free tier unknown",
+    "new": "Added the pricing.md conflict (Team API on approval) and the MCP free and no-account limits",
+    "why": "Found in the vendor's pricing.md and the consensus-mcp README."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Two endpoints + filters",
+    "new": "Added the 5 MCP tools",
+    "why": "The official MCP README lists the tools."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "URL + docs + repo",
+    "new": "Added the auth modes and the free/no-account tiers",
+    "why": "The official repo confirms them."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "docs 403, details unverified",
+    "new": "Header confirmed; flagged the approval conflict; MCP OAuth suggested as the route for the requested OAuth",
+    "why": "Primary-source verification."
+   },
+   {
+    "field": "evidence",
+    "old": "Fetch-summary quotes, x-api-key attributed to the mcp page",
+    "new": "Verified quotes, including pricing.md and the GitHub README",
+    "why": "Replaced with quotes I saw on the pages."
+   },
+   {
+    "field": "confidence.auth/mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "Confirmed by vendor sources."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: docs.consensus.app returned 403 to my fetch. Please check these in a browser: the exact API key header, whether any free tier or trial can use the API, which plan is the minimum, whether webhooks, an OpenAPI spec or a sandbox exist, and whether the REST API supports OAuth. The evidence quotes come f"
+}

@@ -1,0 +1,132 @@
+{
+ "id": 49,
+ "slug": "amazon-selling-partner",
+ "app": "Amazon Selling Partner",
+ "category": "Ecommerce",
+ "hint": "developer-docs.amazon.com/sp-api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "REST API for Amazon sellers' and vendors' orders, listings, inventory, fulfillment, reports and finances.",
+  "subcategory": "Marketplace seller API",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Auth uses Login with Amazon (LWA) OAuth 2.0. Public apps get a seller's or vendor's refresh_token through the website or Appstore authorization workflow. They then exchange it for an access token that lasts 1 hour and is sent in the x-amz-access-token header. Grantless operations, such as Notifications destinations, use the LWA client_credentials grant. Restricted operations that touch PII need a Restricted Data Token (RDT) from the Tokens API, passed in x-amz-access-token in place of the LWA token. Private apps self-authorize to get a refresh token. Since October 2, 2023 SP-API no longer requires AWS IAM or SigV4 signing, and if a request is signed anyway the signature is ignored.",
+  "access": "approval_required",
+  "access_notes": "You must register as an SP-API developer in Solution Provider Portal / Seller Central, and Amazon must approve the developer profile and the roles you request. Restricted roles such as PII access need extra vetting. Private seller apps need a Professional selling account, and Individual accounts are not eligible. Public apps that sellers authorize by OAuth must be listed in the Selling Partner Appstore under the Solution Provider Portal Agreement. Amazon had announced a $1,400 annual fee for third-party developers and GET-call usage fees for 2026. It cancelled both on May 14, 2026, saying it \"will not move forward with the SP-API usage and annual fees at this time\". So there is currently no developer fee.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers orders, listings items and restrictions, catalog items, product pricing and fees, FBA inventory, fulfillment inbound and outbound, merchant fulfillment, shipping, reports, feeds, finances, notifications, tokens, Data Kiosk (GraphQL-backed queries), messaging, solicitations, A+ content, and the vendor APIs (orders, shipments, invoices, direct fulfillment). Spread over dozens of sections, that comes to several hundred operations. Amazon publishes the OpenAPI/Swagger models on GitHub (amzn/selling-partner-api-models).",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "Amazon's own repo, amzn/selling-partner-api-samples, holds two local MCP servers. The first is sp-api-dev-mcp, published on npm as @amazon-sp-api-release/sp-api-dev-mcp, which bundles a Developer Assistant and a Workflow builder. The second is amazon-data-kiosk-mcp-server, which queries the Data Kiosk API. Both run locally with your own LWA credentials. There is no vendor-hosted remote MCP. Many community servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Developer registration and role approval are required before you get credentials. A public multi-seller OAuth app needs an Appstore listing and Amazon's review, and PII and other restricted roles need extra approval. Private self-authorized use is limited to the developer's own Professional seller account. The paid-fee blocker announced for 2026 was withdrawn in May 2026.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://developer-docs.amazon/sp-api",
+    "quote": "Learn how to get started and build applications with Amazon's REST-based SP-API."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api",
+    "quote": "An LWA access token expires one hour after it is issued."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer-docs.amazon/sp-api/changelog/sp-api-will-no-longer-require-aws-iam-or-aws-signature-version-4",
+    "quote": "SP-API no longer requires the use of AWS Identity and Access Management (IAM) or AWS Signature Version 4"
+   },
+   {
+    "field": "access",
+    "url": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview",
+    "quote": "you must have a professional selling account to develop SP-API private seller applications."
+   },
+   {
+    "field": "access",
+    "url": "https://developer-docs.amazon/sp-api/docs/sp-api-registration-overview",
+    "quote": "public developers must list their app in the Amazon Selling Partner Appstore."
+   },
+   {
+    "field": "access",
+    "url": "https://ppc.land/amazon-drops-sp-api-fees-after-developer-pushback",
+    "quote": "will not move forward with the SP-API usage and annual fees at this time."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/amzn/selling-partner-api-samples",
+    "quote": "A local MCP server that bundles SP-API developer tools into a single npm package"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer-docs.amazon/sp-api",
+    "quote": "Learn how to subscribe to notifications that are relevant to a selling partner's business."
+   },
+   {
+    "field": "api",
+    "url": "https://developer-docs.amazon/sp-api",
+    "quote": "Directory for SP-API models and release notes"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The fee cancellation is confirmed only through secondary press (ppc.land) quoting Amazon's notice, because the developer.amazonservices.com announcement URL now returns 404. Check the Solution Provider Portal to confirm no fees apply. How long public-app and restricted-role review takes is not documented.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\",\"other\"]",
+    "new": "[\"oauth2\"]",
+    "why": "Grantless client_credentials is still LWA OAuth2, and an RDT is a token obtained with OAuth access, not a separate auth method. SigV4 was dropped in October 2023."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...Older docs required AWS IAM SigV4 signing, which I did not confirm as still needed.",
+    "new": "...Since October 2, 2023 SP-API no longer requires AWS IAM or SigV4 signing...",
+    "why": "The official changelog confirms that SigV4 and IAM were removed."
+   },
+   {
+    "field": "access_notes",
+    "old": "...I did not find a fee on the pages I opened.",
+    "new": "Adds that the $1,400 annual fee and usage fees announced for 2026 were cancelled on May 14, 2026",
+    "why": "The pricing history matters for whether access is gated, and the current state is no fees."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Only sp-api-dev-mcp",
+    "new": "Adds the official amazon-data-kiosk-mcp-server; both run locally",
+    "why": "The amzn samples repo lists a second official MCP server."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote 'selling-partner-api-models'; webhooks quote 'Notifications API'",
+    "new": "Verbatim quotes from the page, plus the SigV4 changelog and fee-cancellation quotes",
+    "why": "The string 'selling-partner-api-models' is not on the cited page, and the original quotes were too thin."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "all high",
+    "why": "The open questions (SigV4, sandbox, fees, MCP) are resolved from primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "SigV4, review timelines, sandbox scope",
+    "new": "Confirm fee cancellation on the portal; review timelines",
+    "why": "SigV4 is resolved by the changelog. Sandbox is resolved: the docs describe both static and dynamic sandboxes."
+   }
+  ]
+ },
+ "human_fixes": []
+}

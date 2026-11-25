@@ -62,7 +62,7 @@ const ALIASES = { "lark-larksuite": ["lark", "larksuite"], "threads-meta": ["thr
 ALIASES["otter-ai"].push("otteraimcp");
 
 const MAP = { OAUTH2: "oauth2", OAUTH1: "oauth1", API_KEY: "api_key", BEARER_TOKEN: "bearer_token", BASIC: "basic", BASIC_WITH_JWT: "basic",
-  S2S_OAUTH2: "oauth2", GOOGLE_SERVICE_ACCOUNT: "jwt_service_account", SERVICE_ACCOUNT: "jwt_service_account", NO_AUTH: "none" };
+  S2S_OAUTH2: "oauth2", DCR_OAUTH: "oauth2", GOOGLE_SERVICE_ACCOUNT: "jwt_service_account", SERVICE_ACCOUNT: "jwt_service_account", NO_AUTH: "none" };
 
 const catalog = await listAll();
 const index = new Map(catalog.items.map((t) => [key(t.slug), t]));

@@ -1,0 +1,117 @@
+{
+ "id": 63,
+ "slug": "netlify",
+ "app": "Netlify",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.netlify.com/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Web hosting, serverless functions and deploy platform for web projects.",
+  "subcategory": "Web hosting / deployment platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Personal access tokens are sent as \"Authorization: Bearer <token>\" and suit scripts and personal use. Public integrations must use OAuth2. You register an OAuth app at app.netlify.com/applications to get a client key and secret, and users authorize at https://app.netlify.com/authorize. If a team requires SAML SSO, its PATs are denied team access by default; access can be granted when the token is created. Resetting the password invalidates all existing PATs and OAuth tokens.",
+  "access": "self_serve_free",
+  "access_notes": "The Free plan ($0 forever, 300 credits) lists \"Deploy from AI, Git, or API\". Any user can create PATs and register OAuth apps in user settings. The API docs describe no review or approval step for OAuth apps and no plan requirement for API use. Rate limits are 500 requests/min; deploys are limited to 3/min and 100/day. Higher limits require contacting Netlify support.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers sites, deploys, builds, forms and submissions, hooks, DNS, env vars, accounts/teams, functions and more. The OpenAPI reference is at open-api.netlify.com. Operations were not counted exactly, but the count is well over 50. Rate limit is 500 req/min; deploys 3/min and 100/day.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote: https://mcp.netlify.com/mcp. The old URL, https://netlify-mcp.netlify.app/mcp, still works. Local package: @netlify/mcp. Repo: github.com/netlify/netlify-mcp. Users sign in through a login link; the docs give no PAT or OAuth details for the remote server.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Public REST API with self-serve OAuth2 app registration and an OpenAPI spec, available on the free plan. Outgoing webhooks (hooks API) cover a limited set of events, e.g. submission_created, deploy_created, deploy_failed. Deploy rate limits are strict (3/min, 100/day).",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "If you're making a public integration with Netlify for others to enjoy, you must use OAuth2."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "Use your PAT for manual authentication in shell scripts or commands that use the Netlify API."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "You can register a new application in your Netlify user settings for OAuth applications."
+   },
+   {
+    "field": "access",
+    "url": "https://www.netlify.com/pricing/",
+    "quote": "Deploy from AI, Git, or API"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "You can browse the OpenAPI reference for the Netlify API to explore available endpoints."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api/",
+    "quote": "Netlify can trigger webhooks, send email notifications, or send Slack messages on certain events."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
+    "quote": "Use https://mcp.netlify.com/mcp for new connections."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "PATs and OAuth app registration are available in user settings with a free account. I did not confirm whether public OAuth apps need review. I did not check pricing.",
+    "new": "The Free plan ($0 forever, 300 credits) lists \"Deploy from AI, Git, or API\"... The API docs describe no review or approval step for OAuth apps and no plan requirement...",
+    "why": "Checked the pricing page and the API docs. The free plan includes API deploys, and the docs describe no OAuth review step."
+   },
+   {
+    "field": "evidence",
+    "old": "No access evidence; one auth quote",
+    "new": "Added access quotes from the pricing page and API docs, a PAT auth quote, and a more specific MCP URL quote",
+    "why": "The automated check found no access evidence. All original quotes were re-verified on their pages."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The pricing page and API docs together confirm free self-serve access."
+   },
+   {
+    "field": "auth_notes",
+    "old": "PATs for personal use; OAuth2 ... required for public integrations.",
+    "new": "Added the Bearer header format, the registration URL, the SSO caveat and token invalidation on password reset",
+    "why": "Added detail from the API docs."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Remote: https://mcp.netlify.com/mcp. Local package: @netlify/mcp. Repo: github.com/netlify/netlify-mcp.",
+    "new": "Added that the legacy URL netlify-mcp.netlify.app/mcp still works and that users sign in through a login link",
+    "why": "Found on the MCP docs page."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check whether OAuth apps need review for public use, and what free-plan limits apply...",
+    "new": "",
+    "why": "Answered: the docs show no OAuth review, and the free plan has 300 credits and includes API access. No sandbox exists, which is normal for a hosting platform."
+   }
+  ]
+ },
+ "human_fixes": []
+}

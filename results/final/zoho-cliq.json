@@ -1,0 +1,130 @@
+{
+ "id": 23,
+ "slug": "zoho-cliq",
+ "app": "Zoho Cliq",
+ "category": "Communications and Messaging",
+ "hint": "zoho.com/cliq",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Zoho's team chat app with channels, threads, calls, bots and extensions.",
+  "subcategory": "Team chat / messaging",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The REST API uses OAuth 2.0 (Zoho Accounts). You register a client in the Zoho API console using the accounts domain for your data center, then send \"Authorization: Zoho-oauthtoken {token}\" on v2, or Bearer on v3. The token must go in a header, not a query parameter. Scopes are per endpoint, for example ZohoCliq.Users.READ, ZohoCliq.Departments.ALL and ZohoCliq.Webhooks.CREATE. There are 9 data-center domains: .com, .eu, .in, .com.au, .com.cn, .jp, .sa, .uk and .zohocloud.ca. Separately, a bot's incoming-webhook endpoint (/api/v2/bots/{bot}/incoming) and channel message posting can take a \"Webhook token\" as a zapikey query parameter. That is a narrow api_key-style method for posting messages only. Community threads report 401s on it, so it may be partly deprecated.",
+  "access": "self_serve_free",
+  "access_notes": "Cliq has a Free plan, and the pricing page's developer-platform table gives Free orgs a quota for bots (100), functions, extensions and so on. The pricing page also lists \"API support\" without any per-plan limit. Registering a client in the Zoho API console is self-serve. I found no app-review gate for OAuth clients. Some APIs, such as maintenance/bulk export and roles, need an org admin. A Zoho Marketplace listing is optional and not needed for API use.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "There are two REST versions: v2 at cliq.zoho.com/api/v2 and v3 at /api/v3, which the docs label \"Latest\". The v2 reference covers Users, Userfields, User Status, Departments, Roles, Designation, Remote Work, Chats, Channels, Threads, Teams, Messages, Scheduled Messages, Bots, Files, Calls & Meetings, Events, Reminders, Cliq Database, Widget Map Tickers, Custom Domain, Custom Email, and Maintenance (bulk export). That is well over 50 operations. The docs say \"There is no usage limit on the API\", but per-user, per-minute throttles apply to each endpoint (for example, 5/min for Add user). Downloadable OpenAPI (YAML) files are documented.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Zoho documents a Zoho Cliq MCP Server (zoho.com/cliq/help/platform/zoho-cliq-mcp.html). It is provisioned through the hosted Zoho MCP console at mcp.zoho.com (zoho.com/mcp), which generates a remote MCP URL. Zoho's MCP setup page says you need \"the appropriate plan\" for the AI agent. I could not confirm the exact auth model or plan tiers from the pages I fetched.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The REST API is broad, OAuth2 is self-serve, and a Free plan exists. Watch for three things: routing calls to the right data-center domain, the per-endpoint per-minute throttles, and the admin-only APIs. Triggers are weak because there are no native outbound event webhooks. Event handling lives in Cliq's own Deluge-based bot and extension handlers.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+    "quote": "Zoho-oauthtoken {{access token}}"
+   },
+   {
+    "field": "api",
+    "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+    "quote": "All API requests must be made over HTTPS."
+   },
+   {
+    "field": "api",
+    "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+    "quote": "There is no usage limit on the API."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.zoho.com/cliq/help/platform/bot-incomingwebhookhandler.html",
+    "quote": "Authentication of the webhook URL should be done by passing the value of a Webhook token"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+    "quote": "The Zoho Cliq MCP Server brings your chats into the world of AI using the Model Context Protocol (MCP)."
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/cliq/pricing.html",
+    "quote": "your account will be downgraded to our free plan"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The MCP pages don't show Cliq's MCP auth model or which Zoho plan is needed. Someone should confirm these at mcp.zoho.com. Also confirm that no outbound event-webhook feature exists. I marked webhooks as \"no\" because neither the REST docs nor the pricing page mention one.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\"]",
+    "new": "[\"oauth2\", \"api_key\"]",
+    "why": "The docs show that bot incoming-webhook endpoints authenticate with a Webhook token passed as a zapikey query parameter."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth 2.0 only ...",
+    "new": "OAuth2 plus the zapikey webhook token, v3 Bearer, and the full list of 9 data centers",
+    "why": "The first pass missed the webhook token method, the v3 API and the extra data-center domains."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The REST v2 docs have an 'OpenAPI Specification' section with YAML downloads."
+   },
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "no",
+    "why": "The REST docs and pricing page show no outbound event subscription. The webhook features that exist are incoming handlers or tokens."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "I found no developer sandbox. Developers can use the Free plan org instead."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "REST v2 ... Per-endpoint rate limits apply, and exceeding them returns HTTP 429.",
+    "new": "v2 and v3, the full module list, the per-minute throttles, and the OpenAPI note",
+    "why": "A v3 'Latest' API exists. I could not confirm the HTTP 429 claim. The docs say there is no overall usage limit, only per-endpoint throttles."
+   },
+   {
+    "field": "evidence",
+    "old": "The pricing quote was 'Free Chat plans for all Teams size'",
+    "new": "Replaced it with a free-plan quote I verified, and added quotes for the webhook token and the call limit.",
+    "why": "The original pricing quote was not found on the page."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "...configure page gives MCP URL; guides for Claude/Cursor/VS Code",
+    "new": "Provisioned via mcp.zoho.com, plan requirement noted, auth unconfirmed",
+    "why": "The configure page I fetched is the generic Zoho MCP guide. It mentions a plan requirement, and I did not see the Claude, Cursor or VS Code guides."
+   },
+   {
+    "field": "confidence.api / buildability",
+    "old": "medium/medium",
+    "new": "high/high",
+    "why": "I verified the module list and OpenAPI availability in the vendor docs."
+   }
+  ]
+ },
+ "human_fixes": []
+}

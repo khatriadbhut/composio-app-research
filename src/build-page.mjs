@@ -48,6 +48,8 @@ const rows = apps.map((app) => {
     composio: c?.in_composio ? { toolkit: c.toolkit, tools: c.tools, auth: c.composio_auth } : null,
     changes: [...(v?.record?.changes ?? []), ...(f.human_fixes ?? []).map((h) => ({ ...h, why: `${h.by}: ${h.why}` }))],
     pass1: { access: p1.record?.access, build: p1.record?.buildability },
+    graded: ["auth_methods", "auth_primary", "access", "api_styles", "api_breadth", "mcp", "buildability", "main_blocker"]
+      .filter((k) => JSON.stringify(p1.record?.[k]) !== JSON.stringify(r[k])),
     trace: p1.trace ?? [],
   };
 });
@@ -122,7 +124,7 @@ const patterns = N.patterns.map((p) => ({ title: fillT(p.title), body: fillT(p.b
 // heat for buildability uses build labels for its columns
 for (const p of patterns) if (p.viz?.cols?.[0] === "ready_now") p.viz = { ...p.viz, cols: p.viz.cols };
 
-const afterKey = score.passes.final ? "final" : "pass2";
+const afterKey = "pass2"; // the scored number is always the automated pipeline, never human-fixed records
 const DATA = {
   meta: { generated: new Date().toISOString(), links: N.links, footer: fillT(N.footer) },
   labels: { ...L, access: { ...L.access, ...L.build } },

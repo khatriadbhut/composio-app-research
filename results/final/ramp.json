@@ -1,0 +1,161 @@
+{
+ "id": 89,
+ "slug": "ramp",
+ "app": "Ramp",
+ "category": "Finance and Fintech",
+ "hint": "docs.ramp.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Corporate cards, spend management, bill pay and accounting automation for businesses.",
+  "subcategory": "Spend management / corporate cards",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 only; tokens come from /developer/v1/token. Client Credentials is for internal, server-to-server use and returns no refresh token; its access tokens last 10 days. Authorization Code is for third-party and public multi-customer apps and needs the Refresh Token grant enabled; its access tokens default to 1 hour. Auth codes expire after 5 minutes. Apps that access the whole business must be approved by an Admin or Business Owner. Apps that act as an individual user must first be enabled by an admin in Manage Access. Some scopes are partner-only, such as applications:read and incorporation:write. The spec defines only an oauth2 security scheme. There is no personal access token.",
+  "access": "approval_required",
+  "access_notes": "A Ramp customer can create a Client Credentials app for their own business in the Developer Console. A multi-customer Authorization Code integration, which is what Composio would build, follows Ramp's Partner Integrations path: request a sandbox, submit the technology partnerships application, complete security disclosures and SSO, and pass Ramp's review. Ramp states that \"Approval is required before production access.\" Being listed publicly on ramp.com/integrations is a further application step. Sandbox access is requested, not instant; the Get Sandbox Access page body was empty when fetched. The pricing page doesn't tie the API to any plan. Ramp has a Free tier, so a paid plan doesn't appear to be required, but this isn't stated outright.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Developer API v1 covers transactions, cards, users, departments, bills, vendors, reimbursements, spend programs, accounting, approvals, purchase orders, webhooks and more. The OpenAPI spec at docs.ramp.com/openapi/developer-api.json is about 1.7 MB. The first ~6% of it alone holds 78 operations across 40 paths, so the full spec has well over 100 operations. I didn't count the full spec.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted Ramp MCP is at https://mcp.ramp.com/mcp and is documented on docs.ramp.com. Users sign in with Ramp OAuth and act as themselves with Full access or Read-only. Connections expire after 30 days. Custom clients need their redirect URI allowlisted by Ramp, which is done by request. The older local package, github.com/ramp-public/ramp_mcp (client credentials, demo or prod), was archived on 2026-07-17. Third-party directories also list a developer-docs MCP and a Ramp Data MCP (API key) under mcp.ramp.com, but I didn't verify those in Ramp's docs.",
+  "sandbox": "yes",
+  "buildability": "needs_partnership_or_sales",
+  "main_blocker": "partnership",
+  "blocker_notes": "A multi-customer OAuth integration needs Ramp's technology partnership application, security disclosures, SSO and a review of integration flows before production access (\"Approval is required before production access\"). The sandbox is also by request. A single customer can still use Client Credentials for their own business without this. Inside each customer, an Admin must approve the app.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+    "quote": "Your app gets an access token from `/developer/v1/token`."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+    "quote": "Codes expire after 5 minutes."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ramp.com/llms-guides/build-with-ramp.txt",
+    "quote": "Approval is required before production access."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ramp.com/llms-guides/build-with-ramp.txt",
+    "quote": "Opening it does not submit your application"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ramp.com/llms-guides/sandbox.txt",
+    "quote": "Demo accounts cannot process actual financial transactions"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+    "quote": "Connections expire after 30 days; reconnect to renew."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/ramp-public/ramp_mcp",
+    "quote": "This repository was archived by the owner on Jul 17, 2026. It is now read-only."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ramp.com/llms-guides/webhooks.txt",
+    "quote": "Create a webhook subscription using `POST /developer/v1/webhooks`."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ramp.com/llms-guides/webhooks.txt",
+    "quote": "Every webhook request from Ramp includes an `X-Ramp-Signature` header."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.ramp.com/llms.txt",
+    "quote": "OpenAPI spec"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Two pages had empty bodies when fetched: Get Sandbox Access (docs.ramp.com/developer-api/v1/sandbox-access) and Technology Partnerships Application. Someone needs to check who qualifies for sandbox access and whether the partnership application is an open form or selective. Also confirm whether the API works on Ramp's Free plan, since the pricing page is silent on it.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "No documented review process for public distribution; plan requirement unknown",
+    "new": "Partner Integrations path requires technology partnership application, security disclosures, SSO and Ramp review before production access",
+    "why": "build-with-ramp.txt states 'Approval is required before production access.'"
+   },
+   {
+    "field": "buildability",
+    "old": "ready_with_caveats",
+    "new": "needs_partnership_or_sales",
+    "why": "A multi-customer OAuth integration needs Ramp's partnership approval before production access."
+   },
+   {
+    "field": "main_blocker",
+    "old": "app_review",
+    "new": "partnership",
+    "why": "The gate is the technology partnerships application plus review, not a generic per-app review."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Public distribution may involve approval or partner status but unconfirmed",
+    "new": "Confirmed partnership application + security review gates production for multi-customer apps",
+    "why": "Primary-source confirmation on build-with-ramp.txt."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Mentions Ramp Data MCP, local ramp_mcp package as current, retired Developer MCP",
+    "new": "Hosted MCP confirmed; local ramp_mcp repo archived 2026-07-17; Data/Developer MCPs only seen in third-party directories",
+    "why": "The ramp-mcp.txt page doesn't mention the Data MCP or a retired Developer MCP; GitHub shows the repo archived."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Cites mcparmory-ramp 186 tools; no count from spec",
+    "new": "Count from Ramp's own OpenAPI spec (78 ops in first ~6% of 1.7MB spec)",
+    "why": "Use the primary source instead of a third-party generated package."
+   },
+   {
+    "field": "evidence",
+    "old": "Auth quote 'Ramp uses OAuth 2.0. Your app gets tokens from /developer/v1/token.'",
+    "new": "'Your app gets an access token from `/developer/v1/token`.'",
+    "why": "The original quote isn't on the page verbatim. Also added quotes from the partner-review, webhooks and GitHub pages."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Did not mention per-user app admin enablement or partner-only scopes",
+    "new": "Added admin enablement in Manage Access and partner-only scopes",
+    "why": "Both are stated in authorization.txt."
+   },
+   {
+    "field": "confidence.access",
+    "old": "low",
+    "new": "medium",
+    "why": "The partner approval gate is now confirmed by a primary source. Plan requirement and sandbox eligibility are still unverified."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "Opened the OpenAPI spec and the webhooks guide directly."
+   },
+   {
+    "field": "needs_human",
+    "old": "Four open questions including webhooks/OpenAPI",
+    "new": "Sandbox eligibility, partnership selectivity, Free-plan API availability",
+    "why": "Webhooks, OpenAPI and the partner approval requirement are now verified."
+   }
+  ]
+ },
+ "human_fixes": []
+}

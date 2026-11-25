@@ -1,88 +1,92 @@
 {
-  "slug": "front",
-  "app": "Front",
-  "labels": {
-    "auth_methods": [
-      "oauth2",
-      "bearer_token"
-    ],
-    "auth_primary": "oauth2",
-    "access": "approval_required",
-    "api_styles": [
-      "rest"
-    ],
-    "api_breadth": "broad",
-    "mcp": "official_remote",
-    "buildability": "ready_with_caveats",
-    "main_blocker": "app_review"
-  },
-  "evidence": {
-    "auth": [
-      {
-        "url": "https://dev.frontapp.com/docs/authentication",
-        "quote": "There are two ways to get a Bearer token — through API tokens in your settings or through an OAuth implementation"
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/authentication",
-        "quote": "OAuth is required for public integrations available to all Front customers unless you obtain an exception from us."
-      }
-    ],
-    "access": [
-      {
-        "url": "https://dev.frontapp.com/docs/partnering-with-front",
-        "quote": "If you don't already have an account, you'll want to sign up for a free development account."
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
-        "quote": "By default, apps are private to the Front instance they are created in."
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
-        "quote": "If you want to make an app available for all Front customers to use, you must publish your app."
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/partnering-with-front",
-        "quote": "We are currently an open integration platform and approve the vast majority of integrations submitted to us."
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/rate-limiting",
-        "quote": "By default, Front's API rate limit starts at 50 requests per minute and varies depending on your plan."
-      }
-    ],
-    "api": [
-      {
-        "url": "https://dev.frontapp.com/docs/authentication",
-        "quote": "Access resources allows you to manage Core API resources such as conversations, contacts, inboxes, etc."
-      },
-      {
-        "url": "https://dev.frontapp.com/llms.txt",
-        "quote": "List the views accessible to the authenticated token."
-      }
-    ],
-    "mcp": [
-      {
-        "url": "https://dev.frontapp.com/docs/mcp-server",
-        "quote": "Front's MCP server (mcp.frontapp.com/mcp) lets AI agents act on Front conversation data using a single OAuth-authenticated endpoint."
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/mcp-server",
-        "quote": "Front does not support Dynamic Client Registration."
-      }
-    ],
-    "buildability": [
-      {
-        "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
-        "quote": "To publish your app, notify our team as described in the Partnering with Front topic."
-      },
-      {
-        "url": "https://dev.frontapp.com/docs/partnering-with-front",
-        "quote": "Smaller teams may also be subject to a security or legal review."
-      }
-    ]
-  },
-  "uncertain": {
-    "access": "Free development account gives working API tokens and a private OAuth app immediately (self-serve for single-instance use). Multi-customer OAuth requires publishing via Front's 'Partnering with Front' process (submission + approval, described as approving the vast majority). Labelled approval_required; a grader could read the 'partnership program' wording as partner_gated.",
-    "mcp": "Official vendor-hosted endpoint confirmed; it requires a confidential OAuth client (client ID + secret) created in Front developer settings, no DCR."
-  },
-  "notes": "Front docs llms.txt index lists ~350 /reference/ entries (~329 excluding plugin SDK helpers), so Core API is broad. Front also runs a separate Admin MCP server. MCP OAuth is user-scoped so any teammate can authorize, whereas regular OAuth app authorization requires an admin. Pricing page lists the API rate-limit add-on as 'Available on all plans'; no free production plan exists, only the free developer account."
+ "slug": "front",
+ "app": "Front",
+ "labels": {
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "access": "approval_required",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "mcp": "official_remote",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review"
+ },
+ "evidence": {
+  "auth": [
+   {
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "There are two ways to get a Bearer token — through API tokens in your settings or through an OAuth implementation"
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "OAuth is required for public integrations available to all Front customers unless you obtain an exception from us."
+   }
+  ],
+  "access": [
+   {
+    "url": "https://dev.frontapp.com/docs/partnering-with-front",
+    "quote": "If you don't already have an account, you'll want to sign up for a free development account."
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+    "quote": "By default, apps are private to the Front instance they are created in."
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+    "quote": "If you want to make an app available for all Front customers to use, you must publish your app."
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/partnering-with-front",
+    "quote": "We are currently an open integration platform and approve the vast majority of integrations submitted to us."
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/rate-limiting",
+    "quote": "By default, Front's API rate limit starts at 50 requests per minute and varies depending on your plan."
+   }
+  ],
+  "api": [
+   {
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "Access resources allows you to manage Core API resources such as conversations, contacts, inboxes, etc."
+   },
+   {
+    "url": "https://dev.frontapp.com/llms.txt",
+    "quote": "List the views accessible to the authenticated token."
+   }
+  ],
+  "mcp": [
+   {
+    "url": "https://dev.frontapp.com/docs/mcp-server",
+    "quote": "Front's MCP server (mcp.frontapp.com/mcp) lets AI agents act on Front conversation data using a single OAuth-authenticated endpoint."
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/mcp-server",
+    "quote": "Front does not support Dynamic Client Registration."
+   }
+  ],
+  "buildability": [
+   {
+    "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+    "quote": "To publish your app, notify our team as described in the Partnering with Front topic."
+   },
+   {
+    "url": "https://dev.frontapp.com/docs/partnering-with-front",
+    "quote": "Smaller teams may also be subject to a security or legal review."
+   }
+  ]
+ },
+ "uncertain": {
+  "access": "Free development account gives working API tokens and a private OAuth app immediately (self-serve for single-instance use). Multi-customer OAuth requires publishing via Front's 'Partnering with Front' process (submission + approval, described as approving the vast majority). Labelled approval_required; a grader could read the 'partnership program' wording as partner_gated.",
+  "mcp": "Official vendor-hosted endpoint confirmed; it requires a confidential OAuth client (client ID + secret) created in Front developer settings, no DCR."
+ },
+ "notes": "Front docs llms.txt index lists ~350 /reference/ entries (~329 excluding plugin SDK helpers), so Core API is broad. Front also runs a separate Admin MCP server. MCP OAuth is user-scoped so any teammate can authorize, whereas regular OAuth app authorization requires an admin. Pricing page lists the API rate-limit add-on as 'Available on all plans'; no free production plan exists, only the free developer account.",
+ "human": {
+  "overrides": {},
+  "notes": {}
+ }
 }

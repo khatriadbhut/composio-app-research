@@ -1,0 +1,140 @@
+{
+ "id": 21,
+ "slug": "slack",
+ "app": "Slack",
+ "category": "Communications and Messaging",
+ "hint": "slack.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Team chat platform with channels, DMs, files, canvases, and workflows.",
+  "subcategory": "Team messaging",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth v2 (oauth.v2.access) issues bot (xoxb) and user (xoxp) tokens. The docs say \"OAuth tokens do not expire\" unless you opt into token rotation, which adds refresh tokens. Tokens should go in the Authorization: Bearer header, and that header is required for JSON write methods. A legacy `token` form parameter is also accepted, but it is the same token sent a different way. Socket Mode uses app-level tokens (xapp). Signing-secret verification is only for inbound requests, so it is not an auth method for calling the API. The MCP server uses confidential OAuth (client ID and secret), with PKCE for desktop clients.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can create an app and install it with OAuth at no cost. Unlisted distribution needs no Marketplace review, but workspace admins may require approval before an app is installed. Slack recommends Marketplace listing, which is reviewed, for commercial distribution. Commercially distributed non-Marketplace apps are limited on conversations.history and conversations.replies: 1 request/min, with a maximum of 15 objects per call. This applies to apps created after 2025-05-29 and to new installs. Internal customer-built apps are exempt. The official MCP server accepts only Marketplace-published or internal apps; unlisted apps are prohibited. The free Developer Program provides sandbox Enterprise orgs.",
+  "api_styles": [
+   "rest",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Web API has \"over 200 methods\" in HTTP RPC style, not strict REST. They cover chat, conversations, users, files, reactions, search, canvases, admin, and more. The Events API pushes events over HTTP, and Socket Mode delivers them over WebSocket.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The server is at https://mcp.slack.com/mcp and uses JSON-RPC 2.0 over Streamable HTTP. SSE and Dynamic Client Registration are not supported. Auth is confidential OAuth with client ID and secret, with PKCE for desktop clients. Only Marketplace-published and internal apps can use it; unlisted apps are prohibited.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "tos_or_rate_limits",
+  "blocker_notes": "A self-serve OAuth app can be built today with a broad Web API and the Events API. However, a commercially distributed app outside the Marketplace gets 1 req/min and 15 objects on conversations.history and conversations.replies. That cripples message-reading tools. Using the official MCP server also requires Marketplace listing. To work at full capacity in production, the app needs Marketplace review.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.slack.dev/authentication/installing-with-oauth",
+    "quote": "OAuth tokens do not expire."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.slack.dev/authentication/installing-with-oauth",
+    "quote": "you can exchange your access token for a refresh token and an expiring access token with token rotation"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/distribution/",
+    "quote": "apps intended for commercial distribution should be submitted and approved for listing in the Slack Marketplace."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+    "quote": "limited to 1 request per minute, unless they are approved for the Slack Marketplace"
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+    "quote": "Internal customer-built applications are not impacted by these changes."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.slack.dev/apis/web-api/",
+    "quote": "With over 200 methods, surely there's one right for you."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/slackapi/slack-api-specs",
+    "quote": "This repository was archived by the owner on Mar 27, 2024. It is now read-only."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.slack.dev/ai/mcp-server",
+    "quote": "Only apps published in the Slack Marketplace and internal apps can use MCP at this time."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/tools/developer-sandboxes/",
+    "quote": "A developer sandbox is an Enterprise org environment (a network of two or more Slack workspace instances)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "oauth2, bearer_token, other",
+    "new": "oauth2, bearer_token",
+    "why": "'Other' covered the token form field, which sends the same token a different way, and the MCP OAuth flow, which is still OAuth. Signing secrets verify inbound requests only. None of these is a separate auth method."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "no",
+    "why": "The Web API docs page does not mention an OpenAPI spec. The slackapi/slack-api-specs repo holds an OpenAPI 2.0 spec but was archived on 2024-03-27, so no maintained official spec exists."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "This removes the conflict with main_blocker=tos_or_rate_limits. Non-Marketplace commercial apps are limited to 1 req/min and 15 objects on history reads, and the MCP server requires a Marketplace listing."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes (unverified, page 404'd)",
+    "new": "yes (verified)",
+    "why": "docs.slack.dev/tools/developer-sandboxes confirms free Developer Program sandbox Enterprise orgs."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "hundreds of methods",
+    "new": "over 200 methods, HTTP RPC-style",
+    "why": "This matches the Web API docs page, which describes the methods as RPC-style rather than REST."
+   },
+   {
+    "field": "access_notes",
+    "old": "no internal-app exemption noted",
+    "new": "adds that internal apps are exempt from the rate limits and that unlisted apps are prohibited from MCP",
+    "why": "Both points are stated on the changelog page and the MCP docs page."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, none for api",
+    "new": "9 verified items including api and sandbox",
+    "why": "The automated check flagged that no evidence was cited for api. All of the original quotes were re-checked and found on their pages."
+   },
+   {
+    "field": "needs_human",
+    "old": "open questions on OpenAPI, sandbox, rate limits",
+    "new": "",
+    "why": "All three were resolved from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

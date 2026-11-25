@@ -1,0 +1,133 @@
+{
+ "id": 9,
+ "slug": "copper",
+ "app": "Copper",
+ "category": "CRM and Sales",
+ "hint": "copper.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "CRM for Google Workspace users that manages leads, contacts, companies and opportunities.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "There are two methods. (1) Per-user API key, token-based. Requests send the token plus the key owner's email and X-PW-Application: developer_api in headers. Copper says API keys are suitable for individual users, and third-party guides say only admins can generate them. (2) OAuth2, which Copper calls the preferred approach for partner integrations. You get a client_id and client_secret by contacting Copper at partners@copper.com. Only the developer/v1/all scope is supported.",
+  "access": "approval_required",
+  "access_notes": "Copper is a paid CRM. The pricing page offers free trials (\"Start free, no credit card required\"). A third-party guide (JustCall) says Developer API access is limited to the Professional and Business plans, and Copper's pricing text does not show this per plan. Per-user API keys are self-serve on a qualifying plan. Multi-user OAuth needs manual registration by emailing partners@copper.com with the app name and purpose. There is no self-serve OAuth app creation.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "REST/JSON at https://api.copper.com/developer_api/v1. Docs sections cover Account and Users, Leads, People, Companies, Opportunities, Projects, Tags, Tasks, Activities, Custom Fields, Field Layouts, Related Items, File Upload and Webhooks. Each resource has CRUD and search operations. I did not count operations, but the total is likely about 50. A third-party n8n template exposes 32 operations, and StackOne exposes 58 tools.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no official Copper MCP server: nothing on developer.copper.com and no Copper announcement. Third-party servers exist: StackOne (58 tools), Apideck, Activepieces, Zapier, Composio, Boomi, Scalekit, and community projects such as Cotlet's Copper CRM MCP server and one on Glama.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Per-user API keys work for a prototype, but they need a paid or trial Copper account, reportedly on the Professional plan or higher. A proper multi-user OAuth app needs Copper to register it manually through partners@copper.com, and there is only one all-access scope. There is no dedicated sandbox, so testing uses trial accounts.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.copper.com/introduction/authentication.html",
+    "quote": "OAuth2.0 is the preferred approach for partner integrations."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.copper.com/introduction/authentication.html",
+    "quote": "API Keys are suitable for individual users"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.copper.com/introduction/oauth/index.html",
+    "quote": "To register your application, contact us."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.copper.com/introduction/oauth/index.html",
+    "quote": "Currently, only the developer/v1/all scope is supported"
+   },
+   {
+    "field": "access",
+    "url": "https://www.copper.com/pricing",
+    "quote": "Start free, no credit card required."
+   },
+   {
+    "field": "access",
+    "url": "https://help.justcall.io/en/articles/11325233-troubleshooting-guide-copper-crm-integration-with-justcall",
+    "quote": "Developer API access is only available on Professional and Business plans in Copper CRM."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.copper.com/",
+    "quote": "Our developer api can be found at https://api.copper.com/developer_api/"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.copper.com/webhooks/overview.html",
+    "quote": "Webhooks allow systems integrated with Copper to receive near real-time notification of certain events"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.stackone.com/connectors/copper/mcp/",
+    "quote": "Connect your AI agent to StackOne's Copper MCP server and give it 58 MCP tools out of the box."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The plan requirement for API access (Professional and above) comes from a third-party guide. Copper's pricing page lists \"API & Embedded integration SDK\" without showing which plans include it, so someone should confirm this in a trial account. Also check whether Copper still responds to new OAuth partner registrations sent to partners@copper.com.",
+  "changes": [
+   {
+    "field": "evidence",
+    "old": "api, webhooks and mcp quotes were paraphrases that do not appear on the cited pages",
+    "new": "Verbatim quotes from developer.copper.com, the webhooks overview page, the StackOne page, the pricing page and the JustCall guide",
+    "why": "The automated check found the earlier quotes were not on the pages. I replaced them with text I saw on the pages."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "covers leads, people, companies, opportunities, tasks, projects, activities, custom fields, pipelines, webhooks; n8n lists 32",
+    "new": "Full list from the docs navigation, including Tags, Field Layouts, Related Items, File Upload and Account/Users",
+    "why": "Checked against the docs navigation on developer.copper.com."
+   },
+   {
+    "field": "access_notes",
+    "old": "unconfirmed plan; third-party says Business $99/mo",
+    "new": "Free trial confirmed on the pricing page; a third-party source says the API needs the Professional or Business plan",
+    "why": "The pricing page shows 'Try Free' and 'no credit card required'. The JustCall guide names the Professional and Business plans."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "The developer docs describe no sandbox or test environment. Only product trials exist."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "I checked the base URL, resource list and webhook events directly in Copper's docs."
+   },
+   {
+    "field": "confidence.buildability",
+    "old": "medium",
+    "new": "high",
+    "why": "Auth, OAuth registration and API scope are all confirmed in the vendor docs."
+   },
+   {
+    "field": "needs_human",
+    "old": "Long list of open questions",
+    "new": "Narrowed to the plan tier and whether OAuth registration is still active",
+    "why": "I resolved the webhook details, sandbox, OAuth page access and MCP status."
+   }
+  ]
+ },
+ "human_fixes": []
+}

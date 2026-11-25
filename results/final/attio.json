@@ -1,0 +1,161 @@
+{
+ "id": 4,
+ "slug": "attio",
+ "app": "Attio",
+ "category": "CRM and Sales",
+ "hint": "attio.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Flexible, data-driven CRM for records, lists, workflows and relationship intelligence.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "api_key",
+   "bearer_token",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Attio recommends OAuth 2.0 (authorization code) for apps that serve multiple workspaces. User-level tokens require PKCE, which is optional for workspace-level tokens, and a workspace admin approves the app's scopes on install. For a single workspace, an API key (access token) can be generated on the app's developer settings page. Tokens are sent as Bearer in the Authorization header. HTTP Basic is also accepted, with the token as username and a blank password, though Bearer is recommended. The api_key and bearer_token entries describe the same static workspace token.",
+  "access": "approval_required",
+  "access_notes": "The pricing page lists \"API and webhooks\" on every plan, including Free ($0, up to 3 users). Every plan also includes the Attio MCP server. SQL query access via the API or MCP is Ultra-only. A developer can create a workspace API key or an OAuth app without approval. An unpublished app can be installed in up to 25 workspaces, and private invite links show an \"unreviewed\" warning. Wider distribution means publishing to the App Store, and \"Publishing requires a review from the Attio team, which can take up to 1 week.\"",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST API covers objects, attributes, records, lists, entries, notes, tasks, comments/threads, meetings, workspace members, webhooks and SCIM. llms.txt lists roughly 150 endpoint pages, or about 160 including SCIM. An OpenAPI spec is published.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.attio.com/mcp is hosted by Attio and uses OAuth login, with no API keys needed. It is included on every plan. The query-particle-sql tool is plan-gated (Ultra).",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "API keys and OAuth apps are self-serve on the Free plan, so building and testing can start now. A multi-tenant OAuth app serving many users' workspaces goes past the 25-workspace limit for unpublished apps. That requires publishing to the Attio App Store, which involves an Attio team review (up to 1 week) and listing requirements.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.attio.com/rest-api/guides/authentication",
+    "quote": "You should prefer the OAuth 2.0 flow if building an app for multiple workspaces."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.attio.com/rest-api/guides/authentication",
+    "quote": "We also support HTTP Basic Authentication, where the username is the token and the password is left blank."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.attio.com/rest-api/guides/authentication",
+    "quote": "An unpublished app can be installed in up to 25 workspaces."
+   },
+   {
+    "field": "access",
+    "url": "https://attio.com/pricing",
+    "quote": "API and webhooks"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.attio.com/share/the-publication-lifecycle",
+    "quote": "Publishing requires a review from the Attio team, which can take up to 1 week."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.attio.com/share/the-publication-lifecycle",
+    "quote": "We are happy to provide your team with development workspaces as needed."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.attio.com/mcp/overview",
+    "quote": "Attio MCP is Attio's hosted MCP server that gives AI tools secure access to your Attio workspace."
+   },
+   {
+    "field": "mcp",
+    "url": "https://attio.com/pricing",
+    "quote": "Every plan includes the Attio MCP server, which connects AI tools"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.attio.com/rest-api/guides/webhooks",
+    "quote": "Webhooks allow you to subscribe to changes that happen in Attio and then receive real-time HTTP requests"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.attio.com/llms.txt",
+    "quote": "Access the OpenAPI specification for the Attio REST API"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "evidence (webhooks quote)",
+    "old": "Webhooks let you subscribe to changes in Attio and receive real-time notifications at a URL you choose.",
+    "new": "Webhooks allow you to subscribe to changes that happen in Attio and then receive real-time HTTP requests",
+    "why": "The original quote was a paraphrase and is not on the page. Replaced it with the verbatim text."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The publication lifecycle docs recommend isolated development workspaces, and Attio provides them on request on a developer plan. The Free plan also works as a test workspace."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "A multi-tenant OAuth app goes past the 25-workspace unpublished limit. Publishing to the App Store requires an Attio team review, which can take up to 1 week."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "app_review",
+    "why": "The docs confirm that publishing requires an Attio review."
+   },
+   {
+    "field": "access_notes",
+    "old": "Free-tier API inferred from ambiguous table; review step unconfirmed",
+    "new": "API and webhooks on all plans including Free; publishing review confirmed",
+    "why": "The pricing page lists API and webhooks for every plan, and the publication lifecycle page confirms the review."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Operations not counted",
+    "new": "About 150 endpoint pages (about 160 including SCIM)",
+    "why": "Counted from llms.txt."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "https://mcp.attio.com/mcp (hosted by Attio, OAuth login).",
+    "new": "Adds that the MCP server is included on every plan and the SQL tool is plan-gated",
+    "why": "Confirmed on the pricing page and the MCP overview page."
+   },
+   {
+    "field": "confidence.access / confidence.buildability",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Primary sources now confirm the free-tier API and the review requirement."
+   },
+   {
+    "field": "needs_human",
+    "old": "Open questions on review, free tier, sandbox",
+    "new": "",
+    "why": "All three questions are answered by primary docs."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "access",
+   "old": "\"self_serve_free\"",
+   "new": "\"approval_required\"",
+   "why": "the record names app review as its main blocker, which the rubric labels approval_required",
+   "url": "https://docs.attio.com/rest-api/guides/authentication",
+   "by": "consistency rule"
+  }
+ ]
+}

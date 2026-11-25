@@ -1,0 +1,119 @@
+# 94 of 100 apps can be agent toolkits today. The work is in review queues, not code.
+
+> An agent researched auth, access, API surface and MCP for 100 apps, citing a page for every answer. Only 4 need a business conversation and 2 have no usable API. The usual blocker is app review (30 apps): a developer can build freely, but shipping to other people's accounts needs the vendor's sign-off.
+
+## Data
+- [apps.json](data/apps.json): all 100 verified records with evidence URLs and quotes
+- [apps.csv](data/apps.csv): the same as a flat table
+
+## Patterns
+- **OAuth2 dominates, and most OAuth apps also take a key** 78 apps offer OAuth2, and it is the primary method for 63. Only 8 offer OAuth2 alone: 62 also accept an API key or personal token, which is the fast path for a prototype. 19 apps have no OAuth at all, mostly data, scraping and AI-native tools, where one shared key per customer is the model.
+- **The common blocker is publishing, not access** 31 apps let a developer build and test for free but put a review between the app and other people's accounts: Meta, Google Ads, LinkedIn, Intuit, Shopify, Zendesk, HubSpot. 18 more need a paid plan or run only on a trial. Hard gates are rare: 9 are partner-only, sales-only or have no API.
+- **Where self-serve lives, and where it doesn't** Self-serve access (free or trial) is most common in Developer, Infra and Data platforms (9/10), Productivity and Project Management (9/10). The fewest self-serve apps are in Support and Helpdesk (2/10), Finance and Fintech (2/10), where ad platforms, marketplaces and fintech guard production access behind review or contracts.
+- **Vendors are shipping their own MCP servers** 86 of the 100 publish an official MCP server, 79 of them hosted at a URL with OAuth. Another 12 have only community servers. This was also the field the first pass got wrong most often: several servers launched in 2026 and are announced on pages search hasn't caught up with.
+- **Easy wins versus outreach** 2 apps are ready now with self-serve credentials. 10 need a partnership, a sales conversation or a different approach because there is no API. That second list is a business-development queue, not an engineering one.
+
+## Accuracy
+- Hand-audited sample: 20 apps x 8 fields. Research agent alone: 77.5%. After verification loops: 87.5%.
+
+## Records
+- Salesforce (CRM and Sales): Ready now; auth oauth2/jwt_service_account, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- HubSpot (CRM and Sales): Ready, with caveats; auth oauth2/bearer_token/api_key, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Pipedrive (CRM and Sales): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Attio (CRM and Sales): Ready, with caveats; auth oauth2/api_key/bearer_token/basic, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Twenty (CRM and Sales): Ready now; auth api_key/oauth2, primary oauth2; access self_serve_trial; MCP official_remote; blocker none.
+- Podio (CRM and Sales): Ready now; auth oauth2/other, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Zoho CRM (CRM and Sales): Ready now; auth oauth2, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Close (CRM and Sales): Ready, with caveats; auth api_key/oauth2, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Copper (CRM and Sales): Ready, with caveats; auth api_key/oauth2, primary oauth2; access approval_required; MCP community_only; blocker app_review.
+- DealCloud (CRM and Sales): Needs partnership / sales; auth oauth2/api_key, primary oauth2; access contact_sales; MCP official_remote; blocker enterprise_sales.
+- Zendesk (Support and Helpdesk): Ready, with caveats; auth oauth2/basic, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Intercom (Support and Helpdesk): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Freshdesk (Support and Helpdesk): Ready, with caveats; auth api_key/basic, primary api_key; access self_serve_trial; MCP official_remote; blocker paid_plan.
+- Front (Support and Helpdesk): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Pylon (Support and Helpdesk): Ready, with caveats; auth bearer_token/oauth2, primary bearer_token; access contact_sales; MCP official_remote; blocker enterprise_sales.
+- LiveAgent (Support and Helpdesk): Ready, with caveats; auth api_key/oauth2/bearer_token, primary api_key; access paid_plan_required; MCP official_remote; blocker paid_plan.
+- Plain (Support and Helpdesk): Ready, with caveats; auth api_key/oauth2, primary api_key; access self_serve_trial; MCP official_remote; blocker paid_plan.
+- Help Scout (Support and Helpdesk): Ready, with caveats; auth oauth2/api_key/basic, primary oauth2; access paid_plan_required; MCP official_remote; blocker paid_plan.
+- Gorgias (Support and Helpdesk): Ready, with caveats; auth api_key/basic/oauth2, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Gladly (Support and Helpdesk): Needs partnership / sales; auth basic, primary basic; access contact_sales; MCP community_only; blocker enterprise_sales.
+- Slack (Communications and Messaging): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker tos_or_rate_limits.
+- Twilio (Communications and Messaging): Ready, with caveats; auth basic/api_key/oauth2, primary basic; access self_serve_trial; MCP official_remote; blocker paid_plan.
+- Zoho Cliq (Communications and Messaging): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Lark (Larksuite) (Communications and Messaging): Ready, with caveats; auth oauth2/bot_token, primary oauth2; access approval_required; MCP official_local; blocker app_review.
+- Pumble (Communications and Messaging): Ready, with caveats; auth oauth2/api_key, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Discord (Communications and Messaging): Ready, with caveats; auth bot_token/oauth2, primary bot_token; access approval_required; MCP official_remote; blocker app_review.
+- Telegram (Communications and Messaging): Ready, with caveats; auth bot_token/other, primary bot_token; access self_serve_free; MCP community_only; blocker other.
+- WhatsApp Business (Communications and Messaging): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Aircall (Communications and Messaging): Ready, with caveats; auth oauth2/basic, primary oauth2; access approval_required; MCP community_only; blocker partnership.
+- Vonage (Communications and Messaging): Ready, with caveats; auth api_key/basic/jwt_service_account/hmac_signature/other, primary jwt_service_account; access self_serve_trial; MCP official_local; blocker other.
+- Google Ads (Marketing, Ads, Email and Social): Ready, with caveats; auth oauth2/jwt_service_account/other, primary oauth2; access approval_required; MCP official_local; blocker app_review.
+- Meta Ads (Marketing, Ads, Email and Social): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- LinkedIn Ads (Marketing, Ads, Email and Social): Ready, with caveats; auth oauth2, primary oauth2; access approval_required; MCP community_only; blocker app_review.
+- GoHighLevel (Marketing, Ads, Email and Social): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Mailchimp (Marketing, Ads, Email and Social): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Klaviyo (Marketing, Ads, Email and Social): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- systeme.io (Marketing, Ads, Email and Social): Ready now; auth api_key, primary api_key; access self_serve_free; MCP official_remote; blocker none.
+- Pinterest (Marketing, Ads, Email and Social): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Threads (Meta) (Marketing, Ads, Email and Social): Ready, with caveats; auth oauth2, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- SendGrid (Marketing, Ads, Email and Social): Ready now; auth api_key/basic, primary api_key; access self_serve_trial; MCP community_only; blocker none.
+- Shopify (Ecommerce): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_local; blocker app_review.
+- WooCommerce (Ecommerce): Ready, with caveats; auth basic/oauth1/api_key/other, primary api_key; access self_serve_free; MCP official_local; blocker other.
+- BigCommerce (Ecommerce): Ready, with caveats; auth oauth2/api_key/bearer_token/basic/other, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Salesforce Commerce Cloud (Ecommerce): Needs partnership / sales; auth oauth2/jwt_service_account, primary oauth2; access contact_sales; MCP official_local; blocker enterprise_sales.
+- Magento (Adobe Commerce) (Ecommerce): Ready, with caveats; auth oauth1/bearer_token/oauth2/other, primary oauth1; access self_serve_free; MCP community_only; blocker other.
+- Squarespace (Ecommerce): Ready, with caveats; auth api_key/oauth2, primary oauth2; access approval_required; MCP community_only; blocker app_review.
+- Ecwid (Ecommerce): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access paid_plan_required; MCP community_only; blocker app_review.
+- Gumroad (Ecommerce): Ready now; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Amazon Selling Partner (Ecommerce): Ready, with caveats; auth oauth2, primary oauth2; access approval_required; MCP official_local; blocker app_review.
+- fanbasis (Ecommerce): Ready, with caveats; auth api_key, primary api_key; access approval_required; MCP official_remote; blocker app_review.
+- DataForSEO (Data, SEO and Scraping): Ready now; auth basic, primary basic; access self_serve_free; MCP official_remote; blocker none.
+- SE Ranking (Data, SEO and Scraping): Ready, with caveats; auth api_key/oauth2, primary api_key; access paid_plan_required; MCP official_remote; blocker paid_plan.
+- Ahrefs (Data, SEO and Scraping): Ready, with caveats; auth bearer_token/oauth2, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- MrScraper (Data, SEO and Scraping): Ready, with caveats; auth api_key/oauth2, primary api_key; access self_serve_trial; MCP official_remote; blocker paid_plan.
+- Apify (Data, SEO and Scraping): Ready now; auth bearer_token/api_key/oauth2, primary bearer_token; access self_serve_free; MCP official_remote; blocker none.
+- Firecrawl (Data, SEO and Scraping): Ready now; auth api_key/none, primary api_key; access self_serve_free; MCP official_remote; blocker none.
+- Bright Data (Data, SEO and Scraping): Ready now; auth bearer_token/api_key/basic, primary bearer_token; access self_serve_free; MCP official_remote; blocker none.
+- Sherlock (Data, SEO and Scraping): Not buildable; auth none, primary none; access no_public_api; MCP community_only; blocker local_only_tool.
+- Waterfall.io (Data, SEO and Scraping): Ready, with caveats; auth api_key, primary api_key; access approval_required; MCP none_found; blocker other.
+- Clay (Data, SEO and Scraping): Ready, with caveats; auth api_key, primary api_key; access self_serve_free; MCP official_remote; blocker narrow_api.
+- GitHub (Developer, Infra and Data platforms): Ready now; auth oauth2/bearer_token/jwt_service_account/basic, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Vercel (Developer, Infra and Data platforms): Ready now; auth bearer_token/oauth2, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Netlify (Developer, Infra and Data platforms): Ready now; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Cloudflare (Developer, Infra and Data platforms): Ready now; auth oauth2/bearer_token/api_key/other, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Supabase (Developer, Infra and Data platforms): Ready now; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Neo4j (Developer, Infra and Data platforms): Ready now; auth oauth2/basic/bearer_token, primary basic; access self_serve_free; MCP official_remote; blocker none.
+- Snowflake (Developer, Infra and Data platforms): Ready, with caveats; auth oauth2/jwt_service_account/bearer_token/other, primary oauth2; access self_serve_trial; MCP official_remote; blocker paid_plan.
+- MongoDB Atlas (Developer, Infra and Data platforms): Ready, with caveats; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker partnership.
+- Datadog (Developer, Infra and Data platforms): Ready, with caveats; auth api_key/bearer_token/oauth2, primary api_key; access self_serve_free; MCP official_remote; blocker partnership.
+- Sentry (Developer, Infra and Data platforms): Ready, with caveats; auth oauth2/bearer_token/basic/other, primary oauth2; access paid_plan_required; MCP official_remote; blocker app_review.
+- Notion (Productivity and Project Management): Ready now; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Airtable (Productivity and Project Management): Ready now; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Linear (Productivity and Project Management): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Jira (Productivity and Project Management): Ready now; auth oauth2/basic/bearer_token/other, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Asana (Productivity and Project Management): Ready now; auth oauth2/bearer_token/jwt_service_account/other, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Monday.com (Productivity and Project Management): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- ClickUp (Productivity and Project Management): Ready now; auth oauth2/api_key, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Coda (Productivity and Project Management): Ready now; auth bearer_token, primary bearer_token; access self_serve_free; MCP official_remote; blocker none.
+- Smartsheet (Productivity and Project Management): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access paid_plan_required; MCP official_remote; blocker paid_plan.
+- Harvest (Productivity and Project Management): Ready now; auth oauth2/bearer_token, primary oauth2; access self_serve_free; MCP official_remote; blocker none.
+- Stripe (Finance and Fintech): Ready, with caveats; auth api_key/basic/bearer_token/oauth2, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Plaid (Finance and Fintech): Ready, with caveats; auth api_key/oauth2, primary api_key; access approval_required; MCP official_remote; blocker app_review.
+- Binance (Finance and Fintech): Ready, with caveats; auth api_key/hmac_signature/oauth2, primary hmac_signature; access self_serve_free; MCP official_remote; blocker other.
+- Paygent Connect (Finance and Fintech): Ready, with caveats; auth api_key/other, primary api_key; access partner_gated; MCP none_found; blocker other.
+- iPayX (Finance and Fintech): Ready, with caveats; auth api_key/none, primary api_key; access paid_plan_required; MCP official_remote; blocker narrow_api.
+- QuickBooks (Finance and Fintech): Ready, with caveats; auth oauth2, primary oauth2; access approval_required; MCP official_remote; blocker app_review.
+- Xero (Finance and Fintech): Ready, with caveats; auth oauth2, primary oauth2; access self_serve_free; MCP official_remote; blocker paid_plan.
+- Brex (Finance and Fintech): Ready, with caveats; auth bearer_token/oauth2, primary oauth2; access partner_gated; MCP official_remote; blocker partnership.
+- Ramp (Finance and Fintech): Needs partnership / sales; auth oauth2, primary oauth2; access approval_required; MCP official_remote; blocker partnership.
+- PitchBook (Finance and Fintech): Ready, with caveats; auth api_key, primary api_key; access contact_sales; MCP official_remote; blocker enterprise_sales.
+- NotebookLM (AI, Research and Media-native): Ready, with caveats; auth oauth2, primary oauth2; access self_serve_trial; MCP community_only; blocker paid_plan.
+- Otter AI (AI, Research and Media-native): Ready, with caveats; auth api_key/oauth2, primary oauth2; access self_serve_free; MCP official_remote; blocker narrow_api.
+- Fathom (AI, Research and Media-native): Ready, with caveats; auth api_key/oauth2, primary oauth2; access self_serve_free; MCP official_remote; blocker narrow_api.
+- Consensus (AI, Research and Media-native): Ready, with caveats; auth api_key/oauth2, primary api_key; access paid_plan_required; MCP official_remote; blocker paid_plan.
+- Reducto (AI, Research and Media-native): Ready now; auth api_key, primary api_key; access self_serve_free; MCP official_remote; blocker none.
+- Devin (AI, Research and Media-native): Ready, with caveats; auth bearer_token/api_key, primary bearer_token; access paid_plan_required; MCP official_remote; blocker paid_plan.
+- higgsfield (AI, Research and Media-native): Ready now; auth api_key/oauth2, primary api_key; access self_serve_free; MCP official_remote; blocker none.
+- Mermaid CLI (AI, Research and Media-native): Not buildable; auth none, primary none; access no_public_api; MCP community_only; blocker local_only_tool.
+- YouTube Transcript (AI, Research and Media-native): Ready now; auth api_key, primary api_key; access self_serve_free; MCP official_remote; blocker none.
+- Grain (AI, Research and Media-native): Ready, with caveats; auth oauth2/bearer_token, primary oauth2; access approval_required; MCP official_remote; blocker app_review.

@@ -1,7 +1,360 @@
 [
- {"slug":"hubspot","field":"access","final":"approval_required","audit":"self_serve_free","decided":"approval_required","winner":"pipeline","by":"browser check (Chrome)","url":"https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution","note":"Docs: 'Marketplace OAuth app prior to listing: can be installed in up to 25 accounts'; unlimited only after marketplace listing review. The auditor missed the install cap."},
- {"slug":"hubspot","field":"buildability","final":"ready_with_caveats","audit":"ready_now","decided":"ready_with_caveats","winner":"pipeline","by":"browser check (Chrome)","url":"https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution","note":"Follows from the 25-install cap before listing."},
- {"slug":"hubspot","field":"main_blocker","final":"app_review","audit":"none","decided":"app_review","winner":"pipeline","by":"browser check (Chrome)","url":"https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution","note":"Marketplace listing review lifts the cap."},
- {"slug":"front","field":"access","final":"self_serve_free","audit":"approval_required","decided":"approval_required","winner":"audit","by":"browser check (Chrome)","url":"https://dev.frontapp.com/docs/create-and-manage-apps","note":"Docs: apps are private to one customer; 'To publish your app, notify our team as described in the Partnering with Front topic.' The verifier flipped a correct pass-1 value."},
- {"slug":"threads-meta","field":"mcp","final":null,"audit":"official_remote","decided":"official_remote","winner":"audit","by":"browser check (Chrome)","url":"https://developers.facebook.com/documentation/threads/llms.txt","note":"Meta's Threads docs index has a 'Threads MCP server' section (overview, get started, publishing, insights). Rendered in a browser; plain fetches return empty bodies."}
+ {
+  "slug": "hubspot",
+  "field": "access",
+  "final": "approval_required",
+  "audit": "self_serve_free",
+  "decided": "approval_required",
+  "winner": "pipeline",
+  "by": "browser check (Chrome)",
+  "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution",
+  "note": "Docs: 'Marketplace OAuth app prior to listing: can be installed in up to 25 accounts'; unlimited only after marketplace listing review. The auditor missed the install cap."
+ },
+ {
+  "slug": "hubspot",
+  "field": "buildability",
+  "final": "ready_with_caveats",
+  "audit": "ready_now",
+  "decided": "ready_with_caveats",
+  "winner": "pipeline",
+  "by": "browser check (Chrome)",
+  "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution",
+  "note": "Follows from the 25-install cap before listing."
+ },
+ {
+  "slug": "hubspot",
+  "field": "main_blocker",
+  "final": "app_review",
+  "audit": "none",
+  "decided": "app_review",
+  "winner": "pipeline",
+  "by": "browser check (Chrome)",
+  "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution",
+  "note": "Marketplace listing review lifts the cap."
+ },
+ {
+  "slug": "front",
+  "field": "access",
+  "final": "self_serve_free",
+  "audit": "approval_required",
+  "decided": "approval_required",
+  "winner": "audit",
+  "by": "browser check (Chrome)",
+  "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+  "note": "Docs: apps are private to one customer; 'To publish your app, notify our team as described in the Partnering with Front topic.' The verifier flipped a correct pass-1 value."
+ },
+ {
+  "slug": "threads-meta",
+  "field": "mcp",
+  "final": null,
+  "audit": "official_remote",
+  "decided": "official_remote",
+  "winner": "audit",
+  "by": "browser check (Chrome)",
+  "url": "https://developers.facebook.com/documentation/threads/llms.txt",
+  "note": "Meta's Threads docs index has a 'Threads MCP server' section (overview, get started, publishing, insights). Rendered in a browser; plain fetches return empty bodies."
+ },
+ {
+  "slug": "discord",
+  "field": "mcp",
+  "final": "community_only",
+  "audit": "official_remote",
+  "decided": "official_remote",
+  "winner": "audit",
+  "by": "human (Adbhut), after browser check",
+  "url": "https://mcp.discord.com/.well-known/oauth-protected-resource",
+  "note": "Discord hosts a live OAuth-protected MCP endpoint on its own domain; its developer docs don't mention it. Ruled vendor-official, noted as undocumented."
+ },
+ {
+  "slug": "discord",
+  "field": "auth_primary",
+  "final": "oauth2",
+  "audit": "bot_token",
+  "decided": "bot_token",
+  "winner": "audit",
+  "by": "human (Adbhut)",
+  "url": "https://docs.discord.com/developers/reference",
+  "note": "Nearly every Discord action runs as a bot; OAuth2 mainly installs the bot and reads identity."
+ },
+ {
+  "slug": "discord",
+  "field": "access",
+  "final": "self_serve_free",
+  "audit": "self_serve_free",
+  "decided": "approval_required",
+  "winner": "neither",
+  "by": "browser check (Chrome)",
+  "url": "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified",
+  "note": "'Verification is required for your app to scale past 100 servers.' Same kind of gate as HubSpot's 25-install cap, so labelled the same way."
+ },
+ {
+  "slug": "discord",
+  "field": "buildability",
+  "final": "ready_with_caveats",
+  "audit": "ready_now",
+  "decided": "ready_with_caveats",
+  "winner": "pipeline",
+  "by": "browser check (Chrome)",
+  "url": "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified",
+  "note": "Verification gate at 100 servers."
+ },
+ {
+  "slug": "discord",
+  "field": "main_blocker",
+  "final": "app_review",
+  "audit": "none",
+  "decided": "app_review",
+  "winner": "pipeline",
+  "by": "browser check (Chrome)",
+  "url": "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified",
+  "note": "Verification gate at 100 servers."
+ },
+ {
+  "slug": "dealcloud",
+  "field": "api_breadth",
+  "final": "moderate",
+  "audit": "broad",
+  "decided": "broad",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://api.docs.dealcloud.com/docs",
+  "note": "About 55-60 documented operations, above the rubric's ~50 line for broad.",
+  "quote": "This site provides a comprehensive overview of our REST APIs, their capabilities, and available endpoints."
+ },
+ {
+  "slug": "zendesk",
+  "field": "auth_methods",
+  "final": [
+   "oauth2",
+   "api_key",
+   "basic"
+  ],
+  "audit": [
+   "oauth2",
+   "basic"
+  ],
+  "decided": [
+   "oauth2",
+   "basic"
+  ],
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+  "note": "Zendesk API tokens are sent through Basic auth (email/token) and are now marked deprecated; there is no separate API-key scheme.",
+  "quote": "Zendesk supports using OAuth access tokens to authenticate API requests."
+ },
+ {
+  "slug": "lark-larksuite",
+  "field": "auth_methods",
+  "final": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "audit": [
+   "oauth2",
+   "bot_token"
+  ],
+  "decided": [
+   "oauth2",
+   "bot_token"
+  ],
+  "winner": "audit",
+  "by": "human (Adbhut), same ruling as Discord",
+  "url": "https://open.larksuite.com/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM",
+  "note": "The tenant/app access token stands for the app's bot identity; labelled bot_token, as for Discord.",
+  "quote": "The credentials required to call the API as an app."
+ },
+ {
+  "slug": "lark-larksuite",
+  "field": "access",
+  "final": "self_serve_free",
+  "audit": "approval_required",
+  "decided": "approval_required",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+  "note": "Apps for other companies need vendor verification and a listing review. Same rule as HubSpot, Front and Discord.",
+  "quote": "Custom Apps: Developed by internal personnel or authorized developers within an enterprise, these apps can only be published and used within the same enterprise."
+ },
+ {
+  "slug": "fanbasis",
+  "field": "access",
+  "final": "self_serve_free",
+  "audit": "approval_required",
+  "decided": "approval_required",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://commas.com/assets/index-D0eLZkDI.js",
+  "note": "API keys are issued only after an admin approves a request; the API returns 403 'not approved by the Commas admin' otherwise.",
+  "quote": "Request access to generate API keys and integrate FanBasis with your own systems. An admin reviews and approves your request, then you can create keys."
+ },
+ {
+  "slug": "fanbasis",
+  "field": "main_blocker",
+  "final": "other",
+  "audit": "app_review",
+  "decided": "app_review",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://www.fanbasis.com",
+  "note": "Follows from the key-approval step.",
+  "quote": "Embedded checkouts, multi-rail payouts, APIs and SDKs."
+ },
+ {
+  "slug": "sherlock",
+  "field": "api_breadth",
+  "final": "none",
+  "audit": "narrow",
+  "decided": "none",
+  "winner": "pipeline",
+  "by": "rubric consistency",
+  "url": "https://github.com/sherlock-project/sherlock",
+  "note": "A local CLI with no hosted API is no_public_api, and the rubric pairs that with api_breadth none (loop 1 enforces it). The pipeline was right.",
+  "quote": "Hunt down social media accounts by username across social networks"
+ },
+ {
+  "slug": "dataforseo",
+  "field": "access",
+  "final": "self_serve_trial",
+  "audit": "self_serve_free",
+  "decided": "self_serve_free",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://dataforseo.com/help-center/how-does-your-free-unlimited-trial-work",
+  "note": "Free signup gives working credentials, a $1 credit that does not expire and a free sandbox. A non-expiring credit is not a time-limited trial.",
+  "quote": "upon registration free $1 credit for API testing will be added to your account balance"
+ },
+ {
+  "slug": "neo4j",
+  "field": "auth_primary",
+  "final": "oauth2",
+  "audit": "basic",
+  "decided": "basic",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+  "note": "Database access is Basic or an SSO bearer token; OAuth2 exists only as client credentials for the Aura management API, not as user sign-in.",
+  "quote": "Both basic and bearer authentication are supported."
+ },
+ {
+  "slug": "neo4j",
+  "field": "mcp",
+  "final": "official_local",
+  "audit": "official_remote",
+  "decided": "official_remote",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+  "note": "'Neo4j MCP for Aura is a hosted MCP server for your Aura instances.'",
+  "quote": "Neo4j MCP for Aura is a hosted MCP server for your Aura instances."
+ },
+ {
+  "slug": "neo4j",
+  "field": "buildability",
+  "final": "ready_with_caveats",
+  "audit": "ready_now",
+  "decided": "ready_now",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://neo4j.com/pricing/",
+  "note": "Free Aura tier with no card, public docs, no review step.",
+  "quote": "No credit card or other payment method required"
+ },
+ {
+  "slug": "neo4j",
+  "field": "main_blocker",
+  "final": "other",
+  "audit": "none",
+  "decided": "none",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://neo4j.com/pricing/",
+  "note": "Nothing gates a developer.",
+  "quote": "No credit card or other payment method required"
+ },
+ {
+  "slug": "ipayx",
+  "field": "auth_methods",
+  "final": [
+   "api_key",
+   "bearer_token"
+  ],
+  "audit": [
+   "api_key",
+   "none"
+  ],
+  "decided": [
+   "api_key",
+   "none"
+  ],
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://www.ipayx.ai/docs/api",
+  "note": "Some routes and the MCP tool list answer without a key. The vendor's own pages contradict each other, so this one is low confidence either way.",
+  "quote": "Every request requires a Bearer token in the `Authorization` header. Keys start with `ipx_live_`."
+ },
+ {
+  "slug": "quickbooks",
+  "field": "api_styles",
+  "final": [
+   "rest"
+  ],
+  "audit": [
+   "rest",
+   "graphql"
+  ],
+  "decided": [
+   "rest",
+   "graphql"
+  ],
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started.html",
+  "note": "Intuit documents GraphQL APIs alongside the REST Accounting API.",
+  "quote": "The QuickBooks Online Accounting API utilizes the REST architecture and GraphQL so you can seamlessly integrate your app with QuickBooks Online and the Intuit Financial Ecosystem."
+ },
+ {
+  "slug": "notebooklm",
+  "field": "access",
+  "final": "self_serve_trial",
+  "audit": "paid_plan_required",
+  "decided": "self_serve_trial",
+  "winner": "pipeline",
+  "by": "rubric consistency (same as Snowflake)",
+  "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+  "note": "A free trial of NotebookLM Enterprise licenses gives working API access, then a paid license. Labelled like Snowflake's 30-day trial. The pipeline was right.",
+  "quote": "You buy licenses by the subscription. A subscription contains at least 15 licenses and can contain up to 5,000 licenses."
+ },
+ {
+  "slug": "notebooklm",
+  "field": "api_styles",
+  "final": [
+   "rest"
+  ],
+  "audit": [
+   "rest",
+   "grpc"
+  ],
+  "decided": [
+   "rest",
+   "grpc"
+  ],
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+  "note": "Google publishes an RPC (gRPC) reference next to the REST one.",
+  "quote": "Pre-GA features are available \"as is\" and might have limited support."
+ },
+ {
+  "slug": "notebooklm",
+  "field": "api_breadth",
+  "final": "narrow",
+  "audit": "moderate",
+  "decided": "moderate",
+  "winner": "audit",
+  "by": "rubric + auditor's script-checked evidence",
+  "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+  "note": "About 11 operations, inside the rubric's 10-50 range.",
+  "quote": "Pre-GA features are available \"as is\" and might have limited support."
+ }
 ]

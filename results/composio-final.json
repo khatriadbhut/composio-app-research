@@ -1,0 +1,1122 @@
+{
+ "catalog_size": 1841,
+ "apps": {
+  "ahrefs": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "ahrefs",
+   "tools": 46,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "aircall": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "aircall",
+   "tools": 48,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "basic"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "airtable": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "airtable",
+   "tools": 28,
+   "triggers": 6,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "amazon-selling-partner": {
+   "in_composio": false
+  },
+  "apify": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "apify",
+   "tools": 185,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "asana": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "asana",
+   "tools": 247,
+   "triggers": 6,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "attio": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "attio",
+   "tools": 114,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "bigcommerce": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "bigcommerce",
+   "tools": 532,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "binance": {
+   "in_composio": false
+  },
+  "brex": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "brex",
+   "tools": 84,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "bright-data": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "brightdata",
+   "tools": 167,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "clay": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "clay",
+   "tools": 15,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "clickup": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "clickup",
+   "tools": 165,
+   "triggers": 21,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "close": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "close",
+   "tools": 75,
+   "triggers": 45,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "cloudflare": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "cloudflare",
+   "tools": 171,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "coda": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "coda",
+   "tools": 110,
+   "triggers": 4,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "consensus": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "consensus",
+   "tools": 1,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "copper": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "copper",
+   "tools": 65,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "datadog": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "datadog",
+   "tools": 256,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "api_key",
+    "bearer_token"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "dataforseo": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "dataforseo",
+   "tools": 354,
+   "triggers": 0,
+   "composio_auth": [
+    "basic"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "dealcloud": {
+   "in_composio": false
+  },
+  "devin": {
+   "in_composio": true,
+   "via_mcp": true,
+   "managed_oauth": false,
+   "toolkit": "devin_mcp",
+   "tools": 23,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "discord": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "discord",
+   "tools": 28,
+   "triggers": 1,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "ecwid": {
+   "in_composio": false
+  },
+  "fanbasis": {
+   "in_composio": false
+  },
+  "fathom": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "fathom",
+   "tools": 10,
+   "triggers": 1,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "firecrawl": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "firecrawl",
+   "tools": 246,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "freshdesk": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "freshdesk",
+   "tools": 184,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "front": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "front",
+   "tools": 180,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "github": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "github",
+   "tools": 905,
+   "triggers": 46,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "gladly": {
+   "in_composio": false
+  },
+  "gohighlevel": {
+   "in_composio": false
+  },
+  "google-ads": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "googleads",
+   "tools": 78,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "gorgias": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "gorgias",
+   "tools": 51,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "grain": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "grain",
+   "tools": 17,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "gumroad": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "gumroad",
+   "tools": 13,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "harvest": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "harvest",
+   "tools": 57,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "help-scout": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "help_scout",
+   "tools": 129,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "higgsfield": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "higgsfield",
+   "tools": 14,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "hubspot": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "hubspot",
+   "tools": 355,
+   "triggers": 2,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "intercom": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "intercom",
+   "tools": 138,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "ipayx": {
+   "in_composio": false
+  },
+  "jira": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "jira",
+   "tools": 171,
+   "triggers": 17,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "klaviyo": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "klaviyo",
+   "tools": 233,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "lark-larksuite": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "lark",
+   "tools": 451,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "linear": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "linear",
+   "tools": 48,
+   "triggers": 12,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "linkedin-ads": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "linkedin_ads",
+   "tools": 28,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "liveagent": {
+   "in_composio": false
+  },
+  "magento-adobe-commerce": {
+   "in_composio": false
+  },
+  "mailchimp": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "mailchimp",
+   "tools": 278,
+   "triggers": 4,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "mermaid-cli": {
+   "in_composio": false
+  },
+  "meta-ads": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "metaads",
+   "tools": 101,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "monday-com": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "monday",
+   "tools": 126,
+   "triggers": 17,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "mongodb-atlas": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "mongodb",
+   "tools": 496,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "mrscraper": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "mrscraper",
+   "tools": 11,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "neo4j": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "neo4j",
+   "tools": 21,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "basic",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "netlify": {
+   "in_composio": true,
+   "via_mcp": true,
+   "managed_oauth": true,
+   "toolkit": "netlify_mcp",
+   "tools": 9,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "notebooklm": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "notebook_lm",
+   "tools": 11,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "notion": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "notion",
+   "tools": 60,
+   "triggers": 8,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "otter-ai": {
+   "in_composio": true,
+   "via_mcp": true,
+   "managed_oauth": true,
+   "toolkit": "otter_ai_mcp",
+   "tools": 3,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "paygent-connect": {
+   "in_composio": false
+  },
+  "pinterest": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "pinterest",
+   "tools": 27,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "pipedrive": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "pipedrive",
+   "tools": 407,
+   "triggers": 3,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "pitchbook": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "pitchbook",
+   "tools": 130,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "plaid": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "plaid",
+   "tools": 70,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "plain": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "plain",
+   "tools": 120,
+   "triggers": 11,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "podio": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "podio",
+   "tools": 143,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "pumble": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "pumble",
+   "tools": 9,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "pylon": {
+   "in_composio": true,
+   "via_mcp": true,
+   "managed_oauth": true,
+   "toolkit": "pylon_mcp",
+   "tools": 12,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "quickbooks": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "quickbooks",
+   "tools": 119,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "ramp": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "ramp",
+   "tools": 186,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "reducto": {
+   "in_composio": false
+  },
+  "salesforce-commerce-cloud": {
+   "in_composio": false
+  },
+  "salesforce": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "salesforce",
+   "tools": 595,
+   "triggers": 7,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "se-ranking": {
+   "in_composio": false
+  },
+  "sendgrid": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "sendgrid",
+   "tools": 364,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "sentry": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "sentry",
+   "tools": 212,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "sherlock": {
+   "in_composio": false
+  },
+  "shopify": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "shopify",
+   "tools": 478,
+   "triggers": 45,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "slack": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "slack",
+   "tools": 174,
+   "triggers": 9,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "smartsheet": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "smartsheet",
+   "tools": 185,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "bearer_token"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "snowflake": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "snowflake",
+   "tools": 17,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "squarespace": {
+   "in_composio": false
+  },
+  "stripe": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "stripe",
+   "tools": 435,
+   "triggers": 40,
+   "composio_auth": [
+    "api_key",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "supabase": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "supabase",
+   "tools": 235,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "systeme-io": {
+   "in_composio": false
+  },
+  "telegram": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "telegram",
+   "tools": 18,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "threads-meta": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "threads",
+   "tools": 24,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "twenty": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "twenty",
+   "tools": 23,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "twilio": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "twilio",
+   "tools": 454,
+   "triggers": 45,
+   "composio_auth": [
+    "api_key",
+    "basic",
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "vercel": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "vercel",
+   "tools": 414,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "vonage": {
+   "in_composio": false
+  },
+  "waterfall-io": {
+   "in_composio": false
+  },
+  "whatsapp-business": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "whatsapp",
+   "tools": 127,
+   "triggers": 1,
+   "composio_auth": [
+    "oauth2",
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "woocommerce": {
+   "in_composio": false
+  },
+  "xero": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "xero",
+   "tools": 109,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "youtube-transcript": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": false,
+   "toolkit": "youtube_transcript",
+   "tools": 9,
+   "triggers": 0,
+   "composio_auth": [
+    "api_key"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "zendesk": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "zendesk",
+   "tools": 484,
+   "triggers": 2,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "zoho-cliq": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "zoho_cliq",
+   "tools": 162,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  },
+  "zoho-crm": {
+   "in_composio": true,
+   "via_mcp": false,
+   "managed_oauth": true,
+   "toolkit": "zoho",
+   "tools": 115,
+   "triggers": 0,
+   "composio_auth": [
+    "oauth2"
+   ],
+   "agrees": true,
+   "missing_vs_composio": []
+  }
+ }
+}

@@ -1,0 +1,136 @@
+{
+ "id": 31,
+ "slug": "google-ads",
+ "app": "Google Ads",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "developers.google.com/google-ads",
+ "source": "verify",
+ "record": {
+  "what_it_does": "API for managing Google Ads campaigns, accounts, and reporting programmatically.",
+  "subcategory": "Ads platform",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 using the Google Ads API (adwords) scope. A multi-user flow lets an app manage other users' accounts. Service accounts are supported for accounts you already have access to. Every request also needs a developer-token header ('other'), plus login-customer-id when calling through a manager account. The OAuth scope is classified as restricted, so you should complete OAuth app verification before productionizing.",
+  "access": "approval_required",
+  "access_notes": "The API is free, but you need a Google Cloud project, a Google Ads manager account, and a developer token. Enabling the API gives Test access: 15,000 ops/day, test accounts only. Production accounts need a higher access level. Explorer (2,880 ops/day) has automated review 'in most cases'. Basic needs brand verification, then an automated review that takes minutes. Standard needs a manual review. Public multi-user OAuth apps also need Google OAuth app verification, because Google classifies the Ads API scope as restricted.",
+  "api_styles": [
+   "rest",
+   "grpc"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The API covers campaigns, ad groups, ads, keywords, assets, budgets, bidding, conversions, audiences, billing and account management. Reporting runs through GAQL search/searchStream, alongside many mutate services. That is well over 50 operations. You can call it directly over REST or gRPC, and official client libraries are available.",
+  "openapi_spec": "no",
+  "webhooks": "no",
+  "mcp": "official_local",
+  "mcp_notes": "The official server is google-ads-mcp (github.com/googleads/google-ads-mcp), installed with 'pipx install google-ads-mcp'; the docs pin 0.0.6. It runs locally over stdio with ADC (an OAuth client secret or a service account). You can also deploy it yourself on Cloud Run with streamable-http, which needs an OAuth web client. Google documents no hosted remote URL. The tools mainly read data (list customers, GAQL search, metadata). Writes are limited to assets, video uploads and labels; the server cannot change campaigns, ad groups, ads, budgets or bids. Third-party hosted servers exist (AdPlug, Sprites).",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "There are two separate reviews. First, the developer token must reach Explorer, Basic or Standard access to reach production accounts. Explorer is usually automated, Basic needs brand verification, and Standard is reviewed manually. Second, Google OAuth app verification is needed because the Ads scope is restricted. There are no webhooks, so triggers would need polling. Operation quotas also depend on the access level.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+    "quote": "Just like other Google APIs, Google Ads API uses the OAuth 2.0 protocol for authentication and authorization."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/productionize/secure-credentials",
+    "quote": "The OAuth 2.0 scope for the Google Ads API is classified as a restricted scope,"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+    "quote": "Basic access applications are automated and will be reviewed within minutes after brand verification and submission."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+    "quote": "15,000 operations per day on test accounts"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.google.com/google-ads/api/rest/overview",
+    "quote": "The Google Ads API can be called either using gRPC or REST."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "quote": "Remote `streamable-http` deployments instead require an OAuth 2.0 Web application Client ID and Client secret."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "quote": "It also cannot create, modify, pause, or enable campaigns, ad groups, ads, budgets, or bids."
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.google.com/google-ads/api/docs/get-started/dev-token",
+    "quote": "If you need Standard access, you need a manual review."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The lack of webhooks and the absence of an OpenAPI spec (Google publishes discovery docs, not OpenAPI) come from background knowledge, not a fetched page. Search results mention an allowlist-only pilot of a Google-hosted MCP endpoint, but I could not verify it.",
+  "changes": [
+   {
+    "field": "api_styles",
+    "old": "[rest, grpc, sdk_only]",
+    "new": "[rest, grpc]",
+    "why": "The REST overview says the API can be called directly over gRPC or REST. Client libraries are optional, so sdk_only is wrong."
+   },
+   {
+    "field": "access_notes",
+    "old": "...OAuth verification... I did not confirm this on a page.",
+    "new": "States that OAuth verification is required because the scope is restricted, and adds the Explorer and Basic review details",
+    "why": "The secure-credentials page says the Ads API scope is restricted and that OAuth app verification should be completed before productionizing."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth 2.0 ... service accounts ... (no verification info)",
+    "new": "Adds that the scope is restricted and verification is needed",
+    "why": "Confirmed on the secure-credentials page."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Did not confirm Google-hosted remote URL",
+    "new": "No Google-hosted URL; remote mode is self-deployed on Cloud Run; documents the limits on writes",
+    "why": "The MCP docs page only describes self-hosting on Cloud Run and lists the unsupported mutations."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Google OAuth verification is likely needed",
+    "new": "Google OAuth app verification is needed (restricted scope)",
+    "why": "Confirmed on a primary source."
+   },
+   {
+    "field": "evidence",
+    "old": "3 items, with the auth and mcp quotes flagged as not found and no api evidence",
+    "new": "8 quotes, all seen on fetched pages, including api evidence",
+    "why": "The automated check flagged missing or unmatched quotes."
+   },
+   {
+    "field": "confidence",
+    "old": "access/api/mcp/buildability medium",
+    "new": "all high",
+    "why": "Each one is now backed by primary docs."
+   },
+   {
+    "field": "needs_human",
+    "old": "OAuth verification, remote MCP URL, webhooks/OpenAPI/sandbox unverified",
+    "new": "Only webhooks, OpenAPI and the possible hosted-MCP pilot remain unverified",
+    "why": "Resolved the OAuth verification, MCP and sandbox (test accounts) questions."
+   }
+  ]
+ },
+ "human_fixes": []
+}

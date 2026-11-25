@@ -1,0 +1,135 @@
+{
+ "id": 54,
+ "slug": "mrscraper",
+ "app": "MrScraper",
+ "category": "Data, SEO and Scraping",
+ "hint": "docs.mrscraper.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "AI web scraping platform with a scraper API, web search, and scraper workflows.",
+  "subcategory": "Web scraping API",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API sends a dashboard-created API token in the x-api-token header. Tokens are created under Profile > API Tokens and can have an expiration date. OAuth 2.1 is documented only for the hosted MCP server. That server also accepts an API key as a bearer token, and API keys carry full account authority with no scopes enforced. A toolkit would have each user supply their own API token.",
+  "access": "self_serve_trial",
+  "access_notes": "The pricing page lists no free plan, only Essential ($99/mo, 200k tokens) and Enterprise (contact sales). New accounts get a 7-day free trial with 1,000 tokens. A card is required to start, and billing begins when the trial tokens run out or on day 7, whichever comes first. The docs billing page still describes a \"Free plan\" with 100 tokens per month and no card, and its own table says 1,000. That page looks stale and conflicts with the pricing page. A Startup Program offers 50,000 free tokens. Nothing documented restricts the API to a particular plan. Tokens are self-created in the dashboard.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "The base URL is https://api.app.mrscraper.com/api/v1, taken from the auth page examples. There are 5 scraper/search GET endpoints: Web Search, Scrape HTML, Scrape Markdown, Get Screenshot, and Scrape JSON (Scrape Brand). The Platform section adds Workflow, Cancel Bulk Scraping, Result, and Analytic pages, plus a subscription-accounts example. That totals about 10 operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The hosted server is at https://mcp.mrscraper.com/mcp and uses OAuth 2.1, with an API key accepted as a bearer token as a fallback. The local option is the npm package @mrscraper/mcp (v0.6.1), run with npx over stdio. It has 7 tools: status, scrapeHtml, scrapeMarkdown, getScreenshot, scrapeBrand, scrapeJson, and webSearch.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "API tokens are self-serve, but there is no ongoing free tier. The only free access is a 7-day trial that needs a card and auto-bills ($99/mo Essential). The API is narrow, and an official MCP server already covers most of it. Webhooks exist per scraper for the started, completed, and failed events. They are set up in the dashboard, not through the API, and no signature verification is documented.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.mrscraper.com/docs/api/overview",
+    "quote": "All API endpoints require authentication using an API token passed in the `x-api-token` header."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.mrscraper.com/docs/api/authentication",
+    "quote": "API tokens are managed directly from your MrScraper dashboard."
+   },
+   {
+    "field": "access",
+    "url": "https://mrscraper.com/pricing",
+    "quote": "New accounts start with a 7-day free trial and 1,000 tokens."
+   },
+   {
+    "field": "access",
+    "url": "https://mrscraper.com/pricing",
+    "quote": "A card is required to start."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+    "quote": "Use this exact URL, including the `/mcp` path."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.mrscraper.com/docs/integrations/webhook",
+    "quote": "Webhooks let you automatically send HTTP requests to another API when specific events happen in your scraper"
+   },
+   {
+    "field": "buildability",
+    "url": "https://mrscraper.com/pricing",
+    "quote": "Your plan is charged when the 1,000 trial tokens run out or on day 7, whichever comes first"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The marketing pricing page (7-day trial, card required, no free plan) conflicts with the docs billing page (a \"Free plan\" with 100 tokens per month and no card, and 1,000 in its own table). Someone should confirm the current signup flow. The OpenAPI spec wasn't found, and the Platform API sub-pages weren't opened because the guessed workflow URL returned 404.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "self_serve_free",
+    "new": "self_serve_trial",
+    "why": "The pricing page lists only paid plans plus a 7-day trial that needs a card. The docs' 'Free plan' wording conflicts with it and looks stale."
+   },
+   {
+    "field": "access_notes",
+    "old": "Free plan, no card, 100 or 1,000 tokens",
+    "new": "7-day trial, 1,000 tokens, card required, $99/mo Essential; docs conflict noted",
+    "why": "Replaced with what the pricing page says."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "There is no ongoing free tier. Ongoing use needs a paid plan after the trial."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "paid_plan",
+    "why": "The trial auto-bills $99/mo."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Self-serve free tier; webhooks are outbound only",
+    "new": "Trial-only, paid after that; webhooks are event-based (started, completed, failed) and set up in the dashboard",
+    "why": "Opened the webhook page: it documents event triggers."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "No base URL",
+    "new": "Added base URL https://api.app.mrscraper.com/api/v1 and an operation count of about 10",
+    "why": "The base URL is confirmed on the authentication page."
+   },
+   {
+    "field": "evidence.webhooks",
+    "old": "Send scraper results directly to external services through webhooks.",
+    "new": "Webhooks let you automatically send HTTP requests to another API when specific events happen in your scraper",
+    "why": "The original quote is not on the page."
+   },
+   {
+    "field": "evidence.access",
+    "old": "docs billing 'Free plan includes 100 tokens'",
+    "new": "pricing page trial and card quotes",
+    "why": "The pricing page is the primary source for plans."
+   },
+   {
+    "field": "needs_human",
+    "old": "free plan / base URL / webhook questions",
+    "new": "pricing vs docs conflict; OpenAPI spec and Platform sub-pages",
+    "why": "Base URL and webhook questions are resolved. The open question now is the conflict between the pricing page and the docs."
+   }
+  ]
+ },
+ "human_fixes": []
+}

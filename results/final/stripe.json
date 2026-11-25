@@ -1,0 +1,161 @@
+{
+ "id": 81,
+ "slug": "stripe",
+ "app": "Stripe",
+ "category": "Finance and Fintech",
+ "hint": "stripe.com/docs/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Payments, billing, invoicing, payouts and financial infrastructure platform with a broad REST API.",
+  "subcategory": "Payments platform",
+  "auth_methods": [
+   "api_key",
+   "basic",
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The API takes API keys via HTTP Basic Auth (key as username) or an Authorization: Bearer header. Key types are secret sk_, restricted rk_ (RAK), organisation sk_org_, and agent-tagged RAKs that are subject to approval rules. Workload Identity Federation exchanges a cloud identity token for a Stripe access token that lasts 1 hour. For per-user access, Stripe Apps OAuth 2.0 (marketplace.stripe.com/oauth/v2/authorize) issues access tokens that expire after 1 hour and refresh tokens that last 1 year and roll on each exchange. Stripe Apps can also use RAK-install authentication. Connect OAuth (connect.stripe.com/oauth) still exists, but Stripe's publish guide says the Connect authentication method is deprecated in favour of Stripe Apps OAuth, and the Connect token response marks access_token and refresh_token as deprecated. A multi-user toolkit should use Stripe Apps OAuth.",
+  "access": "approval_required",
+  "access_notes": "A free Stripe account gives sandbox/test keys right away, and live keys for your own account need no review. OAuth apps can be tested with a limited number of accounts through External test links. Public distribution of an OAuth Stripe App requires an activated account, a Marketplace listing and app review (about 4 business days, with re-review on every change). Public OAuth install links don't work until the app is published. Stripe has deprecated Connect OAuth as the alternative route.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Covers customers, charges, PaymentIntents, SetupIntents, Checkout, invoices, subscriptions, products and prices, coupons, payment links, disputes, refunds, payouts, balance, Issuing, Tax, Radar, Connect, webhook endpoints and event destinations, and v2 money-management (Treasury) endpoints. The MCP page alone lists about 170 supported API methods, a subset of the full API. Both v1 and v2 APIs exist. A public OpenAPI spec is published at github.com/stripe/openapi.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.stripe.com (official, remote). Supports OAuth (refresh tokens expire after 14 days) or agent API keys sent as a Bearer token. Tools include stripe_api_search, stripe_api_details, stripe_api_read, stripe_api_write, get_stripe_account_info, stripe_analytics, Treasury tools and search_stripe_documentation. From 11 January 2027 it will reject full-access secret keys and non-agent restricted keys. OAuth isn't supported when acting on connected accounts; use an agent key with the Stripe-Account header instead.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Per-user OAuth for public distribution needs a public Stripe App, which requires an activated account and passing Marketplace app review (about 4 business days, with re-review on changes). Connect OAuth is not a clean alternative because Stripe calls it deprecated. API keys (preferably restricted or agent keys) work immediately with no review, so an API-key toolkit can ship today.",
+  "evidence": [
+   {
+    "field": "mcp",
+    "url": "https://docs.stripe.com/mcp",
+    "quote": "Stripe’s MCP server supports two authentication methods:"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.stripe.com/mcp",
+    "quote": "use `https://mcp.stripe.com` as the server URL."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.stripe.com/mcp",
+    "quote": "OAuth refresh tokens expire after 14 days"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.stripe.com/api/authentication",
+    "quote": "The Stripe API authenticates requests using HTTP Basic Auth. Provide your API key as the basic auth username value."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.stripe.com/api/authentication",
+    "quote": "If you need to authenticate using bearer auth (for example, for a cross-origin request), use -H \"Authorization: Bearer <<YOUR_SECRET_KEY>>\""
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.stripe.com/stripe-apps/api-authentication/oauth",
+    "quote": "Access tokens expire in 1 hour, and refresh tokens expire after 1 year."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.stripe.com/stripe-apps/api-authentication/oauth",
+    "quote": "The public OAuth install links don’t work until the app is published."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.stripe.com/stripe-apps/publish-app",
+    "quote": "Submit your app for review (then wait 4 business days)"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.stripe.com/stripe-apps/publish-app",
+    "quote": "Stripe deprecated the Connect Stripe authentication method, so use this OAuth method instead."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/stripe/openapi",
+    "quote": "This repository contains OpenAPI specifications for Stripe's API."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.stripe.com/mcp",
+    "quote": "The Stripe MCP server exposes multiple APIs that you can call with the `stripe_api_read` and `stripe_api_write` tools."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.stripe.com/webhooks",
+    "quote": "After you register a webhook endpoint, Stripe pushes real-time data to it when events happen in your Stripe account."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.stripe.com/testing",
+    "quote": "A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "...Stripe Connect OAuth also exists, but I did not open its docs. Agent API keys and Workload Identity Federation exist too...",
+    "new": "Lists all key types (sk_, rk_, sk_org_, agent-tagged RAK), WIF, and Stripe Apps OAuth. Notes that Connect OAuth is deprecated per Stripe's publish guide and that its token fields are marked deprecated.",
+    "why": "Opened the Connect OAuth reference and the Stripe Apps publish guide, which settles the Apps-vs-Connect question; the keys page shows the full set of key types."
+   },
+   {
+    "field": "access_notes",
+    "old": "...Publishing a public OAuth app to the Stripe App Marketplace requires app review...",
+    "new": "Adds that publishing needs an activated account, that review takes about 4 business days with re-review on changes, and that Connect OAuth is deprecated as an alternative.",
+    "why": "Confirmed on docs.stripe.com/stripe-apps/publish-app."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...The MCP page alone lists well over 100 supported methods. There is also a v2 API.",
+    "new": "Expanded resource list; about 170 MCP-listed methods; public OpenAPI spec at github.com/stripe/openapi.",
+    "why": "Counted from the MCP page and confirmed the OpenAPI repo README."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "https://mcp.stripe.com. It supports OAuth or agent API keys, and exposes generic stripe_api_read and stripe_api_write tools. OAuth refresh tokens expire after 14 days.",
+    "new": "Adds the full tool list, the 11 Jan 2027 cutoff for non-agent keys, and the connected-account OAuth limitation.",
+    "why": "Verified on docs.stripe.com/mcp."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "...Connect OAuth is an alternative, but I did not verify its requirements...",
+    "new": "Connect OAuth isn't a clean alternative because Stripe calls it deprecated; the app-review details are added.",
+    "why": "The publish guide says Stripe deprecated the Connect authentication method."
+   },
+   {
+    "field": "evidence",
+    "old": "10 items, including the MCP 'List all webhook endpoints' quote as webhooks support",
+    "new": "Kept the verified quotes; added the publish-guide, OpenAPI repo and webhooks-page quotes; dropped the weak 'List all webhook endpoints' quote.",
+    "why": "Every original quote was found on its page. The new quotes back the resolved open questions directly."
+   },
+   {
+    "field": "confidence",
+    "old": "access: medium, buildability: medium",
+    "new": "access: high, buildability: high",
+    "why": "The review process and the Connect deprecation are now confirmed from primary docs."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm OpenAPI spec public; which OAuth route fits; webhooks docs not opened.",
+    "new": "",
+    "why": "All three are resolved: the OpenAPI repo is confirmed, Connect OAuth is deprecated so Stripe Apps OAuth is the route, and the webhooks docs confirm push events."
+   }
+  ]
+ },
+ "human_fixes": []
+}

@@ -1,0 +1,205 @@
+{
+ "id": 76,
+ "slug": "monday-com",
+ "app": "Monday.com",
+ "category": "Productivity and Project Management",
+ "hint": "developer.monday.com",
+ "pass": 2,
+ "at": "2026-11-25T03:54:40.130Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/introduction-to-graphql"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "monday.com hosted MCP server mcp.monday.com"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/mondaycom-mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/apps/docs/oauth"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/webhooks"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "developer.monday.com share app install link other accounts without marketplace listing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/apps/docs/install-and-share-your-apps"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.monday.com/api-reference/docs/rate-limits"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Work management platform for boards, items, and workflows across teams.\",\"subcategory\":\"Work management / project management\",\"auth_methods\":[\""
+  }
+ ],
+ "cost_usd": 0.2528203,
+ "duration_ms": 57515,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Work management platform for boards, items, and workflows across teams.",
+  "subcategory": "Work management / project management",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "There are two ways in. (1) A personal API token goes in the Authorization header and mirrors the user's UI permissions. (2) OAuth app tokens are limited by scopes. In the legacy OAuth flow, tokens never expire and there are no refresh tokens. A newer OAuth 2.1 flow adds expiring access tokens, refresh tokens and revocation. The hosted MCP also supports dynamic client registration. A multi-user toolkit would use OAuth.",
+  "access": "self_serve_free",
+  "access_notes": "A free developer account gives an API token for testing. OAuth apps don't have to be listed or reviewed in the marketplace. Developers can share a public install link with anyone. Unlisted apps show a banner saying monday.com hasn't vetted them, and users must install the app (force_install_if_needed helps with this). Daily API call limits depend on the plan: Free 200, Standard/Basic 1,000, Pro/Trial 10,000, Enterprise 25,000. Free and trial accounts also get lower complexity budgets per minute.",
+  "api_styles": [
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "A single GraphQL endpoint at https://api.monday.com/v2 covers boards, items, columns, groups, updates, webhooks, users, workspaces, docs and more. I did not count operations. The official MCP exposes more than 60 tools built on this API, according to search summaries.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The vendor hosts a Platform MCP at https://mcp.monday.com/mcp. It uses Streamable HTTP, according to search summaries; SSE is deprecated. You can authenticate with an API token, your own OAuth app, or dynamic client registration. There is also an open-source local package, @mondaydotcomorg/monday-api-mcp (github.com/mondaycom/mcp).",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Nothing blocks a build. The public GraphQL API, free developer tokens and OAuth are all available. OAuth apps can be shared without marketplace review, but they show an \"unvetted\" banner. The Free plan's limit of 200 calls a day could restrict end users on free accounts.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.monday.com/api-reference/docs/authentication",
+    "quote": "Personal tokens allow you to interact with the API using your own user account."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.monday.com/apps/docs/oauth",
+    "quote": "Tokens do not expire and are valid until the user uninstalls your app."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.monday.com/api-reference/docs/authentication",
+    "quote": "create a free developer account to get an API token and start testing."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.monday.com/apps/docs/install-and-share-your-apps",
+    "quote": "You can still share your app publicly to reach new users if you don't want to list it in the marketplace!"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.monday.com/api-reference/docs/rate-limits",
+    "quote": "Free | 200"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.monday.com/api-reference/docs/introduction-to-graphql",
+    "quote": "Our API uses the following endpoint: https://api.monday.com/v2."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.monday.com/api-reference/docs/webhooks",
+    "quote": "Requests sent through our webhook integration will retry once a minute for 30 minutes."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.monday.com/api-reference/docs/mondaycom-mcp",
+    "quote": "Choose an auth path — API token, your own OAuth app, or dynamic client registration."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "mcp",
+    "old": "official_local",
+    "new": "official_remote",
+    "why": "The vendor docs (developer.monday.com/api-reference/docs/mondaycom-mcp) list a hosted MCP at https://mcp.monday.com/mcp."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Only the npm package is beta; the remote is unconfirmed",
+    "new": "Hosted at mcp.monday.com/mcp with token, OAuth or DCR auth, plus the local npm package",
+    "why": "Confirmed on the vendor's MCP overview page."
+   },
+   {
+    "field": "access_notes",
+    "old": "Marketplace review and plan limits unconfirmed",
+    "new": "No review is needed to share publicly (an unvetted banner shows); daily call limits depend on the plan",
+    "why": "Confirmed on the install-and-share-your-apps and rate-limits pages."
+   },
+   {
+    "field": "evidence.api quote",
+    "old": "The monday.com API uses GraphQL and exposes a single endpoint, https://api.monday.com/v2",
+    "new": "Our API uses the following endpoint: https://api.monday.com/v2.",
+    "why": "The original quote is not on the page verbatim."
+   },
+   {
+    "field": "evidence.access",
+    "old": "(none)",
+    "new": "Added quotes from the auth, install-and-share and rate-limits pages",
+    "why": "The record had no evidence for access."
+   },
+   {
+    "field": "evidence.auth quote",
+    "old": "Personal V2 API token ... free developer account...",
+    "new": "Personal tokens allow you to interact with the API using your own user account.",
+    "why": "The old quote was a paraphrase, not verbatim."
+   },
+   {
+    "field": "evidence.mcp",
+    "old": "local dev quote from mondaycom-mcp-integration",
+    "new": "quote from the hosted Platform MCP overview",
+    "why": "Supports the remote MCP finding."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Marketplace review is an open question",
+    "new": "No review is needed; notes the unvetted banner and the Free plan limit of 200 calls a day",
+    "why": "The question is resolved by primary docs."
+   },
+   {
+    "field": "confidence",
+    "old": "access/mcp/buildability medium",
+    "new": "all high",
+    "why": "Open questions resolved with primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "three open questions",
+    "new": "",
+    "why": "All three were answered from the vendor docs."
+   },
+   {
+    "field": "auth_notes",
+    "old": "no mention of DCR",
+    "new": "adds personal token permission mirroring and dynamic client registration for the MCP",
+    "why": "From the vendor's auth and MCP pages."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- quote for api not found on https://developer.monday.com/api-reference/docs/introduction-to-graphql\n- agent's open question: Three things to check: (1) whether public OAuth apps need marketplace review before other accounts can install them; (2) whether a hosted remote MCP (mcp.monday.com) exists; (3) whether API access is restricted by plan or rate limits. The sandbox \"yes\" is a judgment call: the auth page says a free d"
+}

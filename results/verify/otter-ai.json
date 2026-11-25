@@ -1,0 +1,191 @@
+{
+ "id": 92,
+ "slug": "otter-ai",
+ "app": "Otter AI",
+ "category": "AI, Research and Media-native",
+ "hint": "help.otter.ai (MCP server)",
+ "pass": 2,
+ "at": "2026-11-25T03:56:04.758Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Otter.ai MCP server help.otter.ai"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Otter.ai public API Enterprise developer settings API key"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.scalekit.com/blog/otter-mcp-vs-api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://claude.com/connectors/otter-ai"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://otter.ai/api/docs"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "help.otter.ai Otter MCP server Claude ChatGPT connect"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "\"help.otter.ai\" API OR webhook OR \"Otter MCP\""
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://otter.ai/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://otter.ai/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://apis.io/providers/otter-ai/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"AI meeting assistant that records, transcribes and summarizes meetings.\",\"subcategory\":\"AI meeting notes / transcription\",\"auth_methods\":[\"api_"
+  }
+ ],
+ "cost_usd": 0.292342,
+ "duration_ms": 68108,
+ "turns": 13,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "AI meeting assistant that records, transcribes and summarizes meetings.",
+  "subcategory": "AI meeting notes / transcription",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The official hosted MCP server (mcp.otter.ai/mcp) uses OAuth sign-in. Otter's pricing page lists it on the free Basic plan. Claude's connector directory lists it as \"Made by Otter.ai\" with sign-in required. Composio already ships an OAuth-based otter_ai_mcp toolkit, so client registration for third parties works in practice; Scalekit attributes this to CIMD/MCP client registration. The REST Public API (api.otter.ai/v1) uses a static Bearer API key that a user creates in workspace Developer settings (max 2 per user). The REST API has no OAuth. The REST auth details are from secondary sources only (Scalekit, anythingmcp). Otter's own API docs page rendered no content.",
+  "access": "self_serve_free",
+  "access_notes": "This record covers two surfaces. The MCP server, which is the surface the hint points to, is self-serve: Otter's pricing page lists \"Otter MCP server\" under the free Basic plan. OpenAI's listing notes that some workspaces need admin approval to connect. The REST API and webhooks are a different case. The pricing page lists \"Otter API & Webhooks\" only under Enterprise, which shows \"Custom pricing\" and \"Schedule a demo\", so that surface effectively requires a sales conversation (contact_sales).",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "narrow",
+  "api_breadth_notes": "The MCP server has three read-only tools, confirmed on Claude's connector page: get_user_info, search and fetch. The REST API at api.otter.ai/v1 is Enterprise-only and also small. Per Scalekit it covers channels and members, conversations (list, retrieve, POST to ingest a file), audio download links and workspace details, with a limit of 10 requests per second. The REST endpoint list is not verified against Otter's own docs.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.otter.ai/mcp uses Streamable HTTP and OAuth and has three read-only tools: get_user_info, search and fetch. Claude's connector directory lists it as \"Made by Otter.ai\" and Anthropic-verified. It is also listed as an OpenAI ChatGPT plugin. Otter's pricing page includes it on the Basic plan.",
+  "sandbox": "unknown",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "narrow_api",
+  "blocker_notes": "A toolkit can be built today on the official MCP server: it uses OAuth, works on free accounts, and Composio already ships otter_ai_mcp. That server has only three read-only tools (search, fetch, user info). Fuller REST access and webhook triggers need an Enterprise plan (custom pricing, schedule a demo) and per-user static Bearer keys.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://otter.ai/pricing",
+    "quote": "Otter API & Webhooks"
+   },
+   {
+    "field": "mcp",
+    "url": "https://otter.ai/pricing",
+    "quote": "Otter MCP server"
+   },
+   {
+    "field": "mcp",
+    "url": "https://claude.com/connectors/otter-ai",
+    "quote": "https://mcp.otter.ai/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://claude.com/connectors/otter-ai",
+    "quote": "get_user_info"
+   },
+   {
+    "field": "api",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "The Public API is a REST surface at api.otter.ai/v1, available to Enterprise workspaces only."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "There is no public API key for the MCP server, and no OAuth for the API."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "It authenticates with a Bearer API key created in the workspace Developer settings"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.scalekit.com/blog/otter-mcp-vs-api",
+    "quote": "Only the API is event-driven. Otter webhooks push conversation and action-item events in real time"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The REST API endpoint list, Bearer-key auth, OpenAPI spec and webhook event types are still unverified against Otter's own docs: otter.ai/api/docs renders empty and help.otter.ai blocks fetching. The plan gating for the API, webhooks and MCP is confirmed on the pricing page.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "paid_plan_required",
+    "new": "self_serve_free",
+    "why": "Otter's pricing page lists the official MCP server on the free Basic plan, and the MCP server is the surface the hint points to. The REST API and webhooks are Enterprise-only with custom pricing / schedule a demo; this is now stated in access_notes."
+   },
+   {
+    "field": "access_notes",
+    "old": "Enterprise plan + sales conversation for REST; unconfirmed from Otter docs",
+    "new": "MCP is free on Basic; the REST API and webhooks need Enterprise (custom pricing), confirmed on otter.ai/pricing",
+    "why": "Primary source found."
+   },
+   {
+    "field": "main_blocker",
+    "old": "paid_plan",
+    "new": "narrow_api",
+    "why": "The buildable surface (MCP) is free; the real limit is that it has only 3 read-only tools."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Whether Composio can register as an MCP OAuth client is unconfirmed",
+    "new": "Composio already ships an OAuth otter_ai_mcp toolkit; the limit is the 3 read-only tools, and REST/webhooks need Enterprise",
+    "why": "Composio's toolkit page shows third-party OAuth client use works."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Sourced from Scalekit and mcpservers.org",
+    "new": "Confirmed by Claude's connector directory (Made by Otter.ai, tools listed) and Otter's pricing page",
+    "why": "Replaced secondary sourcing with primary and directory sources."
+   },
+   {
+    "field": "evidence",
+    "old": "4 Scalekit quotes only, none for access",
+    "new": "Added otter.ai/pricing and claude.com connector quotes; kept the verified Scalekit quotes",
+    "why": "The access field had no evidence; all Scalekit quotes were re-checked and are present on the page."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "access/mcp/buildability high; auth/api medium",
+    "why": "Pricing page and connector directory confirm plan gating and MCP; REST details are still secondary-only."
+   },
+   {
+    "field": "needs_human",
+    "old": "Verify Enterprise requirement, OpenAPI, webhooks, sandbox, MCP client registration",
+    "new": "Only REST endpoint/auth/spec/webhook-event details remain unverified",
+    "why": "Enterprise gating and MCP registration are now resolved."
+   }
+  ]
+ },
+ "flags_given": "- no evidence cited for access\n- agent's open question: All facts come from a third-party blog (Scalekit). help.otter.ai returned 403 and otter.ai/api/docs rendered no content. Check Otter's official API docs for the Enterprise requirement, OpenAPI spec, webhook setup and any sandbox. Also check whether third-party MCP OAuth client registration is allowe"
+}

@@ -1,0 +1,148 @@
+{
+ "id": 64,
+ "slug": "cloudflare",
+ "app": "Cloudflare",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "developers.cloudflare.com/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Edge network, CDN, DNS, security, Workers serverless and developer platform.",
+  "subcategory": "Cloud infrastructure / CDN and edge platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "api_key",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Developers can now register their own OAuth clients in the dashboard (Manage Account > OAuth clients) or through the API. These clients use the Authorization Code flow, with PKCE for public clients. Scoped consent lets users deselect optional scopes. Client Credentials, Implicit, ROPC and Device grants are not supported for third-party clients. Scoped API tokens, user or account-owned and sent as a Bearer header, remain fully supported and suit single-tenant or CI use. The legacy Global API key (X-Auth-Email plus X-Auth-Key) is still accepted but discouraged. Origin CA keys cover certificate endpoints, recorded here as 'other'. A multi-user toolkit should use a public OAuth client.",
+  "access": "self_serve_free",
+  "access_notes": "A free Cloudflare account can create API tokens and OAuth clients. The OAuth docs list availability as Yes on the Free, Pro, Business and Enterprise plans. A client starts as private, usable only by account members. To make it public for any Cloudflare user, you must verify ownership of the client domain with a DNS TXT record. The docs describe no manual app review. Some individual products and endpoints need paid plans or Enterprise, but core API access does not.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST API has over 2,500 endpoints; the MCP docs say \"over 2,500 endpoints\" and list 2,594 tools. They cover zones, DNS, Workers, R2, D1, KV, Zero Trust, WAF, certificates, accounts and more. A GraphQL Analytics API is also available. The global rate limit is 1,200 requests per 5 minutes per user.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The main server is https://mcp.cloudflare.com/mcp. It provides search() and execute() tools across the whole API, plus docs(). It authenticates with OAuth, or with an API token sent as a bearer token. Optional product servers are docs.mcp.cloudflare.com/mcp, containers.mcp.cloudflare.com/mcp, browser.mcp.cloudflare.com/mcp, dex.mcp.cloudflare.com/mcp, casb.mcp.cloudflare.com/mcp and agents.cloudflare.com/mcp.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no real blocker. A public OAuth client needs only domain verification (a DNS TXT record), not a manual review. Webhooks are limited to Notifications alert delivery; there are no general resource-change event subscriptions. There is no separate sandbox, but a free account works as a test environment.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.cloudflare.com/fundamentals/oauth/",
+    "quote": "OAuth allows third-party applications to securely access Cloudflare resources"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/",
+    "quote": "Cloudflare OAuth clients that you create in the dashboard or API support the OAuth 2.0 Authorization Code flow."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/",
+    "quote": "Cloudflare requires client URL domain ownership verification before a client can become public."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.cloudflare.com/fundamentals/oauth/",
+    "quote": "| Availability | Yes | Yes | Yes | Yes |"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
+    "quote": "keys have several limitations that make them less secure than API tokens."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare/",
+    "quote": "https://mcp.cloudflare.com/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.cloudflare.com/fundamentals/api/reference/limits/",
+    "quote": "The global rate limit for the Cloudflare API is 1,200 requests per five minute period per user"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/cloudflare/api-schemas",
+    "quote": "This repository contains OpenAPI schemas for the Cloudflare API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.cloudflare.com/notifications/get-started/configure-webhooks/",
+    "quote": "Webhooks let you deliver Cloudflare alerts to any service that accepts HTTP callbacks."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_primary",
+    "old": "bearer_token",
+    "new": "oauth2",
+    "why": "Cloudflare now supports self-registered third-party OAuth clients (Authorization Code with PKCE) that can be made public. That is the right method for a multi-user toolkit."
+   },
+   {
+    "field": "auth_methods",
+    "old": "[bearer_token, api_key, oauth2, other]",
+    "new": "[oauth2, bearer_token, api_key, other]",
+    "why": "Same set of methods, reordered to put OAuth first. OAuth is a general third-party method, not something limited to Cloudflare's own MCP server."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth is documented only for Cloudflare's own MCP server... no general third-party OAuth app registration",
+    "new": "Self-service OAuth clients via the dashboard or API, Authorization Code flow, public clients need domain verification",
+    "why": "The first pass's claim is contradicted by developers.cloudflare.com/fundamentals/oauth/ and the create-an-oauth-client page."
+   },
+   {
+    "field": "access_notes",
+    "old": "Free account can create API tokens... did not check pricing",
+    "new": "OAuth is available on all plans including Free; public clients need DNS domain verification and no manual review",
+    "why": "Checked the OAuth availability table and the client-creation docs."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Users must paste scoped API tokens since there is no public OAuth app flow",
+    "new": "No real blocker; a public OAuth client needs only domain verification; webhooks are limited to Notifications alerts",
+    "why": "A public OAuth flow exists."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Listed docs, browser and casb servers",
+    "new": "Added the containers, dex and agents servers and the OAuth/API-token auth",
+    "why": "The MCP docs page lists six optional product servers."
+   },
+   {
+    "field": "evidence",
+    "old": "3 items, none for access",
+    "new": "9 verified quotes covering auth, access, api, OpenAPI, webhooks and mcp",
+    "why": "Added an access source and confirmed the open questions (OpenAPI repo, Notifications webhooks)."
+   },
+   {
+    "field": "confidence",
+    "old": "auth/access/api/buildability medium",
+    "new": "all high",
+    "why": "Every claim is now backed by a primary source I fetched."
+   },
+   {
+    "field": "needs_human",
+    "old": "OpenAPI, webhooks, sandbox and OAuth unconfirmed",
+    "new": "",
+    "why": "Resolved: the OpenAPI repo exists, Notifications webhooks are confirmed on all plans, and OAuth registration is confirmed. Sandbox: no separate sandbox product, but a free account works for testing."
+   }
+  ]
+ },
+ "human_fixes": []
+}

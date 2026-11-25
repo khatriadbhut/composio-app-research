@@ -1,0 +1,163 @@
+{
+ "id": 66,
+ "slug": "neo4j",
+ "app": "Neo4j",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "neo4j.com/docs/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Graph database; Aura API manages cloud instances, Query API runs Cypher over HTTP.",
+  "subcategory": "Graph database / DBaaS management API",
+  "auth_methods": [
+   "oauth2",
+   "basic",
+   "bearer_token"
+  ],
+  "auth_primary": "basic",
+  "auth_notes": "Aura API (api.neo4j.io) uses the OAuth2 client_credentials grant. You create a Client ID and Secret in the Aura console, then POST them to https://api.neo4j.io/oauth/token with HTTP Basic auth (ID as username, secret as password). That returns a bearer token that lasts 1 hour. There is no authorization-code or consent flow, so each end user supplies their own client ID and secret. The data plane (the HTTP Query API) takes Basic auth with the database username and password, or a Bearer token issued by an SSO provider.",
+  "access": "self_serve_free",
+  "access_notes": "The auth docs state that every tier can create Aura API credentials. Free accounts, and Pro trials without a billing method, are limited to 25 requests per minute. Pro with billing, Business Critical and VDC get 125 requests per minute. The v2beta1 billing endpoints are limited to 10 requests per day per organization. Some actions are likely restricted on Free, such as creating paid instance types; this was not verified per endpoint.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "Aura API v1 covers instances (create, list, get, update/resize, pause, resume, delete, overwrite), snapshots, tenants/projects and customer-managed keys. It also has v2beta1 organization billing endpoints for ledger and usage. A separate HTTP Query API runs Cypher transactions. The official spec page would not render, so I could not count the operations; I estimate about 20–40.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "The official Neo4j MCP server lives at github.com/neo4j/mcp (releases). It installs with `uvx neo4j-mcp-server` from PyPI or `brew install neo4j-mcp`, and also ships as a binary and as the Docker image mcp/neo4j. It runs over stdio (default) or HTTP, and connects to one Neo4j database to do schema exploration and Cypher. I found no vendor-hosted remote URL. Separately, the neo4j-contrib/mcp-neo4j servers, including an Aura manager, are Labs/community projects.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no multi-user OAuth consent flow, so each user has to paste in an Aura client ID and secret (client_credentials). For data access, each user also has to supply a database URI plus a username and password or an SSO token. Rate limits on the free tier are low (25 requests per minute). The official OpenAPI spec could not be downloaded (api.neo4j.io/openapi.json returned 403), and no webhooks are documented.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "Access tokens are temporary and expire after one hour."
+   },
+   {
+    "field": "access",
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "All tiers can create Aura API credentials."
+   },
+   {
+    "field": "access",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "quote": "get a rate limit of 25 requests per minute"
+   },
+   {
+    "field": "api",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "quote": "A complete list of the available endpoints can be seen and tested in the API Specification."
+   },
+   {
+    "field": "auth",
+    "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+    "quote": "Both basic and bearer authentication are supported."
+   },
+   {
+    "field": "mcp",
+    "url": "https://neo4j.com/docs/mcp/current/installation/",
+    "quote": "Visit the release page for Neo4j MCP: https://github.com/neo4j/mcp/releases"
+   },
+   {
+    "field": "mcp",
+    "url": "https://neo4j.com/docs/mcp/current/",
+    "quote": "Neo4j MCP implements the Model Context Protocol (MCP)"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Two things need a check in a real browser. First, the Aura API Specification page (neo4j.com/docs/aura/platform/api/specification/), which renders client-side and came back empty: does it offer a downloadable OpenAPI file, and how many endpoints are there? Second, confirm that the Aura API has no webhooks or event push.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\",\"basic\"]",
+    "new": "[\"oauth2\",\"basic\",\"bearer_token\"]",
+    "why": "The Query API docs say it supports both Basic and Bearer (SSO token) auth."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...Database access... was not verified.",
+    "new": "States the token URL and the client_credentials grant, and confirms Basic or Bearer auth for the Query API.",
+    "why": "Both were confirmed on the vendor's auth pages."
+   },
+   {
+    "field": "access_notes",
+    "old": "All Aura tiers can create API credentials... (25 req/min)...",
+    "new": "Adds the verbatim 'All tiers' quote and the 125/min and billing-endpoint limits.",
+    "why": "Both the auth page and the overview page confirm this."
+   },
+   {
+    "field": "what_it_does",
+    "old": "Neo4j Aura API manages cloud graph database instances; Neo4j MCP queries graph databases.",
+    "new": "Graph database; Aura API manages cloud instances, Query API runs Cypher over HTTP.",
+    "why": "The first pass described the MCP server instead of the API surface the hint points to."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "install package/remote not verified",
+    "new": "github.com/neo4j/mcp; uvx neo4j-mcp-server, brew neo4j-mcp, Docker mcp/neo4j; stdio or HTTP; no hosted remote",
+    "why": "Confirmed on the installation docs page and the PyPI listing."
+   },
+   {
+    "field": "evidence",
+    "old": "auth quote 'Authorization: Bearer <access_token>'",
+    "new": "Replaced with quotes I saw on the pages myself, and added Query API and MCP install evidence.",
+    "why": "The automated check could not find the original auth quote on the page."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth high, access high, mcp high, api/buildability medium",
+    "why": "Primary sources now confirm auth, access and MCP."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "OpenAPI/webhooks unconfirmed",
+    "new": "Adds that api.neo4j.io/openapi.json returned 403 and that the free tier is limited to 25 requests per minute.",
+    "why": "Both were checked directly."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "auth_primary",
+   "old": "\"oauth2\"",
+   "new": "\"basic\"",
+   "why": "Database access is Basic or an SSO bearer token; OAuth2 exists only as client credentials for the Aura management API, not as user sign-in.",
+   "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "mcp",
+   "old": "\"official_local\"",
+   "new": "\"official_remote\"",
+   "why": "'Neo4j MCP for Aura is a hosted MCP server for your Aura instances.'",
+   "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "buildability",
+   "old": "\"ready_with_caveats\"",
+   "new": "\"ready_now\"",
+   "why": "Free Aura tier with no card, public docs, no review step.",
+   "url": "https://neo4j.com/pricing/",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "main_blocker",
+   "old": "\"other\"",
+   "new": "\"none\"",
+   "why": "Nothing gates a developer.",
+   "url": "https://neo4j.com/pricing/",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ]
+}

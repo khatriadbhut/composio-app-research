@@ -1,0 +1,118 @@
+{
+ "id": 55,
+ "slug": "apify",
+ "app": "Apify",
+ "category": "Data, SEO and Scraping",
+ "hint": "docs.apify.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud platform for running web scraping and automation Actors, with storage for their results.",
+  "subcategory": "Web scraping platform",
+  "auth_methods": [
+   "bearer_token",
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The REST API uses a personal API token. It is sent as 'Authorization: Bearer <token>' (recommended) or as a ?token= query parameter (less secure). Scoped tokens can be limited to specific resources, but they cannot create or modify Actors. Apify's 'Integrate with Apify' guide lists OAuth 2.0 as a supported way for integrations to authenticate users. Third parties already use OAuth clients registered in Apify Console (Pipedream 'apify-oauth', Activepieces). However, the public docs do not cover how to register an OAuth app, the endpoints or the scopes; they point to integrations@apify.com. The hosted MCP server supports both OAuth and Bearer token.",
+  "access": "self_serve_free",
+  "access_notes": "The Free plan costs $0, needs no credit card and includes $5 of platform usage each month. Any account can create a personal API token in Console (Settings > API & Integrations). No plan gate on the API is documented. Free-plan Apify Proxy is limited to use within the platform; that limit does not apply to the REST API. Registering a multi-user OAuth app is not self-serve as documented; it appears to go through integrations@apify.com.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "API v2 sections: Actors, Actor versions, builds, runs, tasks, datasets, key-value stores, request queues, requests and locks, webhooks, webhook dispatches, schedules, store, logs, users, usage and limits, proxy test, and sign/verify. It also has default-storage and last-run endpoint variants. A full OpenAPI schema is available in YAML and JSON; operations number well over 50.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at https://mcp.apify.com. OAuth is recommended; an 'Authorization: Bearer <APIFY_TOKEN>' header also works. Apify also publishes a local npm package, @apify/actors-mcp-server (GitHub apify/apify-mcp-server).",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Personal or scoped API tokens are self-serve on the free plan, which is enough to build now. OAuth 2.0 for integrations exists, but registration is not publicly documented; you would likely need to contact integrations@apify.com for a client ID and secret. Rate limits are generous: 250k requests/min globally and 60 requests/s per resource by default.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "Add the token to your request's Authorization header as Bearer <token>"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.apify.com/platform/integrations/integrate",
+    "quote": "OAuth 2.0 - Use OAuth 2.0 to allow users to authorize your integration without sharing their credentials."
+   },
+   {
+    "field": "access",
+    "url": "https://apify.com/pricing",
+    "quote": "No credit card is required."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.apify.com/platform/integrations/api",
+    "quote": "In the Personal API tokens section, select Create a new token."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "You can download the complete OpenAPI schema of Apify API in the YAML or JSON formats"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "Webhook collections"
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.apify.com/platform/integrations/mcp",
+    "quote": "https://mcp.apify.com"
+   }
+  ],
+  "confidence": {
+   "auth": "medium",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Check how to register an OAuth 2.0 client for Apify (endpoints, scopes, whether approval is needed). The docs only state that OAuth 2.0 is supported and point to integrations@apify.com.",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "OAuth is documented only for the hosted MCP server. The REST docs don't mention OAuth for third-party apps. Agents can also use x402 or Skyfire payments...",
+    "new": "OAuth 2.0 is documented as a supported integration auth method (Integrate with Apify guide), but registration is undocumented. Scoped tokens added. x402/Skyfire claim dropped.",
+    "why": "The Integrate with Apify page explicitly lists OAuth 2.0 for integrations. I could not verify the x402/Skyfire claim in the sources I read."
+   },
+   {
+    "field": "access_notes",
+    "old": "Pricing page doesn't explicitly confirm API access on free plan...",
+    "new": "Free plan with no card; any account creates personal API tokens in Console; no API plan gate documented; OAuth app registration goes through contact.",
+    "why": "The token-creation docs have no plan gate. The old $5 quote was not verbatim, so I replaced it with a quote that is on the page."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now (blocker notes: OAuth unconfirmed)",
+    "new": "ready_now (blocker notes: OAuth exists but registration undocumented)",
+    "why": "OAuth 2.0 support is confirmed, but how to register a client is not."
+   },
+   {
+    "field": "evidence",
+    "old": "auth quote 'Send the token as Authorization: Bearer <token>'; access quote '$5 of platform usage per month'; webhooks quote 'Webhooks, Webhook collections, Webhook dispatches'",
+    "new": "Verbatim quotes re-fetched from docs.apify.com/api/v2, apify.com/pricing, integrations/api, integrations/integrate",
+    "why": "The automated check found the original quotes were not verbatim on their pages."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, buildability medium",
+    "new": "access high, buildability high",
+    "why": "Primary sources confirm self-serve free tokens and a broad REST API."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check OAuth, free-plan token access, sandbox",
+    "new": "Only OAuth client registration process remains",
+    "why": "Free-plan token access is confirmed. No sandbox exists; the free plan acts as the test account."
+   }
+  ]
+ },
+ "human_fixes": []
+}

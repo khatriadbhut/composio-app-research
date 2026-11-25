@@ -1,0 +1,155 @@
+{
+ "id": 10,
+ "slug": "dealcloud",
+ "app": "DealCloud",
+ "category": "CRM and Sales",
+ "hint": "api.docs.dealcloud.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Intapp DealCloud: CRM and deal management platform for financial services firms.",
+  "subcategory": "CRM (financial services / deal management)",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "The REST API uses the OAuth2 client credentials flow: POST {baseUrl}/api/rest/v1/oauth/token with client_id, client_secret and scope. The secret is a per-user API key. A user generates it on their own Profile page (API Key > Enable), and only after an admin has turned on the 'API' capability for their user group. Scopes are user_management, data, publish, ri_import and backup. Tokens expire after 900 seconds and have no refresh token, so you repeat the flow. There is no third-party authorization-code OAuth for the REST API. The MCP server (https://[tenant].my.intapp.com/mcp/celeste/DealCloud) uses per-user OAuth with discovery and needs no client ID or secret, but it only supports listed AI clients. A multi-user toolkit would have to collect each customer's tenant URL plus a client ID and API key.",
+  "access": "contact_sales",
+  "access_notes": "You need a licensed DealCloud tenant, which is enterprise-only with no public pricing (Vendr reports a median buyer spend of about $146k). Within a tenant, an admin must enable the 'API' capability for a user group before a user can create an API key. Intapp's sandbox policy excludes DealCloud – Financial Services from the default free sandbox. A UAT instance costs extra. MCP access needs a 'DealCloud with Celeste' license and the 'MCP Access' capability.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The documented areas are Schema, Data (rows, cells, files, history, merge, delete, reports), User Management, Publications (a polled event stream), Site Backups, Relationship Intelligence import, and Schema Contracts. SDKs exist for Python, the Intapp REST Client and C#. The schema is dynamic and varies by tenant. The MCP side also has 'Available Tools' and 'Custom MCP Servers' pages.",
+  "openapi_spec": "unknown",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "Intapp hosts the MCP server per tenant at https://[tenant].my.intapp.com/mcp/celeste/DealCloud (copied from Tools > MCP Servers). Auth is per-user OAuth with discovery. It needs a 'DealCloud with Celeste' license and the MCP Access capability, and write tools must be toggled on by an admin. Supported clients are Claude, ChatGPT, Copilot Studio and Cursor, plus some local clients once enabled. Clients not on that list need to contact their Account Manager.",
+  "sandbox": "no",
+  "buildability": "needs_partnership_or_sales",
+  "main_blocker": "enterprise_sales",
+  "blocker_notes": "The docs are public, but every credential lives inside a licensed enterprise tenant. There is no free sandbox for DealCloud FS, and the UAT instance is paid. A toolkit could use per-customer client ID and API key auth against tenant URLs, but building and testing it needs a tenant from Intapp or a customer. Third-party MCP clients that aren't on Intapp's list need Account Manager approval. There are no push webhooks. Events come from polling Publication topics.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://api.docs.dealcloud.com/docs/token",
+    "quote": "DealCloud uses the OAuth2 Client Credentials flow to generate a bearer token"
+   },
+   {
+    "field": "auth",
+    "url": "https://api.docs.dealcloud.com/docs/apikeys",
+    "quote": "Scroll down to the API Key section and click Enable"
+   },
+   {
+    "field": "access",
+    "url": "https://www.intapp.com/cloud/policies/sandbox/",
+    "quote": "Intapp provides clients of Intapp solutions, with the exception of DealCloud – Financial Services, one sandbox instance"
+   },
+   {
+    "field": "access",
+    "url": "https://www.intapp.com/cloud/policies/sandbox/",
+    "quote": "For DealCloud – Financial Services one additional UAT instance can be provided for an additional fee."
+   },
+   {
+    "field": "mcp",
+    "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+    "quote": "https://[tenant].my.intapp.com/mcp/celeste/DealCloud"
+   },
+   {
+    "field": "mcp",
+    "url": "https://api.docs.dealcloud.com/mcp/authentication",
+    "quote": "DealCloud MCP uses OAuth to authenticate, letting AI assistants connect on behalf of an individual user."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://api.docs.dealcloud.com/docs/publications",
+    "quote": "Continuous polling of the APIs over a session will return subsequent events."
+   },
+   {
+    "field": "api",
+    "url": "https://api.docs.dealcloud.com/docs/publications",
+    "quote": "These APIs are stateful and use sessions, unlike the standard REST APIs."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "Whether an OpenAPI or Swagger spec is published. None is linked from the docs navigation. Also whether Intapp would add Composio as a supported MCP client through the Account Manager route.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[oauth2]",
+    "new": "[oauth2, api_key]",
+    "why": "The client secret is a per-user API key the user generates on their Profile page (docs/apikeys). It is exchanged through client credentials."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Admin creates client ID/secret per tenant...",
+    "new": "User generates the API key after an admin enables the API capability; added the MCP URL",
+    "why": "The apikeys page shows the user creates the key from their Profile after an admin enables the API capability for the user group."
+   },
+   {
+    "field": "access_notes",
+    "old": "Inference; no pricing or sandbox page opened",
+    "new": "Cites the Intapp sandbox policy (DealCloud FS excluded from the default sandbox, UAT is paid) and the Celeste license for MCP",
+    "why": "Primary sources were found and opened."
+   },
+   {
+    "field": "webhooks",
+    "old": "yes",
+    "new": "no",
+    "why": "The Publications page describes a session-based polling model with no HTTP push or callbacks."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Server URL not seen, probably tenant-specific",
+    "new": "https://[tenant].my.intapp.com/mcp/celeste/DealCloud; Celeste license; listed clients only",
+    "why": "Found on mcp/getting-started and mcp/connections."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "The Intapp sandbox policy excludes DealCloud – Financial Services from the default sandbox. A UAT instance costs extra, and there is no free developer sandbox."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote 'Dealcloud Developer Documentation' on root page",
+    "new": "Replaced with quotes I verified",
+    "why": "The root-page quote was not confirmed on the page. Access, MCP and webhook evidence was missing."
+   },
+   {
+    "field": "confidence",
+    "old": "access low, mcp medium, buildability medium",
+    "new": "access high, mcp high, buildability high",
+    "why": "Primary sources now support these fields."
+   },
+   {
+    "field": "what_it_does",
+    "old": "...for financial services and private capital firms.",
+    "new": "...for financial services firms.",
+    "why": "Shortened to fit the 15-word limit."
+   },
+   {
+    "field": "needs_human",
+    "old": "Four open questions",
+    "new": "Only OpenAPI spec availability and third-party MCP client approval remain",
+    "why": "Sandbox, API keys, MCP URL and webhooks are now resolved from primary sources."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "api_breadth",
+   "old": "\"moderate\"",
+   "new": "\"broad\"",
+   "why": "About 55-60 documented operations, above the rubric's ~50 line for broad.",
+   "url": "https://api.docs.dealcloud.com/docs",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ]
+}

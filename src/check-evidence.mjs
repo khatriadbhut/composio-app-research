@@ -57,6 +57,7 @@ function rules(r) {
   if (r.buildability === "ready_now" && r.main_blocker !== "none") f.push(`ready_now but main_blocker is ${r.main_blocker}`);
   if (r.buildability !== "ready_now" && r.main_blocker === "none") f.push(`${r.buildability} but main_blocker is none`);
   if (r.access === "no_public_api" && r.api_breadth !== "none") f.push(`no_public_api but api_breadth is ${r.api_breadth}`);
+  if (r.access.startsWith("self_serve") && r.main_blocker === "app_review") f.push(`access is ${r.access} but the blocker is app_review; the rubric calls that approval_required`);
   if (r.access === "paid_plan_required" && r.main_blocker === "none") f.push("paid plan required but no blocker named");
   if (r.mcp.startsWith("official") && !/https?:\/\/|@|github|npm|pypi|\//i.test(r.mcp_notes)) f.push("official MCP claimed with no URL or package named");
   for (const k of ["auth", "access", "api", "mcp", "buildability"]) {

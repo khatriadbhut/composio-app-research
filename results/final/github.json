@@ -1,0 +1,141 @@
+{
+ "id": 61,
+ "slug": "github",
+ "app": "GitHub",
+ "category": "Developer, Infra and Data platforms",
+ "hint": "docs.github.com/rest",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Code hosting and collaboration platform: repos, issues, PRs, Actions CI.",
+  "subcategory": "Source code hosting / DevOps",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "jwt_service_account",
+   "basic"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Supported: fine-grained PATs (recommended) and classic PATs, GitHub App auth (a JWT signed with the app's private key is exchanged for installation tokens; user access tokens come through an OAuth flow), OAuth apps, and the built-in GITHUB_TOKEN in Actions. Basic auth works only with an app's client ID and secret on certain app endpoints. Username/password auth is not supported. A multi-user toolkit should use a GitHub App user-to-server OAuth flow or an OAuth app. The official MCP server accepts both OAuth and a PAT.",
+  "access": "self_serve_free",
+  "access_notes": "Any personal account, including a free one, or any org owner can register GitHub Apps (up to 100 per user or org). Registration is a self-serve form; the registration doc mentions no review step. An app can be installable only on its own account or on any account. The Free plan lists GitHub Apps as \"Unlimited\". Org owners may restrict third-party OAuth apps or require approval. Some API features (e.g. certain org and enterprise endpoints) depend on paid plans.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Hundreds of REST endpoints, grouped by resource: repos, issues, PRs, actions, checks, orgs, users, packages and more. There is also a full GraphQL API (v4). GitHub publishes an OpenAPI description in github/rest-api-description.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Remote server at https://api.githubcopilot.com/mcp/, hosted by GitHub, with OAuth or PAT auth. Source is open at github.com/github/github-mcp-server, which can also be run locally.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blocker. GitHub Apps and OAuth apps are self-serve and free. Org owners may need to approve or install the app. There is no separate sandbox environment, but a free test account or org works as one.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+    "quote": "GitHub recommends that you use a fine-grained personal access token instead of a personal access token (classic)."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+    "quote": "You will use the app's client ID as the username and the app's client secret as the password."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+    "quote": "Authentication with username and password is not supported."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app",
+    "quote": "A user or organization can register up to 100 GitHub Apps."
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/pricing",
+    "quote": "Install apps that integrate directly with GitHub's API to improve development workflows."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.github.com/en/rest/about-the-rest-api/about-the-openapi-description-for-the-rest-api",
+    "quote": "GitHub's OpenAPI description of the REST API is publicly available."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.github.com/en/graphql/overview/about-the-graphql-api",
+    "quote": "The GitHub GraphQL API offers flexibility and the ability to define precisely the data you want to fetch."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.github.com/en/rest/about-the-rest-api/about-the-rest-api",
+    "quote": "the endpoints are categorized by the resource that they primarily affect."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/github/github-mcp-server",
+    "quote": "The remote GitHub MCP Server is hosted by GitHub and provides the easiest method for getting up and running."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.github.com/en/webhooks/about-webhooks",
+    "quote": "Webhooks provide a way for notifications to be delivered to an external web server whenever certain events occur on GitHub."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "api_styles",
+    "old": "rest, graphql, websocket",
+    "new": "rest, graphql",
+    "why": "GitHub has no public WebSocket API; its event push is webhooks. GraphQL is now confirmed from the GraphQL overview page."
+   },
+   {
+    "field": "access_notes",
+    "old": "From my own knowledge, not a page I fetched: free accounts can register OAuth apps and GitHub Apps with no review...",
+    "new": "Any personal account or org owner can register GitHub Apps (up to 100) through a self-serve form; the Free plan lists GitHub Apps as Unlimited...",
+    "why": "Replaced unsourced claims with what the registration doc and pricing page say."
+   },
+   {
+    "field": "evidence",
+    "old": "5 items; none for access, OpenAPI or GraphQL",
+    "new": "Added the access quotes (app registration doc, pricing page), the OpenAPI description page, the GraphQL overview, and the basic-auth quote",
+    "why": "Closes the automated check's gap for access and the agent's open questions. All original quotes were re-checked and are present on their pages."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...A GraphQL API also exists, but I did not fetch its docs.",
+    "new": "...Full GraphQL API (v4); OpenAPI description published in github/rest-api-description.",
+    "why": "Both are now verified from primary docs."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...basic auth for some app endpoints...",
+    "new": "Clarified that basic auth means an app's client ID and secret; noted that the MCP server accepts OAuth or a PAT",
+    "why": "Made precise using the quote on the auth page."
+   },
+   {
+    "field": "confidence.access / confidence.api",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Now backed by fetched primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "OpenAPI spec, GraphQL, free app registration and sandbox unverified",
+    "new": "",
+    "why": "All of these were checked. GitHub has no sandbox environment; free accounts serve as one."
+   }
+  ]
+ },
+ "human_fixes": []
+}

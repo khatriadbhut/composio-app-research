@@ -1,0 +1,141 @@
+{
+ "id": 99,
+ "slug": "youtube-transcript",
+ "app": "YouTube Transcript",
+ "category": "AI, Research and Media-native",
+ "hint": "transcriptapi.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Hosted REST API and MCP server for YouTube transcripts, search, channel and playlist data.",
+  "subcategory": "YouTube transcript/data API",
+  "auth_methods": [
+   "api_key"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API (base URL https://transcriptapi.com/api/v2) accepts only an API key, sent as \"Authorization: Bearer YOUR_API_KEY\". Keys are created in the dashboard. OAuth 2.1 exists only on the hosted MCP server, for the Claude and ChatGPT connectors. The REST docs do not offer OAuth to third-party apps. Each end user would supply their own key.",
+  "access": "self_serve_free",
+  "access_notes": "Signup gives 100 free credits and needs no card. The monthly plan is $5/month for 1,000 credits, with top-ups at $2.50 per 1K. The annual plan is $54/year, with top-ups at $1.50 per 1K. Rate limits are 200 RPM on monthly and 300 RPM on annual. Some endpoints cost no credits: info, channel/resolve and channel/latest.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "moderate",
+  "api_breadth_notes": "13 read-only GET endpoints:\n- /youtube/transcript\n- /youtube/info\n- /youtube/video/metadata\n- /youtube/search\n- /youtube/channel/resolve, info, search, videos, playlists, posts, sections, latest\n- /youtube/playlist/videos\n\nThe MCP server exposes 12 tools. The count sits at the low end of \"moderate\", and the API offers no write operations.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "The vendor hosts the server at https://transcriptapi.com/mcp. It takes OAuth 2.1 (Claude, ChatGPT) or an API key sent as a Bearer token, and exposes 12 tools, including get_youtube_transcript and search_youtube.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "The API is small, read-only and billed per credit. The 100 free credits cover development. A public OpenAPI 3.1 spec is published at /openapi.json.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "The API uses Bearer token authentication."
+   },
+   {
+    "field": "api",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "GET /youtube/channel/videos"
+   },
+   {
+    "field": "access",
+    "url": "https://transcriptapi.com",
+    "quote": "100 free credits to try the API — no card required"
+   },
+   {
+    "field": "mcp",
+    "url": "https://transcriptapi.com/docs/mcp/",
+    "quote": "OAuth 2.1 (Claude, ChatGPT) or an API key sent as a Bearer token (OpenAI Agent Builder and other clients)."
+   },
+   {
+    "field": "mcp",
+    "url": "https://transcriptapi.com",
+    "quote": "claude mcp add --transport http transcript-api https://transcriptapi.com/mcp"
+   },
+   {
+    "field": "api",
+    "url": "https://transcriptapi.com/openapi.json",
+    "quote": "YouTube Transcript API - Public"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[api_key, bearer_token, oauth2]",
+    "new": "[api_key]",
+    "why": "The REST docs show API-key-only auth. bearer_token double-counted the same key, which is sent as a Bearer header. OAuth 2.1 applies only to the MCP connectors, not the public REST API."
+   },
+   {
+    "field": "auth_notes",
+    "old": "REST uses a Bearer API key from the dashboard. The MCP server supports OAuth (Claude, ChatGPT)...",
+    "new": "States that REST accepts only an API key and that OAuth 2.1 is limited to the MCP server for the Claude and ChatGPT connectors.",
+    "why": "Makes clear that OAuth is not available to third-party REST apps."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "https://transcriptapi.com/openapi.json returns an OpenAPI 3.1.0 spec titled 'YouTube Transcript API - Public'."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "https://transcriptapi.com/mcp (OAuth or API key)",
+    "new": "Adds that it is vendor-hosted, uses OAuth 2.1 or a Bearer API key, and exposes 12 tools.",
+    "why": "Confirmed on the MCP docs page."
+   },
+   {
+    "field": "evidence (mcp)",
+    "old": "'MCP server: https://transcriptapi.com/mcp' on the landing page",
+    "new": "Quotes from /docs/mcp/ and the landing-page claude mcp add command",
+    "why": "The original quote was not found verbatim on the landing page."
+   },
+   {
+    "field": "evidence (access)",
+    "old": "New accounts get 100 free credits with no card required",
+    "new": "100 free credits to try the API — no card required",
+    "why": "Replaced with the exact text on the page."
+   },
+   {
+    "field": "evidence (auth)",
+    "old": "Authorization: Bearer YOUR_API_KEY",
+    "new": "The API uses Bearer token authentication.",
+    "why": "Replaced with a sentence quoted directly from the docs page."
+   },
+   {
+    "field": "access_notes",
+    "old": "...Rate limit is 200 requests/min on the monthly plan.",
+    "new": "Adds top-up prices, the annual plan's 300 RPM, and the free endpoints.",
+    "why": "Pricing details confirmed on the landing page and in the API docs."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "Confirmed on the vendor's MCP docs page."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "...No OpenAPI file was found, but the docs link a Swagger UI at /swagger.",
+    "new": "Adds the 100 free credits for development and notes that a public OpenAPI 3.1 spec is published at /openapi.json.",
+    "why": "Found the OpenAPI spec."
+   },
+   {
+    "field": "needs_human",
+    "old": "OpenAPI spec not confirmed; MCP URL and 100-free-credits claim came from fetch-tool summaries; MCP docs page not opened.",
+    "new": "",
+    "why": "All of these open questions were resolved from primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

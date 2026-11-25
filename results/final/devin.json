@@ -1,0 +1,123 @@
+{
+ "id": 96,
+ "slug": "devin",
+ "app": "Devin",
+ "category": "AI, Research and Media-native",
+ "hint": "docs.devin.ai (MCP)",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Autonomous AI software engineer from Cognition, controllable via REST API and MCP.",
+  "subcategory": "AI coding agent",
+  "auth_methods": [
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The v3 API takes `cog_`-prefixed credentials as Bearer tokens. Those are org-scoped or enterprise service-user API keys, or Personal Access Tokens that authenticate as the user. Enterprise keys and PATs need an X-Org-Id header on MCP. On enterprise accounts, PATs are disabled by default by an enterprise PAT policy, and when enabled they must have an expiration date. Teams accounts can create non-expiring PATs. Legacy `apk_`/`apk_user_` keys belong to the deprecated v1/v2 APIs and only work with the repo-documentation tools on MCP. The API index has no OAuth page, so there is no OAuth2 for third-party apps.",
+  "access": "paid_plan_required",
+  "access_notes": "The API docs offer two quick starts: Teams (\"For teams and standard organizations\") and Enterprise. Service users are created under Organization settings → Devin API (Teams) or Enterprise settings → Devin API. The Enterprise API (/v3/enterprise/*) is \"Available to enterprise customers.\" The pricing page lists Free ($0), Pro ($20), Max ($200), Teams ($80/mo) and Enterprise. It has a \"Devin API\" row, but the per-plan checkmarks did not come through when the page was extracted. No docs page says whether Free/Pro/Max can create API credentials. The docs point to Teams or higher, and sessions consume paid usage.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The API docs index has about 300 endpoint pages (about 235 v3, 50 v2, 20 v1). v3 covers sessions, attachments, Devin Review, knowledge notes, playbooks, secrets, repositories, snapshot setup, automations, schedules, git connections and permissions, metrics, consumption, audit logs, code scans, queue, hypervisors, users, roles, service users and keys, IDP groups, organizations, tags, IP access list and org settings. llms.txt publishes OpenAPI specs (YAML/JSON) for v1, v2 and v3. The MCP exposes about 20 tools.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "https://mcp.devin.ai/mcp (Streamable HTTP; legacy SSE is deprecated). It needs a `cog_` Devin API key as Bearer; enterprise keys and PATs also need X-Org-Id. Tools cover wiki (read_wiki_structure, ask_wiki_question, etc.), devin_session_create/search/interact/events/gather, playbooks, knowledge, schedules, integrations, MCP server management, automations, reviews, code scans and user list. A separate no-auth DeepWiki MCP is at https://mcp.deepwiki.com/.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Each customer has to create a service-user key or PAT in their own Teams/Enterprise org. There is no OAuth for multi-user distribution, and the Enterprise API is enterprise only. There are no outbound webhooks: the docs' \"webhook\" use case has the customer's ticketing system call the Devin API, so triggers would need polling of session events.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "quote": "Both scopes use service user credentials (`cog_` prefix)."
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.devin.ai/api-reference/personal-access-tokens.md",
+    "quote": "Non-enterprise (Teams) accounts may create non-expiring PATs."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "quote": "For teams and standard organizations"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.devin.ai/api-reference/overview",
+    "quote": "Available to enterprise customers."
+   },
+   {
+    "field": "mcp",
+    "url": "https://docs.devin.ai/work-with-devin/devin-mcp",
+    "quote": "Legacy API keys (`apk_` / `apk_user_` prefix) only work with the repository documentation tools"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.devin.ai/use-cases/gallery/api-webhook-custom-ticketing.md",
+    "quote": "Register its URL as a webhook in your ticketing system's notification or integration settings"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.devin.ai/llms.txt",
+    "quote": "OpenAPI Specs"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The pricing page has a \"Devin API\" row whose per-plan checkmarks are icons that text extraction can't read. A human should view devin.ai/pricing to confirm whether Pro/Max (or only Teams+) include API access.",
+  "changes": [
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "no",
+    "why": "The API index has no webhook pages. The only 'webhook' docs page is an inbound pattern in which the ticketing system calls Devin."
+   },
+   {
+    "field": "auth_notes",
+    "old": "v3 uses cog_ service user creds or PATs; apk_ legacy...",
+    "new": "Adds that PATs also use the cog_ prefix, the enterprise PAT policy (disabled by default, expiry required), that Teams can create non-expiring PATs, and that apk_ works only for wiki tools on MCP",
+    "why": "Verified on the PAT page and the MCP page"
+   },
+   {
+    "field": "access_notes",
+    "old": "Pricing page doesn't say which plan includes API; couldn't confirm Free",
+    "new": "The docs give Teams/Enterprise quick starts; the pricing page has a Devin API row whose plan values can't be extracted; the plan list is Free/Pro/Max/Teams/Enterprise",
+    "why": "Re-checked the pricing page and API overview; the first pass left out the Pro and Max plans"
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Docs list 'API (315 pages)'",
+    "new": "About 300 endpoint pages (about 235 v3), with the resource list",
+    "why": "Counted from the API index at docs.devin.ai/_llms/en/api.txt"
+   },
+   {
+    "field": "evidence",
+    "old": "auth quote 'service user credentials, which have a `cog_` prefix'; pricing quote 'Teams ($80/month)'",
+    "new": "Verbatim quotes from the overview, PAT, MCP and webhook use-case pages",
+    "why": "The original auth quote was not on the page"
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access low, api medium",
+    "new": "auth high, access medium, api high",
+    "why": "Auth and API were checked against the primary docs; access is still partly ambiguous"
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Webhook push not found",
+    "new": "No outbound webhooks; triggers would need polling",
+    "why": "Confirmed from the docs"
+   }
+  ]
+ },
+ "human_fixes": []
+}

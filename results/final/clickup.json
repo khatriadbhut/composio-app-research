@@ -1,0 +1,117 @@
+{
+ "id": 77,
+ "slug": "clickup",
+ "app": "ClickUp",
+ "category": "Productivity and Project Management",
+ "hint": "clickup.com/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Work management platform for tasks, docs, goals and team collaboration.",
+  "subcategory": "Project management",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Personal API token (starts with pk_, sent raw as `Authorization: {personal_token}`, never expires) for individual use. OAuth 2.0 authorization code grant for multi-user apps, sent as `Authorization: Bearer {access_token}`. OAuth access tokens currently don't expire, though the docs say this may change. Users pick which Workspaces to authorize. Only Workspace owners or admins can create OAuth apps.",
+  "access": "self_serve_free",
+  "access_notes": "Personal tokens and OAuth apps are self-serve. The authentication page mentions no app review, marketplace listing or approval process. Only Workspace owners or admins can create OAuth apps, which any free-workspace creator is. The Free Forever plan has API access. Rate limits are per token and depend on the plan: 100/min on Free Forever, Unlimited and Business; 1,000/min on Business Plus; 10,000/min on Enterprise.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API v2 plus v3. Covers tasks, lists, folders, spaces, comments, time tracking, goals, custom fields, webhooks, docs, chat and more. Endpoints were not counted exactly (the llms.txt fetch failed), but the published v2 and v3 OpenAPI specs cover well over 50 operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The URL is https://mcp.clickup.com/mcp. It supports OAuth only; personal API keys and OAuth access tokens are not accepted. It is available on all plans. The current docs page no longer says it is in beta.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "No blockers found. OAuth apps are self-serve and have no documented review. Limits on lower plans are 100 req/min per token, which is modest but workable.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.clickup.com/docs/authentication",
+    "quote": "Only Workspace owners or admins can create OAuth apps."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.clickup.com/docs/authentication",
+    "quote": "Personal tokens never expire."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.clickup.com/docs/rate-limits",
+    "quote": "The ClickUp API applies rate limits per token."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.clickup.com/docs/open-api-spec.md",
+    "quote": "The raw OpenAPI specification for the ClickUp API is available for each version of our Public API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.clickup.com/docs/webhooks",
+    "quote": "Each webhook event is signed with a shared secret that is unique to the webhook and returned when the webhook is created."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server.md",
+    "quote": "Our MCP server URL is https://mcp.clickup.com/mcp."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server.md",
+    "quote": "We only support OAuth for authentication."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The exact endpoint count is unverified because the llms.txt fetch hit a rate limit. Sandbox is marked \"no\" because there is no documented sandbox; a free workspace works as a de facto test environment.",
+  "changes": [
+   {
+    "field": "openapi_spec",
+    "old": "unknown",
+    "new": "yes",
+    "why": "The docs page open-api-spec lists official V2 JSON and V3 YAML OpenAPI specs."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "https://mcp.clickup.com/mcp. Uses OAuth, and personal tokens are not accepted. Public beta, available on all plans.",
+    "new": "The URL is https://mcp.clickup.com/mcp. It supports OAuth only; personal API keys and OAuth access tokens are not accepted. It is available on all plans. The current docs page no longer says it is in beta.",
+    "why": "I re-fetched the MCP page. The 'Public Beta' quote is not on the page now, so that evidence was unsupported. The URL, OAuth-only auth and all-plans availability are confirmed."
+   },
+   {
+    "field": "evidence",
+    "old": "MCP quote 'Public Beta: ClickUp's MCP server is currently in public beta'",
+    "new": "Verbatim quotes from the fetched MCP page, the OpenAPI page and the auth page",
+    "why": "The old MCP quote was not on the page. I added quotes I actually saw."
+   },
+   {
+    "field": "access_notes",
+    "old": "All plans including Free Forever have API access (100 req/min).",
+    "new": "Added the full per-plan rate limit table (100/1,000/10,000)",
+    "why": "The rate-limits page confirms the per-plan values."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, api medium, mcp medium",
+    "new": "access high, api high, mcp high",
+    "why": "These are now confirmed on fetched primary docs pages."
+   },
+   {
+    "field": "needs_human",
+    "old": "OpenAPI/MCP/app review open questions",
+    "new": "Only the exact endpoint count and the sandbox nuance remain open",
+    "why": "The other open questions are resolved by fetched primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

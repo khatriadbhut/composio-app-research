@@ -1,0 +1,156 @@
+{
+ "id": 1,
+ "slug": "salesforce",
+ "app": "Salesforce",
+ "category": "CRM and Sales",
+ "hint": "salesforce.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud CRM for sales, service and marketing, with a customizable data platform.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 through an External Client App (ECA). As of Spring '26, creating new Connected Apps is restricted by default in the UI and the Metadata API, except through package installation. Re-enabling it needs a Salesforce Support request. Existing Connected Apps keep working. ECAs support Authorization Code / Web Server (with PKCE), Client Credentials, JWT Bearer and Device flows. ECAs do NOT support the Username-Password or User-Agent flows. Each customer org has its own My Domain instance URL and login endpoint. The JWT bearer flow is listed as jwt_service_account. Client credentials is an OAuth2 grant. The first pass listed 'other', but nothing beyond OAuth was confirmed, so it was removed.",
+  "access": "self_serve_free",
+  "access_notes": "A free Developer Edition org gives API access for building and testing. API access is on by default in the Enterprise, Performance, Unlimited and Developer editions. Professional Edition needs the paid Web Services API add-on (the Additional API Calls product does not enable it). Users also need the 'API Enabled' permission, and orgs without API access return API_DISABLED_FOR_ORG. Customers' admins install ECAs into their orgs. AppExchange security review applies only to listing on AppExchange. Hosted MCP servers are GA for Enterprise Edition and above and included in Developer Edition. Salesforce's docs say they are intended for Flex Credits customers and that usage may be billed.",
+  "api_styles": [
+   "rest",
+   "graphql",
+   "soap",
+   "grpc",
+   "websocket"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API (sObject CRUD, describe, SOQL/SOSL query, composite), SOAP API, Bulk API 2.0, Metadata API, Tooling API, Connect REST, UI API, GraphQL API, Pub/Sub API (gRPC/HTTP2 for platform events and Change Data Capture) and the Streaming API (CometD). Hundreds of operations across all standard and custom objects. The OpenAPI 3.0 spec is a beta, generated per org for the sObjects REST API (POST /specifications/oas3), and Salesforce says not to build production integrations on it.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Salesforce Hosted MCP Servers (developer.salesforce.com/docs/platform/hosted-mcp-servers; GitHub forcedotcom/mcp-hosted) went GA on 2026-04-29, after a beta in October 2025. They cover standard servers (sObject operations, etc.) and custom servers, with per-user OAuth 2.0 + PKCE through an External Client App. Supported clients include Claude and ChatGPT. Available in Enterprise Edition and above, and included in Developer Edition. The docs say the servers are intended for Flex Credits customers and usage may be billed. There is also the open-source local Salesforce DX MCP server (forcedotcom/mcp).",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Developer Edition orgs are free and self-serve. To serve many customers, each org's admin must install or approve the External Client App, because ECAs don't exist in a target org until they are installed. Production orgs need an API-enabled edition (Professional Edition needs a paid add-on). Do not rely on the Username-Password flow, since ECAs don't support it. Event triggers come from Change Data Capture and Platform Events through the Pub/Sub API (gRPC) or CometD streaming, and from SOAP-based Outbound Messages. These are not simple JSON webhooks.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://www.salesforce.com/blog/architecting-inbound-governance-external-client-apps/",
+    "quote": "ECAs do not support the Username-Password or User-Agent flows."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.salesforce.com/blog/architecting-inbound-governance-external-client-apps/",
+    "quote": "JWT Bearer Flow provides a high-assurance mechanism for server-side integration."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.salesforce.com/blog/spring-26-release-architect-highlights/",
+    "quote": "restricts Connected App creation by default across both the UI and Metadata API."
+   },
+   {
+    "field": "buildability",
+    "url": "https://www.salesforce.com/blog/spring-26-release-architect-highlights/",
+    "quote": "They do not exist in a target org until installed."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.salesforce.com/docs/platform/api-rest/guide/intro-rest-compatible-editions.html",
+    "quote": "API access is enabled by default in Enterprise, Performance, Unlimited, and Developer Edition orgs."
+   },
+   {
+    "field": "api",
+    "url": "https://trailhead.salesforce.com/content/learn/modules/api_basics/api_basics_streaming",
+    "quote": "Pub/Sub API is based on gRPC and HTTP/2 and uses a pull-based model so you can control the subscription flow."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://trailhead.salesforce.com/content/learn/modules/api_basics/api_basics_streaming",
+    "quote": "With Change Data Capture, you get changes of records of all supported changed fields."
+   },
+   {
+    "field": "mcp",
+    "url": "https://github.com/forcedotcom/mcp-hosted",
+    "quote": "Hosted MCP servers are now generally available (GA)."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "developer.salesforce.com still returns HTTP 403 to automated fetch. The editions quote (access) and the OpenAPI beta details come from search-result snippets of developer.salesforce.com pages, not fetched pages. Check them in a browser. Also confirm how Hosted MCP Flex Credits billing applies (the docs say it is for Flex Credits customers, but a Developer Edition blog says DE access is at no cost).",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[oauth2, jwt_service_account, other]",
+    "new": "[oauth2, jwt_service_account]",
+    "why": "No non-OAuth method was confirmed. 'other' had no support."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...username-password (testing only)... exact flow list comes from memory",
+    "new": "ECAs support Web Server+PKCE, Client Credentials, JWT Bearer and Device. They do not support Username-Password or User-Agent.",
+    "why": "The Salesforce architect blog says ECAs do not support the Username-Password or User-Agent flows."
+   },
+   {
+    "field": "access_notes",
+    "old": "Production orgs need API-enabled editions (Enterprise and above, or an add-on)... MCP billed only for Flex Credits customers",
+    "new": "Added that Professional Edition needs the Web Services API add-on, the API Enabled permission and the API_DISABLED_FOR_ORG error. Clarified MCP availability (EE+ and DE) and the Flex Credits wording.",
+    "why": "More precise per the REST editions doc and the MCP GA sources."
+   },
+   {
+    "field": "api_styles",
+    "old": "[rest, graphql, soap, websocket]",
+    "new": "[rest, graphql, soap, grpc, websocket]",
+    "why": "Pub/Sub API is gRPC-based (Trailhead)."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...Based on my knowledge, not verified from fetched pages.",
+    "new": "Same API list, plus a note that the OpenAPI spec is a per-org generated beta for sObjects REST.",
+    "why": "Pub/Sub was verified on Trailhead. The OpenAPI beta status was found in Salesforce docs search results."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "A blog post dated April 2026 says they are GA...",
+    "new": "GA 2026-04-29, EE+ and DE, per-user OAuth+PKCE, GitHub forcedotcom/mcp-hosted, Flex Credits billing note",
+    "why": "GA was confirmed on the vendor's GitHub repo. Edition availability came from the vendor blog in search results."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "...outbound messages, not plain HTTP webhooks.",
+    "new": "Added that ECAs must be installed per org, the Professional Edition add-on, and that the username-password flow is unavailable.",
+    "why": "Verified from the Spring '26 architect blog and the ECA governance blog."
+   },
+   {
+    "field": "evidence",
+    "old": "4 developer.salesforce.com quotes (pages return 403, quotes unverifiable)",
+    "new": "Quotes from fetched salesforce.com blogs, Trailhead and GitHub, plus one editions snippet",
+    "why": "The original evidence URLs could not be opened (403), so their quotes are unsupported."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth high, access medium, api high, mcp high, buildability high",
+    "why": "Most claims are now backed by fetched primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "Verify the OAuth flows, OpenAPI, webhooks and editions",
+    "new": "Only the editions/OpenAPI snippets and the MCP Flex Credits billing still need a check",
+    "why": "The other items were verified."
+   },
+   {
+    "field": "what_it_does",
+    "old": "Salesforce CRM platform for sales, service and marketing, with extensive APIs and customizable objects.",
+    "new": "Cloud CRM for sales, service and marketing, with a customizable data platform.",
+    "why": "Shortened to under 15 words."
+   }
+  ]
+ },
+ "human_fixes": []
+}

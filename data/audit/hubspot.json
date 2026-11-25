@@ -1,93 +1,105 @@
 {
-  "slug": "hubspot",
-  "app": "HubSpot",
-  "labels": {
-    "auth_methods": [
-      "oauth2",
-      "bearer_token",
-      "api_key"
-    ],
-    "auth_primary": "oauth2",
-    "access": "self_serve_free",
-    "api_styles": [
-      "rest"
-    ],
-    "api_breadth": "broad",
-    "mcp": "official_remote",
-    "buildability": "ready_now",
-    "main_blocker": "none"
+ "slug": "hubspot",
+ "app": "HubSpot",
+ "labels": {
+  "auth_methods": [
+   "oauth2",
+   "bearer_token",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "access": "self_serve_free",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "mcp": "official_remote",
+  "buildability": "ready_now",
+  "main_blocker": "none"
+ },
+ "evidence": {
+  "auth": [
+   {
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+    "quote": "OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account at a time."
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+    "quote": "Service keys provide a way to query HubSpot's REST APIs directly without having to use the CLI or other platform developer tools first."
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+    "quote": "Some app features and settings require a developer API key, which is available in the developer overview of your HubSpot account."
+   }
+  ],
+  "access": [
+   {
+    "url": "https://developers.hubspot.com/developer-platform-basics",
+    "quote": "You can create a free HubSpot account and build apps without a paid subscription."
+   },
+   {
+    "url": "https://developers.hubspot.com/developer-platform-basics",
+    "quote": "API access to HubSpot’s public APIs for development and testing"
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
+    "quote": "Privately distributed apps | (Any Hub)  Free and Starter | 100 / app | 250,000 / account"
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+    "quote": "If you choose this option, you can install your app in a maximum of 10 accounts at a time."
+   }
+  ],
+  "api": [
+   {
+    "url": "https://developers.hubspot.com/docs/_llms/apis.txt",
+    "quote": "Account & Settings, App Management, Authentication, Automation, CMS, Communication preferences, Conversations, CRM, Data studio, Events, Files, Marketing, Meetings, Revenue, Webhooks, Webhooks journal."
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/build-with-ai/remote-mcp-server",
+    "quote": "It enables an agent to read, write, and update HubSpot records (contacts, companies, deals, tickets, and more) as a user would."
+   }
+  ],
+  "mcp": [
+   {
+    "url": "https://developers.hubspot.com/docs/build-with-ai/remote-mcp-server",
+    "quote": "The remote HubSpot MCP server is a publicly hosted endpoint for connecting external AI tools and applications to HubSpot's CRM."
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/build-with-ai/remote-mcp-server",
+    "quote": "Enter the HubSpot MCP server URL provided by HubSpot (`https://mcp.hubspot.com`)."
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-the-remote-hubspot-mcp-server",
+    "quote": "PKCE is required for authenticating with HubSpot's MCP server."
+   }
+  ],
+  "buildability": [
+   {
+    "url": "https://developers.hubspot.com/developer-platform-basics",
+    "quote": "You can create a free HubSpot account and build apps without a paid subscription."
+   },
+   {
+    "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/listing-your-app/app-marketplace-listing-requirements",
+    "quote": "App listing submissions are manually reviewed by the HubSpot Ecosystem Quality team"
+   }
+  ]
+ },
+ "uncertain": {
+  "access": "Docs confirm free account + free developer/test accounts with API access, and that Marketplace LISTING is manually reviewed (and needs 3 active installs). I did not find an explicit statement that an unlisted app with distribution='marketplace' can be OAuth-installed by arbitrary accounts without review; I believe it can (listing is optional), hence self_serve_free rather than approval_required. Worth a browser check.",
+  "auth_methods": "Developer API key (hapikey query param) only covers some app-management endpoints; static auth tokens and service keys are both Bearer tokens. Graders may reasonably omit api_key."
+ },
+ "notes": "HubSpot also publishes a separate local Developer MCP server (CLI-based) besides the remote mcp.hubspot.com; remote one requires OAuth with PKCE via an 'MCP connector' created in the HubSpot account. Usage guidelines list API rate limits for the Free tier, confirming API works on free CRM. API docs index lists ~1,182 pages for the 2026-09 API version alone. A web search snippet (HubSpot changelog, not opened) says the remote MCP server went GA effective April 13, 2026.",
+ "human": {
+  "overrides": {
+   "access": "approval_required",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "app_review"
   },
-  "evidence": {
-    "auth": [
-      {
-        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
-        "quote": "OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account at a time."
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
-        "quote": "Service keys provide a way to query HubSpot's REST APIs directly without having to use the CLI or other platform developer tools first."
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
-        "quote": "Some app features and settings require a developer API key, which is available in the developer overview of your HubSpot account."
-      }
-    ],
-    "access": [
-      {
-        "url": "https://developers.hubspot.com/developer-platform-basics",
-        "quote": "You can create a free HubSpot account and build apps without a paid subscription."
-      },
-      {
-        "url": "https://developers.hubspot.com/developer-platform-basics",
-        "quote": "API access to HubSpot’s public APIs for development and testing"
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines",
-        "quote": "Privately distributed apps | (Any Hub)  Free and Starter | 100 / app | 250,000 / account"
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
-        "quote": "If you choose this option, you can install your app in a maximum of 10 accounts at a time."
-      }
-    ],
-    "api": [
-      {
-        "url": "https://developers.hubspot.com/docs/_llms/apis.txt",
-        "quote": "Account & Settings, App Management, Authentication, Automation, CMS, Communication preferences, Conversations, CRM, Data studio, Events, Files, Marketing, Meetings, Revenue, Webhooks, Webhooks journal."
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/build-with-ai/remote-mcp-server",
-        "quote": "It enables an agent to read, write, and update HubSpot records (contacts, companies, deals, tickets, and more) as a user would."
-      }
-    ],
-    "mcp": [
-      {
-        "url": "https://developers.hubspot.com/docs/build-with-ai/remote-mcp-server",
-        "quote": "The remote HubSpot MCP server is a publicly hosted endpoint for connecting external AI tools and applications to HubSpot's CRM."
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/build-with-ai/remote-mcp-server",
-        "quote": "Enter the HubSpot MCP server URL provided by HubSpot (`https://mcp.hubspot.com`)."
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-the-remote-hubspot-mcp-server",
-        "quote": "PKCE is required for authenticating with HubSpot's MCP server."
-      }
-    ],
-    "buildability": [
-      {
-        "url": "https://developers.hubspot.com/developer-platform-basics",
-        "quote": "You can create a free HubSpot account and build apps without a paid subscription."
-      },
-      {
-        "url": "https://developers.hubspot.com/docs/apps/developer-platform/list-apps/listing-your-app/app-marketplace-listing-requirements",
-        "quote": "App listing submissions are manually reviewed by the HubSpot Ecosystem Quality team"
-      }
-    ]
-  },
-  "uncertain": {
-    "access": "Docs confirm free account + free developer/test accounts with API access, and that Marketplace LISTING is manually reviewed (and needs 3 active installs). I did not find an explicit statement that an unlisted app with distribution='marketplace' can be OAuth-installed by arbitrary accounts without review; I believe it can (listing is optional), hence self_serve_free rather than approval_required. Worth a browser check.",
-    "auth_methods": "Developer API key (hapikey query param) only covers some app-management endpoints; static auth tokens and service keys are both Bearer tokens. Graders may reasonably omit api_key."
-  },
-  "notes": "HubSpot also publishes a separate local Developer MCP server (CLI-based) besides the remote mcp.hubspot.com; remote one requires OAuth with PKCE via an 'MCP connector' created in the HubSpot account. Usage guidelines list API rate limits for the Free tier, confirming API works on free CRM. API docs index lists ~1,182 pages for the 2026-09 API version alone. A web search snippet (HubSpot changelog, not opened) says the remote MCP server went GA effective April 13, 2026."
+  "notes": {
+   "access": "browser check (Chrome): Docs: 'Marketplace OAuth app prior to listing: can be installed in up to 25 accounts'; unlimited only after marketplace listing review. The auditor missed the install cap. (https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution)",
+   "buildability": "browser check (Chrome): Follows from the 25-install cap before listing. (https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution)",
+   "main_blocker": "browser check (Chrome): Marketplace listing review lifts the cap. (https://developers.hubspot.com/docs/apps/developer-platform/build-apps/manage-apps-in-hubspot#distribution)"
+  }
+ }
 }

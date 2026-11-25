@@ -1,0 +1,184 @@
+{
+ "id": 82,
+ "slug": "plaid",
+ "app": "Plaid",
+ "category": "Finance and Fintech",
+ "hint": "plaid.com/docs",
+ "pass": 2,
+ "at": "2026-11-25T03:54:54.355Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/api/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/account/billing/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/resources/mcp/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/api/webhooks/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/quickstart/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/account/activity/"
+  },
+  {
+   "tool": "WebSearch",
+   "arg": "Plaid docs \"Production access\" request review company profile security questionnaire launch checklist"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/launch-checklist/"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://plaid.com/docs/link/oauth/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Financial data API linking bank accounts: transactions, balances, identity, payments, income.\",\"subcategory\":\"Open banking / financial data agg"
+  }
+ ],
+ "cost_usd": 0.2447478,
+ "duration_ms": 71727,
+ "turns": 12,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Financial data API linking bank accounts: transactions, balances, identity, payments, income.",
+  "subcategory": "Open banking / financial data aggregation",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The core API uses a team-level client_id and secret, sent in the request body or as PLAID-CLIENT-ID and PLAID-SECRET headers. Each end user connects a bank through Plaid Link, which produces a per-Item access_token used in later calls. OAuth (client_credentials grant via /oauth/token, scope mcp:dashboard) is documented only for the Dashboard MCP server. Plaid does not act as an OAuth provider that lets third-party apps act for Plaid customers. OAuth in Link refers to bank-side OAuth connections.",
+  "access": "approval_required",
+  "access_notes": "Sandbox keys are self-serve on Dashboard signup. Live data needs Production access, which is requested in the Dashboard (\"To view pricing, apply for Production access\"). Plaid then notifies the team when Production is enabled. US/CA teams must also complete a risk and security questionnaire before accessing certain bank APIs, and OAuth institutions have registration requirements; Schwab can take up to 5 business days after approval. Plans: free Trial (10 Production Items, US/Canada teams created on or after 2026-04-15), Pay-as-you-go, Growth (annual minimum), and Custom/Scale. EU/UK customers can only use Custom plans.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Products include Link, Auth, Transactions, Balance, Identity, Assets, Investments, Liabilities, Income, Transfer, Identity Verification, and others. This is well over 50 endpoints, but I did not count them exactly. A full OpenAPI spec is published in github.com/plaid/plaid-openapi.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Dashboard MCP server: https://api.dashboard.plaid.com/mcp/ (Streamable HTTP, Bearer token from /oauth/token with the client_credentials grant and mcp:dashboard scope). It works with Production data only and requires Production approval. It covers Dashboard and diagnostic tasks, not end-user financial data. Plaid also offers a local MCP server in its AI coding toolkit, which provides mock data, docs search, Sandbox tokens, and webhook simulation.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Sandbox is self-serve. Live bank data requires Production enablement by Plaid. Some bank APIs also need the security questionnaire and institution registration. Each end user must link accounts through Plaid Link. Credentials are per developer team, and there is no third-party OAuth, so a multi-tenant toolkit would need customers to supply their own client_id and secret plus Item access_tokens.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://plaid.com/docs/api/",
+    "quote": "Almost all Plaid API endpoints require a `client_id` and `secret`."
+   },
+   {
+    "field": "auth",
+    "url": "https://plaid.com/docs/api/",
+    "quote": "These may be sent either in the request body or in the headers `PLAID-CLIENT-ID` and `PLAID-SECRET`."
+   },
+   {
+    "field": "api",
+    "url": "https://plaid.com/docs/api/",
+    "quote": "The Plaid API is specified in our Plaid OpenAPI GitHub repo."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://plaid.com/docs/api/webhooks/",
+    "quote": "Webhooks are typically configured via the `webhook` parameter of /link/token/create."
+   },
+   {
+    "field": "mcp",
+    "url": "https://plaid.com/docs/resources/mcp/",
+    "quote": "The Dashboard MCP server works with Production data only."
+   },
+   {
+    "field": "mcp",
+    "url": "https://plaid.com/docs/resources/mcp/",
+    "quote": "the mcp:dashboard scope and the client_credentials grant type"
+   },
+   {
+    "field": "access",
+    "url": "https://plaid.com/docs/account/billing/",
+    "quote": "To view pricing, apply for Production access."
+   },
+   {
+    "field": "access",
+    "url": "https://plaid.com/docs/account/billing/",
+    "quote": "Free Trial plans are available to new Plaid teams (US/Canada only) created on or after April 15, 2026."
+   },
+   {
+    "field": "access",
+    "url": "https://plaid.com/docs/link/oauth/",
+    "quote": "You must complete a questionnaire about your company's risk and security practices before accessing certain bank APIs."
+   },
+   {
+    "field": "buildability",
+    "url": "https://plaid.com/docs/link/oauth/",
+    "quote": "Plaid will contact you once your account has been enabled for Production."
+   },
+   {
+    "field": "buildability",
+    "url": "https://plaid.com/docs/quickstart/",
+    "quote": "Get started with test credentials and life-like data"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The exact criteria and turnaround for the Production review are not public. They are handled in the Dashboard Launch Center, behind a login.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "...Whether the application is reviewed is unclear.",
+    "new": "Production is enabled by Plaid after a request; US/CA security questionnaire and institution registration required for some bank APIs; Growth and Custom plans listed.",
+    "why": "The Link OAuth docs say 'Plaid will contact you once your account has been enabled for Production' and require a risk/security questionnaire, so a review is confirmed."
+   },
+   {
+    "field": "evidence",
+    "old": "No webhooks evidence; access evidence from the billing page only",
+    "new": "Added quotes from the webhooks page, Link OAuth docs, and MCP scope/Production-only text",
+    "why": "Webhooks=yes was not sourced before. The webhooks page now confirms it."
+   },
+   {
+    "field": "confidence.access",
+    "old": "medium",
+    "new": "high",
+    "why": "The review requirement is now confirmed by primary docs."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "The MCP docs page confirms the URL, auth, scope, and the Production-only restriction."
+   },
+   {
+    "field": "needs_human",
+    "old": "Webhooks page not opened; Production review unconfirmed",
+    "new": "Only the exact review criteria and timing remain unverified (they sit behind a login)",
+    "why": "Webhooks and the existence of a review are now verified."
+   }
+  ]
+ },
+ "flags_given": "- agent's open question: I did not open the webhooks docs page. The webhooks=yes answer comes from my knowledge of Plaid, not from a page I fetched. I also could not confirm whether Production approval involves a real review or what its criteria are."
+}

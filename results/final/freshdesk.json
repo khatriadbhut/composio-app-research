@@ -1,0 +1,152 @@
+{
+ "id": 13,
+ "slug": "freshdesk",
+ "app": "Freshdesk",
+ "category": "Support and Helpdesk",
+ "hint": "freshdesk.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud customer support helpdesk and ticketing platform from Freshworks.",
+  "subcategory": "Helpdesk",
+  "auth_methods": [
+   "api_key",
+   "basic"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "The REST API uses each agent's personal API key, sent as HTTP Basic auth (key as username, any placeholder as password, Base64-encoded). Endpoints carry 'OAuth 2.0 Scope' labels, but there is no third-party OAuth flow for Freshdesk. On the Freshworks developer forum, a Freshworks responder said in March 2025 that OAuth shipped only for Freshchat and is 'not planned yet' for Freshdesk. The official MCP endpoint also takes an API key only. A multi-user toolkit needs each user's API key plus their account subdomain.",
+  "access": "self_serve_trial",
+  "access_notes": "The API docs are public, and any account, trials included, can generate an API key. The 14-day trial gives Enterprise-level access with a 50 calls/min API limit. The current pricing page lists only paid plans: Growth $19, Pro $55 and Enterprise $89 per agent per month, billed annually. It shows no free plan. Freshdesk's own help article says the old free Sprout plan had no API access. So ongoing API use needs a paid plan, and outside the trial a developer cannot get keys for free. Some features are gated by plan: the Trigger API automation action needs Pro or above, and the sandbox is Enterprise-only.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The docs cover tickets (including watchers, merge, archive, summaries and user access), ticket fields and forms, conversations, outbound messages, contacts, contact fields, agents, service accounts, skills, roles, groups, companies, custom objects, canned responses, discussions, solutions, CSAT surveys, field service, time entries, email configs and mailboxes, products, business hours, scenario automations, SLA policies, automations, settings, threads and the audit log. That is well over 50 operations.",
+  "openapi_spec": "unknown",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Freshworks hosts an official MCP server at https://<subdomain>.freshdesk.com/mcp. It became generally available on September 10, 2026, authenticates with an API key only and does not work on custom domains. It is available on the Growth (25 actions/min, 1,200 actions/yr), Pro (50/min, 6,000/yr) and Enterprise (100/min, 12,000/yr) plans. It offers 37 tools covering tickets, conversations, contacts, agents, groups, companies and solutions. Community and commercial alternatives: effytech/freshdesk_mcp, Enreign/freshdeck-mcp, Workato and CData.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The REST API is public and broad, with per-user API keys. Caveats: there is no OAuth, so users must paste a key and subdomain. There is no free tier with API access; the 14-day trial works for development, but lasting test access needs a paid plan. Rate limits are per account and depend on the plan. The sandbox is Enterprise-only. Webhooks can only be set up by an admin inside automation rules; there is no API to subscribe to them.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "You can use your personal API key to authenticate the request."
+   },
+   {
+    "field": "auth",
+    "url": "https://community.freshworks.dev/t/how-to-use-oauth-authentication-mechanism-for-freshdesk-api/1691",
+    "quote": "The OAuth support is released only for the Freshchat product. For Freshdesk, it’s not planned yet."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "For all trial users, there is a default API limit of 50 calls/minute."
+   },
+   {
+    "field": "access",
+    "url": "https://support.freshdesk.com/support/solutions/articles/50000001047-do-we-have-api-and-integration-capabilities-in-the-free-sprout-plan-",
+    "quote": "No, the access to Freshdesk APIs and the integration capabilities is not available in the free Sprout plan."
+   },
+   {
+    "field": "access",
+    "url": "https://www.freshworks.com/freshdesk/pricing/",
+    "quote": "you instantly get access to our Enterprise plan for 14 days."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.freshdesk.com/support/solutions/articles/50000012670",
+    "quote": "Starting September 10, 2026, the Freshworks MCP integration is generally available."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.freshdesk.com/support/solutions/articles/50000012670",
+    "quote": "Freshdesk allows you to authenticate requests involved in MCP integration by using an API key only."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://support.freshdesk.com/en/support/solutions/articles/132589",
+    "quote": "Under Action, select the Trigger Webhook or Trigger API option."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "The free-plan evidence refers to the legacy 'Sprout' plan. The current pricing page shows no free plan, but a human should confirm whether any current free offering includes API access. The last ~40k characters of the API docs were not read, so the OpenAPI spec status is still unconfirmed. The pricing page marks the sandbox as Enterprise-only; it is not a free developer sandbox.",
+  "changes": [
+   {
+    "field": "mcp",
+    "old": "community_only",
+    "new": "official_remote",
+    "why": "Freshdesk's support article documents an official hosted MCP endpoint at https://<subdomain>.freshdesk.com/mcp, generally available from Sept 10, 2026."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Community servers only; no Freshworks-published MCP server found",
+    "new": "Official remote endpoint described, with plans, limits and tools; community servers kept as alternatives",
+    "why": "Official server found and verified."
+   },
+   {
+    "field": "webhooks",
+    "old": "unknown",
+    "new": "yes",
+    "why": "Freshdesk automation rules support Trigger Webhook and Trigger API actions on the Growth, Pro and Enterprise plans."
+   },
+   {
+    "field": "sandbox",
+    "old": "unknown",
+    "new": "no",
+    "why": "The pricing page lists the sandbox only on the Enterprise plan; there is no free developer sandbox, only the 14-day trial."
+   },
+   {
+    "field": "access_notes",
+    "old": "No plan requirement found; free plan not checked",
+    "new": "Trial gives the API; no free plan with API; ongoing use needs a paid plan",
+    "why": "The pricing page shows only paid plans, and Freshdesk's help article says the free Sprout plan had no API access."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "Outside the 14-day trial, API access needs a paid plan, and there is no OAuth."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "paid_plan",
+    "why": "There is no free tier with API access."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth finding based on community answers",
+    "new": "Adds a Freshworks forum responder's March 2025 statement that OAuth shipped only for Freshchat, not Freshdesk; MCP is also API-key only",
+    "why": "The forum thread was re-read and its most recent statement quoted."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote and community auth quote not found on their pages",
+    "new": "Replaced with quotes I actually saw on the pages",
+    "why": "The automated check flagged both quotes as unsupported."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "Confirmed on Freshdesk's own support site."
+   },
+   {
+    "field": "confidence.auth",
+    "old": "medium",
+    "new": "high",
+    "why": "The API docs plus a statement from a Freshworks forum responder confirm there is no OAuth."
+   }
+  ]
+ },
+ "human_fixes": []
+}

@@ -9,9 +9,9 @@ developer can get credentials alone, the API surface, any MCP server, and a
 buildability verdict, every answer tied to a quote from the page it came from.
 Then three loops try to prove it wrong.
 
-[![Case study](https://img.shields.io/badge/case%20study-live-2f4fd1.svg)](https://khatriadbhut.github.io/composio-app-research/)
+[![Case study](https://img.shields.io/badge/case%20study-live-2f4fd1.svg)](https://adbhutkhatri.me/composio-app-research/)
 [![Apps](https://img.shields.io/badge/apps-100-brightgreen.svg)](docs/data/apps.csv)
-[![Accuracy](https://img.shields.io/badge/audited%20accuracy-{{ACC_BADGE}}-brightgreen.svg)](#how-it-checks-itself)
+[![Accuracy](https://img.shields.io/badge/audited%20accuracy-78%25%E2%86%9288%25-brightgreen.svg)](#how-it-checks-itself)
 [![Node](https://img.shields.io/badge/node-%E2%89%A522-brightgreen.svg)](https://nodejs.org)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](package.json)
 [![LLM](https://img.shields.io/badge/LLM-Claude%20Code%20headless-8957e5.svg)](#requirements)
@@ -52,9 +52,9 @@ Then three loops try to prove it wrong.
 </tr>
 </table>
 
-On the audited sample, the research agent alone was right on **{{ACC_P1}}** of
-fields. After the loops, **{{ACC_FINAL}}**. The
-[case study](https://khatriadbhut.github.io/composio-app-research/) shows every
+On the audited sample, the research agent alone was right on **78%** (124/160) of
+fields. After the loops, **88%** (140/160). The
+[case study](https://adbhutkhatri.me/composio-app-research/) shows every
 audited cell, hit or miss.
 
 ---
@@ -97,7 +97,7 @@ catalog, verifier, score, then the page.
 </table>
 
 Then open `docs/index.html`, or the
-[live copy](https://khatriadbhut.github.io/composio-app-research/).
+[live copy](https://adbhutkhatri.me/composio-app-research/).
 
 <details>
 <summary><b>More on running it</b> — one stage at a time, other apps, cost</summary>
@@ -121,7 +121,7 @@ npm run build                        #            docs/index.html, docs/data/app
 `category` and a `hint`, the docs URL or a few words that pin down which
 product you mean.
 
-**Cost:** {{COST_LINE}}
+**Cost:** the research pass used $9.06 of model usage (54 agent-minutes, 727 tool calls) and the Opus verifier $28.29, as API-equivalent prices. On a Claude Code subscription those come out of your plan's usage, and the full run took two limit resets. Every stage skips what is already on disk, so an interrupted run continues where it stopped.
 
 Research sessions run with your user-level settings switched off
 (`--setting-sources project`), so your own hooks and plugins don't fire a
@@ -168,7 +168,25 @@ all label against the same rubric.
 
 ## How it checks itself
 
-{{LOOPS_SECTION}}
+Four checks, each built to catch a different kind of mistake. Numbers are from the run in `results/`.
+
+| loop | catches | result |
+| --- | --- | --- |
+| **1 · evidence check** | invented or paraphrased quotes, dead links, records that contradict themselves | 348 of 462 quotes found on their page in pass 1; 75 records flagged, covering 14 of the 16 audited apps that had any error |
+| **2 · Composio catalog** | auth methods the agent missed | 79 of the 100 are already Composio toolkits; auth agreed on 77/79 after pass 1, 79/79 after verification |
+| **3 · verifier** | wrong facts, outdated MCP status, misread gates | changed a graded answer on 63 records; on the audit sample it fixed 18 cells and broke 2 |
+| **4 · adjudication** | disagreements between the pipeline and the auditors | 27 disputed cells settled in a browser or by a human: auditor right 19, pipeline right 7, neither 1 |
+
+**Measured accuracy** on the seeded sample of 20 apps × 8 fields: **78% → 88%**
+(124/160 → 140/160), research agent alone versus after the automated loops.
+The 20 cells still wrong were then settled by hand. That isn't counted as
+accuracy, because a person fixed exactly those cells.
+
+The misses left after loop 3 clustered in one place, the gate between building
+and distributing: Front, Lark and Discord let anyone build, but other customers
+can connect only after a review. That became a fifth, deterministic check, a
+consistency rule in `src/finalize.mjs` and `src/check-evidence.mjs`, which
+corrected 5 more records outside the sample.
 
 <details>
 <summary><b>How the audit stays independent</b></summary>
@@ -189,14 +207,38 @@ two names for one thing.
 
 ## Where a human was needed
 
-{{HUMAN_SECTION}}
+Every place a person stepped in is logged, with the page that decided it, in
+[`data/disputes.json`](data/disputes.json) and [`data/human-fixes.json`](data/human-fixes.json).
+
+- **Judgment calls.** Some cells have no single fact behind them. Discord hosts an MCP
+  endpoint it never documents (ruled official), and Discord's and Lark's app tokens are
+  bot identities (ruled `bot_token`).
+- **Pages only a browser renders.** Meta's Threads MCP docs, HubSpot's install limits
+  and Front's publishing rules were read in Chrome. HubSpot's page settled a dispute
+  against the auditor: OAuth apps are capped at 25 installs until marketplace review.
+- **Product identity.** iPayX, Paygent Connect and Sherlock each matched more than one
+  product. The hint in the request list decided it.
+- **Login walls.** fanbasis issues API keys only after an admin approves a request,
+  which can only be seen from inside its portal.
 
 ## Findings
 
-{{FINDINGS_SECTION}}
+- **94 of 100 can be toolkits today; 33 with no caveat.** 4 need a partnership or a
+  sales conversation (DealCloud, Gladly, Salesforce Commerce Cloud, Ramp), and 2 have no
+  API at all (Sherlock, Mermaid CLI).
+- **OAuth2 dominates.** 78 apps offer it, and it is the primary method for 63. Most also
+  accept an API key or a personal token, the quick path for a prototype.
+- **The usual blocker is app review, not access.** 31 apps let a developer build for free
+  but put a review between the app and other customers' accounts: Meta, Google Ads,
+  LinkedIn, Intuit, Shopify, Zendesk, HubSpot. Composio's own docs note that its managed
+  HubSpot OAuth app is still waiting on HubSpot's approval.
+- **Vendors are shipping MCP servers.** 86 of the 100 publish an official one, most of
+  them hosted with OAuth. Composio already wraps four of them (Pylon, Netlify, Otter, Devin).
+- **79 are already Composio toolkits.** Of the 21 that aren't, the ones ready now are the
+  easy wins. The partner- and sales-gated ones are a business-development list.
 
 The full table, with the evidence for every cell, is in the
-[case study](https://khatriadbhut.github.io/composio-app-research/#findings), and
+[case study](https://adbhutkhatri.me/composio-app-research/#findings), and
 as [JSON](docs/data/apps.json) and [CSV](docs/data/apps.csv).
 
 ## Files

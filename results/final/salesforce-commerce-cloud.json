@@ -1,0 +1,146 @@
+{
+ "id": 44,
+ "slug": "salesforce-commerce-cloud",
+ "app": "Salesforce Commerce Cloud",
+ "category": "Ecommerce",
+ "hint": "developer.salesforce.com/docs/commerce",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Salesforce B2C Commerce Cloud: enterprise ecommerce platform with Shopper and Admin REST APIs (SCAPI).",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "jwt_service_account"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Admin APIs: API clients are created in Account Manager. They use the client_credentials grant with client_secret_basic (the default), or private_key_jwt for certificate-based JWT Bearer authentication. The client also needs the 'Salesforce Commerce API' role with a tenant filter, plus sfcc.* scopes. Browser sign-in uses Authorization Code + PKCE, and the implicit flow is deprecated. Shopper APIs use SLAS (OAuth 2.1) tokens, either guest or registered, with PKCE for public clients or a secret for private clients. Each merchant tenant (short code, org/tenant ID) needs its own API client.",
+  "access": "contact_sales",
+  "access_notes": "You need a licensed B2C Commerce tenant (realm). Salesforce's Commerce pricing page lists B2C as 'Contact for pricing' and shows no free trial for B2C. The only no-cost offer is Commerce Foundations, which is CRM-embedded and needs Sales/Service Enterprise Edition. On-demand sandboxes are only available inside a licensed realm (or a partner realm through the Salesforce partner program). There is no self-serve developer tier.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "SCAPI has two parts. The Shopper APIs cover products, search, baskets, checkout, orders, customers, promotions and SLAS. The Admin APIs cover catalogs, products, inventory, pricing, promotions, orders, customers, CDN zones, SLAS admin and others. Legacy OCAPI is also available. The official B2C DX MCP docs say 'SCAPI code mode' exposes nearly 600 Commerce API operations.",
+  "openapi_spec": "yes",
+  "webhooks": "unknown",
+  "mcp": "official_local",
+  "mcp_notes": "Official local server: npm package @salesforce/b2c-dx-mcp, run with npx -y @salesforce/b2c-dx-mcp@latest. Salesforce's PWA Kit docs title it 'B2C DX MCP Server (Developer Preview)'. It is developer-focused: docs search, cartridge/MRT deploy, debugging, WebDAV, CIP analytics, and SCAPI Admin and Shopper calls (~600 operations). Salesforce also offers a vendor-hosted B2C Commerce MCP Shopper Service (SSE, SLAS tokens) that is pilot-only, with access through your Salesforce account executive. Community servers exist (e.g. sfcc-dev-mcp, Cequence AI gateway).",
+  "sandbox": "yes",
+  "buildability": "needs_partnership_or_sales",
+  "main_blocker": "enterprise_sales",
+  "blocker_notes": "The API is public, well documented and has OpenAPI specs. However, you can only get a tenant or sandbox to build and test against through a Salesforce license (contact for pricing) or a partner realm. There is no free developer tier. Even with a tenant, each merchant has to provision its own Account Manager or SLAS client and share its tenant IDs, so there is no central OAuth app for multi-user connection. I could not confirm native outbound webhooks.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "quote": "For client credentials with secrets, use `client_secret_basic` (the default)."
+   },
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "quote": "private_key_jwt for JWT Bearer authentication (certificate-based)"
+   },
+   {
+    "field": "auth",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/guide/authentication.md",
+    "quote": "Assign the `Salesforce Commerce API` role to your API client with appropriate tenant filter"
+   },
+   {
+    "field": "access",
+    "url": "https://www.salesforce.com/commerce/pricing/",
+    "quote": "Contact for pricing"
+   },
+   {
+    "field": "mcp",
+    "url": "https://salesforcecommercecloud.github.io/b2c-developer-tooling/mcp",
+    "quote": "MCP (Model Context Protocol) | Agentic B2C Developer Toolkit"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/mcp-dx-intro.html",
+    "quote": "Build B2C Storefronts Faster with the B2C DX MCP Server (Developer Preview)"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/mcp-shopper-tools.html",
+    "quote": "Agentic MCP Shopper Tools Quick Start (Pilot)"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/references/scapi-schemas",
+    "quote": "scapi schemas"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "developer.salesforce.com and npmjs.com returned 403, so the following come from search-result titles or snippets and the GitHub-hosted tooling docs: the SCAPI schema/OpenAPI page, the Developer Preview label, and the shopper MCP pilot pages. Please confirm two things: (1) whether B2C Commerce offers any native outbound webhooks or event notifications for SCAPI (none found; integrations seem to rely on server-side hooks and jobs); (2) whether the Salesforce partner program gives ISVs a self-serve sandbox realm, which would downgrade the blocker from sales to partnership.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "paid_plan_required",
+    "new": "contact_sales",
+    "why": "Salesforce's Commerce pricing page lists B2C as 'Contact for pricing'. It has no self-serve paid plan and no B2C trial."
+   },
+   {
+    "field": "main_blocker",
+    "old": "paid_plan",
+    "new": "enterprise_sales",
+    "why": "You can only get a tenant through a sales-negotiated license (or a partner realm). There is no purchasable plan."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_with_caveats",
+    "new": "needs_partnership_or_sales",
+    "why": "Without a sales contract or partner realm there is nothing to build or test against, and no free developer tier exists."
+   },
+   {
+    "field": "evidence",
+    "old": "auth quotes paraphrased and not on page; mcp quote 'Developer Preview' not on tooling page; no access evidence",
+    "new": "Verbatim quotes from the auth page, pricing page, MCP page title and Salesforce doc titles",
+    "why": "The automated check flagged the quotes as not found. I replaced them with text I actually saw."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Claimed implicit deprecated, PKCE etc. based on search summaries",
+    "new": "Same substance, now grounded in verified tooling-doc text; added Authorization Code + PKCE browser sign-in",
+    "why": "Verified on the authentication guide."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Operation count likely well over 100 but not counted",
+    "new": "Official MCP docs cite nearly 600 Commerce API operations",
+    "why": "The b2c-developer-tooling MCP page gives a count."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Shopper Tools server pilot-only (no detail)",
+    "new": "Added that the shopper MCP is vendor-hosted (SSE, SLAS tokens), pilot-only and gated by an account executive; Developer Preview label sourced to the PWA Kit doc title",
+    "why": "The 'Developer Preview' text is not on the tooling page. It appears in the Salesforce doc title."
+   },
+   {
+    "field": "confidence.auth",
+    "old": "medium",
+    "new": "high",
+    "why": "Auth details confirmed on the official tooling docs."
+   },
+   {
+    "field": "confidence.access",
+    "old": "low",
+    "new": "medium",
+    "why": "The pricing page confirms contact-for-pricing."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "The npm package and MCP docs were confirmed on the official GitHub-hosted site."
+   }
+  ]
+ },
+ "human_fixes": []
+}

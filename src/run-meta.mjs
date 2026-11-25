@@ -26,6 +26,20 @@ const inC = comp.filter((c) => c.in_composio);
 const pct = (x) => (x == null ? "?" : (x * 100).toFixed(0) + "%");
 const after = score?.passes?.pass2;
 
+const cf = J("results/checks-final.json", {});
+const evf = Object.values(cf).flatMap((o) => o.evidence ?? []);
+const compF = J("results/composio-final.json");
+const inF = compF ? Object.values(compF.apps).filter((c) => c.in_composio) : [];
+const cells = score?.cells ?? [];
+const cell = (p, s, f) => cells.find((c) => c.pass === p && c.slug === s && c.field === f);
+const p1cells = cells.filter((c) => c.pass === "pass1");
+const loopFixed = p1cells.filter((c) => !c.ok && cell("pass2", c.slug, c.field)?.ok).length;
+const loopBroke = p1cells.filter((c) => c.ok && !cell("pass2", c.slug, c.field)?.ok).length;
+const sampleSlugs = J("data/audit-sample.json").apps;
+const errApps = new Set(p1cells.filter((c) => !c.ok).map((c) => c.slug));
+const flaggedErr = [...errApps].filter((s) => checks[s]?.flags?.length).length;
+const winners = disputes.reduce((m, d) => ((m[d.winner] = (m[d.winner] ?? 0) + 1), m), {});
+const final = dirRecs("results/final");
 const meta = {
   run_date: (p1.map((r) => r.at).sort()[0] ?? new Date().toISOString()).slice(0, 10),
   p1_calls: sum(p1, "turns") && p1.reduce((s, r) => s + (r.trace?.length ?? 0), 0),
@@ -42,6 +56,15 @@ const meta = {
   l2_in: inC.length, l2_agree: inC.filter((c) => c.agrees).length, l2_size: composio?.catalog_size ?? null,
   l3_changed: changedGraded.length, l3_field_changes: fieldChanges,
   audit_n: score?.sample_size ?? 0, disputes: disputes.length,
+  d_audit: winners.audit ?? 0, d_pipeline: winners.pipeline ?? 0, d_neither: winners.neither ?? 0,
+  loop_fixed: loopFixed, loop_broke: loopBroke, still_wrong: cells.filter((c) => c.pass === "pass2" && !c.ok).length,
+  err_apps: errApps.size, flagged_err: flaggedErr,
+  l1f_flagged: Object.values(cf).filter((o) => o.flags?.length).length, l1f_flags: Object.values(cf).reduce((n, o) => n + (o.flags?.length ?? 0), 0),
+  l1f_found: evf.filter((e) => e.match === "verbatim" || e.match === "close").length, l1f_checked: evf.filter((e) => e.status === "ok").length,
+  l2f_agree: inF.filter((c) => c.agrees).length,
+  human_fixes: final.reduce((n, r) => n + (r.human_fixes ?? []).filter((h) => h.by !== "consistency rule").length, 0),
+  rule_fixes: final.reduce((n, r) => n + (r.human_fixes ?? []).filter((h) => h.by === "consistency rule").length, 0),
+  low_conf: final.filter((r) => Object.values(r.record.confidence).includes("low")).length,
   acc_p1: pct(score?.passes?.pass1?.accuracy), acc_after: pct(after?.accuracy),
   acc_p1_n: `${score?.passes?.pass1?.right}/${score?.passes?.pass1?.total}`, acc_after_n: `${after?.right}/${after?.total}`,
 };

@@ -1,0 +1,133 @@
+{
+ "id": 47,
+ "slug": "ecwid",
+ "app": "Ecwid",
+ "category": "Ecommerce",
+ "hint": "api-docs.ecwid.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Lightspeed-owned hosted ecommerce platform that embeds online stores in any site.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Public apps use the OAuth2 authorization-code flow. The token exchange is POST https://my.ecwid.com/api/oauth/token with client_id, client_secret, code, redirect_uri and grant_type=authorization_code. The GET variant was discontinued in March 2025. REST calls send the token as an HTTP bearer header; the OpenAPI scheme is bearerFormat secret_token. Passing tokens in query params was discontinued in March 2025. Tokens are per app per store and do not expire. Each store has a secret_token for server use and a public_token that is safe for the storefront. Custom (private) apps let a store owner get tokens from Ecwid admin > Custom apps without the OAuth flow.",
+  "access": "paid_plan_required",
+  "access_notes": "Only stores on paid plans can use the API. Ecwid no longer lists a free plan: Starter costs $5/month, Venture $35, Business $65 and Unlimited $149. Developers can email Ecwid for a free paid-plan upgrade on a test store, so building is effectively free but needs that support step. Listing a public App Market app needs a submission review (typically 1-2 business days), approval for every update, and a signed partner contract with revenue share. The pricing page lists \"Access to App Market\" under Venture, so merchants on Starter may not be able to install public apps (unverified).",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST API v3 at https://app.ecwid.com/api/v3/{storeId}. It covers store profile, products (about 50 endpoint pages), categories, orders (about 26), customers, discount coupons, shipping and payment options, Instant Site (about 30), dictionaries and more. The docs' llms.txt lists roughly 200 endpoint-level pages; that is an estimate, not an exact count.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no official Ecwid or Lightspeed MCP server for the store API. The GitBook docs site has a docs-search MCP endpoint at docs.ecwid.com/~gitbook/mcp, but it only searches documentation and is not an API server. Third-party MCP servers exist from Zapier (zapier.com/mcp/ecwid), viaSocket, Truto, Jentic, Unified.to and Mushrooms.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "A toolkit acting for many merchants needs a public OAuth app. That means App Market review (1-2 business days, with every update re-approved) and a partner contract with revenue share. Development works on a test store after emailing support for a free paid-plan upgrade. Only paid-plan merchants can use the API.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://docs.ecwid.com/develop-apps/app-settings.md",
+    "quote": "You can get access tokens for your store without going through oAuth flow"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.ecwid.com/changelog/march-2025/march-20/oauth-for-public-apps-get-request-type-changed-to-post.md",
+    "quote": "Request must call `https://my.ecwid.com/api/oauth/token` with a URL-encoded request body."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+    "quote": "Only stores on paid plans can access API."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ecwid.com/get-started/set-up-your-dev-environment-in-ecwid.md",
+    "quote": "Email us to get a free plan upgrade for your test store."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.ecwid.com/launch-apps/faq-about-public-applications.md",
+    "quote": "Typically, the review of an app submission request takes 1-2 business days."
+   },
+   {
+    "field": "buildability",
+    "url": "https://docs.ecwid.com/launch-apps/faq-about-public-applications.md",
+    "quote": "a developer should sign a partner contract which includes a revenue-sharing model"
+   },
+   {
+    "field": "api",
+    "url": "https://docs.ecwid.com/api-reference/openapi/orders.md",
+    "quote": "\"type\":\"http\",\"scheme\":\"bearer\",\"bearerFormat\":\"secret_token\""
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ecwid.com/webhook-automations/webhook-automations-overview.md",
+    "quote": "Ecwid webhooks are automatic real-time notifications for apps about different events in the store."
+   },
+   {
+    "field": "mcp",
+    "url": "https://zapier.com/mcp/ecwid",
+    "quote": "Ecwid by Lightspeed MCP"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Check whether a merchant on the $5 Starter plan can install public App Market apps; the pricing page lists App Market access under Venture. The OpenAPI spec is embedded inline in each GitBook section, not published as one downloadable file. I did not verify the Zapier quote word for word on its page.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "approval_required",
+    "new": "paid_plan_required",
+    "why": "The docs say \"Only stores on paid plans can access API.\" Ecwid lists no free plan; the cheapest is $5/month Starter. A developer can still get a token without review through a custom app, so app review gates distribution, not access. That belongs in main_blocker."
+   },
+   {
+    "field": "openapi_spec",
+    "old": "no",
+    "new": "yes",
+    "why": "docs.ecwid.com/api-reference/openapi/* pages embed OpenAPI definitions, including the server URL and a bearerToken security scheme. The old GitHub markdown repo is legacy; its README points to the current docs."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth endpoints unverified",
+    "new": "Token endpoint POST https://my.ecwid.com/api/oauth/token confirmed; bearer header; query-param tokens discontinued",
+    "why": "Confirmed in the March 2025 changelog and the OpenAPI security scheme."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "operations not counted",
+    "new": "about 200 endpoint pages, by llms.txt estimate",
+    "why": "Counted from the docs index."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Zapier, Truto, viaSocket, Vinkius",
+    "new": "Adds Jentic, Unified.to and Mushrooms; notes the GitBook docs-search MCP is not an API server",
+    "why": "The docs site exposes a GitBook MCP that could be mistaken for an official API MCP."
+   },
+   {
+    "field": "evidence",
+    "old": "api evidence quoted GitHub repo text that was not on the page",
+    "new": "Replaced with a quote from the OpenAPI docs page and added verbatim OAuth and access quotes",
+    "why": "The automated check found the api quote was not on the GitHub page."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth, access, api, buildability high; mcp medium",
+    "why": "These fields are now verified against primary docs."
+   }
+  ]
+ },
+ "human_fixes": []
+}

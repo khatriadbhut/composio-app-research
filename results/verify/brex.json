@@ -1,0 +1,173 @@
+{
+ "id": 88,
+ "slug": "brex",
+ "app": "Brex",
+ "category": "Finance and Fintech",
+ "hint": "developer.brex.com",
+ "pass": 2,
+ "at": "2026-11-25T03:55:38.449Z",
+ "ok": true,
+ "trace": [
+  {
+   "tool": "ToolSearch",
+   "arg": "select:WebFetch,WebSearch"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.brex.com/docs/authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.brex.com/guides/partner_authentication"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.brex.com/docs/mcp"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.brex.com/openapi/webhooks_api"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://www.brex.com/pricing"
+  },
+  {
+   "tool": "WebFetch",
+   "arg": "https://developer.brex.com/"
+  },
+  {
+   "tool": "StructuredOutput",
+   "arg": "{\"what_it_does\":\"Corporate cards, spend management, expenses, bill pay and business banking platform.\",\"subcategory\":\"Corporate cards / spend management\",\"auth_"
+  }
+ ],
+ "cost_usd": 0.1845426,
+ "duration_ms": 56004,
+ "turns": 9,
+ "model": "opus",
+ "error": null,
+ "record": {
+  "what_it_does": "Corporate cards, spend management, expenses, bill pay and business banking platform.",
+  "subcategory": "Corporate cards / spend management",
+  "auth_methods": [
+   "bearer_token",
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "User token (Bearer): created by an account admin or card admin under Developer > Settings with chosen scopes. It expires after 90 days unused or when the user becomes inactive. Partner OAuth2: Authorization Code Grant (PKCE optional) for all APIs except onboarding, which uses Client Credentials. The client ID and secret are issued by Brex developer support. The remote MCP server uses OAuth with Dynamic Client Registration (RFC 7591), so its clients need no pre-registration.",
+  "access": "partner_gated",
+  "access_notes": "The API itself comes with the free Essentials plan ($0/user/month; the pricing page lists \"Brex API access\"). Any Brex customer's admin can self-create a user token after accepting the developer API agreement. A Brex business account is still required. Multi-tenant OAuth apps need a client ID and secret that only Brex developer support issues (the partner route). Customer tokens are production-only. Partners get a staging environment.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "10 APIs: Accounting, Budgets, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel and Webhooks. The Webhooks API alone has 13 operations: subscriptions, secrets and groups. The full operation count was not tallied but is very likely 50+.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "https://api.brex.com/mcp (Beta). Uses OAuth with DCR. An account or card admin must accept the Developer API agreement and enable the \"Brex in AI assistants\" beta under Settings → Beta features.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "partnership",
+  "blocker_notes": "A multi-user OAuth toolkit needs partner client credentials from Brex developer support. Fallback: each customer pastes an admin-created user token, which works on the free Essentials plan but only for Brex customers. The staging sandbox is only for partners, has no availability guarantees and may be purged. The customer API is production-only. The official MCP (OAuth + DCR) is beta and must be enabled per company.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developer.brex.com/docs/authentication",
+    "quote": "User tokens will expire if they are not used to make an API call for 90 days."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.brex.com/docs/authentication",
+    "quote": "Brex currently only offers a production API server"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.brex.com/guides/partner_authentication",
+    "quote": "contact our developer support team"
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.brex.com/guides/partner_authentication",
+    "quote": "For all other APIs, you will implement the Authorization Code Grant"
+   },
+   {
+    "field": "access",
+    "url": "https://www.brex.com/pricing",
+    "quote": "Brex API access"
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.brex.com/docs/mcp",
+    "quote": "The server supports Dynamic Client Registration (RFC 7591), so MCP clients don't need to be pre-registered."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.brex.com/docs/mcp",
+    "quote": "The server is hosted at https://api.brex.com/mcp"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.brex.com/openapi/webhooks_api",
+    "quote": "Webhooks API"
+   },
+   {
+    "field": "api",
+    "url": "https://developer.brex.com/",
+    "quote": "defined using the OpenAPI specification"
+   },
+   {
+    "field": "buildability",
+    "url": "https://developer.brex.com/guides/partner_authentication",
+    "quote": "Use staging for point-in-time testing only."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "Choosing between access=partner_gated and self_serve_free is a judgment call. Brex customers get API access free on Essentials, but public multi-user OAuth needs credentials from developer support. Check how long partner onboarding takes and whether a non-customer developer can get staging access.",
+  "changes": [
+   {
+    "field": "access_notes",
+    "old": "A Brex account admin can self-create a user token under Developer > Settings after accepting the API agreement, but that needs a Brex customer account. OAuth client ID/secret ... (partner program). Production-only for customer tokens; staging exists for partners.",
+    "new": "Notes that the API is included on the free Essentials plan ($0, 'Brex API access'). Account admins or card admins can create tokens.",
+    "why": "The pricing page confirms that API access comes with the $0 Essentials tier. The first pass did not check pricing."
+   },
+   {
+    "field": "auth_notes",
+    "old": "admin-created user token ... partner OAuth2 authorization code (client credentials for onboarding API)...",
+    "new": "Adds that card admins can also create tokens, that tokens die when the user becomes inactive, that PKCE is optional, and that DCR follows RFC 7591.",
+    "why": "Precision from the auth, partner and MCP doc pages."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Multiple APIs: Team, Transactions, Payments/transfers, Budgets, Expenses, Accounting, Onboarding, Webhooks, etc. Exact operation count not confirmed.",
+    "new": "10 APIs listed: Accounting, Budgets, Expenses, Fields, Onboarding, Payments, Team, Transactions, Travel, Webhooks. Webhooks API has 13 operations.",
+    "why": "Verified on the developer.brex.com index and the Webhooks API reference."
+   },
+   {
+    "field": "evidence",
+    "old": "webhooks quote 'Webhooks API (0.1)'",
+    "new": "webhooks quote 'Webhooks API', plus pricing, OAuth grant, MCP URL and OpenAPI quotes",
+    "why": "The automated check flagged the old quote as not found verbatim. The page title is 'Webhooks API', with the version shown separately. Added quotes I verified."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Multi-user OAuth needs partner credentials... Staging is partner-oriented, purgeable and has no guarantees. The first-party MCP is beta.",
+    "new": "Adds the per-customer token fallback on the free plan and the per-company MCP beta enablement.",
+    "why": "Clarifies the caveats using the pricing and MCP docs."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm partner OAuth onboarding process and free sandbox... webhook event list and API op count not verified...",
+    "new": "Partner onboarding turnaround and non-customer staging access only.",
+    "why": "Webhook events (8 types), the API list and the production-vs-staging split are now verified. Production-only applies to customer tokens. Staging is in the partner guide."
+   }
+  ]
+ },
+ "flags_given": "- quote for webhooks not found on https://developer.brex.com/openapi/webhooks_api\n- agent's open question: Confirm the partner OAuth onboarding process and whether a free sandbox is available without being a Brex customer. Authentication doc says production only, while partner guide lists staging. Webhook event list and API operation count not verified. Some quotes are from search-result titles or fetch "
+}

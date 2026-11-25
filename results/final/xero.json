@@ -1,0 +1,148 @@
+{
+ "id": 87,
+ "slug": "xero",
+ "app": "Xero",
+ "category": "Finance and Fintech",
+ "hint": "developer.xero.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud accounting software for small businesses: invoicing, bank feeds, payroll, reporting.",
+  "subcategory": "Accounting",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Every API request goes through Xero's OAuth 2.0 gateway. Multi-user apps use the authorization code flow, with PKCE also supported (the Remote MCP FAQ confirms PKCE). Custom Connections use the OAuth 2.0 client_credentials grant and work for a single organisation only, so they are a variant of OAuth 2.0 rather than a separate method. I found no API keys or personal access tokens. Webhook payloads are signed with an HMAC in the x-xero-signature header, but that covers webhook verification, not API auth. The developer.xero.com OAuth pages are rendered client-side and returned no body text, so I took the auth evidence from Xero's official xero-node SDK README.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can create an app on the free Starter tier: up to 5 connections, no charge, no payment method, and 1,000 calls per day per organisation. Core (A$35/mo, 50 connections), Plus (A$245, 1,000), Advanced (A$1,445, 10,000) and Enterprise (price on application) require a registered credit card. App Certification and a Security Assessment (initial and annual) are listed as prerequisites, but the page text does not map them cleanly to tiers. App Store listing is not applicable on Starter and Core, optional on Plus and Advanced, and required on Enterprise. The Journal endpoint, the XPM API and Bulk Connections need a security assessment and use-case approval. Xero's official Remote MCP is included on Core and above; Starter apps can only use it with the demo organisation.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Xero publishes OpenAPI 3.0 specs for Accounting, Identity, Bank Feeds, Fixed Assets, Projects, Payroll AU, Payroll UK, Payroll NZ and Files. The repo also holds specs for Finance, App Store, Account Data and Webhooks. The official SDK claims \"full method coverage\" for the Accounting, Assets, Bankfeeds, Files, Projects and Payroll (AU, NZ, UK) API sets. I did not count operations exactly, but the Accounting API alone covers invoices, contacts, payments, bank transactions, accounts, journals, quotes, credit notes, items, tracking and reports, which is well over 50 operations.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Xero hosts an official Developer Remote MCP at https://api.xero.com/mcp/v1. It authenticates with OAuth 2.0 plus PKCE, reads and writes Xero data, and is included on Core and above (Starter apps get the demo organisation only). Xero also publishes a local server, XeroAPI/xero-mcp-server (MIT, npm @xeroapi/xero-mcp-server, 51 tools), which authenticates with either a Custom Connection or a bearer token. A directory lists a separate endpoint, mcp.xero.com/mcp, but I could not confirm it on Xero's own site.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "Building and testing are free on Starter, but Starter caps an app at 5 connected organisations and 1,000 calls per day per organisation. Serving many end users needs Core (A$35/mo, 50 connections) or higher. That means a credit card, egress billing (A$2.40/GB over the allotment), and, at higher tiers, App Certification and an annual Security Assessment. Core and above allow 5,000 calls per day per organisation. Some premium endpoints (Journals, XPM, Bulk Connections) need extra approval.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/pricing",
+    "quote": "Payments are accepted via registered credit card."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/faq/remote-mcp",
+    "quote": "Apps on the Starter plan can use it with the demo organisation only."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.xero.com/faq/remote-mcp",
+    "quote": "The Developer Remote MCP is for developers & builders building custom agents and apps."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developer.xero.com/faq/remote-mcp",
+    "quote": "https://api.xero.com/mcp/v1"
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.xero.com/faq/remote-mcp",
+    "quote": "The server authorises through Xero's OAuth 2.0 flow with PKCE, so your client needs to be able to start that flow."
+   },
+   {
+    "field": "auth",
+    "url": "https://raw.githubusercontent.com/XeroAPI/xero-node/master/README.md",
+    "quote": "All API requests go through Xero's OAuth2.0 gateway and require a valid `access_token` to be set on the `client`"
+   },
+   {
+    "field": "auth",
+    "url": "https://raw.githubusercontent.com/XeroAPI/xero-node/master/README.md",
+    "quote": "Custom Connections are only valid for a single organisation"
+   },
+   {
+    "field": "api",
+    "url": "https://raw.githubusercontent.com/XeroAPI/xero-node/master/README.md",
+    "quote": "This SDK supports full method coverage for the following Xero API sets:"
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/XeroAPI/Xero-OpenAPI",
+    "quote": "An OpenAPI description of the Xero API"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-webhooks.yaml",
+    "quote": "The Xero Webhooks API exposes event notifications relating to entities in the Xero Public API"
+   },
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md",
+    "quote": "This is a Model Context Protocol (MCP) server implementation for Xero."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The pricing page's tier table came back from the fetch tool as a reformatted summary rather than verbatim rows, so tier prices and limits are reliable but not quoted verbatim. Someone should check on the live developer.xero.com/pricing page which tiers require App Certification and the Security Assessment. Also confirm whether mcp.xero.com/mcp (listed by a directory as read-only) is a separate Xero product from api.xero.com/mcp/v1.",
+  "changes": [
+   {
+    "field": "mcp",
+    "old": "official_local",
+    "new": "official_remote",
+    "why": "Xero's developer FAQ documents a vendor-hosted Developer Remote MCP at https://api.xero.com/mcp/v1 using OAuth 2.0 with PKCE. The local XeroAPI/xero-mcp-server also exists and is kept in the notes."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Local npx server only, official status unverified",
+    "new": "Remote MCP at api.xero.com/mcp/v1 (Core and above, Starter limited to the demo org), plus the local XeroAPI/xero-mcp-server with 51 tools",
+    "why": "Verified on the developer.xero.com FAQ and on the GitHub repo under the XeroAPI org."
+   },
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\",\"other\"]",
+    "new": "[\"oauth2\"]",
+    "why": "Custom Connections use the OAuth 2.0 client_credentials grant (xero-node README), so they are not a separate method. No API keys or personal access tokens exist."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Built from the agent's own knowledge; Custom Connections described as a separate method",
+    "new": "Supported by the SDK README and the Remote MCP FAQ; Custom Connections described as the client_credentials grant for a single org",
+    "why": "Replaced the unsourced claims with what the primary sources say."
+   },
+   {
+    "field": "access_notes",
+    "old": "Certification-to-tier mapping unclear, relied on a third-party summary",
+    "new": "Added the full tier ladder, rate limits, App Store requirement by tier, premium-endpoint approvals and Remote MCP plan gating",
+    "why": "Re-read the pricing page and the Remote MCP FAQ."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Listed the APIs from memory, no evidence",
+    "new": "Listed the APIs from the official OpenAPI repo and the SDK README",
+    "why": "The automated check flagged that there was no API evidence."
+   },
+   {
+    "field": "evidence",
+    "old": "Five quotes, all failing verbatim checks",
+    "new": "Quotes taken from pages I fetched (pricing, Remote MCP FAQ, xero-node README, Xero-OpenAPI repo, webhooks spec, MCP README)",
+    "why": "The original quotes were paraphrases that were not on the pages."
+   },
+   {
+    "field": "confidence",
+    "old": "all medium",
+    "new": "auth high, access medium, api high, mcp high, buildability high",
+    "why": "The claims are now backed by primary sources. Access stays medium because the certification-to-tier mapping is still unclear."
+   }
+  ]
+ },
+ "human_fixes": []
+}

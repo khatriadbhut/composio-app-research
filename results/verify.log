@@ -1,1 +1,25 @@
 verify: 24 apps, model opus
+[1/24] ok   Stripe                     8 changes: auth_notes, access_notes, api_breadth_notes, mcp_notes, blocker_notes, evidence, confidence, needs_human
+[2/24] ok   Harvest                    9 changes: webhooks, what_it_does, auth_notes, access_notes, evidence, blocker_notes, confidence.access, confidence.buildability, needs_human
+[3/24] ok   Monday.com                 11 changes: mcp, mcp_notes, access_notes, evidence.api quote, evidence.access, evidence.auth quote, evidence.mcp, blocker_notes, confidence, needs_human, auth_notes
+[4/24] ok   Smartsheet                 6 changes: sandbox, access_notes, mcp_notes, blocker_notes, confidence, evidence
+[5/24] ok   Binance                    9 changes: mcp, mcp_notes, access_notes, auth_notes, buildability, main_blocker, evidence, confidence, needs_human
+[6/24] ok   Plaid                      5 changes: access_notes, evidence, confidence.access, confidence.mcp, needs_human
+[7/24] ok   Paygent Connect            7 changes: auth_methods, access, mcp, evidence, confidence.access, what_it_does, needs_human
+[8/24] ok   Coda                       7 changes: auth_methods, auth_notes, access_notes, api_breadth_notes, mcp_notes, evidence, confidence
+[9/24] ok   iPayX                      5 changes: api_styles, sandbox, mcp_notes, evidence, confidence
+[10/24] ok   Brex                       6 changes: access_notes, auth_notes, api_breadth_notes, evidence, blocker_notes, needs_human
+[11/24] ok   QuickBooks                 8 changes: mcp, mcp_notes, access_notes, openapi_spec, what_it_does, evidence, confidence.buildability, blocker_notes
+[12/24] ok   Xero                       8 changes: mcp, mcp_notes, auth_methods, auth_notes, access_notes, api_breadth_notes, evidence, confidence
+[13/24] ok   NotebookLM                 7 changes: access, api_breadth_notes, evidence, mcp_notes, auth_notes, blocker_notes, what_it_does
+[14/24] ok   Otter AI                   8 changes: access, access_notes, main_blocker, blocker_notes, mcp_notes, evidence, confidence, needs_human
+[15/24] ok   Ramp                       11 changes: access_notes, buildability, main_blocker, blocker_notes, mcp_notes, api_breadth_notes, evidence, auth_notes, confidence.access, confidence.api, needs_human
+[16/24] ok   PitchBook                  9 changes: auth_notes, api_breadth, api_breadth_notes, buildability, access_notes, mcp_notes, evidence, confidence, what_it_does
+[17/24] ok   Fathom                     10 changes: access, main_blocker, api_styles, api_breadth_notes, auth_notes, what_it_does, mcp_notes, evidence, confidence, blocker_notes
+[18/24] ok   Reducto                    7 changes: auth_methods, sandbox, evidence, access_notes, mcp_notes, confidence, needs_human
+[19/24] ok   Consensus                  7 changes: auth_notes, access_notes, api_breadth_notes, mcp_notes, blocker_notes, evidence, confidence.auth/mcp
+[20/24] ok   YouTube Transcript         11 changes: auth_methods, auth_notes, openapi_spec, mcp_notes, evidence (mcp), evidence (access), evidence (auth), access_notes, confidence.mcp, blocker_notes, needs_human
+[21/24] ok   higgsfield                 10 changes: auth_methods, auth_notes, api_styles, api_breadth_notes, openapi_spec, sandbox, mcp_notes, evidence, needs_human, confidence
+[22/24] ok   Mermaid CLI                6 changes: api_breadth, evidence[what_it_does].quote, evidence[mcp], evidence[access], mcp_notes, needs_human
+[23/24] ok   Grain                      8 changes: auth_notes, access_notes, api_breadth_notes, openapi_spec, main_blocker, evidence, mcp_notes, confidence
+[24/24] ok   Devin                      7 changes: webhooks, auth_notes, access_notes, api_breadth_notes, evidence, confidence, blocker_notes

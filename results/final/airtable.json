@@ -1,0 +1,135 @@
+{
+ "id": 72,
+ "slug": "airtable",
+ "app": "Airtable",
+ "category": "Productivity and Project Management",
+ "hint": "airtable.com/developers",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Spreadsheet-database platform for building collaborative apps, workflows and tables.",
+  "subcategory": "Database / no-code app platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 uses the authorization code flow with PKCE (code_challenge is the SHA-256 of code_verifier). Access tokens expire after 60 minutes. Refresh tokens are valid for 60 days and rotate on each use, so authorizations can be refreshed indefinitely. Personal access tokens are scoped by permission and by base or workspace, are created at /create/tokens, and are sent as Bearer tokens. Enterprise admins can create PATs for service accounts. Legacy user API keys can no longer be created.",
+  "access": "self_serve_free",
+  "access_notes": "Any account, free ones included, can create PATs and register OAuth integrations. No plan restriction is stated for PATs. Before other users can authorize an OAuth integration, the developer must add a support email, privacy policy URL and terms of service URL. The OAuth guide mentions no review or approval step. Usage is capped by plan: Free allows 1,000 API calls per workspace per month, Team 100,000, and Business is unlimited. Rate limits are 5 req/s per base and 50 req/s per user for PAT traffic. Enterprise-admin, SCIM, audit-log and eDiscovery endpoints need Enterprise Scale.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The developer llms.txt index lists about 98 endpoint pages. They cover records CRUD and CSV sync, attachment upload, comments, bases, tables, fields and views metadata, webhooks (6 operations), collaborators, invites, shares and workspaces, HyperDB, plus enterprise users, audit logs, eDiscovery and SCIM. About half are Enterprise-only admin endpoints. The core data API is about 30-40 operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Airtable hosts an official MCP server at https://mcp.airtable.com/mcp. It authenticates with OAuth or a PAT and is available on all plans (support article \"Using the Airtable MCP server\"). Community servers also exist, such as domdomegg/airtable-mcp-server.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There is no blocker for building. Users on the Free plan are capped at 1,000 API calls per workspace per month, which limits heavy agent use. Webhooks created with PAT or OAuth tokens expire after 7 days unless refreshed or their payloads are listed. Webhook notifications are pings containing only the base and webhook IDs, so payloads must be fetched separately. Airtable publishes no official OpenAPI spec. There is no dedicated sandbox, so a free account serves as the dev environment.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://airtable.com/developers/web/api/introduction",
+    "quote": "The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes"
+   },
+   {
+    "field": "auth",
+    "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+    "quote": "click the “Create new token” button to create a new personal access token."
+   },
+   {
+    "field": "auth",
+    "url": "https://airtable.com/developers/web/api/oauth-reference",
+    "quote": "Refresh tokens are valid for 60 days."
+   },
+   {
+    "field": "access",
+    "url": "https://airtable.com/developers/web/guides/oauth-integrations",
+    "quote": "the Privacy policy URL and Terms of service URL must be provided before sharing your OAuth integration with other users."
+   },
+   {
+    "field": "access",
+    "url": "https://support.airtable.com/docs/airtable-plans",
+    "quote": "1000 API calls per workspace per month"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://airtable.com/developers/web/api/webhooks-overview",
+    "quote": "webhooks created with personal access tokens or OAuth access tokens will expire and be disabled after 7 days."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.airtable.com/docs/using-the-airtable-mcp-server",
+    "quote": "https://mcp.airtable.com/mcp"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "api_breadth",
+    "old": "moderate",
+    "new": "broad",
+    "why": "The developer llms.txt index lists about 98 endpoint pages, well over 50 operations, although many are Enterprise-only."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Records CRUD, bases and tables and fields metadata, comments, webhooks, attachments upload, and views. There are also Enterprise admin and SCIM endpoints. This is roughly 40-60 operations; I did not count them.",
+    "new": "About 98 endpoint pages in the llms.txt index, broken down by area. About half are Enterprise admin endpoints, and the core data API is about 30-40 operations.",
+    "why": "I counted the endpoints from the official docs index."
+   },
+   {
+    "field": "access_notes",
+    "old": "Free account creates PATs/OAuth; ToS/privacy URLs; no review confirmed; rate limits",
+    "new": "Same, plus the plan caps from the Airtable plans page (Free 1,000 / Team 100,000 / Business unlimited API calls per workspace per month), and confirmation that the OAuth guide mentions no review step",
+    "why": "The pricing and plans pages show plan-based monthly API caps the first pass missed. The OAuth guide confirms only the support email, privacy policy and terms requirements."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth with PKCE, refresh tokens; PATs; service accounts; legacy keys deprecated",
+    "new": "Adds token lifetimes (60-minute access tokens, 60-day rotating refresh tokens) and notes that legacy keys can no longer be created",
+    "why": "The OAuth reference confirms PKCE and gives these lifetimes. The webhooks overview says user API key webhooks 'can no longer be created'."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "URL from search summary",
+    "new": "URL, OAuth or PAT auth, and 'All plans' availability confirmed on the support page",
+    "why": "I opened the support article and confirmed the URL, the auth options and plan availability."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "webhook expiry, ping-only, no OpenAPI, no sandbox",
+    "new": "Adds the Free plan cap of 1,000 calls per workspace per month",
+    "why": "This is a material usage constraint for agents."
+   },
+   {
+    "field": "evidence",
+    "old": "api/auth/access quotes not verbatim; webhook quote paraphrased",
+    "new": "Replaced with verbatim quotes from the pages; added OAuth reference and plans-page evidence",
+    "why": "The automated checker could not find the old quotes. The PAT quote used 'Click' with straight quotes, but the page has lowercase 'click' and curly quotes. The access and webhook quotes were paraphrases."
+   },
+   {
+    "field": "confidence",
+    "old": "access/api/mcp/buildability medium",
+    "new": "all high",
+    "why": "Each is now confirmed against primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "Check app review, MCP URL, OpenAPI",
+    "new": "",
+    "why": "The OAuth guide mentions no review step and the MCP URL is confirmed. Neither llms.txt nor the developer docs mention an OpenAPI spec, and the third-party claims that one exists conflict with each other."
+   }
+  ]
+ },
+ "human_fixes": []
+}

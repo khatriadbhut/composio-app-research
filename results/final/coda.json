@@ -1,0 +1,122 @@
+{
+ "id": 78,
+ "slug": "coda",
+ "app": "Coda",
+ "category": "Productivity and Project Management",
+ "hint": "coda.io/developers",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Collaborative docs-plus-tables workspace (Coda, now Superhuman Docs) with automations and Packs.",
+  "subcategory": "Docs / collaborative workspace",
+  "auth_methods": [
+   "bearer_token"
+  ],
+  "auth_primary": "bearer_token",
+  "auth_notes": "The REST API's OpenAPI spec defines a single security scheme, \"Bearer\" (http bearer, UUID format). The token is a personal API token generated on the \"My account\" page and sent as \"Authorization: Bearer <api_token>\". Tokens can be limited to read, write or both, and to a single doc or table. The REST spec defines no OAuth2 flow for third parties. OAuth2 exists only on the hosted MCP server, where it uses a single scope, mcp:all, according to a search summary I could not confirm on a vendor page. \"Pack OAuth\" (setPackOauthConfig) configures OAuth for Packs that call outside services; it is not a way for clients to authenticate to Coda. A multi-user toolkit would collect a per-user API token.",
+  "access": "self_serve_free",
+  "access_notes": "The REST API is free for all users in free and paid workspaces. Any user can create a token from their account page with no review. Creating docs needs the right workspace role, and the workspace/admin endpoints are aimed at org admins and Enterprise. The MCP server is different: it is included on all paid plans, while free-plan users get read-only access capped at 30 requests per week (60 per month).",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The OpenAPI 3.0 spec (coda.io/apis/v1/openapi.json) has well over 100 operations. They cover docs, permissions, publishing, pages, tables, columns, rows, formulas, controls, custom domains, folders, whoami, resolveBrowserLink, mutation status, triggerWebhookAutomation, analytics, workspace members and roles, the full Pack lifecycle (versions, releases, listings, permissions, makers, assets, logs), go links and agent logs. The docs only describe the rate limit as \"a reasonable limit\" per minute that returns HTTP 429. The first pass's specific numbers were not on the page.",
+  "openapi_spec": "yes",
+  "webhooks": "no",
+  "mcp": "official_remote",
+  "mcp_notes": "The vendor hosts the official Superhuman Docs (formerly Coda) MCP server. It is in public beta and connects through OAuth (\"Connect with Superhuman Docs\") or a personal MCP token. The endpoint https://docs.superhuman.com/apis/mcp comes from a search summary; I did not see it on a vendor page. The vendor's tool list is at coda.io/resources/mcp/tools-and-endpoints. Paid plans include the MCP; free plans get read-only access with a cap. I could not verify the first pass's claims of about 15 tools and a deprecation of the old Coda MCP. Community servers exist, e.g. the PyPI package mcp-coda.",
+  "sandbox": "no",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "Buildable today with free, self-serve per-user API tokens against a broad REST API that has an OpenAPI spec. Caveats: the REST API has no third-party OAuth, so users must paste tokens. Webhooks only go inbound: POST /docs/{docId}/hooks/automation/{ruleId} triggers an automation, and the spec has no outbound event subscriptions, so triggers would need polling. The product was rebranded from Coda to Superhuman Docs; the docs moved to docs.superhuman.com, but API hosts stay on coda.io.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "We make the Superhuman Docs API available to all of our users free of charge, in both free and paid workspaces."
+   },
+   {
+    "field": "api",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "In an effort to standardize our API and make it accessible, we offer an OpenAPI 3.0 specification"
+   },
+   {
+    "field": "auth",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "{'Authorization': 'Bearer <your API token>'}"
+   },
+   {
+    "field": "auth",
+    "url": "https://coda.io/apis/v1/openapi.json",
+    "quote": "Authorization: Bearer <api_token>"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://coda.io/apis/v1/openapi.json",
+    "quote": "POST /docs/{docId}/hooks/automation/{ruleId} — operationId triggerWebhookAutomation, summary \"Trigger automation\""
+   },
+   {
+    "field": "mcp",
+    "url": "https://superhuman.com/docs/features/docs-mcp",
+    "quote": "MCP is included on all paid plans."
+   },
+   {
+    "field": "mcp",
+    "url": "https://connect.superhuman.com/t/superhuman-docs-mcp-is-now-available-in-public-beta/60331",
+    "quote": "now available in public beta"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "The help-center MCP article (help.superhuman.com/.../46210076980365) returned 403. Someone should confirm the exact MCP endpoint URL and whether a third-party client can complete MCP OAuth without registering with the vendor (dynamic or CIMD client registration). This only matters if Composio wants to use MCP OAuth instead of REST tokens.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"bearer_token\",\"oauth2\"]",
+    "new": "[\"bearer_token\"]",
+    "why": "The REST OpenAPI securitySchemes define only Bearer (API token). OAuth2 applies only to the MCP server, and Pack OAuth is for outbound Pack connections, so neither authenticates to the public REST API."
+   },
+   {
+    "field": "auth_notes",
+    "old": "Per-user tokens; OAuth confirmed only for MCP...",
+    "new": "Spec-confirmed Bearer scheme with read/write and doc/table restrictions; OAuth only on MCP",
+    "why": "Checked against the spec's securitySchemes text."
+   },
+   {
+    "field": "access_notes",
+    "old": "...full MCP experience needs a paid Doc Maker plan",
+    "new": "MCP is included on all paid plans; free plan gets read-only access, 30 requests/week",
+    "why": "The superhuman.com Docs MCP feature page says this; the 'Doc Maker plan' wording was not found."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "did not count; rate limits 100 reads/10 writes per 6s",
+    "new": "Over 100 operations counted in the spec; rate limit only described as 'reasonable'/429",
+    "why": "I counted operationIds in openapi.json. The specific rate-limit numbers were not on the cited page."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "~15 tools; old Coda MCP being deprecated",
+    "new": "Public beta, OAuth or MCP token, paid plans; tool count and deprecation unverified",
+    "why": "No vendor page I opened gave a tool count or said the old MCP is deprecated."
+   },
+   {
+    "field": "evidence",
+    "old": "api quote 'An OpenAPI 3.0 spec is available in YAML and JSON at coda.io/apis/v1/openapi.yaml' and paraphrased webhook quote",
+    "new": "Verbatim quotes from the docs page, openapi.json and MCP pages",
+    "why": "The automated check found the api quote missing from the page. The webhook evidence was a search snippet; it is now backed by the spec."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, buildability medium",
+    "new": "auth high, access high, buildability high",
+    "why": "Confirmed against the OpenAPI spec and the vendor docs."
+   }
+  ]
+ },
+ "human_fixes": []
+}

@@ -1,0 +1,132 @@
+{
+ "id": 74,
+ "slug": "jira",
+ "app": "Jira",
+ "category": "Productivity and Project Management",
+ "hint": "developer.atlassian.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Issue and project tracking for teams, with broad REST and GraphQL APIs.",
+  "subcategory": "Issue tracking / project management",
+  "auth_methods": [
+   "oauth2",
+   "basic",
+   "bearer_token",
+   "other"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "OAuth 2.0 (3LO) is the multi-user method, and it is what a toolkit acting for many users would use. Basic auth uses email plus an API token, and Atlassian recommends it only for simple scripts and manual calls. Passwords are deprecated. Service-account API tokens are scoped and must be sent to api.atlassian.com gateway URLs; they work with either Bearer or Basic auth. Service accounts can also use OAuth 2.0 client credentials. Forge apps use OAuth 2.0 and Connect apps use JWT (listed as 'other'). The record covers Jira Cloud only, not Data Center.",
+  "access": "self_serve_free",
+  "access_notes": "OAuth 3LO apps are created in the developer console and are private by default. To let other users install an app, you enable sharing. Atlassian review is optional. Users installing an unreviewed app see a warning that it 'has not yet been reviewed by Atlassian'. A Marketplace listing is not needed to request review. The Jira Free plan costs $0 for up to 10 users, so it works as a test site. That figure comes from a search snippet of the pricing page; the page itself returned HTTP 405 when fetched. Five service accounts per org are free, and more need Atlassian Guard.",
+  "api_styles": [
+   "rest",
+   "graphql"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Jira Cloud platform REST API v3 covers issues, projects, JQL search, comments, worklogs, users, filters, workflows, fields, permissions and more. Its swagger-v3 OpenAPI document is about 2.5 MB, which indicates hundreds of operations, though I did not count them. Jira Software (agile) and Jira Service Management have separate REST APIs. The Atlassian GraphQL Gateway (api.atlassian.com/graphql) also exposes Jira data, with some fields in beta.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "The Atlassian Rovo MCP server is at https://mcp.atlassian.com/v2/mcp. It uses OAuth 2.1, with API token auth as an option. It covers Jira, Jira Service Management, Confluence, Bitbucket and more. Some enriched calls consume Rovo credits.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "There are minor caveats. Review of OAuth apps is optional, but users installing an unreviewed app see a warning. Webhooks registered through the REST API expire after 30 days unless refreshed. OAuth 2.0 apps are limited to 5 webhooks per app per user on a tenant.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+    "quote": "the app has not yet been reviewed by Atlassian"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+    "quote": "If you want to distribute your app to other users, you must enable sharing."
+   },
+   {
+    "field": "auth",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+    "quote": "Authentication using passwords has been deprecated."
+   },
+   {
+    "field": "auth",
+    "url": "https://support.atlassian.com/user-management/docs/manage-api-tokens-for-service-accounts/",
+    "quote": "You can use Bearer token authentication or basic authentication in the HTTP header"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+    "quote": "For an OAuth 2.0 app, the limit is 5 webhooks per app per user on a tenant."
+   },
+   {
+    "field": "api",
+    "url": "https://developer.atlassian.com/platform/atlassian-graphql-api/graphql/",
+    "quote": "The Atlassian platform GraphQL API allows you to access to all sorts of Atlassian data."
+   },
+   {
+    "field": "mcp",
+    "url": "https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/",
+    "quote": "powered by secure OAuth 2.1 authorization"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The Jira pricing page returned HTTP 405 when fetched. The Free plan figure ($0, up to 10 users) and the sandbox rating rest on a search-result snippet; a person should confirm them in a browser. I have not counted the REST operations.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[oauth2, basic, api_key, other]",
+    "new": "[oauth2, basic, bearer_token, other]",
+    "why": "Classic API tokens are sent through Basic auth, not as a standalone API key. Service-account scoped tokens support Bearer auth, per Atlassian's support doc."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth 3LO; basic email+token; Forge/Connect app-specific",
+    "new": "Adds scoped service-account tokens (Bearer or Basic via api.atlassian.com), OAuth client credentials for service accounts, and Connect JWT",
+    "why": "The first pass missed service-account token auth."
+   },
+   {
+    "field": "api_styles",
+    "old": "[rest, graphql, sdk_only]",
+    "new": "[rest, graphql]",
+    "why": "sdk_only means the API is reachable only through an SDK. Jira has a public REST API. GraphQL was confirmed on the Atlassian GraphQL Gateway docs."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "5 per user per tenant",
+    "new": "5 webhooks per app per user on a tenant",
+    "why": "Corrected to the exact wording on the webhooks page."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "well over 400 operations (uncounted)",
+    "new": "OpenAPI doc about 2.5 MB; GraphQL Gateway confirmed; not counted",
+    "why": "Removed the unverified figure and added verified facts."
+   },
+   {
+    "field": "confidence.api",
+    "old": "medium",
+    "new": "high",
+    "why": "The OpenAPI spec and GraphQL API were both confirmed on fetched pages."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "endpoint + OAuth 2.1 + optional token",
+    "new": "Adds the products covered and the Rovo credits note",
+    "why": "Taken from the fetched MCP getting-started page."
+   },
+   {
+    "field": "needs_human",
+    "old": "OpenAPI, GraphQL, free-tier unverified",
+    "new": "Only the pricing page (HTTP 405) remains unverified",
+    "why": "The OpenAPI and GraphQL questions are now resolved."
+   }
+  ]
+ },
+ "human_fixes": []
+}

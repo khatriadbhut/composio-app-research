@@ -1,0 +1,140 @@
+{
+ "id": 41,
+ "slug": "shopify",
+ "app": "Shopify",
+ "category": "Ecommerce",
+ "hint": "shopify.dev",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Ecommerce platform for online stores, with APIs for products, orders, customers and checkout.",
+  "subcategory": "Ecommerce platform",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "All current methods are OAuth 2.0 grants. The authorization code grant is for apps that run outside the admin, and the merchant is redirected to Shopify to approve access. Token exchange swaps an ID token for an access token and is for embedded apps. The client credentials grant uses a client secret and works only for stores in the app's own organization. Public apps can also use client credentials with a client assertion signed by a private key. Tokens can be offline (the default, long-lived) or online (limited to a staff member's session). Custom apps created in the Shopify admin get a static access token, but new ones can no longer be created; existing ones are still maintained. The access token goes in the X-Shopify-Access-Token header. A multi-merchant agent toolkit would use the public-app authorization code grant and store one offline token per shop.",
+  "access": "approval_required",
+  "access_notes": "A developer can work alone for free. Development stores are free and have no time limit, and they can be created from a Partner or Dev Dashboard account. Custom distribution installs on a single store and needs no approval. Public distribution, meaning installs across many merchants, requires Shopify approval. It also requires registering for the Shopify App Store, which has a one-time fee; the fee amount is not stated on the pages I fetched. The App Review team can reject apps that don't meet its standards.",
+  "api_styles": [
+   "graphql",
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The GraphQL Admin API is the primary API. It covers products, orders, customers, inventory, fulfillment, discounts, metafields and more, and the Storefront API is separate. The REST Admin API has been legacy since October 1, 2024. Since April 1, 2025, all new public apps must be built only with the GraphQL Admin API. I did not count operations, but the GraphQL schema clearly has well over 50 operations.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "official_local",
+  "mcp_notes": "Shopify's official Dev MCP server is the @shopify/dev-mcp package (npx -y @shopify/dev-mcp@latest). It runs locally without authentication and gives access to developer docs and API schemas. It is part of the Shopify AI Toolkit, which can also run supported store-management tasks through the authenticated store context of the Shopify CLI. That path is local and CLI-based; it is not a hosted multi-tenant admin MCP. I found no vendor-hosted remote MCP for admin operations on shopify.dev. Third-party blogs mention an @shopify/admin-mcp package, but it is unverified. The first pass described shopper-facing Storefront, UCP and Checkout MCP endpoints, and I did not re-verify those in this pass.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Development and testing are free on development stores. A multi-merchant OAuth app needs public distribution, which requires Shopify approval and paid App Store registration (a one-time fee). Tokens are per shop. New public apps must use the GraphQL Admin API, and there is no OpenAPI spec.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+    "quote": "The merchant is redirected to Shopify to approve access"
+   },
+   {
+    "field": "auth",
+    "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+    "quote": "Apps can authenticate with a client secret for stores in their organization."
+   },
+   {
+    "field": "access",
+    "url": "https://shopify.dev/docs/apps/launch/distribution",
+    "quote": "Public distribution also requires registering for the Shopify App Store, which has a one-time fee."
+   },
+   {
+    "field": "access",
+    "url": "https://www.shopify.com/partners/blog/development-stores",
+    "quote": "They’re free of charge, hold no time restrictions, and offer most of the same functionality as the Advanced Shopify plan."
+   },
+   {
+    "field": "api",
+    "url": "https://shopify.dev/docs/api/admin-rest",
+    "quote": "Starting April 1, 2025, all new public apps must be built exclusively with the GraphQL Admin API."
+   },
+   {
+    "field": "mcp",
+    "url": "https://shopify.dev/docs/apps/build/devmcp",
+    "quote": "The server runs locally and doesn't require authentication."
+   },
+   {
+    "field": "mcp",
+    "url": "https://shopify.dev/docs/apps/build/ai-toolkit",
+    "quote": "connects your AI coding tools to Shopify's developer docs, API schemas, and CLI store management"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://shopify.dev/docs/apps/build/webhooks",
+    "quote": "Shopify webhooks are useful for keeping your app in sync with Shopify data."
+   },
+   {
+    "field": "buildability",
+    "url": "https://shopify.dev/docs/apps/launch/shopify-app-store/app-store-requirements",
+    "quote": "The Shopify App Review team can reject an app at their discretion if it doesn't meet the set standards."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Check the exact amount of the one-time App Store registration fee, which none of the fetched pages state. Confirm whether the @shopify/admin-mcp package that third-party blogs mention exists; it was not found on shopify.dev. Re-verify the Storefront, UCP and Checkout MCP endpoint claims, which this pass did not check.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "[\"oauth2\",\"api_key\",\"other\"]",
+    "new": "[\"oauth2\",\"bearer_token\"]",
+    "why": "Token exchange and client credentials are both OAuth 2.0 grants, so they don't need the 'other' entry. No current method is an API key. The only non-OAuth credential is the static token for admin-created custom apps, which is a bearer-style token and is legacy."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth code grant / token exchange / client credentials ...",
+    "new": "Adds that client credentials only work for stores in the app's own organization, the client-assertion option for public apps, and offline vs online tokens.",
+    "why": "The auth page has these limits, and they matter for a multi-merchant toolkit."
+   },
+   {
+    "field": "access_notes",
+    "old": "...did not confirm Partner accounts and dev stores are free... from memory free",
+    "new": "Development stores are confirmed free with no time limit; public distribution needs approval and a paid one-time App Store registration.",
+    "why": "Shopify's Partners blog confirms dev stores are free, and the distribution page shows 'Approval required: Yes' for public apps."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "...new public apps must use GraphQL...",
+    "new": "Adds the exact date, April 1, 2025, from the REST docs.",
+    "why": "Confirmed with a verbatim quote on the admin-rest page."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Dev MCP for docs only, does not access store admin data; store-admin MCP unverified",
+    "new": "Dev MCP is part of the AI Toolkit, which can run store-management tasks locally through the Shopify CLI's authenticated store context. No hosted admin MCP was found.",
+    "why": "The AI Toolkit page says it connects to 'CLI store management', so 'does not access store admin data' was too strong."
+   },
+   {
+    "field": "evidence",
+    "old": "webhooks evidence quoted 'X-Shopify-Api-Version' from the versioning page",
+    "new": "The webhooks page quote 'Shopify webhooks are useful for keeping your app in sync with Shopify data.'; adds quotes for dev stores, the AI Toolkit and app review.",
+    "why": "The old webhooks quote was a header name from the versioning page and did not support the webhooks claim."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, api medium, buildability medium",
+    "new": "access high, api high, buildability high",
+    "why": "The open questions about free dev stores, approval and the GraphQL mandate are now confirmed from primary sources."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm Partner/dev stores free, fee, hosted MCP, OpenAPI, webhooks/sandbox/review pages",
+    "new": "Only the fee amount, the unverified @shopify/admin-mcp claim and the Storefront/UCP endpoints remain.",
+    "why": "The other items were resolved in this pass."
+   }
+  ]
+ },
+ "human_fixes": []
+}

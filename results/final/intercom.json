@@ -1,0 +1,160 @@
+{
+ "id": 12,
+ "slug": "intercom",
+ "app": "Intercom",
+ "category": "Support and Helpdesk",
+ "hint": "intercom.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Customer messaging, support inbox and helpdesk platform with Fin AI agent.",
+  "subcategory": "Helpdesk / customer messaging",
+  "auth_methods": [
+   "oauth2",
+   "bearer_token"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "There are two ways to authenticate, and both are sent as Authorization: Bearer. An Access Token works for private apps and scripts against your own workspace. OAuth is for apps that access other people's Intercom data. The docs say apps must use OAuth rather than asking users for Access Tokens, and that asking for tokens breaks Intercom's terms of service.",
+  "access": "approval_required",
+  "access_notes": "Anyone can create a developer workspace without being an Intercom customer, and the FAQ says these workspaces are free. That gives a developer an Access Token and a dev OAuth app with no gate. Dev workspaces have limits: no email sending, no push notifications, articles can't go live, at most 20 users/leads, and they can't be converted to production. No expiry is documented. Distributing an OAuth app to other workspaces needs Intercom review, whether the app is listed or unlisted, and review takes up to 7 business days. Until approved, the app can only be used by your own team. Some endpoints can return 403 \"API Plan restricted\" depending on the customer's plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The REST API covers contacts, companies, conversations, tickets, articles/help center, data events, tags, notes, teams, admins, segments, messages, data connectors and more. Operations weren't counted exactly but are well over 50. Intercom publishes an official OpenAPI description at github.com/intercom/intercom-openapi.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "US: https://mcp.intercom.com/mcp. EU: https://mcp.eu.intercom.com/mcp. Each region also has a deprecated SSE endpoint at /sse. AU workspaces aren't supported yet. Auth is OAuth (recommended) or a bearer token. The Fin Operator tools need an OAuth connection and a workspace that has Fin Operator.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "Development and testing are fully self-serve through a free developer workspace. A public OAuth app that installs into end users' workspaces must pass Intercom's review first, whether listed or unlisted, and review can take up to 7 business days. Any later changes need re-approval. Until then the app works only for the developer's own team.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+    "quote": "apps are required to use OAuth rather than asking users for Access Tokens"
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+    "quote": "An Access Token is for if you're using the API to access data in your own Intercom workspace."
+   },
+   {
+    "field": "access",
+    "url": "https://www.intercom.com/help/en/articles/9071694-intercom-developer-faqs",
+    "quote": "Developer workspaces are free and intended for development purposes only."
+   },
+   {
+    "field": "access",
+    "url": "https://www.intercom.com/help/en/articles/9086429-create-a-developer-workspace-in-intercom",
+    "quote": "You do not have to be an existing Intercom customer in order to create a dev workspace."
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.intercom.com/docs/publish-to-the-app-store/review-publish-your-app",
+    "quote": "Both unlisted and listed apps must be submitted for review."
+   },
+   {
+    "field": "buildability",
+    "url": "https://developers.intercom.com/docs/publish-to-the-app-store/review-publish-your-app",
+    "quote": "During this process, your app will be private and can only be used by you and your team."
+   },
+   {
+    "field": "mcp",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "quote": "The Intercom MCP server is available for US and EU hosted workspaces. AU hosted workspaces are not yet supported."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.intercom.com/docs/webhooks",
+    "quote": "Webhooks are a way that you can access real-time notifications about events that happen in your Intercom workspace."
+   },
+   {
+    "field": "api",
+    "url": "https://github.com/intercom/intercom-openapi",
+    "quote": "This repository contains OpenAPI descriptions for Intercom's REST API."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "",
+  "changes": [
+   {
+    "field": "api_styles",
+    "old": "[\"rest\", \"websocket\"]",
+    "new": "[\"rest\"]",
+    "why": "The first pass admitted websocket was added by mistake, and the public API is REST only."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_now",
+    "new": "ready_with_caveats",
+    "why": "The review/publish docs say both listed and unlisted public apps must pass Intercom review (up to 7 business days) before other workspaces can install them."
+   },
+   {
+    "field": "main_blocker",
+    "old": "none",
+    "new": "app_review",
+    "why": "Intercom review is required before multi-tenant OAuth distribution."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Possible caveats: the free development workspace may be trial-limited, and public OAuth distribution may need App Store review. Neither was confirmed.",
+    "new": "Development and testing are fully self-serve through a free developer workspace. A public OAuth app that installs into end users' workspaces must pass Intercom's review first...",
+    "why": "Both caveats are now confirmed from primary docs: the dev workspace is free, and public apps need review."
+   },
+   {
+    "field": "access_notes",
+    "old": "Developer Hub signup creates an app and a development workspace. I didn't confirm the cost...",
+    "new": "Anyone can create a developer workspace without being an Intercom customer, and the FAQ says these workspaces are free... Distributing an OAuth app to other workspaces needs Intercom review...",
+    "why": "The Intercom developer FAQ and dev-workspace help article confirm the workspace is free and list its limits. The review requirement is confirmed."
+   },
+   {
+    "field": "auth_notes",
+    "old": "...Public apps are required to use OAuth.",
+    "new": "...The docs say apps must use OAuth rather than asking users for Access Tokens, and that asking for tokens breaks Intercom's terms of service.",
+    "why": "Matched the wording on the docs page, which doesn't use the word 'public' in that sentence."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "US/EU URLs, AU unsupported, OAuth or bearer token, Fin Operator needs OAuth",
+    "new": "Added the deprecated SSE endpoints and the requirement that the workspace has Fin Operator",
+    "why": "These details were confirmed on the MCP guide page."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items; the OpenAPI quote came from a search summary and nothing covered access",
+    "new": "9 verbatim quotes from pages I fetched, including access and buildability",
+    "why": "Every quote is now verbatim from a page I opened. The OpenAPI repo was opened directly."
+   },
+   {
+    "field": "confidence",
+    "old": "access medium, buildability medium",
+    "new": "access high, buildability high",
+    "why": "Both are now confirmed by primary docs."
+   },
+   {
+    "field": "needs_human",
+    "old": "Confirm dev workspace free/time-limited, public OAuth review, sandbox, OpenAPI",
+    "new": "",
+    "why": "All of these open questions are answered by vendor docs. The only gap left is that no expiry is documented."
+   }
+  ]
+ },
+ "human_fixes": [
+  {
+   "field": "access",
+   "old": "\"self_serve_free\"",
+   "new": "\"approval_required\"",
+   "why": "the record names app review as its main blocker, which the rubric labels approval_required",
+   "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+   "by": "consistency rule"
+  }
+ ]
+}

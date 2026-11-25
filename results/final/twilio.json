@@ -1,0 +1,156 @@
+{
+ "id": 22,
+ "slug": "twilio",
+ "app": "Twilio",
+ "category": "Communications and Messaging",
+ "hint": "twilio.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Cloud communications APIs for SMS, voice, WhatsApp, email, video and verification.",
+  "subcategory": "CPaaS (SMS/Voice/Messaging)",
+  "auth_methods": [
+   "basic",
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "basic",
+  "auth_notes": "Requests use HTTP Basic auth. The recommended form sends an API Key SID as the username and the Key Secret as the password. The alternative sends the Account SID and Auth Token, which some endpoints require. OAuth 2.0 client credentials has been GA for the Communications APIs since Apr 6, 2026: a token from POST oauth.twilio.com/v2/token is passed as a Bearer token and expires after 1 hour. Organization-level OAuth apps also support the Authorization Code grant, which is intended for apps acting on behalf of a user. The docs don't say whether third-party apps can use it on other customers' accounts. In practice a multi-user toolkit would collect each user's Account SID plus an API key and secret.",
+  "access": "self_serve_trial",
+  "access_notes": "The free trial needs no credit card. According to the trial page it gives product-specific free units, such as 100 SMS and 75 voice minutes, lasts 30 days, and only allows sending to up to 5 verified numbers. Production use needs an upgrade to a paid, pay-as-you-go account. A2P 10DLC registration also requires a paid account. There is no permanent free tier.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Each product has its own REST API: Messaging, Voice, Lookup, Verify, Conversations, Studio, Video, Sync, TaskRouter, IAM and others. Twilio's own MCP announcement says it covers more than 1,800 APIs.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Twilio hosts an official MCP server at https://mcp.twilio.com/docs, in Public Beta since May 2026. It only searches and retrieves documentation through two tools, twilio__search and twilio__retrieve. It takes no credentials and cannot call any APIs. Twilio lists OAuth-authenticated MCP tools that execute API calls as a future item (\"What's next\"). For actual API calls, Twilio publishes the local package @twilio-alpha/mcp (github.com/twilio-labs/mcp), labeled \"Twilio Alpha\". It runs through npx and authenticates with an Account SID plus an API key and secret, and its README calls it one of \"our official\" servers.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "The API is public and documented, and credentials are self-serve. The caveats: trial accounts expire after 30 days and can only send to verified numbers. Real traffic needs a paid pay-as-you-go account plus regulatory work such as A2P 10DLC registration, which itself requires a paid account. Test credentials work on only 4 endpoints: buying phone numbers, sending messages, placing calls and Lookup; any other endpoint returns 403. Multi-user auth means collecting per-account API keys, or OAuth client credentials, which the user also has to set up.",
+  "evidence": [
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/usage/api",
+    "quote": "The Twilio APIs are organized around REST."
+   },
+   {
+    "field": "api",
+    "url": "https://www.twilio.com/docs/usage/api",
+    "quote": "each product corresponds to an API."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/docs/usage/requests-to-twilio",
+    "quote": "To authenticate requests to the Twilio APIs, use HTTP Basic authentication."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/docs/iam/oauth-apps/overview",
+    "quote": "Twilio supports two OAuth 2.0 grant types: Client Credentials and Authorization Code."
+   },
+   {
+    "field": "auth",
+    "url": "https://www.twilio.com/en-us/changelog/oauth-apis-ga",
+    "quote": "Twilio Communications APIs now support OAuth 2.0."
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+    "quote": "You can sign up for a Twilio free trial account without a credit card."
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account",
+    "quote": "You can only send to verified phone numbers (up to 5 per account)."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.twilio.com/docs/mcp",
+    "quote": "Twilio MCP and Twilio Skills are available as Public Beta products."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.twilio.com/docs/mcp",
+    "quote": "it does not connect to a Twilio account or execute any API calls."
+   },
+   {
+    "field": "mcp",
+    "url": "https://raw.githubusercontent.com/twilio-labs/mcp/main/README.md",
+    "quote": "avoid installing or running any community MCP servers alongside our official ones."
+   },
+   {
+    "field": "buildability",
+    "url": "https://www.twilio.com/docs/iam/test-credentials",
+    "quote": "Twilio doesn't charge your account, update the state of your account, or connect to real phone numbers."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "high"
+  },
+  "needs_human": "Check whether third-party apps can use the Authorization Code grant (org OAuth apps) on other customers' Twilio accounts. If they can, oauth2 would be the better auth_primary for a multi-user toolkit. Confirm the trial terms on a live signup: 30-day expiry and per-product free units instead of a dollar credit. Those terms differ from older Twilio trials and were read through a summarizing fetch. The support article that said Twilio has no official MCP returned 403 and appears to be out of date.",
+  "changes": [
+   {
+    "field": "auth_methods",
+    "old": "basic, api_key, oauth2, other",
+    "new": "basic, api_key, oauth2",
+    "why": "Dropped 'other' because the claim about Twilio Connect came from memory and isn't verified. OAuth2 is now confirmed: client credentials GA since Apr 2026, plus Authorization Code for org apps."
+   },
+   {
+    "field": "auth_notes",
+    "old": "OAuth2 for some newer APIs, Twilio Connect (from memory)",
+    "new": "Basic with API key or Auth Token; OAuth2 client credentials GA for Communications APIs; Authorization Code for org apps",
+    "why": "Now based on fetched docs and the changelog."
+   },
+   {
+    "field": "access_notes",
+    "old": "Trial credit, message prefix (from memory)",
+    "new": "No credit card needed, product-specific free units, 30-day expiry, 5 verified numbers",
+    "why": "The trial page gives these terms and doesn't mention a message prefix."
+   },
+   {
+    "field": "mcp",
+    "old": "official_local",
+    "new": "official_remote",
+    "why": "Twilio hosts an official MCP server at mcp.twilio.com/docs (Public Beta), documented on twilio.com/docs/mcp. It only does docs search; the API-calling server is the local @twilio-alpha/mcp."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "Alpha only; support page says no official MCP",
+    "new": "Hosted docs-only MCP in Public Beta plus the local Alpha API server",
+    "why": "The support article returned 403 and is superseded by the May 2026 launch."
+   },
+   {
+    "field": "main_blocker",
+    "old": "other",
+    "new": "paid_plan",
+    "why": "The main barrier to real use is the paid account required for production sending and A2P 10DLC registration."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Likely hundreds of operations",
+    "new": "1,800+ APIs per Twilio",
+    "why": "Figure from Twilio's MCP announcement title."
+   },
+   {
+    "field": "evidence",
+    "old": "4 items, MCP quote from a search snippet, none for auth or access",
+    "new": "11 items from fetched pages",
+    "why": "Added auth and access evidence and replaced the unverifiable MCP quote."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, api medium, mcp low, buildability medium",
+    "new": "auth high, access medium, api high, mcp medium, buildability high",
+    "why": "Claims are now verified against primary sources."
+   }
+  ]
+ },
+ "human_fixes": []
+}

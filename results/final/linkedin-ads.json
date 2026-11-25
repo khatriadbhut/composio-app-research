@@ -1,0 +1,126 @@
+{
+ "id": 33,
+ "slug": "linkedin-ads",
+ "app": "LinkedIn Ads",
+ "category": "Marketing, Ads, Email and Social",
+ "hint": "learn.microsoft.com/linkedin/marketing",
+ "source": "verify",
+ "record": {
+  "what_it_does": "LinkedIn Marketing API for managing ad accounts, campaigns, creatives, targeting, and reporting.",
+  "subcategory": "Ads platform",
+  "auth_methods": [
+   "oauth2"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Only the 3-legged OAuth 2.0 authorization code flow is supported. Scopes include rw_ads, r_ads, and r_ads_reporting, plus boost scopes from version 202610. The docs say 2-legged client credentials is not available for any marketing use case. The member must hold an Ad Account role: VIEWER is enough for r_ads, while rw_ads needs CREATIVE_MANAGER or higher. Requests must send a monthly Linkedin-Version header.",
+  "access": "approval_required",
+  "access_notes": "Applying is free, but the developer app must be approved for the Advertising API product. All apps start in the Development tier. That tier allows unlimited reads on ad accounts the member administers, edits on up to 5 ad accounts mapped in the developer portal, and creation of 1 test ad account through the API. The Standard tier allows unlimited edits and account creation, which a multi-tenant product needs. It is requested by support ticket, and LinkedIn may decline it. Lead Sync, Conversions, and Matched Audiences are separate product applications. Audience Insights and Media Planning are restricted, and Company Intelligence is closed to new applicants. The docs give no review timeline for the Advertising API.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "Rest.li-style REST under api.linkedin.com/rest, versioned monthly. It covers adAccounts, adCampaignGroups, adCampaigns, creatives, adTargetingFacets and adTargetingEntities, audienceCounts, adBudgetPricing, analytics and reporting, and boosts. Lead Sync, Conversions, Matched Audiences, and Community Management are separate products in the same family. I did not count the operations, but there are clearly more than 50.",
+  "openapi_spec": "no",
+  "webhooks": "yes",
+  "mcp": "community_only",
+  "mcp_notes": "I found no MCP server published by LinkedIn or Microsoft. Third-party servers include the PyPI package linkedin-ads-mcp (its page says \"There's no official LinkedIn MCP\"), the npm packages mcp-linkedin-ads and @cesteral/linkedin-mcp, AdKit, AdPlug, and Cequence AI Gateway.",
+  "sandbox": "yes",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app_review",
+  "blocker_notes": "The app needs Advertising API approval. In the Development tier, edits are limited to 5 mapped ad accounts. Before arbitrary users can connect for writes, LinkedIn must grant a Standard tier upgrade through a support ticket, at its own discretion. Reads are unlimited in the Development tier. Lead webhooks need a separate Lead Sync API approval.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-started",
+    "quote": "All these permission scopes are 3-legged permissions requiring explicit consent from a LinkedIn member. The 2-legged client credentials flow is not available for any marketing use cases."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "Development tier is designed to build end-to-end workflows and supports read-only access for unlimited ad accounts and edit capabilities for up to five (5) Ad Accounts."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "The Standard API Access must be requested via a support ticket to be submitted on the Developer Support Portal."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "LinkedIn reserves the right to review applications and select partners at its discretion and a partner might not be upgraded even if they meet these minimum requirements."
+   },
+   {
+    "field": "api",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/getting-started",
+    "quote": "POST https://api.linkedin.com/rest/adAccounts/{adAccountID}/adCampaigns"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/lead-sync/leadsync",
+    "quote": "leadNotifications - Create webhook subscriptions to be notified of Lead Form responses."
+   },
+   {
+    "field": "mcp",
+    "url": "https://pypi.org/project/linkedin-ads-mcp/",
+    "quote": "There's no official LinkedIn MCP."
+   },
+   {
+    "field": "what_it_does",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-started",
+    "quote": "An Ad Account (a.k.a. Sponsored Account) is an umbrella entity for advertising management on LinkedIn, e.g., billing, campaigns, ad creatives, tracking tags, and more."
+   },
+   {
+    "field": "buildability",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/increasing-access",
+    "quote": "Create : Access to create 1 test Ad Account through the API. All real Ad Accounts must be created through the Campaign Manager tool in this tier."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "high",
+   "mcp": "medium",
+   "buildability": "medium"
+  },
+  "needs_human": "Review turnaround for Advertising API approval and the Standard tier upgrade is undocumented. Only a third-party blog claims 1–5 business days. Lead webhooks need a separate Lead Sync API approval. No official OpenAPI spec was found; apis.io hosts only partial third-party specs.",
+  "changes": [
+   {
+    "field": "evidence (webhooks)",
+    "old": "increasing-access quote 'Webhook for Social Actions: - Push notifications disabled'",
+    "new": "leadsync page quote 'leadNotifications - Create webhook subscriptions to be notified of Lead Form responses.'",
+    "why": "The old quote is about Community Management Development-tier limits. It is not about ads, and it says push notifications are disabled, so it does not support webhooks=yes. Lead Sync's leadNotifications for sponsored ad leads is the real ads webhook source."
+   },
+   {
+    "field": "evidence (mcp)",
+    "old": "quote 'linkedin ads mcp'",
+    "new": "quote 'There's no official LinkedIn MCP.'",
+    "why": "The old quote was only the page title. The new quote shows that no official server exists."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "PyPI package linkedin-ads-mcp (which states it is unofficial) ...",
+    "new": "PyPI page says 'There's no official LinkedIn MCP'; added @cesteral/linkedin-mcp and Cequence",
+    "why": "The PyPI page does not state that the package itself is unofficial. It only says LinkedIn has no official MCP."
+   },
+   {
+    "field": "evidence (buildability)",
+    "old": "Matched Audiences mandatory-requirement quote",
+    "new": "1 test Ad Account quote",
+    "why": "The old quote did not support the buildability or sandbox claim. The new quote is the primary source for the test account."
+   },
+   {
+    "field": "access_notes / blocker_notes",
+    "old": "No mention of separate Lead Sync approval",
+    "new": "Notes that Lead Sync, Conversions, and Matched Audiences are separate applications, Company Intelligence is closed, and lead webhooks need Lead Sync approval",
+    "why": "The increasing-access page lists these as separate products with their own apply flows."
+   },
+   {
+    "field": "confidence.access / confidence.api",
+    "old": "medium / medium",
+    "new": "high / high",
+    "why": "Both are confirmed directly on the current (2026-11) vendor docs."
+   }
+  ]
+ },
+ "human_fixes": []
+}

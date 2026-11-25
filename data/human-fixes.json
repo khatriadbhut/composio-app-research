@@ -1,0 +1,181 @@
+{
+ "front": [
+  {
+   "field": "access",
+   "value": "approval_required",
+   "why": "Docs: apps are private to one customer; 'To publish your app, notify our team as described in the Partnering with Front topic.' The verifier flipped a correct pass-1 value.",
+   "url": "https://dev.frontapp.com/docs/create-and-manage-apps",
+   "by": "browser check (Chrome)"
+  }
+ ],
+ "threads-meta": [
+  {
+   "field": "mcp",
+   "value": "official_remote",
+   "why": "Meta's Threads docs index has a 'Threads MCP server' section (overview, get started, publishing, insights). Rendered in a browser; plain fetches return empty bodies.",
+   "url": "https://developers.facebook.com/documentation/threads/llms.txt",
+   "by": "browser check (Chrome)"
+  }
+ ],
+ "discord": [
+  {
+   "field": "mcp",
+   "value": "official_remote",
+   "why": "Discord hosts a live OAuth-protected MCP endpoint on its own domain; its developer docs don't mention it. Ruled vendor-official, noted as undocumented.",
+   "url": "https://mcp.discord.com/.well-known/oauth-protected-resource",
+   "by": "human (Adbhut), after browser check"
+  },
+  {
+   "field": "auth_primary",
+   "value": "bot_token",
+   "why": "Nearly every Discord action runs as a bot; OAuth2 mainly installs the bot and reads identity.",
+   "url": "https://docs.discord.com/developers/reference",
+   "by": "human (Adbhut)"
+  },
+  {
+   "field": "access",
+   "value": "approval_required",
+   "why": "'Verification is required for your app to scale past 100 servers.' Same kind of gate as HubSpot's 25-install cap, so labelled the same way.",
+   "url": "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified",
+   "by": "browser check (Chrome)"
+  }
+ ],
+ "dealcloud": [
+  {
+   "field": "api_breadth",
+   "value": "broad",
+   "why": "About 55-60 documented operations, above the rubric's ~50 line for broad.",
+   "url": "https://api.docs.dealcloud.com/docs",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "zendesk": [
+  {
+   "field": "auth_methods",
+   "value": [
+    "oauth2",
+    "basic"
+   ],
+   "why": "Zendesk API tokens are sent through Basic auth (email/token) and are now marked deprecated; there is no separate API-key scheme.",
+   "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "lark-larksuite": [
+  {
+   "field": "auth_methods",
+   "value": [
+    "oauth2",
+    "bot_token"
+   ],
+   "why": "The tenant/app access token stands for the app's bot identity; labelled bot_token, as for Discord.",
+   "url": "https://open.larksuite.com/document/ukTMukTMukTM/uMTNz4yM1MjLzUzM",
+   "by": "human (Adbhut), same ruling as Discord"
+  },
+  {
+   "field": "access",
+   "value": "approval_required",
+   "why": "Apps for other companies need vendor verification and a listing review. Same rule as HubSpot, Front and Discord.",
+   "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "fanbasis": [
+  {
+   "field": "access",
+   "value": "approval_required",
+   "why": "API keys are issued only after an admin approves a request; the API returns 403 'not approved by the Commas admin' otherwise.",
+   "url": "https://commas.com/assets/index-D0eLZkDI.js",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "main_blocker",
+   "value": "app_review",
+   "why": "Follows from the key-approval step.",
+   "url": "https://www.fanbasis.com",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "dataforseo": [
+  {
+   "field": "access",
+   "value": "self_serve_free",
+   "why": "Free signup gives working credentials, a $1 credit that does not expire and a free sandbox. A non-expiring credit is not a time-limited trial.",
+   "url": "https://dataforseo.com/help-center/how-does-your-free-unlimited-trial-work",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "neo4j": [
+  {
+   "field": "auth_primary",
+   "value": "basic",
+   "why": "Database access is Basic or an SSO bearer token; OAuth2 exists only as client credentials for the Aura management API, not as user sign-in.",
+   "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "mcp",
+   "value": "official_remote",
+   "why": "'Neo4j MCP for Aura is a hosted MCP server for your Aura instances.'",
+   "url": "https://neo4j.com/docs/mcp/current/mcp-for-aura/",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "buildability",
+   "value": "ready_now",
+   "why": "Free Aura tier with no card, public docs, no review step.",
+   "url": "https://neo4j.com/pricing/",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "main_blocker",
+   "value": "none",
+   "why": "Nothing gates a developer.",
+   "url": "https://neo4j.com/pricing/",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "ipayx": [
+  {
+   "field": "auth_methods",
+   "value": [
+    "api_key",
+    "none"
+   ],
+   "why": "Some routes and the MCP tool list answer without a key. The vendor's own pages contradict each other, so this one is low confidence either way.",
+   "url": "https://www.ipayx.ai/docs/api",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "quickbooks": [
+  {
+   "field": "api_styles",
+   "value": [
+    "rest",
+    "graphql"
+   ],
+   "why": "Intuit documents GraphQL APIs alongside the REST Accounting API.",
+   "url": "https://static.developer.intuit.com/output_html/qbo/docs/get-started.html",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ],
+ "notebooklm": [
+  {
+   "field": "api_styles",
+   "value": [
+    "rest",
+    "grpc"
+   ],
+   "why": "Google publishes an RPC (gRPC) reference next to the REST one.",
+   "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+   "by": "rubric + auditor's script-checked evidence"
+  },
+  {
+   "field": "api_breadth",
+   "value": "moderate",
+   "why": "About 11 operations, inside the rubric's 10-50 range.",
+   "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+   "by": "rubric + auditor's script-checked evidence"
+  }
+ ]
+}

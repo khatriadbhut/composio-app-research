@@ -1,0 +1,140 @@
+{
+ "id": 52,
+ "slug": "se-ranking",
+ "app": "SE Ranking",
+ "category": "Data, SEO and Scraping",
+ "hint": "seranking.com/api",
+ "source": "verify",
+ "record": {
+  "what_it_does": "SEO platform with APIs for keyword, backlink, SERP, audit and rank-tracking data.",
+  "subcategory": "SEO data / rank tracking",
+  "auth_methods": [
+   "api_key",
+   "oauth2"
+  ],
+  "auth_primary": "api_key",
+  "auth_notes": "REST APIs (Data, Project, Local Marketing and SE Visible) use an account API key in the header 'Authorization: Token YOUR_API_KEY' against https://api.seranking.com. Some guides also accept an 'apikey' query parameter. One key works for both the Data and Project APIs. OAuth 2.1 with dynamic client registration exists only on the hosted MCP server, which also accepts the X-Api-Key header. Sub-accounts can't use MCP OAuth. No OAuth app flow for the REST API and no scoped keys were found.",
+  "access": "paid_plan_required",
+  "access_notes": "The API comes with a subscription (Core $129/mo, which includes 25K API credits and MCP access; Growth $279/mo with 100K credits; Enterprise custom). A 14-day free trial needs no credit card, and the API page says the API can be tested in the trial account. Extra credits are sold as an annual API Add-On from $540/yr (about $45/mo) for 3M credits, or as pay-as-you-go packs from $50 for 250K credits that never expire. Data API calls consume credits. Each end user needs their own SE Ranking account and key.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "The Data API covers Backlinks, Domain Analysis, Keyword Research, AI Search, Website Audit and Account System. There are also separate Project API (rank tracking, sites, keywords, competitors), Local Marketing API and SE Visible API sections. Combined endpoints very likely exceed 50, but I did not count them exactly.",
+  "openapi_spec": "unknown",
+  "webhooks": "unknown",
+  "mcp": "official_remote",
+  "mcp_notes": "Hosted at https://api.seranking.com/mcp (Streamable HTTP, OAuth 2.1 with dynamic client registration, or the X-Api-Key header). Docs are at seranking.com/api/integrations/mcp/. The vendor's GitHub org also publishes a self-hostable server, github.com/seranking/seo-data-api-mcp-server, which uses the SERANKING_API_TOKEN env var.",
+  "sandbox": "no",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "paid_plan",
+  "blocker_notes": "A developer can test on the 14-day free trial (no card needed). Lasting use needs a paid subscription, and Data API calls consume credits. The REST API offers only full-access API keys, with no third-party OAuth app flow, so users must paste their own keys.",
+  "evidence": [
+   {
+    "field": "access",
+    "url": "https://seranking.com/api/",
+    "quote": "API is included with every SE Ranking subscription."
+   },
+   {
+    "field": "access",
+    "url": "https://seranking.com/api/how-to-get-api/",
+    "quote": "All Essential, Pro, Business, Core, Growth, and Enterprise plans include Data API access with a monthly credit allowance."
+   },
+   {
+    "field": "access",
+    "url": "https://seranking.com/subscription.html",
+    "quote": "Start free 14-day trial"
+   },
+   {
+    "field": "auth",
+    "url": "https://seranking.com/api/data/getting-started/",
+    "quote": "-H 'Authorization: Token YOUR_API_KEY'"
+   },
+   {
+    "field": "auth",
+    "url": "https://seranking.com/api/",
+    "quote": "navigate to the API tab under the Settings section, and retrieve your unique API key."
+   },
+   {
+    "field": "mcp",
+    "url": "https://seranking.com/api/integrations/mcp/",
+    "quote": "This transport uses OAuth 2.1 with dynamic client registration for authentication"
+   },
+   {
+    "field": "api",
+    "url": "https://seranking.com/api/",
+    "quote": "The Data API covers keyword research, backlink analysis, domain performance"
+   },
+   {
+    "field": "api",
+    "url": "https://seranking.com/api/",
+    "quote": "The Project API lets you manage and automate SEO workflows within the platform"
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "high",
+   "api": "medium",
+   "mcp": "high",
+   "buildability": "high"
+  },
+  "needs_human": "The exact endpoint count was not tallied. No OpenAPI spec was found (only a Postman collection), and the docs I read don't mention webhooks. A human should confirm both in the full API reference.",
+  "changes": [
+   {
+    "field": "auth_notes",
+    "old": "REST API uses an account API key (Bearer/Token, header format not confirmed)...",
+    "new": "Authorization: Token YOUR_API_KEY header (or apikey query parameter); one key for Data and Project APIs; MCP OAuth 2.1 and X-Api-Key",
+    "why": "The Data API getting-started page confirms the header format."
+   },
+   {
+    "field": "access_notes",
+    "old": "API Add-On from $149/mo ... free trial account (no credit card)",
+    "new": "Add-On from $540/yr (~$45/mo) for 3M credits; 14-day trial, no card; Core includes 25K credits",
+    "why": "The pricing and how-to-get-api pages show $45/mo billed annually. $149/mo appears only in an older FAQ line on the API page."
+   },
+   {
+    "field": "evidence[access].quote",
+    "old": "API access is included in every SE Ranking plan.",
+    "new": "API is included with every SE Ranking subscription.",
+    "why": "The original quote is not verbatim on the page."
+   },
+   {
+    "field": "evidence[auth].quote",
+    "old": "retrieve your unique API key",
+    "new": "-H 'Authorization: Token YOUR_API_KEY'",
+    "why": "Replaced with a primary-source quote that confirms the header format."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "Data API (...) and Project API (...). Endpoint count not verified",
+    "new": "Data API groups listed from the docs, plus the Project, Local Marketing and SE Visible APIs",
+    "why": "The getting-started page lists the endpoint groups and the extra API sections."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "open-source local server also exists (per a third-party listing)",
+    "new": "self-hostable server published in the vendor's own GitHub org (seranking/seo-data-api-mcp-server)",
+    "why": "The repo is under the vendor's org and registry owner io.github.seranking, so it is official, not just a third-party listing."
+   },
+   {
+    "field": "sandbox",
+    "old": "yes",
+    "new": "no",
+    "why": "There is no dedicated test mode or sandbox. The 14-day production trial is not a sandbox."
+   },
+   {
+    "field": "confidence",
+    "old": "auth medium, access medium, buildability medium",
+    "new": "auth high, access high, buildability high",
+    "why": "Confirmed on the vendor's pricing and docs pages."
+   },
+   {
+    "field": "needs_human",
+    "old": "REST auth header, endpoint count, OpenAPI, webhooks, pricing unconfirmed",
+    "new": "Only endpoint count, OpenAPI and webhooks remain open",
+    "why": "Auth header and pricing are now verified."
+   }
+  ]
+ },
+ "human_fixes": []
+}

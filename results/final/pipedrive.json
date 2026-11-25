@@ -1,0 +1,151 @@
+{
+ "id": 3,
+ "slug": "pipedrive",
+ "app": "Pipedrive",
+ "category": "CRM and Sales",
+ "hint": "pipedrive.com",
+ "source": "verify",
+ "record": {
+  "what_it_does": "Sales CRM for managing deals, contacts, leads, activities and pipelines.",
+  "subcategory": "CRM",
+  "auth_methods": [
+   "oauth2",
+   "api_key"
+  ],
+  "auth_primary": "oauth2",
+  "auth_notes": "Uses the OAuth 2.0 authorization code flow, which Marketplace apps require. Access tokens expire after 60 minutes. Refresh tokens expire after 60 days without use, and each use resets that window. The token response returns an api_domain (the company-specific base URL) for requests. A personal API token can be copied from the Pipedrive app for single-account use.",
+  "access": "self_serve_free",
+  "access_notes": "You request a developer sandbox account through a sign-up form on developers.pipedrive.com. It gives Developer Hub access and is limited to 5 seats. No official page states a price, but it is presented as a no-cost, \"risk free\" environment. Sandboxes are deleted if no app is created within 45 days, or if no public app is published or private app made live within 6 months. A private (unlisted) app, once switched to live, can be shared with any Pipedrive company through a direct install link. Pipedrive validates the callback URL at that point, and the docs describe no Marketplace review for this path. Only a public Marketplace listing needs the app approval process. End users need a Pipedrive account, and Pipedrive has no free plan.",
+  "api_styles": [
+   "rest"
+  ],
+  "api_breadth": "broad",
+  "api_breadth_notes": "REST JSON API with v1 and v2 endpoints. The reference lists about 48 resource groups, including Activities, Deals, Persons, Organizations, Leads, Products, Notes, Pipelines, Stages, Files, Filters, Goals, Projects, Tasks, Users, Mailbox, Call logs and Webhooks. That adds up to well over 50 operations. OpenAPI 3 spec files are published.",
+  "openapi_spec": "yes",
+  "webhooks": "yes",
+  "mcp": "official_remote",
+  "mcp_notes": "Pipedrive runs a hosted MCP server, announced on 2026-06-30. Users connect through OAuth, and it is available on all plans with plan-based token limits. It can read and write deals, contacts, organizations, leads and activities. Official connectors exist for Claude (in Claude's marketplace since Aug 2026) and ChatGPT, and other clients can connect through a custom MCP connection. Search snippets of Pipedrive's support article give the endpoint as https://mcp.pipedrive.ai/mcp, but the current version of that page and the feature page (pipedrive.com/en/features/mcp-server) do not show the URL. Community servers also exist.",
+  "sandbox": "yes",
+  "buildability": "ready_now",
+  "main_blocker": "none",
+  "blocker_notes": "A developer can get a sandbox, build an OAuth app, switch it to live as a private app, and share the unlisted install link with any company without Marketplace review. Marketplace approval is needed only for a public listing. Minor caveats: sandbox pricing is not stated officially, and inactive sandboxes are deleted.",
+  "evidence": [
+   {
+    "field": "auth",
+    "url": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization",
+    "quote": "Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace."
+   },
+   {
+    "field": "auth",
+    "url": "https://developers.pipedrive.com/docs/api/v1",
+    "quote": "The API token can be obtained manually from the Pipedrive app."
+   },
+   {
+    "field": "access",
+    "url": "https://pipedrive.readme.io/docs/marketplace-registering-the-app",
+    "quote": "To be published on the Marketplace, your app needs to pass our app approval process."
+   },
+   {
+    "field": "access",
+    "url": "https://pipedrive.readme.io/docs/marketplace-registering-a-private-app",
+    "quote": "can be shared with any company in Pipedrive via its direct, unlisted installation link"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.pipedrive.com/",
+    "quote": "Sign up for a Sandbox Account today to begin experimenting and developing in a risk free environment"
+   },
+   {
+    "field": "api",
+    "url": "https://developers.pipedrive.com/docs/api/v1",
+    "quote": "Keep in mind that we'll occasionally update our OpenAPI 3 specification files"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://pipedrive.readme.io/docs/guide-for-webhooks-v2",
+    "quote": "Webhooks allow you to get programmatic notifications from Pipedrive about changes to your data as they happen."
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.pipedrive.com/en/newsroom/pipedrive-launches-native-mcp-server-bringing-crm-workflows-directly-into-ai-assistants",
+    "quote": "Pipedrive launches native MCP server, bringing CRM workflows directly into AI assistants"
+   },
+   {
+    "field": "mcp",
+    "url": "https://www.pipedrive.com/en/features/mcp-server",
+    "quote": "Connect your AI assistant to Pipedrive in minutes via a secure OAuth login."
+   }
+  ],
+  "confidence": {
+   "auth": "high",
+   "access": "medium",
+   "api": "high",
+   "mcp": "high",
+   "buildability": "medium"
+  },
+  "needs_human": "No official page states that the developer sandbox is free, though a third-party awards page calls it free and community posts mention paid add-on prompts. Confirm that sharing a live private app with external companies needs no review in practice. The MCP endpoint URL (mcp.pipedrive.ai/mcp) appears only in search snippets of the support article, not on the current version of the page.",
+  "changes": [
+   {
+    "field": "access",
+    "old": "approval_required",
+    "new": "self_serve_free",
+    "why": "The private-app docs show a live private app can be shared with any Pipedrive company through an unlisted install link. Only a public Marketplace listing needs approval, and the sandbox is self-serve through a form."
+   },
+   {
+    "field": "buildability",
+    "old": "ready_with_caveats",
+    "new": "ready_now",
+    "why": "Distributing through a private app avoids Marketplace review, so no review gate blocks a multi-user toolkit."
+   },
+   {
+    "field": "main_blocker",
+    "old": "app_review",
+    "new": "none",
+    "why": "App review applies only to public Marketplace listings, and private live apps are an alternative path."
+   },
+   {
+    "field": "blocker_notes",
+    "old": "Public OAuth app needs Marketplace approval",
+    "new": "Private live app can be shared via unlisted link without review; minor sandbox caveats",
+    "why": "Based on the registering-a-private-app doc."
+   },
+   {
+    "field": "access_notes",
+    "old": "Sandbox testing only; publishing needs approval; sandbox pricing unconfirmed",
+    "new": "Adds the private-app sharing path, the 5-seat limit, the sandbox deletion rules and the lack of a free Pipedrive plan",
+    "why": "Taken from the developer-sandbox and private-app docs."
+   },
+   {
+    "field": "evidence.api quote",
+    "old": "OpenAPI 3 specification files are available for both v1 and v2",
+    "new": "Keep in mind that we'll occasionally update our OpenAPI 3 specification files",
+    "why": "The original quote is not on the page verbatim."
+   },
+   {
+    "field": "webhooks",
+    "old": "yes (unverified, from nav only)",
+    "new": "yes (verified on webhooks v2 guide)",
+    "why": "The webhooks guide confirms event notifications and the POST /v1/webhooks endpoint."
+   },
+   {
+    "field": "mcp_notes",
+    "old": "URL mcp.pipedrive.ai/mcp from search results only",
+    "new": "Confirmed vendor-hosted, OAuth, all plans, Claude/ChatGPT connectors; URL only in search snippets",
+    "why": "Checked against the newsroom post and the features/mcp-server page."
+   },
+   {
+    "field": "api_breadth_notes",
+    "old": "did not count operations",
+    "new": "~48 resource groups listed",
+    "why": "Counted the resource groups in the API reference."
+   },
+   {
+    "field": "confidence.mcp",
+    "old": "medium",
+    "new": "high",
+    "why": "Vendor pages confirm the hosted OAuth MCP server."
+   }
+  ]
+ },
+ "human_fixes": []
+}
